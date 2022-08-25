@@ -27,7 +27,7 @@ quitter = False
 robot = Robot()
 
 img = np.zeros((512,512,3),np.uint8)
-cv2.imshow('Labo_1',img)
+cv2.imshow('Labo 1',img)
 
 while (quitter):
     key = cv2.waitKey(100) # 100 milliseconds
