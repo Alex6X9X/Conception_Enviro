@@ -32,7 +32,7 @@ if(__name__ == "main"):
     
     while (quitter):
         key = cv2.waitKey(100) # 100 milliseconds
-        
+        print("Allo")
         if key == ord(W): 
             robot.Avancer()
 
