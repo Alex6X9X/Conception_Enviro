@@ -33,7 +33,7 @@ while (not quitter):
     key = cv2.waitKey(100) # 100 milliseconds
     print("Allo")
     if key == ord(W): 
-        robot.Avancer()
+        robot.Avancer(None)
 
     elif key == ord(Q):
         robot.Avancer('g')
