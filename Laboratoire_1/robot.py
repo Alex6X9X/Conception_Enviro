@@ -1,7 +1,7 @@
 #Alexandre Carle et Louis-philippe Rousseau
 #25 août 2022
 
-from Laboratoire_1.moteurs import Moteurs
+from moteurs import Moteurs
 
 class Robot:
     def init(self):

@@ -4,7 +4,7 @@
 import gpiozero
 import numpy as np
 import cv2
-from Laboratoire_1.robot import Robot
+from robot import Robot
 
 
 # Constantes
