@@ -29,7 +29,7 @@ robot = Robot()
 img = np.zeros((512,512,3),np.uint8)
 cv2.imshow('Labo 1',img)
 
-while (quitter):
+while (not quitter):
     key = cv2.waitKey(100) # 100 milliseconds
     print("Allo")
     if key == ord(W): 
