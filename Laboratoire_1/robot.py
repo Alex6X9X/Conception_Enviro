@@ -62,9 +62,11 @@ class Robot:
     #10% == 0.1
     
     def Augmenter_Vitesse(self):
-        self.moteurs.ENA.value = self.moteurs.ENA.value + 0.1 
-        self.moteurs.ENB.value = self.moteurs.ENB.value + 0.1
+        if(self.moteurs.ENA.value <= 1):
+            self.moteurs.ENA.value = self.moteurs.ENA.value + 0.1 
+            self.moteurs.ENB.value = self.moteurs.ENB.value + 0.1
         
     def Diminuer_Vitesse(self):
-        self.moteurs.ENA.value = self.moteurs.ENA.value - 0.1
-        self.moteurs.ENB.value = self.moteurs.ENB.value - 0.1
+        if(self.moteurs.ENB.value >= 0):
+            self.moteurs.ENA.value = self.moteurs.ENA.value - 0.1
+            self.moteurs.ENB.value = self.moteurs.ENB.value - 0.1
