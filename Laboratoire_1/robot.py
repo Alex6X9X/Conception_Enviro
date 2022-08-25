@@ -5,7 +5,7 @@ import gpiozero
 from moteurs import Moteurs
 
 class Robot:
-    def init(self):
+    def __init__(self):
         self.moteurs = Moteurs();
         
         
