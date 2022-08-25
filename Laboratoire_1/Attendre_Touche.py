@@ -15,8 +15,7 @@ MOINS = '-'
 X = 'x'
 
 
-def Attendre_Touche(self, robot, quitter):
-    
+def Attendre_Touche(robot, quitter):
     
     img = np.zeros((512,512,3),np.uint8)
     cv2.imshow('Labo 1',img)
