@@ -18,11 +18,11 @@ class Robot:
             self.moteurs.ENA.value = 0.3
             self.moteurs.ENB.value = 0.3
         elif(dir == "g"):
-            self.moteurs.ENA.value = 0.3
+            self.moteurs.ENA.value = 0.1
             self.moteurs.ENB.value = 0.4
         elif(dir == "d"):
             self.moteurs.ENA.value = 0.4
-            self.moteurs.ENB.value = 0.3
+            self.moteurs.ENB.value = 0.1
         
         
     def Reculer(self):
@@ -38,13 +38,13 @@ class Robot:
         if (dir == "g"):
             self.moteurs.IN2.on()
             self.moteurs.IN3.on()
-            self.moteurs.ENA.value = 0.37
-            self.moteurs.ENB.value = 0.37
+            self.moteurs.ENA.value = 0.5
+            self.moteurs.ENB.value = 0.5
         elif (dir == "d"):
             self.moteurs.IN1.on()
             self.moteurs.IN4.on()
-            self.moteurs.ENA.value = 0.37
-            self.moteurs.ENB.value = 0.37
+            self.moteurs.ENA.value = 0.5
+            self.moteurs.ENB.value = 0.5
 
     def Arreter(self):
         self.moteurs.ENA.off()
@@ -58,8 +58,8 @@ class Robot:
     #10% == 0.1
     
     def Augmenter_Vitesse(self):
-        self.moteurs.ENA.value += 0.1 
-        self.moteurs.ENB.value += 0.1
+        self.moteurs.ENA.value = self.moteurs.ENA.value + 0.1 
+        self.moteurs.ENB.value = self.moteurs.ENA.value + 0.1
         print(self.moteurs.ENB.value)
         print(self.moteurs.ENA.value)
         
