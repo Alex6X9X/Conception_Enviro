@@ -20,13 +20,13 @@ class Robot:
         elif(dir == "g"):
             self.moteurs.IN2.on()
             self.moteurs.IN3.on()
-            self.moteurs.ENA.value = 0.2
+            self.moteurs.ENA.value = 0.3
             self.moteurs.ENB.value = 0.5
         elif(dir == "d"):
             self.moteurs.IN1.on()
             self.moteurs.IN4.on()
             self.moteurs.ENA.value = 0.5
-            self.moteurs.ENB.value = 0.2
+            self.moteurs.ENB.value = 0.3
         
         
     def Reculer(self):
