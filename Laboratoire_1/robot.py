@@ -18,9 +18,13 @@ class Robot:
             self.moteurs.ENA.value = 0.3
             self.moteurs.ENB.value = 0.3
         elif(dir == "g"):
+            self.moteurs.IN2.on()
+            self.moteurs.IN3.on()
             self.moteurs.ENA.value = 0.1
             self.moteurs.ENB.value = 0.4
         elif(dir == "d"):
+            self.moteurs.IN1.on()
+            self.moteurs.IN4.on()
             self.moteurs.ENA.value = 0.4
             self.moteurs.ENB.value = 0.1
         
