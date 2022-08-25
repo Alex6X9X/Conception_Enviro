@@ -1,6 +1,7 @@
 #Alexandre Carle et Louis-philippe Rousseau
 #25 août 2022
 
+import gpiozero
 from moteurs import Moteurs
 
 class Robot:
