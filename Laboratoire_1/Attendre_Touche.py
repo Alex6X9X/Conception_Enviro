@@ -15,7 +15,7 @@ MOINS = '-'
 X = 'x'
 
 
-def Attendre_Touche(robot, quitter):
+def Attendre_Touche(robot):
     
     img = np.zeros((512,512,3),np.uint8)
     cv2.imshow('Labo 1',img)
@@ -50,6 +50,7 @@ def Attendre_Touche(robot, quitter):
         robot.Diminuer_Vitesse()
         
     elif key == ord(X):
-        quitter = True
         robot.Arreter()
+        return True
     
+    return False

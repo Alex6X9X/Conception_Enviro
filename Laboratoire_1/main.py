@@ -13,7 +13,7 @@ quitter = False
 
 
 while (not quitter):
-    Attendre_Touche(robot, quitter)
+    quitter = Attendre_Touche(robot)
 
 print("Au revoir!")
         
