@@ -1,5 +1,6 @@
 #Alexandre Carle et Louis-philippe Rousseau
 #25 août 2022
+#Dernier changement le 28 août 2022
 
 import gpiozero
 from moteurs import Moteurs
@@ -9,12 +10,12 @@ class Robot:
         self.moteurs = Moteurs();
         
         
-    def Avancer(self, dir):
+    def Avancer(self, dir = None):
         self.Arreter()
         self.moteurs.IN1.on()
         self.moteurs.IN3.on()
         
-        if(dir == None or dir == " "):
+        if(dir == None):
             self.moteurs.ENA.value = 0.3
             self.moteurs.ENB.value = 0.3
         elif(dir == "g"):

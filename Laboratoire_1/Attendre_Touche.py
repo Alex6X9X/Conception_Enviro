@@ -1,3 +1,7 @@
+#Alexandre Carle et Louis-philippe Rousseau
+#25 août 2022
+#Dernier changement le 28 août 2022
+
 import numpy as np
 import cv2
 
@@ -14,7 +18,8 @@ PLUS = '+'
 MOINS = '-'
 X = 'x'
 
-
+# Paramètre: Un objet de type Robot() pour le déplacement du véhicule
+# Retourne un booléen
 def Attendre_Touche(robot):
     
     img = np.zeros((512,512,3),np.uint8)
@@ -23,7 +28,7 @@ def Attendre_Touche(robot):
     key = cv2.waitKey(100) # 100 milliseconds
     
     if key == ord(W): 
-        robot.Avancer(None)
+        robot.Avancer()
 
     elif key == ord(Q):
         robot.Avancer('g')
