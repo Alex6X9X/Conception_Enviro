@@ -12,7 +12,8 @@ class Sonar:
         self.tableau_distance = []
         self.sonar_gauche = 0
         self.sonar_droite = 0
-        
+
+        self.sonar_gauche_distance_courante =0
         
     def initialiser_callbacks(self):
         ##when_activated / when_deactivated
