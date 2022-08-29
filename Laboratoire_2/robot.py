@@ -7,8 +7,7 @@ from moteurs import Moteurs
 
 class Robot:
     def __init__(self):
-        self.moteurs = Moteurs();
-        
+        self.moteurs = Moteurs()
         
     def Avancer(self, dir = None):
         self.Arreter()
