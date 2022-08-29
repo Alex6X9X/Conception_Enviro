@@ -1,0 +1,2 @@
+DEL_JAUNE = 10
+DEL_VERTE = 9
