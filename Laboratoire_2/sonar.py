@@ -57,10 +57,13 @@ class Sonar:
 
     def calculer_moyenne_mobile(self , nouvelle_distance , tableau_distance):
         tableau_distance.append(nouvelle_distance)
-        temp_tab = tableau_distance
+        
+        
         if len(tableau_distance)>FENETRE:
             del tableau_distance[0]
-            del temp_tab[0]
+            temp_tab = tableau_distance
             del min(temp_tab)
             del max(temp_tab)
-        return sum(temp_tab)/len(temp_tab)
+            return sum(temp_tab)/len(temp_tab)
+        
+        return None

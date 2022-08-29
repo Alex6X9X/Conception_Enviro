@@ -1,3 +1,4 @@
+from ast import Pass
 import threading
 from time import sleep
 import grovepi
@@ -26,5 +27,9 @@ class Dell:
             sleep(incrementation)
             self.__eteindre__()
             
-
+    def calculer_incrementation(distance):
+        if(distance is None):
+            pass 
+        pass
+    
             
