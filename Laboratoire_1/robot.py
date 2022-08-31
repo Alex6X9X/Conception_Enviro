@@ -16,26 +16,26 @@ class Robot:
         self.moteurs.IN3.on()
         
         if(dir == None):
-            self.moteurs.ENA.value = 0.3
-            self.moteurs.ENB.value = 0.3
+            self.moteurs.ENA.value = 1.0
+            self.moteurs.ENB.value = 1.0
         elif(dir == "g"):
             self.moteurs.IN2.on()
             self.moteurs.IN3.on()
-            self.moteurs.ENA.value = 0.3
-            self.moteurs.ENB.value = 0.5
+            self.moteurs.ENA.value = 0.6
+            self.moteurs.ENB.value = 0.8
         elif(dir == "d"):
             self.moteurs.IN1.on()
             self.moteurs.IN4.on()
-            self.moteurs.ENA.value = 0.5
-            self.moteurs.ENB.value = 0.3
+            self.moteurs.ENA.value = 0.8
+            self.moteurs.ENB.value = 0.6
         
         
     def Reculer(self):
         self.Arreter()
         self.moteurs.IN2.on()
         self.moteurs.IN4.on()
-        self.moteurs.ENA.value = 0.3
-        self.moteurs.ENB.value = 0.3
+        self.moteurs.ENA.value = 1.0
+        self.moteurs.ENB.value = 1.0
             
     def Tourner_90(self, dir):
         self.Arreter()
