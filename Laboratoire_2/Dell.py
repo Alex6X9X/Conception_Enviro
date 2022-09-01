@@ -45,10 +45,11 @@ class Dell:
         #self.sonar.distance_courante_gauche
         #self.sonar.distance_courante_droite
         if(self.direction == 'g'):
-            print((2 / TRANCHE_CLIGNOTEMENT) * TEMPS_CLIGNOTEMENT)
-            return (20 / TRANCHE_CLIGNOTEMENT) * TEMPS_CLIGNOTEMENT
+            print( (self.sonar.distance_courante_gauche / TRANCHE_CLIGNOTEMENT) * TEMPS_CLIGNOTEMENT)
+            return (self.sonar.distance_courante_gauche / TRANCHE_CLIGNOTEMENT) * TEMPS_CLIGNOTEMENT
         elif(self.direction == 'd'):
-            return (25 / TRANCHE_CLIGNOTEMENT) * TEMPS_CLIGNOTEMENT
+            print( (self.sonar.distance_courante_droite / TRANCHE_CLIGNOTEMENT) * TEMPS_CLIGNOTEMENT)
+            return (self.sonar.distance_courante_droite / TRANCHE_CLIGNOTEMENT) * TEMPS_CLIGNOTEMENT
 
         # Si il n'y aucune distinction entre le sonar de droite ou de gauche
         return -1
