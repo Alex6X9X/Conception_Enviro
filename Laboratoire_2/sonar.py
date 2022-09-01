@@ -46,31 +46,27 @@ class Sonar:
         self.echo_droite.when_deactivated = self.sonar_deactiver('d')
         
     def sonar_activer(self, echo):
+        print("Activé!")
         if(echo == 'g'):
-            if(echo.active_time > 2):
-                self.compteur_distanceg = time.perf_counter()
+            self.compteur_distanceg = time.perf_counter()
         elif(echo == 'd'):
-            if(echo.active_time > 2):
-                self.compteur_distanced = time.perf_counter()
+            self.compteur_distanced = time.perf_counter()
 
     def sonar_deactiver(self , echo):
         ##calculer le temps avec compteur_distanceg et d
+        print("DéActivé!")
         if(echo == 'g'):
-            if(echo.deactive_time > 2):
-                distance  = self.compteur_distanceg * VITESSE_SON /2
-                self.distance_courante_gauche = self.calculer_moyenne_mobile(distance , self.tableau_distanceg)
-        if(echo == 'd'):
-            if(echo.deactive_time > 2):    
-                distance = self.compteur_distanced * VITESSE_SON / 2
-                self.distance_courante_droite = self.calculer_moyenne_mobile(distance , self.tableau_distanced)   
+            distance  = time.perf_counter() - self.compteur_distanceg * VITESSE_SON /2
+            self.distance_courante_gauche = self.calculer_moyenne_mobile(distance , self.tableau_distanceg)
+        if(echo == 'd'):  
+            distance = time.perf_counter() - self.compteur_distanced * VITESSE_SON / 2
+            self.distance_courante_droite = self.calculer_moyenne_mobile(distance , self.tableau_distanced)   
         
         self.Afficher_Distances()
 
     def activer_sonar(self):
         while(not self.arreter):
-            print(self.compteur_trigger)
             if(time.perf_counter() - self.compteur_trigger >= 0.1):
-                print("Allo")
                 self.compteur_trigger = time.perf_counter() 
                 self.trigger_gauche.on()
                 self.trigger_droite.on()
