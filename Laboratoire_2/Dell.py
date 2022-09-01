@@ -29,22 +29,24 @@ class Dell:
     def __eteindre__(self):
         self.dell.off()
         
-    def Clignoter(self, distance_g, distance_d):
+    def Clignoter(self):
         
         while(not self.arreter):
             
             self.__allumez__()
-            sleep(self.__calculer_incrementation__(20, 25))
+            sleep(self.__calculer_incrementation__())
             self.__eteindre__()
             
         self.Arreter()
             
-    def __calculer_incrementation__(self, distance_g, distance_d):
+    def __calculer_incrementation__(self):
         
+        #self.sonar.distance_courante_gauche
+        #self.sonar.distance_courante_droite
         if(self.direction == 'g'):
-            return (distance_g / TRANCHE_CLIGNOTEMENT) * TEMPS_CLIGNOTEMENT
+            return (20 / TRANCHE_CLIGNOTEMENT) * TEMPS_CLIGNOTEMENT
         elif(self.direction == 'd'):
-            return (distance_d / TRANCHE_CLIGNOTEMENT)
+            return (25 / TRANCHE_CLIGNOTEMENT)
 
         # Si il n'y aucune distinction entre le sonar de droite ou de gauche
         return -1
