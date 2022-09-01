@@ -36,6 +36,7 @@ class Dell:
             self.__allumez__()
             sleep(self.__calculer_incrementation__())
             self.__eteindre__()
+            sleep(self.__calculer_incrementation__())
             
         self.Arreter()
             
