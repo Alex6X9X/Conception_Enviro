@@ -4,18 +4,18 @@
 
 import threading
 from time import sleep
-import grovepi
+import gpiozero
 
 TRANCHE_CLIGNOTEMENT = 2 # À chaque 2 cm
 TEMPS_CLIGNOTEMENT = 0.01
 
 class Dell:
     def __init__(self , port , sonar , direction, arreter):
-        self.port = port
         self.sonar = sonar
         self.direction = direction
         self.thread = threading.Thread(target = self.Clignoter , args=())
         self.arreter = arreter
+        self.dell = gpiozero.DigitalOutputDevice(port)
         
     def Demarrer(self):
         self.thread.start()
@@ -24,13 +24,10 @@ class Dell:
         self.thread.join()
         
     def __allumez__(self):
-        grovepi.digitalWrite(self.port,1)
+        self.dell.on()
 
     def __eteindre__(self):
-        grovepi.digitalWrite(self.port,0)
-        
-    def __choisir_intensite__(self , valeur):
-        grovepi.analogWrite(self.port,valeur)
+        self.dell.off()
         
     def Clignoter(self, distance_g, distance_d):
         
