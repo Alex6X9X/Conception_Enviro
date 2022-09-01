@@ -42,31 +42,34 @@ class Sonar:
         
     def initialiser_callbacks(self):
         ##when_activated / when_deactivated
-        self.echo_gauche.when_activated = self.sonar_activer('g')
-        self.echo_droite.when_activated = self.sonar_activer('d')
-        self.echo_gauche.when_deactivated = self.sonar_deactiver('g')
-        self.echo_droite.when_deactivated = self.sonar_deactiver('d')
+        self.echo_gauche.when_activated = self.sonar_activer
+        self.echo_droite.when_activated = self.sonar_activer
+        self.echo_gauche.when_deactivated = self.sonar_deactiver
+        self.echo_droite.when_deactivated = self.sonar_deactiver
         
-    def sonar_activer(self, echo):
-        print("Activé!")
-        if(echo == 'g'):
-            self.compteur_distanceg = time.perf_counter()
-        elif(echo == 'd'):
-            self.compteur_distanced = time.perf_counter()
+    def sonar_activer_g(self):
+        print("Activé gauche!")
+        self.compteur_distanceg = time.perf_counter()
+    
+    def sonar_activer_d(self):
+        print("Activé droite")
+        self.compteur_distanced = time.perf_counter()
 
-    def sonar_deactiver(self , echo):
+    def sonar_deactiver(self):
         ##calculer le temps avec compteur_distanceg et d
-        print("DéActivé!")
-        if(echo == 'g'):
-            distance  = time.perf_counter() - self.compteur_distanceg * VITESSE_SON /2
-            self.distance_courante_gauche = self.calculer_moyenne_mobile(distance , self.tableau_distanceg)
-        if(echo == 'd'):  
-            distance = time.perf_counter() - self.compteur_distanced * VITESSE_SON / 2
-            self.distance_courante_droite = self.calculer_moyenne_mobile(distance , self.tableau_distanced)   
+        print("DéActivé gauche!")
+        distance  = time.perf_counter() - self.compteur_distanceg * VITESSE_SON /2
+        self.distance_courante_gauche = self.calculer_moyenne_mobile(distance , self.tableau_distanceg)
         
-        print(self.distance_courante_droite)
         print(self.distance_courante_gauche)
-        #self.Afficher_Distances(self.distance_courante_gauche, self.distance_courante_droite)
+        #self.Afficher_Distances()
+        
+    def sonar_deactiver_d(self):
+        print("DéActivé Droite!")
+        distance = time.perf_counter() - self.compteur_distanced * VITESSE_SON / 2
+        self.distance_courante_droite = self.calculer_moyenne_mobile(distance , self.tableau_distanced) 
+        
+        print(self.distance_courante_droite) 
 
     def activer_sonar(self):
         while(not self.arreter):
@@ -95,7 +98,7 @@ class Sonar:
         
         return None
     
-    def Afficher_Distances(self, distance_gauche, distance_droite):
+    def Afficher_Distances(self, distance, dir):
         img = np.zeros((512,512,3),np.uint8)
         cv2.imshow('Labo 2',img)
         
@@ -106,36 +109,19 @@ class Sonar:
         line_type = 2
         
         print("Allo")
-        #Rendre les strings plus simples
-        if(distance_gauche != None and distance_droite == None):
+        if(distance != None):
             cv2.putText(img, 
-                        "Sonar Gauche: " + str(distance_gauche) + " cm"  + " | Sonar Droite: Aucune données", 
+                        "Sonar " + dir + " : " + str(distance) + " cm", 
                         org, 
                         font, 
                         font_scale, 
                         font_color, 
                         line_type)    
-        elif(distance_gauche == None and distance_droite != None):
+        elif(distance== None):
             cv2.putText(img, 
-                        "Sonar Gauche: Aucune données | Sonar Droite:" + str(distance_droite) + " cm", 
+                        "Sonar " + dir + " : Aucune données", 
                         org, 
                         font, 
                         font_scale, 
                         font_color, 
                         line_type)
-        elif(distance_droite != None and distance_gauche != None):    
-            cv2.putText(img, 
-                        "Sonar Gauche: " + str(distance_gauche) + "cm" + " | " + "Sonar Droite:" + str(distance_droite) + " cm", 
-                        org, 
-                        font, 
-                        font_scale, 
-                        font_color, 
-                        line_type)
-        else:
-            cv2.putText(img, 
-                        "Sonar Gauche: Aucune données | Sonar Droite: Aucune données", 
-                        org, 
-                        font, 
-                        font_scale, 
-                        font_color, 
-                        line_type)   
