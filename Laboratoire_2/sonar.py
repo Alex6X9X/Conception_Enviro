@@ -64,7 +64,9 @@ class Sonar:
             distance = time.perf_counter() - self.compteur_distanced * VITESSE_SON / 2
             self.distance_courante_droite = self.calculer_moyenne_mobile(distance , self.tableau_distanced)   
         
-        self.Afficher_Distances(self.distance_courante_gauche, self.distance_courante_droite)
+        print(self.distance_courante_droite)
+        print(self.distance_courante_gauche)
+        #self.Afficher_Distances(self.distance_courante_gauche, self.distance_courante_droite)
 
     def activer_sonar(self):
         while(not self.arreter):
