@@ -98,10 +98,10 @@ class Sonar:
         
         #Rendre les strings plus simples
         if(distance_gauche != None and distance_droite == None):
-            cv2.putText(img, "Sonar Gauche: " + str(distance_gauche) + " cm"  + " | Sonar Droite: Aucune données")    
+            cv2.putText(img, "Sonar Gauche: " + str(distance_gauche) + " cm"  + " | Sonar Droite: Aucune données", (0,0))    
         elif(distance_gauche == None and distance_droite != None):
-            cv2.putText(img, "Sonar Gauche: Aucune données | Sonar Droite:" + str(distance_droite) + " cm")
+            cv2.putText(img, "Sonar Gauche: Aucune données | Sonar Droite:" + str(distance_droite) + " cm", (0,0))
         elif(distance_droite != None and distance_gauche != None):    
-            cv2.putText(img, "Sonar Gauche: " + str(distance_gauche) + "cm" + " | " + "Sonar Droite:" + str(distance_droite) + " cm")
+            cv2.putText(img, "Sonar Gauche: " + str(distance_gauche) + "cm" + " | " + "Sonar Droite:" + str(distance_droite) + " cm", (0,0))
         else:
-            cv2.putText(img, "Sonar Gauche: Aucune données | Sonar Droite: Aucune données")   
+            cv2.putText(img, "Sonar Gauche: Aucune données | Sonar Droite: Aucune données", (0,0))   
