@@ -48,16 +48,15 @@ class Sonar:
         self.echo_droite.when_deactivated = self.sonar_deactiver_d
         
     def sonar_activer_g(self):
-        print("Activé gauche!")
+
         self.compteur_distanceg = time.perf_counter()
     
     def sonar_activer_d(self):
-        print("Activé droite")
+
         self.compteur_distanced = time.perf_counter()
 
     def sonar_deactiver_g(self):
         ##calculer le temps avec compteur_distanceg et d
-        print("DéActivé gauche!")
 
         distance  = (time.perf_counter() - self.compteur_distanceg) * VITESSE_SON /2
         #print(distance)
@@ -67,7 +66,6 @@ class Sonar:
         #self.Afficher_Distances(self.distance_courante_gauche, 'gauche')
         
     def sonar_deactiver_d(self):
-        print("DéActivé Droite!")
         distance = (time.perf_counter() - self.compteur_distanced) * VITESSE_SON / 2
         #print(distance)
         self.distance_courante_droite = self.calculer_moyenne_mobile(distance , self.tableau_distanced) 
@@ -90,7 +88,9 @@ class Sonar:
     def calculer_moyenne_mobile(self , nouvelle_distance , tableau_distance):
         tableau_distance.append(nouvelle_distance)
         
+        print(len(tableau_distance)>FENETRE)
         if len(tableau_distance)>FENETRE:
+            print("-------------------------")
             del tableau_distance[0]
             temp_tab = tableau_distance
             temp_min = min(temp_tab)
