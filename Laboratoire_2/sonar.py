@@ -89,7 +89,7 @@ class Sonar:
         tableau_distance.append(nouvelle_distance)
         
         print(len(tableau_distance))
-        if len(tableau_distance)>FENETRE:
+        if len(tableau_distance) >= FENETRE:
             print("-------------------------")
             del tableau_distance[0]
             temp_tab = tableau_distance
