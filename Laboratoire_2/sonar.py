@@ -69,11 +69,11 @@ class Sonar:
 
     def activer_sonar(self):
         while(not self.arreter):
-            print(self.compteur_trigger - self.temps_courant_trigger >= 0.1)
+            print(time.perf_counter() - self.compteur_trigger >= 0.1)
             print(self.compteur_trigger)
             print(self.temps_courant_trigger)
-            if(self.compteur_trigger - self.temps_courant_trigger >= 0.1):
-                self.temps_courant_trigger = self.compteur_trigger
+            if(time.perf_counter() - self.compteur_trigger >= 0.1):
+                self.compteur_trigger = time.perf_counter() 
                 self.trigger_gauche.on()
                 self.trigger_droite.on()
                 time.sleep(TEMPS_TRIGGER_ACTIF)
