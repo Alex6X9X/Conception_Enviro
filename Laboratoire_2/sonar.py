@@ -77,7 +77,7 @@ class Sonar:
                 time.sleep(TEMPS_TRIGGER_ACTIF)
                 self.trigger_gauche.off()
                 self.trigger_droite.off()
-                
+        print("Fini!")        
         self.Arreter()
 
     def calculer_moyenne_mobile(self , nouvelle_distance , tableau_distance):
