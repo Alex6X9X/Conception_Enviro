@@ -30,6 +30,12 @@ class Sonar:
 
         self.distance_courante_gauche = 0
         self.distance_courante_droite = 0
+        
+    def Demarrer(self):
+        self.thread.start()
+        
+    def Arreter(self):
+        self.thread.join()
 
         
     def initialiser_callbacks(self):
@@ -50,11 +56,13 @@ class Sonar:
     def sonar_deactiver(self , echo):
         ##calculer le temps avec compteur_distanceg et d
         if(echo == 'g'):
-            distance  = self.compteur_distanceg * VITESSE_SON /2
-            self.distance_courante_gauche = self.calculer_moyenne_mobile(distance , self.tableau_distanceg)
+            if(echo.deactive_time > 2):
+                distance  = self.compteur_distanceg * VITESSE_SON /2
+                self.distance_courante_gauche = self.calculer_moyenne_mobile(distance , self.tableau_distanceg)
         if(echo == 'd'):
-            distance = self.compteur_distanced * VITESSE_SON / 2
-            self.distance_courante_droite = self.calculer_moyenne_mobile(distance , self.tableau_distanced)   
+            if(echo.deactive_time > 2):    
+                distance = self.compteur_distanced * VITESSE_SON / 2
+                self.distance_courante_droite = self.calculer_moyenne_mobile(distance , self.tableau_distanced)   
         
         self.Afficher_Distances()
 
@@ -67,6 +75,8 @@ class Sonar:
                 time.sleep(TEMPS_TRIGGER_ACTIF)
                 self.trigger_gauche.off()
                 self.trigger_droite.off()
+                
+        self.Arreter()
 
     def calculer_moyenne_mobile(self , nouvelle_distance , tableau_distance):
         tableau_distance.append(nouvelle_distance)

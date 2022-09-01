@@ -14,8 +14,14 @@ class Dell:
         self.port = port
         self.sonar = sonar
         self.direction = direction
-        self.thread = threading.Thread(target = self.clignoter , args=())
+        self.thread = threading.Thread(target = self.Clignoter , args=())
         self.arreter = arreter
+        
+    def Demarrer(self):
+        self.thread.start()
+        
+    def Arreter(self):
+        self.thread.join()
         
     def __allumez__(self):
         grovepi.digitalWrite(self.port,1)
@@ -31,8 +37,10 @@ class Dell:
         while(not self.arreter):
             
             self.__allumez__()
-            sleep(self.__calculer_incrementation__(distance_g, distance_d))
+            sleep(self.__calculer_incrementation__(20, 25))
             self.__eteindre__()
+            
+        self.Arreter()
             
     def __calculer_incrementation__(self, distance_g, distance_d):
         
