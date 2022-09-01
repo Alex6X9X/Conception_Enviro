@@ -31,6 +31,8 @@ class Sonar:
         self.distance_courante_gauche = 0
         self.distance_courante_droite = 0
         
+        self.initialiser_callbacks()
+        
     def Demarrer(self):
         self.thread.start()
         
