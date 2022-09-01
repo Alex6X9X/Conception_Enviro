@@ -2,6 +2,7 @@
 #29 août 2022
 #Dernier changement le 31 août 2022
 
+from array import array
 import threading
 import gpiozero
 import time 
@@ -84,8 +85,10 @@ class Sonar:
         if len(tableau_distance)>FENETRE:
             del tableau_distance[0]
             temp_tab = tableau_distance
-            del min(temp_tab)
-            del max(temp_tab)
+            temp_min = min(temp_tab)
+            temp_max = max(temp_tab) 
+            temp_tab.remove(temp_min)
+            temp_tab.remove(temp_max)
             return sum(temp_tab)/len(temp_tab)
         
         return None
