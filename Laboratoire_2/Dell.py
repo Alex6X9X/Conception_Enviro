@@ -7,7 +7,7 @@ from time import sleep
 import gpiozero
 
 TRANCHE_CLIGNOTEMENT = 2 # À chaque 2 cm
-TEMPS_CLIGNOTEMENT = 0.1
+TEMPS_CLIGNOTEMENT = 0.01
 
 class Dell:
     def __init__(self , port , sonar , direction, arreter):
