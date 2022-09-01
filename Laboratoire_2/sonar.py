@@ -96,12 +96,42 @@ class Sonar:
         img = np.zeros((512,512,3),np.uint8)
         cv2.imshow('Labo 2',img)
         
+        org = (0,0)
+        font = cv2.FONT_HERSHEY_SIMPLEX
+        font_scale = 1
+        font_color = (255, 255, 255)
+        line_type = 2
+        
         #Rendre les strings plus simples
         if(distance_gauche != None and distance_droite == None):
-            cv2.putText(img, "Sonar Gauche: " + str(distance_gauche) + " cm"  + " | Sonar Droite: Aucune données", (0,0))    
+            cv2.putText(img, 
+                        "Sonar Gauche: " + str(distance_gauche) + " cm"  + " | Sonar Droite: Aucune données", 
+                        org, 
+                        font, 
+                        font_scale, 
+                        font_color, 
+                        line_type)    
         elif(distance_gauche == None and distance_droite != None):
-            cv2.putText(img, "Sonar Gauche: Aucune données | Sonar Droite:" + str(distance_droite) + " cm", (0,0))
+            cv2.putText(img, 
+                        "Sonar Gauche: Aucune données | Sonar Droite:" + str(distance_droite) + " cm", 
+                        org, 
+                        font, 
+                        font_scale, 
+                        font_color, 
+                        line_type)
         elif(distance_droite != None and distance_gauche != None):    
-            cv2.putText(img, "Sonar Gauche: " + str(distance_gauche) + "cm" + " | " + "Sonar Droite:" + str(distance_droite) + " cm", (0,0))
+            cv2.putText(img, 
+                        "Sonar Gauche: " + str(distance_gauche) + "cm" + " | " + "Sonar Droite:" + str(distance_droite) + " cm", 
+                        org, 
+                        font, 
+                        font_scale, 
+                        font_color, 
+                        line_type)
         else:
-            cv2.putText(img, "Sonar Gauche: Aucune données | Sonar Droite: Aucune données", (0,0))   
+            cv2.putText(img, 
+                        "Sonar Gauche: Aucune données | Sonar Droite: Aucune données", 
+                        org, 
+                        font, 
+                        font_scale, 
+                        font_color, 
+                        line_type)   
