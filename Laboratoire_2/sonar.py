@@ -91,12 +91,12 @@ class Sonar:
         print(len(tableau_distance))
         if len(tableau_distance) >= FENETRE:
             print("-------------------------")
-            del tableau_distance[0]
             temp_tab = tableau_distance
             temp_min = min(temp_tab)
             temp_max = max(temp_tab) 
             temp_tab.remove(temp_min)
             temp_tab.remove(temp_max)
+            del tableau_distance[0]
             return sum(temp_tab)/len(temp_tab)
         
         return None
