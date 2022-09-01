@@ -42,10 +42,10 @@ class Sonar:
         
     def initialiser_callbacks(self):
         ##when_activated / when_deactivated
-        self.echo_gauche.when_activated = self.sonar_activer
-        self.echo_droite.when_activated = self.sonar_activer
-        self.echo_gauche.when_deactivated = self.sonar_deactiver
-        self.echo_droite.when_deactivated = self.sonar_deactiver
+        self.echo_gauche.when_activated = self.sonar_activer_g
+        self.echo_droite.when_activated = self.sonar_activer_d
+        self.echo_gauche.when_deactivated = self.sonar_deactiver_g
+        self.echo_droite.when_deactivated = self.sonar_deactiver_d
         
     def sonar_activer_g(self):
         print("Activé gauche!")
@@ -55,7 +55,7 @@ class Sonar:
         print("Activé droite")
         self.compteur_distanced = time.perf_counter()
 
-    def sonar_deactiver(self):
+    def sonar_deactiver_g(self):
         ##calculer le temps avec compteur_distanceg et d
         print("DéActivé gauche!")
         distance  = time.perf_counter() - self.compteur_distanceg * VITESSE_SON /2
