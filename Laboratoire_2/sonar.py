@@ -59,6 +59,7 @@ class Sonar:
         ##calculer le temps avec compteur_distanceg et d
         print("DéActivé gauche!")
         distance  = time.perf_counter() - self.compteur_distanceg * VITESSE_SON /2
+        print(distance)
         self.distance_courante_gauche = self.calculer_moyenne_mobile(distance , self.tableau_distanceg)
         
         print(self.distance_courante_gauche)
@@ -67,6 +68,7 @@ class Sonar:
     def sonar_deactiver_d(self):
         print("DéActivé Droite!")
         distance = time.perf_counter() - self.compteur_distanced * VITESSE_SON / 2
+        print(distance)
         self.distance_courante_droite = self.calculer_moyenne_mobile(distance , self.tableau_distanced) 
         
         print(self.distance_courante_droite) 
