@@ -71,6 +71,7 @@ class Sonar:
     def activer_sonar(self):
         while(not self.arreter):
             if(time.perf_counter() - self.compteur_trigger >= 0.1):
+                print("HElloo")
                 self.compteur_trigger = time.perf_counter() 
                 self.trigger_gauche.on()
                 self.trigger_droite.on()
