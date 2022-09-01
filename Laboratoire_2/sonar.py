@@ -17,7 +17,6 @@ class Sonar:
     
     def __init__(self , port_triggerg , port_triggerd , port_echog , port_echod, arreter):
         self.compteur_trigger = time.perf_counter()
-        self.temps_courant_trigger = 0
         self.thread = threading.Thread(target = self.activer_sonar , args=())
         self.compteur_distanceg = 0
         self.compteur_distanced = 0
@@ -69,10 +68,9 @@ class Sonar:
 
     def activer_sonar(self):
         while(not self.arreter):
-            print(time.perf_counter() - self.compteur_trigger >= 0.1)
             print(self.compteur_trigger)
-            print(self.temps_courant_trigger)
             if(time.perf_counter() - self.compteur_trigger >= 0.1):
+                print("Allo")
                 self.compteur_trigger = time.perf_counter() 
                 self.trigger_gauche.on()
                 self.trigger_droite.on()
