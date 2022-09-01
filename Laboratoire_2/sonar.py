@@ -60,21 +60,20 @@ class Sonar:
         print("DéActivé gauche!")
 
         distance  = (time.perf_counter() - self.compteur_distanceg) * VITESSE_SON /2
-        print(distance)
+        #print(distance)
         self.distance_courante_gauche = self.calculer_moyenne_mobile(distance , self.tableau_distanceg)
         
-        print(self.distance_courante_gauche)
-        #self.Afficher_Distances()
+        #print(self.distance_courante_gauche)
+        self.Afficher_Distances(self.distance_courante_gauche, 'gauche')
         
     def sonar_deactiver_d(self):
         print("DéActivé Droite!")
-        print(time.perf_counter())
-        print(self.compteur_distanced)
         distance = (time.perf_counter() - self.compteur_distanced) * VITESSE_SON / 2
-        print(distance)
+        #print(distance)
         self.distance_courante_droite = self.calculer_moyenne_mobile(distance , self.tableau_distanced) 
         
-        print(self.distance_courante_droite) 
+        #print(self.distance_courante_droite) 
+        self.Afficher_Distances(self.distance_courante_droite, 'droite')
 
     def activer_sonar(self):
         while(not self.arreter):
@@ -115,7 +114,7 @@ class Sonar:
         print("Allo")
         if(distance != None):
             cv2.putText(img, 
-                        "Sonar " + dir + " : " + str(distance) + " cm", 
+                        "Sonar " + dir + " : " + str(round(distance)) + " cm", 
                         org, 
                         font, 
                         font_scale, 
