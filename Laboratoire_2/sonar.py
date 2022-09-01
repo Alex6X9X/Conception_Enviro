@@ -102,6 +102,7 @@ class Sonar:
         font_color = (255, 255, 255)
         line_type = 2
         
+        print("Allo")
         #Rendre les strings plus simples
         if(distance_gauche != None and distance_droite == None):
             cv2.putText(img, 
