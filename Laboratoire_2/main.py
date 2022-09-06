@@ -22,6 +22,6 @@ del_jaune = Dell(PORT_DEL_JAUNE, sonars, 'g', arreter)
 del_verte = Dell(PORT_DEL_VERTE, sonars, 'd', arreter)
 
 img = np.zeros((512,512,3),np.uint8)
-cv2.imshow('Labo 2', img)
+cv2.imshow('Labo 1',img)
 #sonars.Demarrer()
 #sonars.Arreter()
