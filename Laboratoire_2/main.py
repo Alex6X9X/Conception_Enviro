@@ -29,7 +29,7 @@ line_type = 2
 
 img = np.zeros((512,512,3),np.uint8)
 
-cv2.putText(img, 
+img_2 = cv2.putText(img, 
             "Sonar ", 
             org, 
             font, 
@@ -38,6 +38,6 @@ cv2.putText(img,
             line_type,
             cv2.LINE_AA)  
 
-cv2.imshow('Labo 1',img)  
+cv2.imshow('Labo 1', img_2)  
 #sonars.Demarrer()
 #sonars.Arreter()
