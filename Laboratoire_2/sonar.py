@@ -130,7 +130,7 @@ class Sonar:
                         line_type)
             
     def copier_tableau(self, tab):
-        tableau_copier = [len(tab)]
+        tableau_copier = []
         
         for i in range(0, len(tab) - 1):
             tableau_copier[i] = tab[i]
