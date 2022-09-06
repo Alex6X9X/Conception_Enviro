@@ -34,7 +34,6 @@ class Sonar:
         self.initialiser_callbacks()
         
     def Demarrer(self):
-        cv2.imshow('Labo 2', self.img)
         self.thread.start()
         
     def Arreter(self):
@@ -75,6 +74,8 @@ class Sonar:
         self.afficher_distances(self.distance_courante_droite, 'droite')
 
     def activer_sonar(self):
+        
+        cv2.imshow('Labo 2', self.img)
         
         while(not self.arreter):
             if(time.perf_counter() - self.compteur_trigger >= 0.1):
