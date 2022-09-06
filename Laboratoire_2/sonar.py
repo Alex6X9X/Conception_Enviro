@@ -26,7 +26,7 @@ class Sonar:
         self.echo_gauche = gpiozero.DigitalInputDevice(port_echog)
         self.echo_droite = gpiozero.DigitalInputDevice(port_echod)
         self.arreter = arreter
-        #self.img = np.zeros((512,512,3),np.uint8)
+        self.img = np.zeros((512,512,3),np.uint8)
 
         self.distance_courante_gauche = 0
         self.distance_courante_droite = 0
