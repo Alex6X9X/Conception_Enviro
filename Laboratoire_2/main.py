@@ -21,7 +21,7 @@ sonars = Sonar(SGT, SDT, SGE, SDE, arreter)
 del_jaune = Dell(PORT_DEL_JAUNE, sonars, 'g', arreter)
 del_verte = Dell(PORT_DEL_VERTE, sonars, 'd', arreter)
 
-org = (0,0)
+org = (50,50)
 font = cv2.FONT_HERSHEY_SIMPLEX
 font_scale = 1
 font_color = (255, 255, 255)
@@ -35,7 +35,9 @@ img_2 = cv2.putText(img,
             font, 
             font_scale, 
             font_color, 
-            line_type)  
+            line_type,
+            cv2.LINE_AA, 
+            False)  
 
 cv2.imshow('Labo 1', img_2)  
 #sonars.Demarrer()
