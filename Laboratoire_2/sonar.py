@@ -88,7 +88,7 @@ class Sonar:
     def calculer_moyenne_mobile(self , nouvelle_distance , tableau_distance):
         tableau_distance.append(nouvelle_distance)
         
-        #print(len(tableau_distance))
+        print(len(tableau_distance))
         if len(tableau_distance) >= FENETRE:
             print("-------------------------")
             temp_tab = self.copier_tableau(tableau_distance)
@@ -131,7 +131,7 @@ class Sonar:
             
     def copier_tableau(self, tab):
         tableau_copier = []
-        print(len(tab))
+    
         for i in range(0, len(tab) - 1):
             print(i)
             tableau_copier[i] = tab[i]
