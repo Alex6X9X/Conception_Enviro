@@ -30,12 +30,6 @@ line_type = 2
 img = np.zeros((512,512,3),np.uint8)
 cv2.imshow('Labo 1',img)
 
-cv2.putText(img, 
-            "Sonar ", 
-            org, 
-            font, 
-            font_scale, 
-            font_color, 
-            line_type)
+key = cv2.waitKey(100)
 #sonars.Demarrer()
 #sonars.Arreter()
