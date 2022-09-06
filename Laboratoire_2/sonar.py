@@ -31,6 +31,8 @@ class Sonar:
         self.distance_courante_gauche = 0
         self.distance_courante_droite = 0
         
+        cv2.imshow('Labo 2', self.img)
+        
         self.initialiser_callbacks()
         
     def Demarrer(self):
@@ -75,8 +77,6 @@ class Sonar:
 
     def activer_sonar(self):
         
-        cv2.imshow('Labo 2', self.img)
-        
         while(not self.arreter):
             if(time.perf_counter() - self.compteur_trigger >= 0.1):
                 self.compteur_trigger = time.perf_counter() 
@@ -111,7 +111,6 @@ class Sonar:
         font_color = (255, 255, 255)
         line_type = 2
         
-        print("Allo")
         if(distance != None):
             cv2.putText(self.img, 
                         "Sonar " + dir + " : " + str(round(distance)) + " cm", 
