@@ -26,6 +26,7 @@ class Sonar:
         self.echo_gauche = gpiozero.DigitalInputDevice(port_echog)
         self.echo_droite = gpiozero.DigitalInputDevice(port_echod)
         self.arreter = arreter
+        self.img = np.zeros((512,512,3),np.uint8)
 
         self.distance_courante_gauche = 0
         self.distance_courante_droite = 0
@@ -73,6 +74,9 @@ class Sonar:
         self.afficher_distances(self.distance_courante_droite, 'droite')
 
     def activer_sonar(self):
+        
+        cv2.imshow('Labo 2', self.img)
+        
         while(not self.arreter):
             if(time.perf_counter() - self.compteur_trigger >= 0.1):
                 self.compteur_trigger = time.perf_counter() 
@@ -100,8 +104,6 @@ class Sonar:
         return None
     
     def afficher_distances(self, distance, dir):
-        img = np.zeros((512,512,3),np.uint8)
-        cv2.imshow('Labo 2',img)
         
         org = (0,0)
         font = cv2.FONT_HERSHEY_SIMPLEX
@@ -111,7 +113,7 @@ class Sonar:
         
         print("Allo")
         if(distance != None):
-            cv2.putText(img, 
+            cv2.putText(self.img, 
                         "Sonar " + dir + " : " + str(round(distance)) + " cm", 
                         org, 
                         font, 
@@ -119,7 +121,7 @@ class Sonar:
                         font_color, 
                         line_type)    
         elif(distance== None):
-            cv2.putText(img, 
+            cv2.putText(self.img, 
                         "Sonar " + dir + " : Aucune données", 
                         org, 
                         font, 
