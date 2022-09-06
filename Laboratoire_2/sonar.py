@@ -61,16 +61,16 @@ class Sonar:
         #print(distance)
         self.distance_courante_gauche = self.calculer_moyenne_mobile(distance , self.tableau_distanceg)
         
-        print(self.distance_courante_gauche)
-        #self.afficher_distances(self.distance_courante_gauche, 'gauche')
+        #print(round(self.distance_courante_gauche))
+        self.afficher_distances(self.distance_courante_gauche, 'gauche')
         
     def sonar_deactiver_d(self):
         distance = (time.perf_counter() - self.compteur_distanced) * VITESSE_SON / 2
         #print(distance)
         self.distance_courante_droite = self.calculer_moyenne_mobile(distance , self.tableau_distanced) 
         
-        print(self.distance_courante_droite) 
-        #self.afficher_distances(self.distance_courante_droite, 'droite')
+        #print(round(self.distance_courante_droite)) 
+        self.afficher_distances(self.distance_courante_droite, 'droite')
 
     def activer_sonar(self):
         while(not self.arreter):
@@ -87,9 +87,8 @@ class Sonar:
     def calculer_moyenne_mobile(self , nouvelle_distance , tableau_distance):
         tableau_distance.append(nouvelle_distance)
         
-        print(len(tableau_distance))
         if len(tableau_distance) >= FENETRE:
-            print("-------------------------")
+            #print("-------------------------")
             temp_tab = self.copier_tableau(tableau_distance)
             temp_min = min(temp_tab)
             temp_max = max(temp_tab) 
