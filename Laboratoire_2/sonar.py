@@ -31,11 +31,10 @@ class Sonar:
         self.distance_courante_gauche = 0
         self.distance_courante_droite = 0
         
-        cv2.imshow('Labo 2', self.img)
-        
         self.initialiser_callbacks()
         
     def Demarrer(self):
+        cv2.imshow('Labo 2', self.img)
         self.thread.start()
         
     def Arreter(self):
