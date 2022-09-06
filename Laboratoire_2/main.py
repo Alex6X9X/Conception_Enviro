@@ -23,5 +23,5 @@ del_verte = Dell(PORT_DEL_VERTE, sonars, 'd', arreter)
 
 img = np.zeros((512,512,3),np.uint8)
 cv2.imshow('Labo 2', img)
-sonars.Demarrer()
-sonars.Arreter()
+#sonars.Demarrer()
+#sonars.Arreter()
