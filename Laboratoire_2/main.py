@@ -35,8 +35,7 @@ img_2 = cv2.putText(img,
             font, 
             font_scale, 
             font_color, 
-            line_type,
-            cv2.LINE_AA)  
+            line_type)  
 
 cv2.imshow('Labo 1', img_2)  
 #sonars.Demarrer()
