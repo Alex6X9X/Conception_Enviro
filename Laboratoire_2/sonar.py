@@ -105,6 +105,7 @@ class Sonar:
     
     def afficher_distances(self, distance, dir):
         
+        nouv_img = None
         org = (0,0)
         font = cv2.FONT_HERSHEY_SIMPLEX
         font_scale = 1
@@ -112,21 +113,23 @@ class Sonar:
         line_type = 2
         
         if(distance != None):
-            cv2.putText(self.img, 
-                        "Sonar " + dir + " : " + str(round(distance)) + " cm", 
-                        org, 
-                        font, 
-                        font_scale, 
-                        font_color, 
-                        line_type)    
-        elif(distance== None):
-            cv2.putText(self.img, 
-                        "Sonar " + dir + " : Aucune données", 
-                        org, 
-                        font, 
-                        font_scale, 
-                        font_color, 
-                        line_type)
+            nouv_img = cv2.putText(self.img, 
+                                    "Sonar " + dir + " : " + str(round(distance)) + " cm", 
+                                    org, 
+                                    font, 
+                                    font_scale, 
+                                    font_color, 
+                                    line_type)    
+        elif(distance == None):
+            nouv_img = cv2.putText(self.img, 
+                                   "Sonar " + dir + " : Aucune données", 
+                                    org, 
+                                    font, 
+                                    font_scale, 
+                                    font_color, 
+                                    line_type)
+        
+        cv2.imshow('Labo 2', nouv_img)
             
     def copier_tableau(self, tab):
         nouv_tab = tab.copy()
