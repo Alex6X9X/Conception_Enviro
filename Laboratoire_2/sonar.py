@@ -2,7 +2,6 @@
 #29 août 2022
 #Dernier changement le 31 août 2022
 
-from array import array
 import threading
 import gpiozero
 import time 
@@ -130,10 +129,5 @@ class Sonar:
                         line_type)
             
     def copier_tableau(self, tab):
-        tableau_copier = []
-    
-        for i in range(0, len(tab) - 1):
-            print(i)
-            tableau_copier[i] = tab[i]
-            
-        return tableau_copier
+        nouv_tab = tab.copy()
+        return nouv_tab
