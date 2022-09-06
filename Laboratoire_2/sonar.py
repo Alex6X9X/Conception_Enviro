@@ -63,7 +63,7 @@ class Sonar:
         self.distance_courante_gauche = self.calculer_moyenne_mobile(distance , self.tableau_distanceg)
         
         #print(self.distance_courante_gauche)
-        #self.Afficher_Distances(self.distance_courante_gauche, 'gauche')
+        #self.afficher_distances(self.distance_courante_gauche, 'gauche')
         
     def sonar_deactiver_d(self):
         distance = (time.perf_counter() - self.compteur_distanced) * VITESSE_SON / 2
@@ -71,7 +71,7 @@ class Sonar:
         self.distance_courante_droite = self.calculer_moyenne_mobile(distance , self.tableau_distanced) 
         
         #print(self.distance_courante_droite) 
-        #self.Afficher_Distances(self.distance_courante_droite, 'droite')
+        #self.afficher_distances(self.distance_courante_droite, 'droite')
 
     def activer_sonar(self):
         while(not self.arreter):
@@ -91,7 +91,7 @@ class Sonar:
         print(len(tableau_distance))
         if len(tableau_distance) >= FENETRE:
             print("-------------------------")
-            temp_tab = tableau_distance
+            temp_tab = self.copier_tableau(tableau_distance)
             temp_min = min(temp_tab)
             temp_max = max(temp_tab) 
             temp_tab.remove(temp_min)
@@ -101,7 +101,7 @@ class Sonar:
         
         return None
     
-    def Afficher_Distances(self, distance, dir):
+    def afficher_distances(self, distance, dir):
         img = np.zeros((512,512,3),np.uint8)
         cv2.imshow('Labo 2',img)
         
@@ -128,3 +128,11 @@ class Sonar:
                         font_scale, 
                         font_color, 
                         line_type)
+            
+    def copier_tableau(self, tab):
+        tableau_copier = [len(tab)]
+        
+        for i in range(0, len(tab)):
+            tableau_copier[i] = tab[i]
+            
+        return tableau_copier
