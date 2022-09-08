@@ -110,24 +110,23 @@ class Sonar:
         line_type = 2
         
         print(self.img)
-        if(distance != None):
-            self.img = cv2.putText(self.img, 
-                                    "Sonar " + dir + " : " + str(round(distance)) + " cm", 
-                                    org, 
-                                    font, 
-                                    font_scale, 
-                                    font_color, 
-                                    line_type)    
-        elif(distance == None):
-            self.img = cv2.putText(self.img, 
-                                   "Sonar " + dir + " : Aucune données", 
-                                    org, 
-                                    font, 
-                                    font_scale, 
-                                    font_color, 
-                                    line_type)
+        #if(distance != None):
+        self.img = cv2.putText(self.img, 
+                                "Sonar " + dir + " : " + str(round(distance)) + " cm", 
+                                org, 
+                                font, 
+                                font_scale, 
+                                font_color, 
+                                line_type)    
+        #elif(distance == None):
+        #    self.img = cv2.putText(self.img, 
+        #                           "Sonar " + dir + " : Aucune données", 
+         #                           org, 
+         #                           font, 
+        #                            font_scale, 
+        #                            font_color, 
+         #                           line_type)
         
-        print(self.img)
         cv2.imshow('Labo 2', self.img)
             
     def copier_tableau(self, tab):
