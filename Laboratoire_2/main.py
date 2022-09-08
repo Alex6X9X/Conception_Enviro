@@ -19,5 +19,5 @@ sonars = Sonar(SGT, SDT, SGE, SDE, arreter)
 del_jaune = Dell(PORT_DEL_JAUNE, sonars, 'g', arreter)
 del_verte = Dell(PORT_DEL_VERTE, sonars, 'd', arreter)
 
-#sonars.Demarrer()
+sonars.Demarrer()
 #sonars.Arreter()
