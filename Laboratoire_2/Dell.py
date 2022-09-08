@@ -7,7 +7,7 @@ from time import sleep
 import gpiozero
 
 TRANCHE_CLIGNOTEMENT = 2 # À chaque 2 cm
-TEMPS_CLIGNOTEMENT = 0.01
+TEMPS_CLIGNOTEMENT = 0.1
 
 class Dell:
     def __init__(self , port , sonar , direction, arreter):
@@ -46,10 +46,10 @@ class Dell:
         #self.sonar.distance_courante_droite
         print(self.sonar.distance_courante_gauche)
         if(self.direction == 'g'):
-            print( (self.sonar.distance_courante_gauche / TRANCHE_CLIGNOTEMENT) * TEMPS_CLIGNOTEMENT)
+            #print( (self.sonar.distance_courante_gauche / TRANCHE_CLIGNOTEMENT) * TEMPS_CLIGNOTEMENT)
             return (self.sonar.distance_courante_gauche / TRANCHE_CLIGNOTEMENT) * TEMPS_CLIGNOTEMENT
         elif(self.direction == 'd'):
-            print( (self.sonar.distance_courante_droite / TRANCHE_CLIGNOTEMENT) * TEMPS_CLIGNOTEMENT)
+            #print( (self.sonar.distance_courante_droite / TRANCHE_CLIGNOTEMENT) * TEMPS_CLIGNOTEMENT)
             return (self.sonar.distance_courante_droite / TRANCHE_CLIGNOTEMENT) * TEMPS_CLIGNOTEMENT
 
         # Si il n'y aucune distinction entre le sonar de droite ou de gauche
