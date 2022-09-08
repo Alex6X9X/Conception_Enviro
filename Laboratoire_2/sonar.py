@@ -109,7 +109,7 @@ class Sonar:
         font_color = (255, 255, 255)
         line_type = 2
         
-        print(distance)
+        print(self.img)
         if(distance != None):
             self.img = cv2.putText(self.img, 
                                     "Sonar " + dir + " : " + str(round(distance)) + " cm", 
