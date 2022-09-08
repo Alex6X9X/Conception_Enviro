@@ -127,6 +127,7 @@ class Sonar:
                                     font_color, 
                                     line_type)
         
+        print(self.img)
         cv2.imshow('Labo 2', self.img)
             
     def copier_tableau(self, tab):
