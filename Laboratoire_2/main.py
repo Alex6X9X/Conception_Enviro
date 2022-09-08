@@ -3,6 +3,7 @@
 #Dernier changement le 31 août 2022
 
 from Dell import Dell
+import time
 import gpiozero
 from sonar import Sonar
 
@@ -20,6 +21,7 @@ del_jaune = Dell(PORT_DEL_JAUNE, sonars, 'g', arreter)
 del_verte = Dell(PORT_DEL_VERTE, sonars, 'd', arreter)
 
 sonars.Demarrer()
+time.sleep(5)
 del_jaune.Demarrer()
 del_verte.Demarrer()
 #sonars.Arreter()
