@@ -62,7 +62,7 @@ class Sonar:
         #print(distance)
         self.distance_courante_gauche = self.calculer_moyenne_mobile(distance , self.tableau_distanceg)
         
-        print(round(self.distance_courante_gauche))
+        #print(round(self.distance_courante_gauche))
         #self.afficher_distances(self.distance_courante_gauche, 'gauche')
         
     def sonar_deactiver_d(self):
@@ -70,7 +70,7 @@ class Sonar:
         #print(distance)
         self.distance_courante_droite = self.calculer_moyenne_mobile(distance , self.tableau_distanced) 
         
-        print(round(self.distance_courante_droite)) 
+        #print(round(self.distance_courante_droite)) 
         #self.afficher_distances(self.distance_courante_droite, 'droite')
 
     def activer_sonar(self):
