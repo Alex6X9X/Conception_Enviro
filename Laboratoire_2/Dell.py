@@ -2,6 +2,7 @@
 #29 août 2022
 #Dernier changement le 31 août 2022
 
+from dis import dis
 import threading
 from time import sleep
 import gpiozero
@@ -42,17 +43,12 @@ class Dell:
             
     def __calculer_incrementation__(self):
         
-        #self.sonar.distance_courante_gauche
-        #self.sonar.distance_courante_droite
-        #print(self.sonar.distance_courante_gauche)
         if(self.direction == 'g'):
-            #print( (self.sonar.distance_courante_gauche / TRANCHE_CLIGNOTEMENT) * TEMPS_CLIGNOTEMENT)
-            print(self.sonar.distance_courante_gauche * TEMPS_CLIGNOTEMENT)
-            return (self.sonar.distance_courante_gauche * TEMPS_CLIGNOTEMENT)
+            distance = self.sonar.distance_courante_gauche
+            return distance /10
         elif(self.direction == 'd'):
-            #print( (self.sonar.distance_courante_droite / TRANCHE_CLIGNOTEMENT) * TEMPS_CLIGNOTEMENT)
-            print(self.sonar.distance_courante_droite * TEMPS_CLIGNOTEMENT)
-            return (self.sonar.distance_courante_droite * TEMPS_CLIGNOTEMENT)
+            distance = self.sonar.distance_courante_droite
+            return distance /10
 
         # Si il n'y aucune distinction entre le sonar de droite ou de gauche
         return -1
