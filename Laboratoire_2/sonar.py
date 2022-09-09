@@ -83,7 +83,7 @@ class Sonar:
                 time.sleep(TEMPS_TRIGGER_ACTIF)
                 self.trigger_gauche.off()
                 self.trigger_droite.off()
-                print(self.distance_courante_droite)
+
                 
         print("Fini!")        
         self.Arreter()
