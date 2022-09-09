@@ -45,10 +45,10 @@ class Dell:
         
         if(self.direction == 'g'):
             distance = self.sonar.distance_courante_gauche
-            return distance /10
+            return distance /10 if distance != None else 1
         elif(self.direction == 'd'):
             distance = self.sonar.distance_courante_droite
-            return distance /10
+            return distance /10 if distance != None else 1
 
         # Si il n'y aucune distinction entre le sonar de droite ou de gauche
         return -1
