@@ -59,7 +59,7 @@ class Sonar:
         ##calculer le temps avec compteur_distanceg et d
 
         distance  = (time.perf_counter() - self.compteur_distanceg) * VITESSE_SON /2
-        
+
         self.distance_courante_gauche = self.calculer_moyenne_mobile(distance , self.tableau_distanceg)
         
         #print(round(self.distance_courante_gauche))
@@ -67,7 +67,7 @@ class Sonar:
         
     def sonar_deactiver_d(self):
         distance = (time.perf_counter() - self.compteur_distanced) * VITESSE_SON / 2
-        print(time.perf_counter() - self.compteur_distanced) 
+
         self.distance_courante_droite = self.calculer_moyenne_mobile(distance , self.tableau_distanced) 
         
         #print(round(self.distance_courante_droite)) 
@@ -83,6 +83,7 @@ class Sonar:
                 time.sleep(TEMPS_TRIGGER_ACTIF)
                 self.trigger_gauche.off()
                 self.trigger_droite.off()
+                print(self.distance_courante_droite)
                 
         print("Fini!")        
         self.Arreter()
