@@ -118,9 +118,9 @@ class Sonar:
         
         org = (self.x, self.y)
         font = cv2.FONT_HERSHEY_SIMPLEX
-        font_scale = 0.3
+        font_scale = 0.5
         font_color = (255, 255, 255)
-        line_type = 1
+        line_type = 0.5
         
         if(distance != None):
             self.img = cv2.putText(self.img, 
@@ -139,7 +139,11 @@ class Sonar:
                                     font_color, 
                                     line_type)
         
-        self.y = self.y + 35
+        if(self.y >= 500):
+            self.x = self.x + 40
+            self.y = 40
+        else:
+            self.y = self.y + 35
         cv2.imshow('Labo 2', self.img)
             
     def copier_tableau(self, tab):
