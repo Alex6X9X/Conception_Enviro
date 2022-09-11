@@ -19,6 +19,8 @@ class Sonar:
         self.thread = threading.Thread(target = self.activer_sonar , args=())
         self.compteur_distanceg = 0
         self.compteur_distanced = 0
+        self.tableau_distanceg = []
+        self.tableau_distanced = []
         self.trigger_gauche = gpiozero.DigitalOutputDevice(port_triggerg)
         self.trigger_droite = gpiozero.DigitalOutputDevice(port_triggerd)
         self.echo_gauche = gpiozero.DigitalInputDevice(port_echog)
