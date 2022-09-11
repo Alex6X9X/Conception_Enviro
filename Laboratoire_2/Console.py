@@ -24,29 +24,21 @@ class Console:
         
     def afficher_distances(self, distance, dir):
         
+        org = (self.x, self.y)
         font = cv2.FONT_HERSHEY_SIMPLEX
         font_scale = 0.5
         font_color = (255, 255, 255)
         line_type = 1
         
         if(distance != None):
-            if dir == 'gauche':
-                self.img = cv2.putText(self.img, 
-                                        "Sonar " + dir + " : %.2f cm" % distance, 
-                                        (self.x, self.y), 
-                                        font, 
-                                        font_scale, 
-                                        font_color, 
-                                        line_type)   
-            elif dir == 'droite':
-                self.img = cv2.putText(self.img, 
-                                        "Sonar " + dir + " : %.2f cm" % distance, 
-                                        (self.x + 20, self.y + 20), 
-                                        font, 
-                                        font_scale, 
-                                        font_color, 
-                                        line_type) 
-            else:
-                #Cas extrême
-                return -1
+            self.img = cv2.putText(self.img, 
+                                    "Sonar " + dir + " : %.2f cm" % distance, 
+                                    org, 
+                                    font, 
+                                    font_scale, 
+                                    font_color, 
+                                    line_type)   
+            
+
+        self.y = self.y + SAUT_LIGNE
         self.afficher()
