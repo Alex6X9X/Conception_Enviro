@@ -26,7 +26,7 @@ class Sonar:
         self.echo_gauche = gpiozero.DigitalInputDevice(port_echog)
         self.echo_droite = gpiozero.DigitalInputDevice(port_echod)
         self.arreter = arreter
-        self.img = np.zeros((512,512,3),np.uint8)
+        self.img = np.zeros((512,700,3),np.uint8)
         self.x = 40
         self.y = 40
 
@@ -132,14 +132,16 @@ class Sonar:
                                     line_type)    
         elif(distance == None):
             self.img = cv2.putText(self.img, 
-                                   "Sonar " + dir + " : Aucune données", 
+                                   "Sonar " + dir + " : Aucune donnees", 
                                     org, 
                                     font, 
                                     font_scale, 
                                     font_color, 
                                     line_type)
         
-        self.y = self.y + 30
+        if(self.y >= 200):
+            cv2.destroyAllWindows()
+        self.y = self.y + 35
         cv2.imshow('Labo 2', self.img)
             
     def copier_tableau(self, tab):
