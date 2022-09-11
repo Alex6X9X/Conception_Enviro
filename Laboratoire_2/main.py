@@ -31,7 +31,6 @@ while (not arreter):
     key = cv2.waitKey(100)
     
     if key == ord('x'):
-        print("C'est fini!")
         arreter = True
         sonars.arreter = arreter
         del_jaune.arreter = arreter

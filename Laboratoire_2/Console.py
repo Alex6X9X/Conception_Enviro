@@ -40,7 +40,6 @@ class Console:
                                     line_type)   
             
         if(self.y >= LARGEUR):
-            self.x = self.x + SAUT_COLONNE
             self.y = POSITION_Y
         else:
             self.y = self.y + SAUT_LIGNE
