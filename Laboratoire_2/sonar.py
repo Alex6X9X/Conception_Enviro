@@ -85,7 +85,7 @@ class Sonar:
 
         self.distance_courante_droite = self.calculer_moyenne_mobile(distance , self.tableau_distanced) 
         
-        print("Gauche: " + str(self.distance_courante_droite))
+        print("Droite: " + str(self.distance_courante_droite))
         #self.console.afficher_distances(self.distance_courante_droite, 'droite')
 
     def activer_sonar(self):
