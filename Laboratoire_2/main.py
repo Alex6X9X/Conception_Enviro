@@ -14,6 +14,7 @@ SDT = 21
 SGE = 25  #Sonar Gauche Echo...
 SDE = 20
 
+global arreter
 arreter = False
 sonars = Sonar(SGT, SDT, SGE, SDE, arreter)
 del_jaune = Dell(PORT_DEL_JAUNE, sonars, 'g', arreter)
@@ -35,4 +36,8 @@ while (not arreter):
         sonars.arreter = arreter
         del_jaune.arreter = arreter
         del_verte.arreter = arreter
+        
+        sonars.Arreter()
+        del_jaune.Arreter()
+        del_verte.Arreter()
         

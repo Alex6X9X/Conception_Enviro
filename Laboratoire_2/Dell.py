@@ -33,13 +33,11 @@ class Dell:
     def Clignoter(self):
         
         while(not self.arreter):
-            #print("Allume!")
             self.__allumez__()
             sleep(self.__calculer_incrementation__())
             self.__eteindre__()
             sleep(self.__calculer_incrementation__())
             
-        self.Arreter()
             
     def __calculer_incrementation__(self):
         if(self.direction == 'g'):
