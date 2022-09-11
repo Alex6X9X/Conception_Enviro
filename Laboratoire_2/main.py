@@ -19,7 +19,7 @@ sonars = Sonar(SGT, SDT, SGE, SDE, arreter)
 del_jaune = Dell(PORT_DEL_JAUNE, sonars, 'g', arreter)
 del_verte = Dell(PORT_DEL_VERTE, sonars, 'd', arreter)
 
-print("Appuyer sur la touche 'Esc' pour quitter le programme...")
+print("Appuyer sur la touche 'x' pour quitter le programme...")
 
 #Démarrage des threads
 sonars.Demarrer()

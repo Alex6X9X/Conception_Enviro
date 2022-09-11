@@ -68,7 +68,9 @@ class Sonar:
         self.afficher_distances(self.distance_courante_gauche, 'gauche')
         
     def sonar_deactiver_d(self):
+
         temps_actif_inactif = self.echo_droite.active_time + self.echo_droite.inactive_time
+        print(temps_actif_inactif)
         
         distance = (time.perf_counter() - self.compteur_distanced - temps_actif_inactif) * VITESSE_SON / 2
 
