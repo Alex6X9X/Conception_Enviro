@@ -48,13 +48,14 @@ class Sonar:
         self.echo_droite.when_deactivated = self.sonar_deactiver_d
         
     def sonar_activer_g(self):
-        print('active gauche ' + str(self.echo_gauche.active_time))
-        print(self.echo_gauche.inactive_time)
+        
+        ##print('active gauche ' + str(self.echo_gauche.active_time))
+    
         self.compteur_distanceg = time.perf_counter()
     
     def sonar_activer_d(self):
-        print('active gauche ' + str(self.echo_droite.active_time))
-        print(self.echo_droite.inactive_time)
+        ##print('active gauche ' + str(self.echo_droite.active_time))
+      
         self.compteur_distanced = time.perf_counter()
 
     def sonar_deactiver_g(self):
