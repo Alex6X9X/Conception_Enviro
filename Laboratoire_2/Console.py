@@ -40,8 +40,7 @@ class Console:
                                     line_type)   
             
         if(self.y >= LARGEUR):
-            cv2.destroyAllWindows()
-            self.afficher()
+            self.y = POSITION_Y
         else:
             self.y = self.y + SAUT_LIGNE
-        cv2.imshow('Labo 2', self.img)
+        self.afficher()
