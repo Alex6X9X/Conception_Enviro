@@ -23,7 +23,7 @@ del_verte = Dell(PORT_DEL_VERTE, sonars, 'd', arreter)
 
 img = np.zeros((512,512,3),np.uint8)
 
-org = (0,0)
+org = (40,40)
 font = cv2.FONT_HERSHEY_SIMPLEX
 font_scale = 1
 font_color = (255, 255, 255)
