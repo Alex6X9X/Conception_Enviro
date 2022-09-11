@@ -1,9 +1,8 @@
 #Alexandre Carle et Louis-philippe Rousseau
 #29 août 2022
-#Dernier changement le 31 août 2022
+#Dernier changement le 11 septembre 2022
 
 from Dell import Dell
-import gpiozero
 from sonar import Sonar
 import cv2
 

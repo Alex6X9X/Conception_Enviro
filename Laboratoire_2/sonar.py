@@ -1,13 +1,11 @@
 #Alexandre Carle et Louis-philippe Rousseau
 #29 août 2022
-#Dernier changement le 31 août 2022
+#Dernier changement le 11 septembre 2022
 
 import threading
 from Console import Console
 import gpiozero
 import time 
-import numpy as np
-import cv2
 
 FENETRE = 10
 TEMPS_TRIGGER_ACTIF = 0.000001
@@ -26,7 +24,7 @@ class Sonar:
         self.temps_inactif = 0
         self.temps_actif = 0
         
-        self.thread = threading.Thread(target = self.activer_sonar , args=())
+        self.thread = threading.Thread(target = self.envoyer_ondes , args=())
         
         #Distances
         self.compteur_distanceg = 0
@@ -74,8 +72,6 @@ class Sonar:
 
         self.distance_courante_gauche = self.calculer_moyenne_mobile(distance , self.tableau_distanceg)
         
-        #self.console.afficher_distances(self.distance_courante_gauche, 'gauche')
-        
     def sonar_deactiver_d(self):
 
         self.temps_inactif = self.echo_droite.inactive_time
@@ -83,15 +79,15 @@ class Sonar:
         distance = (time.perf_counter() - self.compteur_distanced - (self.temps_inactif + self.temps_actif)) * VITESSE_SON / 2
 
         self.distance_courante_droite = self.calculer_moyenne_mobile(distance , self.tableau_distanced) 
-        
-        #self.console.afficher_distances(self.distance_courante_droite, 'droite')
+    
 
-    def activer_sonar(self):
+    def envoyer_ondes(self):
         self.console.afficher()
         
         while(not self.arreter):
-            print("Droite: " + str(self.distance_courante_droite))
-            print("Gauche: " + str(self.distance_courante_gauche))
+            self.console.afficher_distances(self.distance_courante_droite, 'droite')
+            self.console.afficher_distances(self.distance_courante_gauche, 'gauche')
+            
             if(time.perf_counter() - self.compteur_trigger >= 0.1):
                 self.compteur_trigger = time.perf_counter() 
                 self.trigger_gauche.on()
