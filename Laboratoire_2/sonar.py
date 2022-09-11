@@ -27,6 +27,8 @@ class Sonar:
         self.echo_droite = gpiozero.DigitalInputDevice(port_echod)
         self.arreter = arreter
         self.img = np.zeros((512,512,3),np.uint8)
+        self.x = 40
+        self.y = 40
 
         self.distance_courante_gauche = 0
         self.distance_courante_droite = 0
@@ -60,9 +62,9 @@ class Sonar:
 
     def sonar_deactiver_g(self):
         
-        print(self.echo_gauche.active_time)
+        print(self.trigger_gauche.active_time)
         print(self.echo_gauche.inactive_time)
-        temps_actif_inactif = self.echo_gauche.inactive_time
+        temps_actif_inactif = self.trigger_gauche.active_time + self.echo_gauche.inactive_time
         
         distance  = (time.perf_counter() - self.compteur_distanceg - temps_actif_inactif) * VITESSE_SON /2
 
@@ -73,9 +75,9 @@ class Sonar:
         
     def sonar_deactiver_d(self):
 
-        print(self.echo_droite.active_time)
+        print(self.trigger_droite.active_time)
         print(self.echo_droite.inactive_time)
-        temps_actif_inactif = self.echo_droite.inactive_time
+        temps_actif_inactif = self.trigger_droite + self.echo_droite.inactive_time
         
         distance = (time.perf_counter() - self.compteur_distanced - temps_actif_inactif) * VITESSE_SON / 2
 
@@ -116,12 +118,11 @@ class Sonar:
     
     def afficher_distances(self, distance, dir):
         
-        org = (40,40)
+        org = (self.x, self.y)
         font = cv2.FONT_HERSHEY_SIMPLEX
         font_scale = 1
         font_color = (255, 255, 255)
         line_type = 2
-
         
         if(distance != None):
             self.img = cv2.putText(self.img, 
@@ -140,6 +141,7 @@ class Sonar:
                                     font_color, 
                                     line_type)
         
+        self.y = self.y + 10
         cv2.imshow('Labo 2', self.img)
             
     def copier_tableau(self, tab):
