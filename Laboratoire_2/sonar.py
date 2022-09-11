@@ -139,7 +139,7 @@ class Sonar:
                                     font_color, 
                                     line_type)
         
-        if(self.y >= 200):
+        if(self.y >= 500):
             cv2.destroyAllWindows()
         self.y = self.y + 35
         cv2.imshow('Labo 2', self.img)

@@ -44,10 +44,17 @@ class Dell:
     def __calculer_incrementation__(self):
         
         if(self.direction == 'g'):
-            distance = self.sonar.distance_courante_gauche
+            if(distance == None):
+                distance = 0
+            else:
+                distance = self.sonar.distance_courante_gauche
             return distance /10 if distance != 0 else 1
+        
         elif(self.direction == 'd'):
-            distance = self.sonar.distance_courante_droite
+            if(distance == None):  
+                distance = 0
+            else:
+                distance = self.sonar.distance_courante_droite
             return distance /10 if distance != 0 else 1
 
         # Si il n'y aucune distinction entre le sonar de droite ou de gauche (Cas extrême)
