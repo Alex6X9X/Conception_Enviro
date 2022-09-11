@@ -58,7 +58,7 @@ class Sonar:
 
     def sonar_deactiver_g(self):
         
-        temps_actif_inactif = self.echo_droite.active_time + self.echo_droite.inactive_time
+        temps_actif_inactif = self.echo_gauche.active_time + self.echo_gauche.inactive_time
         
         distance  = (time.perf_counter() - self.compteur_distanceg - temps_actif_inactif) * VITESSE_SON /2
 
@@ -69,8 +69,9 @@ class Sonar:
         
     def sonar_deactiver_d(self):
 
+        print(self.echo_droite.active_time)
+        print(self.echo_droite.inactive_time)
         temps_actif_inactif = self.echo_droite.active_time + self.echo_droite.inactive_time
-        print(temps_actif_inactif)
         
         distance = (time.perf_counter() - self.compteur_distanced - temps_actif_inactif) * VITESSE_SON / 2
 
