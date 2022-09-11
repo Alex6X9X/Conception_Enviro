@@ -37,7 +37,7 @@ class Sonar:
         #Booléen pour l'arrêt du programme
         self.arreter = arreter
 
-        self.console = Console(40, 40)
+        self.console = Console()
         
         self.initialiser_callbacks()
         
