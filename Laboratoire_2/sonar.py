@@ -68,7 +68,7 @@ class Sonar:
         
         temps_inactif = self.echo_gauche.inactive_time
         
-        distance  = (time.perf_counter() - self.compteur_distanceg - temps_inactif) * VITESSE_SON /2
+        distance = (time.perf_counter() - self.compteur_distanceg - temps_inactif) * VITESSE_SON /2
 
         self.distance_courante_gauche = self.calculer_moyenne_mobile(distance , self.tableau_distanceg)
         

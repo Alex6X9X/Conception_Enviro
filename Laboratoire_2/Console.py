@@ -38,8 +38,9 @@ class Console:
                                     font_scale, 
                                     font_color, 
                                     line_type)   
-            
+        print(self.y >= LARGEUR)
         if(self.y >= LARGEUR):
+            self.x = self.x + 100
             self.y = POSITION_Y
         else:
             self.y = self.y + SAUT_LIGNE
