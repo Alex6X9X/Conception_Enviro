@@ -129,18 +129,10 @@ class Sonar:
                                     font, 
                                     font_scale, 
                                     font_color, 
-                                    line_type)    
-        elif(distance == None):
-            self.img = cv2.putText(self.img, 
-                                   "Sonar " + dir + " : Aucune donnees", 
-                                    org, 
-                                    font, 
-                                    font_scale, 
-                                    font_color, 
-                                    line_type)
-        
+                                    line_type)   
+            
         if(self.y >= 500):
-            self.x = self.x + 40
+            self.x = self.x + 100
             self.y = 40
         else:
             self.y = self.y + 35
