@@ -118,9 +118,9 @@ class Sonar:
         
         org = (self.x, self.y)
         font = cv2.FONT_HERSHEY_SIMPLEX
-        font_scale = 1
+        font_scale = 0.3
         font_color = (255, 255, 255)
-        line_type = 2
+        line_type = 1
         
         if(distance != None):
             self.img = cv2.putText(self.img, 
@@ -139,8 +139,6 @@ class Sonar:
                                     font_color, 
                                     line_type)
         
-        if(self.y >= 500):
-            cv2.destroyAllWindows()
         self.y = self.y + 35
         cv2.imshow('Labo 2', self.img)
             
