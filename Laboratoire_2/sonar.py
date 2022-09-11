@@ -62,11 +62,10 @@ class Sonar:
 
     def sonar_deactiver_g(self):
         
-        print(self.trigger_gauche.active_time)
         print(self.echo_gauche.inactive_time)
-        temps_actif_inactif = self.trigger_gauche.active_time + self.echo_gauche.inactive_time
+        temps_inactif = self.echo_gauche.inactive_time
         
-        distance  = (time.perf_counter() - self.compteur_distanceg - temps_actif_inactif) * VITESSE_SON /2
+        distance  = (time.perf_counter() - self.compteur_distanceg - temps_inactif) * VITESSE_SON /2
 
         self.distance_courante_gauche = self.calculer_moyenne_mobile(distance , self.tableau_distanceg)
         
@@ -75,11 +74,10 @@ class Sonar:
         
     def sonar_deactiver_d(self):
 
-        print(self.trigger_droite.active_time)
         print(self.echo_droite.inactive_time)
-        temps_actif_inactif = self.trigger_droite + self.echo_droite.inactive_time
+        temps_inactif = self.echo_droite.inactive_time
         
-        distance = (time.perf_counter() - self.compteur_distanced - temps_actif_inactif) * VITESSE_SON / 2
+        distance = (time.perf_counter() - self.compteur_distanced - temps_inactif) * VITESSE_SON / 2
 
         self.distance_courante_droite = self.calculer_moyenne_mobile(distance , self.tableau_distanced) 
         
