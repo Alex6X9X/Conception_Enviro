@@ -3,10 +3,8 @@
 #Dernier changement le 31 août 2022
 
 from Dell import Dell
-import time
 import gpiozero
 from sonar import Sonar
-import numpy as np
 import cv2
 
 PORT_DEL_JAUNE = 10
@@ -21,28 +19,19 @@ sonars = Sonar(SGT, SDT, SGE, SDE, arreter)
 del_jaune = Dell(PORT_DEL_JAUNE, sonars, 'g', arreter)
 del_verte = Dell(PORT_DEL_VERTE, sonars, 'd', arreter)
 
-img = np.zeros((512,512,3),np.uint8)
+print("Appuyer sur la touche 'Esc' pour quitter le programme...")
 
-org = (40,40)
-font = cv2.FONT_HERSHEY_SIMPLEX
-font_scale = 1
-font_color = (255, 255, 255)
-line_type = 2
-
-img = cv2.putText(img, 
-                "Sonar gauche : 10 cm", 
-                org, 
-                font, 
-                font_scale, 
-                font_color, 
-                line_type)  
-
-cv2.imshow('Labo 2', img) 
+#Démarrage des threads
+sonars.Demarrer()
+del_jaune.Demarrer()
+del_verte.Demarrer()
 
 while (not arreter):
     key = cv2.waitKey(100)
-
-#sonars.Demarrer()
-#del_jaune.Demarrer()
-#del_verte.Demarrer()
-#sonars.Arreter()
+    
+    if key == ord('esc'):
+        arreter = True
+        sonars.arreter = arreter
+        del_jaune.arreter = arreter
+        del_verte.arreter = arreter
+        

@@ -19,8 +19,6 @@ class Sonar:
         self.thread = threading.Thread(target = self.activer_sonar , args=())
         self.compteur_distanceg = 0
         self.compteur_distanced = 0
-        self.tableau_distanceg = []
-        self.tableau_distanced = []
         self.trigger_gauche = gpiozero.DigitalOutputDevice(port_triggerg)
         self.trigger_droite = gpiozero.DigitalOutputDevice(port_triggerd)
         self.echo_gauche = gpiozero.DigitalInputDevice(port_echog)
@@ -49,32 +47,35 @@ class Sonar:
         
     def sonar_activer_g(self):
         
-        ##print('active gauche ' + str(self.echo_gauche.active_time))
+        #print('active gauche ' + str(self.echo_gauche.active_time))
     
         self.compteur_distanceg = time.perf_counter()
     
     def sonar_activer_d(self):
-        ##print('active gauche ' + str(self.echo_droite.active_time))
+        #print('active gauche ' + str(self.echo_droite.active_time))
       
         self.compteur_distanced = time.perf_counter()
 
     def sonar_deactiver_g(self):
-        ##calculer le temps avec compteur_distanceg et d
         
-        distance  = (time.perf_counter() - self.compteur_distanceg) * VITESSE_SON /2
+        temps_actif_inactif = self.echo_droite.active_time + self.echo_droite.inactive_time
+        
+        distance  = (time.perf_counter() - self.compteur_distanceg - temps_actif_inactif) * VITESSE_SON /2
 
         self.distance_courante_gauche = self.calculer_moyenne_mobile(distance , self.tableau_distanceg)
         
         #print(round(self.distance_courante_gauche))
-        #self.afficher_distances(self.distance_courante_gauche, 'gauche')
+        self.afficher_distances(self.distance_courante_gauche, 'gauche')
         
     def sonar_deactiver_d(self):
-        distance = (time.perf_counter() - self.compteur_distanced) * VITESSE_SON / 2
+        temps_actif_inactif = self.echo_droite.active_time + self.echo_droite.inactive_time
+        
+        distance = (time.perf_counter() - self.compteur_distanced - temps_actif_inactif) * VITESSE_SON / 2
 
         self.distance_courante_droite = self.calculer_moyenne_mobile(distance , self.tableau_distanced) 
         
         #print(round(self.distance_courante_droite)) 
-        #self.afficher_distances(self.distance_courante_droite, 'droite')
+        self.afficher_distances(self.distance_courante_droite, 'droite')
 
     def activer_sonar(self):
         
@@ -108,38 +109,31 @@ class Sonar:
     
     def afficher_distances(self, distance, dir):
         
-        org = (0,0)
+        org = (40,40)
         font = cv2.FONT_HERSHEY_SIMPLEX
         font_scale = 1
         font_color = (255, 255, 255)
         line_type = 2
+
         
-        print(cv2.putText(self.img, 
-                                "Sonar " + dir + " : " + str(round(distance)) + " cm", 
-                                org, 
-                                font, 
-                                font_scale, 
-                                font_color, 
-                                line_type)    )
-        #if(distance != None):
-        self.img = cv2.putText(self.img, 
-                                "Sonar " + dir + " : " + str(round(distance)) + " cm", 
-                                org, 
-                                font, 
-                                font_scale, 
-                                font_color, 
-                                line_type)    
-        #elif(distance == None):
-        #    self.img = cv2.putText(self.img, 
-        #                           "Sonar " + dir + " : Aucune données", 
-         #                           org, 
-         #                           font, 
-        #                            font_scale, 
-        #                            font_color, 
-         #                           line_type)
+        if(distance != None):
+            self.img = cv2.putText(self.img, 
+                                    "Sonar " + dir + " : %.2f m" % distance, 
+                                    org, 
+                                    font, 
+                                    font_scale, 
+                                    font_color, 
+                                    line_type)    
+        elif(distance == None):
+            self.img = cv2.putText(self.img, 
+                                   "Sonar " + dir + " : Aucune données", 
+                                    org, 
+                                    font, 
+                                    font_scale, 
+                                    font_color, 
+                                    line_type)
         
         cv2.imshow('Labo 2', self.img)
             
     def copier_tableau(self, tab):
-        nouv_tab = tab.copy()
-        return nouv_tab
+        return tab.copy()
