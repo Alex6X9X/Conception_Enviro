@@ -74,7 +74,6 @@ class Sonar:
 
         self.distance_courante_gauche = self.calculer_moyenne_mobile(distance , self.tableau_distanceg)
         
-        print("Gauche: " + str(self.distance_courante_gauche))
         #self.console.afficher_distances(self.distance_courante_gauche, 'gauche')
         
     def sonar_deactiver_d(self):
@@ -85,13 +84,14 @@ class Sonar:
 
         self.distance_courante_droite = self.calculer_moyenne_mobile(distance , self.tableau_distanced) 
         
-        print("Droite: " + str(self.distance_courante_droite))
         #self.console.afficher_distances(self.distance_courante_droite, 'droite')
 
     def activer_sonar(self):
         self.console.afficher()
         
         while(not self.arreter):
+            print("Droite: " + str(self.distance_courante_droite))
+            print("Gauche: " + str(self.distance_courante_gauche))
             if(time.perf_counter() - self.compteur_trigger >= 0.1):
                 self.compteur_trigger = time.perf_counter() 
                 self.trigger_gauche.on()
