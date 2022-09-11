@@ -23,6 +23,8 @@ class Sonar:
         self.echo_gauche = gpiozero.DigitalInputDevice(port_echog)
         self.echo_droite = gpiozero.DigitalInputDevice(port_echod)
         self.compteur_trigger = time.perf_counter()
+        self.temps_inactif = 0
+        self.temps_actif = 0
         
         self.thread = threading.Thread(target = self.activer_sonar , args=())
         
@@ -56,20 +58,19 @@ class Sonar:
     def sonar_activer_g(self):
         
         #print('active gauche ' + str(self.echo_gauche.active_time))
-    
+        self.temps_actif = self.echo_gauche.active_time
         self.compteur_distanceg = time.perf_counter()
     
     def sonar_activer_d(self):
         #print('active gauche ' + str(self.echo_droite.active_time))
-      
+        self.temps_actif = self.echo_droite.active_time
         self.compteur_distanced = time.perf_counter()
 
     def sonar_deactiver_g(self):
         
-        print(self.echo_gauche.active_time)
-        temps_inactif = self.echo_gauche.inactive_time
+        self.temps_inactif = self.echo_gauche.inactive_time
         
-        distance = (time.perf_counter() - self.compteur_distanceg - temps_inactif) * VITESSE_SON /2
+        distance = (time.perf_counter() - self.compteur_distanceg - (self.temps_inactif + self.temps_actif)) * VITESSE_SON /2
 
         self.distance_courante_gauche = self.calculer_moyenne_mobile(distance , self.tableau_distanceg)
         
@@ -78,10 +79,9 @@ class Sonar:
         
     def sonar_deactiver_d(self):
 
-        print(self.echo_droite.active_time)
-        temps_inactif = self.echo_droite.inactive_time
+        self.temps_inactif = self.echo_droite.inactive_time
         
-        distance = (time.perf_counter() - self.compteur_distanced - temps_inactif) * VITESSE_SON / 2
+        distance = (time.perf_counter() - self.compteur_distanced - (self.temps_inactif + self.temps_actif)) * VITESSE_SON / 2
 
         self.distance_courante_droite = self.calculer_moyenne_mobile(distance , self.tableau_distanced) 
         
@@ -104,7 +104,6 @@ class Sonar:
         tableau_distance.append(nouvelle_distance)
         
         if len(tableau_distance) >= FENETRE:
-            #print("-------------------------")
             temp_tab = self.copier_tableau(tableau_distance)
             temp_min = min(temp_tab)
             temp_max = max(temp_tab) 
