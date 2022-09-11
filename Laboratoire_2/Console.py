@@ -38,9 +38,4 @@ class Console:
                                     font_scale, 
                                     font_color, 
                                     line_type)   
-            
-        if(self.y >= LARGEUR):
-            self.y = POSITION_Y
-        else:
-            self.y = self.y + SAUT_LIGNE
         self.afficher()
