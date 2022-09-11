@@ -29,7 +29,7 @@ del_verte.Demarrer()
 while (not arreter):
     key = cv2.waitKey(100)
     
-    if key == ord('esc'):
+    if key == ord('x'):
         arreter = True
         sonars.arreter = arreter
         del_jaune.arreter = arreter
