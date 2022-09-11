@@ -120,7 +120,7 @@ class Sonar:
         font = cv2.FONT_HERSHEY_SIMPLEX
         font_scale = 0.5
         font_color = (255, 255, 255)
-        line_type = 0.5
+        line_type = 1
         
         if(distance != None):
             self.img = cv2.putText(self.img, 
