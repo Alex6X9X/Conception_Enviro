@@ -50,7 +50,7 @@ class Dell:
             distance = self.sonar.distance_courante_droite
             return distance /10 if distance != None else 1
 
-        # Si il n'y aucune distinction entre le sonar de droite ou de gauche
+        # Si il n'y aucune distinction entre le sonar de droite ou de gauche (Cas extrême)
         return -1
 
 

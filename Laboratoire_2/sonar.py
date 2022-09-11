@@ -139,7 +139,7 @@ class Sonar:
                                     font_color, 
                                     line_type)
         
-        self.y = self.y + 10
+        self.y = self.y + 30
         cv2.imshow('Labo 2', self.img)
             
     def copier_tableau(self, tab):
