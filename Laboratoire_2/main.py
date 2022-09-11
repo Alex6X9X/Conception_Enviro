@@ -39,7 +39,8 @@ img = cv2.putText(img,
 
 cv2.imshow('Labo 2', img) 
 
-key = cv2.waitKey(100)
+while (not arreter):
+    key = cv2.waitKey(100)
 
 #sonars.Demarrer()
 #del_jaune.Demarrer()
