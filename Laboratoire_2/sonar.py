@@ -87,7 +87,6 @@ class Sonar:
         while(not self.arreter):
             self.console.afficher_distances(self.distance_courante_droite, 'droite')
             self.console.afficher_distances(self.distance_courante_gauche, 'gauche') 
-            self.console.afficher()
             
             time.sleep(0.1)
             self.trigger_gauche.on()

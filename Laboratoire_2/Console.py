@@ -41,3 +41,4 @@ class Console:
             
 
         self.y = self.y + SAUT_LIGNE
+        self.afficher()
