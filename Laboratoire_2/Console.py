@@ -16,7 +16,7 @@ class Console:
         self.x = POSITION_X
         self.y = POSITION_Y
         
-    def afficher_distances(self, distance, dir):
+    def afficher_distances(self, distance_droite, distance_gauche):
         img = np.zeros((LARGEUR,GRANDEUR,3),np.uint8)
         
         org = (self.x, self.y)
@@ -25,9 +25,9 @@ class Console:
         font_color = (255, 255, 255)
         line_type = 1
         
-        if(distance != None):
+        if(distance_droite != None and distance_gauche != None):
             self.img = cv2.putText(img, 
-                                    "Sonar " + dir + " : " + str(distance) + " cm",
+                                    "Sonar droite : %.2f cm\n Sonar gauche %.2f cm" %distance_droite %distance_gauche,
                                     org, 
                                     font, 
                                     font_scale, 
