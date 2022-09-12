@@ -2,12 +2,11 @@
 #29 août 2022
 #Dernier changement le 31 août 2022
 
-from dis import dis
 import threading
 from time import sleep
 import gpiozero
 
-TRANCHE_CLIGNOTEMENT = 0.01
+TRANCHE_CLIGNOTEMENT = 0.007
 DETECTION_MINIMUM_SONAR = 2
 DETECTION_MAXIMUM_SONAR = 400
 TEMPS_MAXIMUM = 4.0
@@ -36,14 +35,14 @@ class Dell:
         
         while(not self.arreter):
             self.__allumez__()
-            sleep(self.__calculer_incrementation__())
+            sleep(self.__calculer_sleep__())
             self.__eteindre__()
-            sleep(self.__calculer_incrementation__())
+            sleep(self.__calculer_sleep__())
             
             
-    def __calculer_incrementation__(self):
+    def __calculer_sleep__(self):
         if(self.direction == 'g'):
-            distance = self.sonar.distance_courante_gauche
+            distance = self.sonar.distance_courante_g
             
             if(distance == None):
                 return TEMPS_MAXIMUM
@@ -52,7 +51,7 @@ class Dell:
             return distance * TRANCHE_CLIGNOTEMENT if distance < DETECTION_MAXIMUM_SONAR else TEMPS_MAXIMUM
         
         elif(self.direction == 'd'):
-            distance = self.sonar.distance_courante_droite
+            distance = self.sonar.distance_courante_d
             
             if(distance == None):  
                 return TEMPS_MAXIMUM
@@ -60,8 +59,6 @@ class Dell:
                 distance = DETECTION_MINIMUM_SONAR
             return distance * TRANCHE_CLIGNOTEMENT if distance < DETECTION_MAXIMUM_SONAR else TEMPS_MAXIMUM
 
-        # Si il n'y aucune distinction entre le sonar de droite ou de gauche (Cas extrême)
-        return -1
 
 
             

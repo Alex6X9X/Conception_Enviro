@@ -26,12 +26,12 @@ class Sonar:
         self.thread = threading.Thread(target = self.envoyer_ondes , args=())
         
         #Distances
-        self.compteur_distanceg = 0
-        self.compteur_distanced = 0
-        self.distance_courante_gauche = 0
-        self.distance_courante_droite = 0
-        self.tableau_distanceg = []
-        self.tableau_distanced = []
+        self.compteur_distance_g = 0
+        self.compteur_distance_d = 0
+        self.distance_courante_g = 0
+        self.distance_courante_d = 0
+        self.tableau_distance_g = []
+        self.tableau_distance_d = []
         
         #Booléen pour l'arrêt du programme
         self.arreter = arreter
@@ -52,27 +52,27 @@ class Sonar:
         
     def sonar_activer_g(self):
         self.temps_actif = self.echo_gauche.active_time
-        self.compteur_distanceg = time.perf_counter()
+        self.compteur_distance_g = time.perf_counter()
     
     def sonar_activer_d(self):
         self.temps_actif = self.echo_droite.active_time
-        self.compteur_distanced = time.perf_counter()
+        self.compteur_distance_d = time.perf_counter()
 
     def sonar_deactiver_g(self):
         
         self.temps_inactif = self.echo_gauche.inactive_time
         
-        distance = ( ( time.perf_counter() - self.temps_inactif - self.compteur_distanceg + self.temps_actif ) * VITESSE_SON / 2 ) * CONVERSION_CM
-        #print("G:" + str(distance))
-        self.distance_courante_gauche = self.calculer_moyenne_mobile(distance , self.tableau_distanceg)
+        distance = ( ( time.perf_counter() - self.temps_inactif - self.compteur_distance_g + self.temps_actif ) * VITESSE_SON / 2 ) * CONVERSION_CM
+
+        self.distance_courante_g = self.calculer_moyenne_mobile(distance , self.tableau_distance_g)
         
     def sonar_deactiver_d(self):
 
         self.temps_inactif = self.echo_droite.inactive_time
         
-        distance = ( ( time.perf_counter() - self.temps_inactif - self.compteur_distanced + self.temps_actif ) * VITESSE_SON / 2 ) * CONVERSION_CM
-        #print("D:" + str(distance))
-        self.distance_courante_droite = self.calculer_moyenne_mobile(distance , self.tableau_distanced) 
+        distance = ( ( time.perf_counter() - self.temps_inactif - self.compteur_distance_d + self.temps_actif ) * VITESSE_SON / 2 ) * CONVERSION_CM
+        
+        self.tableau_distance_d = self.calculer_moyenne_mobile(distance , self.tableau_distance_d) 
     
 
 

@@ -15,7 +15,6 @@ SDT = 21
 SGE = 25  #Sonar Gauche Echo...
 SDE = 20
 
-global arreter
 arreter = False
 sonars = Sonar(SGT, SDT, SGE, SDE, arreter)
 del_jaune = Dell(PORT_DEL_JAUNE, sonars, 'g', arreter)
@@ -36,12 +35,14 @@ while (not arreter):
         
     sleep(0.1)        
     console.afficher_distances(sonars.distance_courante_droite, sonars.distance_courante_gauche)
+    
     if key == ord('x'):
         arreter = True
         sonars.arreter = arreter
         del_jaune.arreter = arreter
         del_verte.arreter = arreter
         
+        #Arrêt des threads
         sonars.Arreter()
         del_jaune.Arreter()
         del_verte.Arreter()
