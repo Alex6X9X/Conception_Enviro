@@ -5,7 +5,7 @@
 from time import sleep
 from Console import Console
 from Dell import Dell
-from sonar2 import Sonar
+from sonar import Sonar
 import cv2
 
 PORT_DEL_JAUNE = 10

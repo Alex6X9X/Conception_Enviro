@@ -5,6 +5,7 @@
 import threading
 import gpiozero
 import time 
+from calculer_moyenne_mobile import calculer_moyenne_mobile
 
 FENETRE = 10
 TEMPS_TRIGGER_ACTIF = 0.000001
@@ -13,25 +14,22 @@ CONVERSION_CM = 100
 
 class Sonar:
     
-    def __init__(self , port_triggerg , port_triggerd , port_echog , port_echod, arreter):
+    def __init__(self , port_trigger , port_echo, arreter):
         
         #Sonars
-        self.trigger_gauche = gpiozero.DigitalOutputDevice(port_triggerg)
-        self.trigger_droite = gpiozero.DigitalOutputDevice(port_triggerd)
-        self.echo_gauche = gpiozero.DigitalInputDevice(port_echog)
-        self.echo_droite = gpiozero.DigitalInputDevice(port_echod)
+        self.trigger = gpiozero.DigitalOutputDevice(port_trigger)
+        self.echo = gpiozero.DigitalInputDevice(port_echo)
         self.temps_inactif = 0
         self.temps_actif = 0
         
         self.thread = threading.Thread(target = self.envoyer_ondes , args=())
         
         #Distances
-        self.compteur_distance_g = 0
-        self.compteur_distance_d = 0
-        self.distance_courante_g = 0
-        self.distance_courante_d = 0
-        self.tableau_distance_g = []
-        self.tableau_distance_d = []
+        self.compteur_distance = 0
+
+        self.distance_courante = 0
+
+        self.tableau_distance = []
         
         #Booléen pour l'arrêt du programme
         self.arreter = arreter
@@ -45,61 +43,28 @@ class Sonar:
         self.thread.join()
 
     def initialiser_callbacks(self):
-        self.echo_gauche.when_activated = self.sonar_activer_g
-        self.echo_droite.when_activated = self.sonar_activer_d
-        self.echo_gauche.when_deactivated = self.sonar_deactiver_g
-        self.echo_droite.when_deactivated = self.sonar_deactiver_d
-        
-    def sonar_activer_g(self):
-        self.temps_actif = self.echo_gauche.active_time
-        self.compteur_distance_g = time.perf_counter()
-    
-    def sonar_activer_d(self):
-        self.temps_actif = self.echo_droite.active_time
-        self.compteur_distance_d = time.perf_counter()
+        self.echo.when_activated = self.sonar_activer
+        self.echo.when_deactivated = self.sonar_deactiver
 
-    def sonar_deactiver_g(self):
         
-        self.temps_inactif = self.echo_gauche.inactive_time
-        
-        distance = ( ( time.perf_counter() - self.temps_inactif - self.compteur_distance_g + self.temps_actif ) * VITESSE_SON / 2 ) * CONVERSION_CM
-
-        self.distance_courante_g = self.calculer_moyenne_mobile(distance , self.tableau_distance_g)
-        
-    def sonar_deactiver_d(self):
-
-        self.temps_inactif = self.echo_droite.inactive_time
-        
-        distance = ( ( time.perf_counter() - self.temps_inactif - self.compteur_distance_d + self.temps_actif ) * VITESSE_SON / 2 ) * CONVERSION_CM
-        
-        self.tableau_distance_d = self.calculer_moyenne_mobile(distance , self.tableau_distance_d) 
+    def sonar_activer(self):
+        self.temps_actif = self.echo.active_time
+        self.compteur_distance = time.perf_counter()
     
 
+
+    def sonar_deactiver(self):
+        
+        self.temps_inactif = self.echo.inactive_time
+        
+        distance = ( ( time.perf_counter() - self.temps_inactif - self.compteur_distance + self.temps_actif ) * VITESSE_SON / 2 ) * CONVERSION_CM
+        self.distance_courante = calculer_moyenne_mobile(distance , self.tableau_distance)
+        
 
     def envoyer_ondes(self):
         
         while(not self.arreter):    
             time.sleep(0.1)
-            self.trigger_gauche.on()
-            self.trigger_droite.on()
+            self.trigger.on()
             time.sleep(TEMPS_TRIGGER_ACTIF)
-            self.trigger_gauche.off()
-            self.trigger_droite.off() 
-
-    def calculer_moyenne_mobile(self , nouvelle_distance , tableau_distance):
-        
-        tableau_distance.append(nouvelle_distance)
-        
-        if len(tableau_distance) >= FENETRE:
-            temp_tab = self.copier_tableau(tableau_distance)
-            temp_min = min(temp_tab)
-            temp_max = max(temp_tab) 
-            temp_tab.remove(temp_min)
-            temp_tab.remove(temp_max)
-            del tableau_distance[0]
-            return sum(temp_tab)/len(temp_tab)
-        
-        return None
-            
-    def copier_tableau(self, tab):
-        return tab.copy()
+            self.trigger.off()
