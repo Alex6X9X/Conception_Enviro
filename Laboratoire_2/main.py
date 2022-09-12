@@ -5,7 +5,7 @@
 from time import sleep
 from Console import Console
 from Dell import Dell
-from sonar import Sonar
+from sonar2 import Sonar
 import cv2
 
 PORT_DEL_JAUNE = 10
@@ -27,7 +27,8 @@ console.afficher_distances(None, None)
 print("Appuyer sur la touche 'x' pour quitter le programme...")
 
 #Démarrage des threads
-sonars.Demarrer()
+sonar_droite.Demarrer()
+sonar_gauche.Demarrer()
 del_jaune.Demarrer()
 del_verte.Demarrer()
 
@@ -35,16 +36,18 @@ while (not arreter):
     key = cv2.waitKey(100)
         
     sleep(0.1)        
-    console.afficher_distances(sonars.distance_courante_droite, sonars.distance_courante_gauche)
+    console.afficher_distances(sonar_droite.distance_courante, sonar_gauche.distance_courante)
     
     if key == ord('x'):
         arreter = True
-        sonars.arreter = arreter
+        sonar_gauche.arreter = arreter
+        sonar_droite.arreter = arreter
         del_jaune.arreter = arreter
         del_verte.arreter = arreter
         
         #Arrêt des threads
-        sonars.Arreter()
+        sonar_droite.Arreter()
+        sonar_gauche.Arreter()
         del_jaune.Arreter()
         del_verte.Arreter()
         

@@ -12,9 +12,8 @@ DETECTION_MAXIMUM_SONAR = 400
 TEMPS_MAXIMUM = 4.0
 
 class Dell:
-    def __init__(self , port , sonar , direction, arreter):
+    def __init__(self , port, sonar, arreter):
         self.sonar = sonar
-        self.direction = direction
         self.thread = threading.Thread(target = self.Clignoter , args=())
         self.arreter = arreter
         self.dell = gpiozero.DigitalOutputDevice(port)
@@ -41,23 +40,14 @@ class Dell:
             
             
     def __calculer_sleep__(self):
-        if(self.direction == 'g'):
-            distance = self.sonar.distance_courante_g
-            
-            if(distance == None):
-                return TEMPS_MAXIMUM
-            if(distance < DETECTION_MINIMUM_SONAR):
-                distance = DETECTION_MINIMUM_SONAR
-            return distance * TRANCHE_CLIGNOTEMENT if distance < DETECTION_MAXIMUM_SONAR else TEMPS_MAXIMUM
+        distance = self.sonar.distance_courante
         
-        elif(self.direction == 'd'):
-            distance = self.sonar.distance_courante_d
-            
-            if(distance == None):  
-                return TEMPS_MAXIMUM
-            if(distance < DETECTION_MINIMUM_SONAR):
-                distance = DETECTION_MINIMUM_SONAR
-            return distance * TRANCHE_CLIGNOTEMENT if distance < DETECTION_MAXIMUM_SONAR else TEMPS_MAXIMUM
+        if(distance == None):
+            return TEMPS_MAXIMUM
+        if(distance < DETECTION_MINIMUM_SONAR):
+            distance = DETECTION_MINIMUM_SONAR
+        return distance * TRANCHE_CLIGNOTEMENT if distance < DETECTION_MAXIMUM_SONAR else TEMPS_MAXIMUM
+    
 
 
 
