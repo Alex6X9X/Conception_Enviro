@@ -89,9 +89,6 @@ class Sonar:
             self.trigger_droite.off() 
 
     def calculer_moyenne_mobile(self , nouvelle_distance , tableau_distance):
-        if(nouvelle_distance < 2 or nouvelle_distance > 400):
-            return sum(tableau_distance)/len(tableau_distance)
-        
         tableau_distance.append(nouvelle_distance)
         
         if len(tableau_distance) >= FENETRE:
