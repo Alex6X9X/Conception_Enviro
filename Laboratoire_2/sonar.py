@@ -87,14 +87,13 @@ class Sonar:
         while(not self.arreter):
             #self.console.afficher_distances(self.distance_courante_droite, 'droite')
             #self.console.afficher_distances(self.distance_courante_gauche, 'gauche') 
-            
-            if(time.perf_counter() - self.compteur_trigger >= 0.1):
-                self.compteur_trigger = time.perf_counter() 
-                self.trigger_gauche.on()
-                self.trigger_droite.on()
-                time.sleep(TEMPS_TRIGGER_ACTIF)
-                self.trigger_gauche.off()
-                self.trigger_droite.off() 
+            time.sleep(0.1)
+           #self.compteur_trigger = time.perf_counter() 
+            self.trigger_gauche.on()
+            self.trigger_droite.on()
+            time.sleep(TEMPS_TRIGGER_ACTIF)
+            self.trigger_gauche.off()
+            self.trigger_droite.off() 
 
     def calculer_moyenne_mobile(self , nouvelle_distance , tableau_distance):
         tableau_distance.append(nouvelle_distance)
