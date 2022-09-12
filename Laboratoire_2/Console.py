@@ -32,7 +32,7 @@ class Console:
         
         if(distance != None):
             self.img = cv2.putText(self.img, 
-                                    "Sonar " + dir + " : %.2f cm" % distance, 
+                                    "Sonar " + dir + " : " + str(distance) + " cm",
                                     org, 
                                     font, 
                                     font_scale, 

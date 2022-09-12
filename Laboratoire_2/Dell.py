@@ -10,7 +10,7 @@ import gpiozero
 TRANCHE_CLIGNOTEMENT = 0.01
 DETECTION_MINIMUM_SONAR = 2
 DETECTION_MAXIMUM_SONAR = 400
-TEMPS_MAXIMUM = 4
+TEMPS_MAXIMUM = 4.0
 
 class Dell:
     def __init__(self , port , sonar , direction, arreter):
