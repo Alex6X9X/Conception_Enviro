@@ -19,7 +19,6 @@ class Sonar:
         self.trigger_droite = gpiozero.DigitalOutputDevice(port_triggerd)
         self.echo_gauche = gpiozero.DigitalInputDevice(port_echog)
         self.echo_droite = gpiozero.DigitalInputDevice(port_echod)
-        self.compteur_trigger = time.perf_counter()
         self.temps_inactif = 0
         self.temps_actif = 0
         
@@ -65,7 +64,7 @@ class Sonar:
         
         self.temps_inactif = self.echo_gauche.inactive_time
         
-        distance = ( ( (time.perf_counter() - self.temps_inactif) - (self.compteur_distanceg + self.temps_actif) ) * VITESSE_SON / 2 ) * 100
+        distance = ( ( time.perf_counter() - self.temps_inactif - self.compteur_distanceg + self.temps_actif ) * VITESSE_SON / 2 ) * 100
         #print("G:" + str(distance))
         self.distance_courante_gauche = self.calculer_moyenne_mobile(distance , self.tableau_distanceg)
         

@@ -26,6 +26,8 @@ class Console:
         line_type = 1
         
         if(distance_droite != None and distance_gauche != None):
+            distance_droite = round(distance_droite, 2)
+            distance_gauche = round(distance_gauche, 2)
             self.img = cv2.putText(img, 
                                     "Sonar droite : " + str(distance_droite) + " cm || Sonar gauche " + str(distance_gauche) + " cm",
                                     org, 
