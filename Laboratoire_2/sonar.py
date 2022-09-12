@@ -69,7 +69,7 @@ class Sonar:
         self.temps_inactif = self.echo_gauche.inactive_time
         
         distance = ( (time.perf_counter() - self.compteur_distanceg - (self.temps_actif + self.temps_inactif)) * VITESSE_SON / 2 ) * 100
-        print("G:" + str(distance))
+        #print("G:" + str(distance))
         self.distance_courante_gauche = self.calculer_moyenne_mobile(distance , self.tableau_distanceg)
         
     def sonar_deactiver_d(self):
@@ -77,16 +77,17 @@ class Sonar:
         self.temps_inactif = self.echo_droite.inactive_time
         
         distance = ( (time.perf_counter() - self.compteur_distanced - (self.temps_actif + self.temps_inactif)) * VITESSE_SON / 2 ) * 100
-        print("D:" + str(distance))
+        #print("D:" + str(distance))
         self.distance_courante_droite = self.calculer_moyenne_mobile(distance , self.tableau_distanced) 
     
 
     def envoyer_ondes(self):
-        #self.console.afficher()
+        self.console.afficher()
         
         while(not self.arreter):
-            #self.console.afficher_distances(self.distance_courante_droite, 'droite')
-            #self.console.afficher_distances(self.distance_courante_gauche, 'gauche') 
+            self.console.afficher_distances(self.distance_courante_droite, 'droite')
+            self.console.afficher_distances(self.distance_courante_gauche, 'gauche') 
+            self.console.afficher()
             
             time.sleep(0.1)
             self.trigger_gauche.on()

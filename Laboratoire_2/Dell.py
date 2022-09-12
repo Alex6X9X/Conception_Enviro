@@ -10,6 +10,7 @@ import gpiozero
 TRANCHE_CLIGNOTEMENT = 0.01
 DETECTION_MINIMUM_SONAR = 2
 DETECTION_MAXIMUM_SONAR = 400
+TEMPS_MAXIMUM = 4
 
 class Dell:
     def __init__(self , port , sonar , direction, arreter):
@@ -45,19 +46,19 @@ class Dell:
             distance = self.sonar.distance_courante_gauche
             
             if(distance == None):
-                return 4
+                return TEMPS_MAXIMUM
             if(distance < DETECTION_MINIMUM_SONAR):
                 distance = DETECTION_MINIMUM_SONAR
-            return distance * TRANCHE_CLIGNOTEMENT if distance < DETECTION_MAXIMUM_SONAR else 4
+            return distance * TRANCHE_CLIGNOTEMENT if distance < DETECTION_MAXIMUM_SONAR else TEMPS_MAXIMUM
         
         elif(self.direction == 'd'):
             distance = self.sonar.distance_courante_droite
             
             if(distance == None):  
-                return 4
+                return TEMPS_MAXIMUM
             if(distance < DETECTION_MINIMUM_SONAR):
                 distance = DETECTION_MINIMUM_SONAR
-            return distance * TRANCHE_CLIGNOTEMENT if distance < DETECTION_MAXIMUM_SONAR else 4
+            return distance * TRANCHE_CLIGNOTEMENT if distance < DETECTION_MAXIMUM_SONAR else TEMPS_MAXIMUM
 
         # Si il n'y aucune distinction entre le sonar de droite ou de gauche (Cas extrême)
         return -1
