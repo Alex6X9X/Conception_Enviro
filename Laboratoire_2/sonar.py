@@ -73,10 +73,11 @@ class Sonar:
 
         self.temps_inactif = self.echo_droite.inactive_time
         
-        distance = ( ( (time.perf_counter() - self.temps_inactif) - (self.compteur_distanced + self.temps_actif) ) * VITESSE_SON / 2 ) * 100
+        distance = ( ( time.perf_counter() - self.temps_inactif - self.compteur_distanced + self.temps_actif ) * VITESSE_SON / 2 ) * 100
         #print("D:" + str(distance))
         self.distance_courante_droite = self.calculer_moyenne_mobile(distance , self.tableau_distanced) 
     
+
 
     def envoyer_ondes(self):
         
