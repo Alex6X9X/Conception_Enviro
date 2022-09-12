@@ -9,6 +9,7 @@ import time
 FENETRE = 10
 TEMPS_TRIGGER_ACTIF = 0.000001
 VITESSE_SON = 343
+CONVERSION_CM = 100
 
 class Sonar:
     
@@ -50,13 +51,10 @@ class Sonar:
         self.echo_droite.when_deactivated = self.sonar_deactiver_d
         
     def sonar_activer_g(self):
-        
-        #print('active gauche ' + str(self.echo_gauche.active_time))
         self.temps_actif = self.echo_gauche.active_time
         self.compteur_distanceg = time.perf_counter()
     
     def sonar_activer_d(self):
-        #print('active gauche ' + str(self.echo_droite.active_time))
         self.temps_actif = self.echo_droite.active_time
         self.compteur_distanced = time.perf_counter()
 
@@ -64,7 +62,7 @@ class Sonar:
         
         self.temps_inactif = self.echo_gauche.inactive_time
         
-        distance = ( ( time.perf_counter() - self.temps_inactif - self.compteur_distanceg + self.temps_actif ) * VITESSE_SON / 2 ) * 100
+        distance = ( ( time.perf_counter() - self.temps_inactif - self.compteur_distanceg + self.temps_actif ) * VITESSE_SON / 2 ) * CONVERSION_CM
         #print("G:" + str(distance))
         self.distance_courante_gauche = self.calculer_moyenne_mobile(distance , self.tableau_distanceg)
         
@@ -72,7 +70,7 @@ class Sonar:
 
         self.temps_inactif = self.echo_droite.inactive_time
         
-        distance = ( ( time.perf_counter() - self.temps_inactif - self.compteur_distanced + self.temps_actif ) * VITESSE_SON / 2 ) * 100
+        distance = ( ( time.perf_counter() - self.temps_inactif - self.compteur_distanced + self.temps_actif ) * VITESSE_SON / 2 ) * CONVERSION_CM
         #print("D:" + str(distance))
         self.distance_courante_droite = self.calculer_moyenne_mobile(distance , self.tableau_distanced) 
     
