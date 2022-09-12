@@ -34,8 +34,7 @@ del_verte.Demarrer()
 
 while (not arreter):
     key = cv2.waitKey(100)
-        
-    sleep(0.1)        
+          
     console.afficher_distances(sonar_droite.distance_courante, sonar_gauche.distance_courante)
     
     if key == ord('x'):
