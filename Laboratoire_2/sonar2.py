@@ -5,6 +5,7 @@
 import threading
 import gpiozero
 import time 
+from calculer_moyenne_mobile import calculer_moyenne_mobile
 
 FENETRE = 10
 TEMPS_TRIGGER_ACTIF = 0.000001
@@ -57,7 +58,7 @@ class Sonar:
         self.temps_inactif = self.echo.inactive_time
         
         distance = ( ( time.perf_counter() - self.temps_inactif - self.compteur_distance + self.temps_actif ) * VITESSE_SON / 2 ) * CONVERSION_CM
-        self.distance_courante = self.calculer_moyenne_mobile(distance , self.tableau_distance)
+        self.distance_courante = calculer_moyenne_mobile(distance , self.tableau_distance)
         
 
     def envoyer_ondes(self):
