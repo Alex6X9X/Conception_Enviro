@@ -77,7 +77,6 @@ class Sonar:
         self.temps_inactif = self.echo_droite.inactive_time
         
         distance = (time.perf_counter() - self.compteur_distanced) * VITESSE_SON / 2
-        print(distance)
 
         self.distance_courante_droite = self.calculer_moyenne_mobile(distance , self.tableau_distanced) 
     
@@ -87,9 +86,7 @@ class Sonar:
         
         while(not self.arreter):
             #self.console.afficher_distances(self.distance_courante_droite, 'droite')
-            #self.console.afficher_distances(self.distance_courante_gauche, 'gauche')
-            print(self.temps_actif)
-            print(self.temps_inactif)   
+            #self.console.afficher_distances(self.distance_courante_gauche, 'gauche') 
             
             if(time.perf_counter() - self.compteur_trigger >= 0.1):
                 self.compteur_trigger = time.perf_counter() 
