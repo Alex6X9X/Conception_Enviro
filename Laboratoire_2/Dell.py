@@ -1,6 +1,6 @@
 #Alexandre Carle et Louis-philippe Rousseau
 #29 août 2022
-#Dernier changement le 31 août 2022
+#Dernier changement le 12 septembre 2022
 
 import threading
 from time import sleep
