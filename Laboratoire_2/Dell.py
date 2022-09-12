@@ -45,19 +45,19 @@ class Dell:
             distance = self.sonar.distance_courante_gauche
             
             if(distance == None):
-                distance = 0
+                return 4
             if(distance < DETECTION_MINIMUM_SONAR):
                 distance = DETECTION_MINIMUM_SONAR
-            return distance * TRANCHE_CLIGNOTEMENT if distance != 0 and distance > DETECTION_MAXIMUM_SONAR else 1
+            return distance * TRANCHE_CLIGNOTEMENT if distance < DETECTION_MAXIMUM_SONAR else 4
         
         elif(self.direction == 'd'):
             distance = self.sonar.distance_courante_droite
             
             if(distance == None):  
-                distance = 0
+                return 4
             if(distance < DETECTION_MINIMUM_SONAR):
                 distance = DETECTION_MINIMUM_SONAR
-            return distance * TRANCHE_CLIGNOTEMENT if distance != 0 and distance > DETECTION_MAXIMUM_SONAR else 1
+            return distance * TRANCHE_CLIGNOTEMENT if distance < DETECTION_MAXIMUM_SONAR else 4
 
         # Si il n'y aucune distinction entre le sonar de droite ou de gauche (Cas extrême)
         return -1
