@@ -16,9 +16,10 @@ SGE = 25  #Sonar Gauche Echo...
 SDE = 20
 
 arreter = False
-sonars = Sonar(SGT, SDT, SGE, SDE, arreter)
-del_jaune = Dell(PORT_DEL_JAUNE, sonars, 'g', arreter)
-del_verte = Dell(PORT_DEL_VERTE, sonars, 'd', arreter)
+sonar_gauche = Sonar(SGT, SDT, SGE, SDE, arreter)
+sonar_droite = Sonar(SGT, SDT, SGE, SDE, arreter)
+del_jaune = Dell(PORT_DEL_JAUNE, sonar_gauche, 'g', arreter)
+del_verte = Dell(PORT_DEL_VERTE, sonar_droite, 'd', arreter)
 console = Console()
 
 console.afficher_distances(None, None)
