@@ -35,8 +35,7 @@ while (not arreter):
     key = cv2.waitKey(100)
         
     sleep(0.1)        
-    console.afficher_distances(sonars.distance_courante_droite, 'droite')
-    console.afficher_distances(sonars.distance_courante_gauche, 'gauche') 
+    console.afficher_distances(sonars.distance_courante_droite, sonars.distance_courante_gauche)
     if key == ord('x'):
         arreter = True
         sonars.arreter = arreter

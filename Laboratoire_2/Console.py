@@ -27,7 +27,7 @@ class Console:
         
         if(distance_droite != None and distance_gauche != None):
             self.img = cv2.putText(img, 
-                                    "Sonar droite : " + str(distance_droite) + " cm\n Sonar gauche " + str(distance_gauche) + " cm",
+                                    "Sonar droite : " + str(distance_droite) + " cm || Sonar gauche " + str(distance_gauche) + " cm",
                                     org, 
                                     font, 
                                     font_scale, 
