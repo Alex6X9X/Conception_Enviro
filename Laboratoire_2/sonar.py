@@ -87,8 +87,8 @@ class Sonar:
         while(not self.arreter):
             #self.console.afficher_distances(self.distance_courante_droite, 'droite')
             #self.console.afficher_distances(self.distance_courante_gauche, 'gauche')
-            print(self.distance_courante_droite)
-            print(self.distance_courante_gauche)
+            print(self.temps_actif)
+            print(self.temps_inactif)   
             
             if(time.perf_counter() - self.compteur_trigger >= 0.1):
                 self.compteur_trigger = time.perf_counter() 
