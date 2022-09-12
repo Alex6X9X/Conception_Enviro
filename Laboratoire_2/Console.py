@@ -9,20 +9,15 @@ LARGEUR = 512
 GRANDEUR = 700
 POSITION_X = 40
 POSITION_Y = 40
-SAUT_LIGNE = 35
-SAUT_COLONNE = 100
 
 class Console:
     
     def __init__(self):
-        self.img = np.zeros((LARGEUR,GRANDEUR,3),np.uint8)
         self.x = POSITION_X
         self.y = POSITION_Y
         
-    def afficher(self):
-        cv2.imshow('Labo 2', self.img)
-        
     def afficher_distances(self, distance, dir):
+        img = np.zeros((LARGEUR,GRANDEUR,3),np.uint8)
         
         org = (self.x, self.y)
         font = cv2.FONT_HERSHEY_SIMPLEX
@@ -31,7 +26,7 @@ class Console:
         line_type = 1
         
         if(distance != None):
-            self.img = cv2.putText(self.img, 
+            self.img = cv2.putText(img, 
                                     "Sonar " + dir + " : " + str(distance) + " cm",
                                     org, 
                                     font, 
@@ -39,6 +34,4 @@ class Console:
                                     font_color, 
                                     line_type)   
             
-
-        self.y = self.y + SAUT_LIGNE
-        self.afficher()
+        cv2.imshow('Labo 2', img)

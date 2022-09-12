@@ -2,6 +2,8 @@
 #29 août 2022
 #Dernier changement le 11 septembre 2022
 
+from time import sleep
+from Console import Console
 from Dell import Dell
 from sonar import Sonar
 import cv2
@@ -18,6 +20,9 @@ arreter = False
 sonars = Sonar(SGT, SDT, SGE, SDE, arreter)
 del_jaune = Dell(PORT_DEL_JAUNE, sonars, 'g', arreter)
 del_verte = Dell(PORT_DEL_VERTE, sonars, 'd', arreter)
+console = Console()
+
+console.afficher_distances(None, None)
 
 print("Appuyer sur la touche 'x' pour quitter le programme...")
 
@@ -28,7 +33,10 @@ del_verte.Demarrer()
 
 while (not arreter):
     key = cv2.waitKey(100)
-    
+        
+    sleep(0.1)        
+    console.afficher_distances(sonars.distance_courante_droite, 'droite')
+    console.afficher_distances(sonars.distance_courante_gauche, 'gauche') 
     if key == ord('x'):
         arreter = True
         sonars.arreter = arreter

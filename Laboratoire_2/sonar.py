@@ -3,7 +3,6 @@
 #Dernier changement le 11 septembre 2022
 
 import threading
-from Console import Console
 import gpiozero
 import time 
 
@@ -36,8 +35,6 @@ class Sonar:
         
         #Booléen pour l'arrêt du programme
         self.arreter = arreter
-
-        self.console = Console()
         
         self.initialiser_callbacks()
         
@@ -82,12 +79,8 @@ class Sonar:
     
 
     def envoyer_ondes(self):
-        self.console.afficher()
         
-        while(not self.arreter):
-            self.console.afficher_distances(self.distance_courante_droite, 'droite')
-            self.console.afficher_distances(self.distance_courante_gauche, 'gauche') 
-            
+        while(not self.arreter):    
             time.sleep(0.1)
             self.trigger_gauche.on()
             self.trigger_droite.on()
