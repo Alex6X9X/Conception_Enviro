@@ -8,7 +8,7 @@ from time import sleep
 import gpiozero
 
 TRANCHE_CLIGNOTEMENT = 0.01
-DETECTION_MINIMUM_SONAR = 20
+DETECTION_MINIMUM_SONAR = 2
 DETECTION_MAXIMUM_SONAR = 400
 
 class Dell:
