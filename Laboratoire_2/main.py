@@ -5,8 +5,9 @@
 from time import sleep
 from Console import Console
 from Dell import Dell
-from Laboratoire_1.Attendre_Touche import Attendre_Touche
-from Laboratoire_1.robot import Robot
+from robot import Robot
+from Attendre_Touche import Attendre_Touche
+
 from sonar import Sonar
 import cv2
 
