@@ -20,12 +20,10 @@ X = 'x'
 
 # Paramètre: Un objet de type Robot() pour le déplacement du véhicule
 # Retourne un booléen
-def Attendre_Touche(robot):
+def Attendre_Touche(robot, key):
     
     #img = np.zeros((512,512,3),np.uint8)
     #cv2.imshow('Labo 1',img)
-    
-    key = cv2.waitKey(100) # 100 milliseconds
     
     if key == ord(W): 
         robot.Avancer()

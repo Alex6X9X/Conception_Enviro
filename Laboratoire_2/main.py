@@ -41,7 +41,7 @@ while (not arreter):
           
     console.afficher_distances(sonar_droite.distance_courante, sonar_gauche.distance_courante)
     
-    Attendre_Touche(robot)
+    Attendre_Touche(robot, key)
     if key == ord('x'):
         arreter = True
         sonar_gauche.arreter = arreter
