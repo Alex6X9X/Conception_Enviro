@@ -5,6 +5,9 @@
 from time import sleep
 from Console import Console
 from Dell import Dell
+from robot import Robot
+from Attendre_Touche import Attendre_Touche
+
 from sonar import Sonar
 import cv2
 
@@ -21,6 +24,7 @@ sonar_droite = Sonar(SDT, SDE, arreter)
 del_jaune = Dell(PORT_DEL_JAUNE, sonar_gauche, arreter)
 del_verte = Dell(PORT_DEL_VERTE, sonar_droite, arreter)
 console = Console()
+robot = Robot()
 
 console.afficher_distances(None, None)
 
@@ -37,6 +41,7 @@ while (not arreter):
           
     console.afficher_distances(sonar_droite.distance_courante, sonar_gauche.distance_courante)
     
+    Attendre_Touche(robot, key)
     if key == ord('x'):
         arreter = True
         sonar_gauche.arreter = arreter
