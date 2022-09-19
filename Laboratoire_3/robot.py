@@ -10,7 +10,7 @@ class Robot:
         self.moteurs = Moteurs()
         
         
-    def Avancer(self, dir):
+    def Avancer(self, dir = None):
         self.moteurs.avancer(dir)
         
         

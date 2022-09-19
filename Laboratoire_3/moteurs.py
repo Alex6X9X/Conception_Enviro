@@ -17,7 +17,7 @@ class Moteurs:
         self.IN4 = gpiozero.DigitalOutputDevice(14) # moteur D
         self.ENB = gpiozero.PWMOutputDevice(18)
         
-    def avancer(self, dir = None):
+    def avancer(self, dir):
         self.arreter()
         self.IN1.on()
         self.IN3.on()
