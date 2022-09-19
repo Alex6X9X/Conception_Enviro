@@ -29,6 +29,8 @@ print("Appuyer sur la touche 'x' pour quitter le programme...")
 
 
 while (not arreter):
-    key = cv2.waitKey(100)
-          
+    odomètre.avancer_distance(100)
+    robot.Avancer()
+    odomètre.attendre()
+    robot.Arreter()
    
