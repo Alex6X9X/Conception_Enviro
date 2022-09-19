@@ -26,6 +26,7 @@ class Odomètre:
 
         if(self.calculer_distance() == self.distance_voulue):
             self.stop.set()
+        
     def when_activated_deactivated_droite(self):
         self.nombre_transition_droite += 1
     
@@ -41,6 +42,7 @@ class Odomètre:
         
     def calculer_distance(self):
         distance = ((self.nombre_transition_gauche + self.nombre_transition_droite) /2) * DISTANCE_PAR_TRANSITION
+        print(distance)
         return distance
 
         
