@@ -47,7 +47,6 @@ class Odomètre:
     def calculer_distance(self):
         distance = ((self.nombre_transition) /2) * DISTANCE_PAR_TRANSITION
         self.distance = distance
-        print(distance)
         return distance
 
         
