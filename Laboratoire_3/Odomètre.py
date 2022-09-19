@@ -2,7 +2,7 @@ import threading
 from time import sleep
 import gpiozero
 
-DISTANCE_PAR_TRANSITION=0.605
+DISTANCE_PAR_TRANSITION=0.58
 class Odomètre:
     def __init__(self , port_out_gauche, port_out_droite):
         self.encodeur_gauche = gpiozero.DigitalInputDevice(port_out_gauche)
@@ -40,9 +40,9 @@ class Odomètre:
         self.encodeur_gauche.when_deactivated = None
         self.encodeur_droite.when_activated = None
         self.encodeur_droite.when_deactivated = None
-        if(self.distance < self.distance_voulue):
+        if(self.distance > self.distance_voulue):
             print("Constante trop petite")
-        elif(self.distance > self.distance_voulue):
+        elif(self.distance < self.distance_voulue):
             print("Constante trop grande")
         
     def calculer_distance(self):
