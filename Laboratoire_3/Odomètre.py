@@ -23,7 +23,7 @@ class Odomètre:
 
     def when_activated_deactivated_gauche(self):
         self.nombre_transition += 1
-
+        print(self.nombre_transition)
         if(self.calculer_distance() >= self.distance_voulue):
             self.stop.set()
         
