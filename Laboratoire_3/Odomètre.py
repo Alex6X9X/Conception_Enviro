@@ -13,8 +13,7 @@ class Odomètre:
         pass
     def avancer_distance(self,distance_voulue):
         ##installer callbacks avant de faire avancer
-        print(self.nombre_transition_droite)
-        print(self.nombre_transition_gauche)
+
         self.encodeur_gauche.when_activated = self.when_activated_gauche
         self.encodeur_gauche.when_deactivated = self.when_deactivated_gauche
         self.encodeur_droite.when_activated = self.when_activated_droite
@@ -23,6 +22,8 @@ class Odomètre:
             self.stop.set()
         pass
     def when_activated_gauche(self):
+        print(self.nombre_transition_droite)
+        print(self.nombre_transition_gauche)
         self.nombre_transition_gauche += 1
     def when_deactivated_gauche(self):
         self.nombre_transition_gauche += 1
@@ -32,11 +33,11 @@ class Odomètre:
         self.nombre_transition_droite += 1
         
     def attendre(self):
+        self.stop.wait()
         self.encodeur_gauche.when_activated = None
         self.encodeur_gauche.when_deactivated = None
         self.encodeur_droite.when_activated = None
         self.encodeur_droite.when_deactivated = None
-        self.stop.wait()
         
     def calculer_distance(self):
         distance = ((self.nombre_transition_gauche + self.nombre_transition_droite) /2) * DISTANCE_PAR_TRANSITION
