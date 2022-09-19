@@ -23,8 +23,8 @@ class Moteurs:
         self.IN3.on()
     
         if(dir == None):
-            self.ENA.value = 0.6
-            self.ENB.value = 0.6
+            self.ENA.value = 0.7
+            self.ENB.value = 0.73
         elif(dir == "g"):
             self.avancer_gauche()
         elif(dir == "d"):
