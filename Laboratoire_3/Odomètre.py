@@ -10,24 +10,28 @@ class Odomètre:
         self.stop = threading.Event()
         self.nombre_transition_gauche =0
         self.nombre_transition_droite =0
-        pass
+        self.distance_voulue = None
+
     def avancer_distance(self,distance_voulue):
         ##installer callbacks avant de faire avancer
-        self.encodeur_gauche.when_activated = self.when_activated_gauche
-        self.encodeur_gauche.when_deactivated = self.when_deactivated_gauche
-        self.encodeur_droite.when_activated = self.when_activated_droite
-        self.encodeur_droite.when_deactivated = self.when_deactivated_droite
-        if(self.calculer_distance() == distance_voulue):
+        self.distance_voulue = distance_voulue
+        self.encodeur_gauche.when_activated = self.when_activated_deactivated_gauche
+        self.encodeur_gauche.when_deactivated = self.when_activated_deactivated_gauche
+        self.encodeur_droite.when_activated = self.when_activated_deactivated_droite
+        self.encodeur_droite.when_deactivated = self.when_activated_deactivated_droite
+
+
+    def when_activated_deactivated_gauche(self):
+        self.nombre_transition_gauche += 1
+
+        if(self.calculer_distance() == self.distance_voulue):
             self.stop.set()
-        pass
-    def when_activated_gauche(self):
-        self.nombre_transition_gauche += 1
-    def when_deactivated_gauche(self):
-        self.nombre_transition_gauche += 1
-    def when_activated_droite(self):
+    def when_activated_deactivated_droite(self):
         self.nombre_transition_droite += 1
-    def when_deactivated_droite(self):
-        self.nombre_transition_droite += 1
+    
+        if(self.calculer_distance() == self.distance_voulue):
+            self.stop.set()
+
     def attendre(self):
         self.stop.wait()
         self.encodeur_gauche.when_activated = None
