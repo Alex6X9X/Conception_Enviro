@@ -23,11 +23,6 @@ odomètre = Odomètre(27,22)
 
 
 
-print("Appuyer sur la touche 'x' pour quitter le programme...")
-
-#Démarrage des threads
-
-
 while (not arreter):
     odomètre.avancer_distance(100)
     robot.Avancer()
