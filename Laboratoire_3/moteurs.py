@@ -24,7 +24,7 @@ class Moteurs:
     
         if(dir == None):
             self.ENA.value = 0.7
-            self.ENB.value = 0.75
+            self.ENB.value = 0.8
         elif(dir == "g"):
             self.avancer_gauche()
         elif(dir == "d"):
