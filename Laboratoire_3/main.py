@@ -19,7 +19,7 @@ SDE = 20
 arreter = False
 
 robot = Robot()
-odomètre = Odomètre(2,2)
+odomètre = Odomètre(27,22)
 
 
 
@@ -33,4 +33,5 @@ while (not arreter):
     robot.Avancer()
     odomètre.attendre()
     robot.Arreter()
+    arreter = True
    
