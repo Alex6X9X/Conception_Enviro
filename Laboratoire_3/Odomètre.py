@@ -44,10 +44,6 @@ class Odomètre:
         self.encodeur_gauche.when_deactivated = None
         self.encodeur_droite.when_activated = None
         self.encodeur_droite.when_deactivated = None
-        if(self.distance > self.distance_voulue):
-            print("Constante trop petite")
-        elif(self.distance < self.distance_voulue):
-            print("Constante trop grande")
         
     def calculer_distance(self):
         distance = ((self.nombre_transition_droite + self.nombre_transition_gauche) /2) * DISTANCE_PAR_TRANSITION
