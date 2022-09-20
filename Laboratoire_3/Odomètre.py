@@ -1,3 +1,4 @@
+from multiprocessing import Lock
 import threading
 from time import sleep
 import gpiozero
@@ -12,6 +13,7 @@ class Odomètre:
         self.nombre_transition_gauche = 0
         self.distance_voulue = None
         self.distance = 0
+        self.lock = threading.Lock()
 
     def avancer_distance(self,distance_voulue):
         ##installer callbacks avant de faire avancer
@@ -23,13 +25,15 @@ class Odomètre:
 
 
     def when_activated_deactivated_gauche(self):
-        self.nombre_transition_gauche += 1
+        with self.lock:
+            self.nombre_transition_gauche += 1
         print(self.nombre_transition_gauche)
         if(self.calculer_distance() >= self.distance_voulue):
             self.stop.set()
         
     def when_activated_deactivated_droite(self):
-        self.nombre_transition_droite += 1
+        with self.lock:
+            self.nombre_transition_droite += 1
     
         if(self.calculer_distance() >= self.distance_voulue):
             self.stop.set()

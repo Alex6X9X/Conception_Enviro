@@ -24,7 +24,7 @@ odomètre = Odomètre(27,22)
 
 
 while (not arreter):
-    odomètre.avancer_distance(110)
+    odomètre.avancer_distance(100)
     robot.Avancer()
     odomètre.attendre()
     robot.Arreter()
