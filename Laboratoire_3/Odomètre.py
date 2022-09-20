@@ -12,7 +12,6 @@ class Odomètre:
         self.nombre_transition_droite = 0
         self.nombre_transition_gauche = 0
         self.distance_voulue = None
-        self.distance = 0
         self.lock = threading.Lock()
 
     def avancer_distance(self,distance_voulue):
@@ -47,7 +46,6 @@ class Odomètre:
         
     def calculer_distance(self):
         distance = ((self.nombre_transition_droite + self.nombre_transition_gauche) /2) * DISTANCE_PAR_TRANSITION
-        self.distance = distance
         return distance
 
         
