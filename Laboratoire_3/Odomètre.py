@@ -2,7 +2,7 @@
 import threading
 import gpiozero
 
-DISTANCE_PAR_TRANSITION = 0.63
+DISTANCE_PAR_TRANSITION = 0.60
 class Odomètre:
     def __init__(self , port_out_gauche, port_out_droite):
         self.encodeur_gauche = gpiozero.DigitalInputDevice(port_out_gauche)
