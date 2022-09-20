@@ -1,8 +1,7 @@
 #Alexandre Carle et Louis-philippe Rousseau
-#25 août 2022
-#Dernier changement le 28 août 2022
+#15 septembre 2022
+#Dernier changement le 19 septembre 2022
 
-import gpiozero
 from moteurs import Moteurs
 
 class Robot:

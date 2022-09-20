@@ -1,8 +1,11 @@
+#Alexandre Carle et Louis-philippe Rousseau
+#15 septembre 2022
+#Dernier changement le 19 septembre 2022
 
 import threading
 import gpiozero
 
-DISTANCE_PAR_TRANSITION = 0.60
+DISTANCE_PAR_TRANSITION = 0.60 #Ne pas changer (Tests effectues)
 class Odomètre:
     def __init__(self , port_out_gauche, port_out_droite):
         self.encodeur_gauche = gpiozero.DigitalInputDevice(port_out_gauche)
@@ -13,24 +16,16 @@ class Odomètre:
         self.lock = threading.Lock()
 
     def avancer_distance(self,distance_voulue):
-        ##installer callbacks avant de faire avancer
         self.distance_voulue = distance_voulue
-        self.encodeur_gauche.when_activated = self.when_activated_deactivated_gauche
-        self.encodeur_gauche.when_deactivated = self.when_activated_deactivated_gauche
-        self.encodeur_droite.when_activated = self.when_activated_deactivated_droite
-        self.encodeur_droite.when_deactivated = self.when_activated_deactivated_droite
+        self.encodeur_gauche.when_activated = self.when_activated_deactivated
+        self.encodeur_gauche.when_deactivated = self.when_activated_deactivated
+        self.encodeur_droite.when_activated = self.when_activated_deactivated
+        self.encodeur_droite.when_deactivated = self.when_activated_deactivated
 
 
-    def when_activated_deactivated_gauche(self):
+    def when_activated_deactivated(self):
         with self.lock:
             self.nombre_transition += 1
-        if(self.calculer_distance() >= self.distance_voulue):
-            self.stop.set()
-        
-    def when_activated_deactivated_droite(self):
-        with self.lock:
-            self.nombre_transition += 1
-    
         if(self.calculer_distance() >= self.distance_voulue):
             self.stop.set()
 
