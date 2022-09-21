@@ -11,7 +11,7 @@ from Odomètre import Odomètre
 arreter = False
 
 robot = Robot()
-odomètre = Odomètre(27,22)
+odomètre = Odomètre()
 
 
 while (not arreter):
