@@ -1,6 +1,8 @@
 #Alexandre Carle et Louis-philippe Rousseau
 #15 septembre 2022
 #Dernier changement le 19 septembre 2022
+import faulthandler;
+faulthandler.enable()
 
 from time import sleep
 from robot import Robot
