@@ -5,11 +5,14 @@
 import threading
 import gpiozero
 
+PORT_ENCODEUR_GAUCHE = 27
+PORT_ENCODEUR_DROITE = 22
+
 DISTANCE_PAR_TRANSITION = 0.60 #Ne pas changer (Tests effectues)
 class Odomètre:
-    def __init__(self , port_out_gauche, port_out_droite):
-        self.encodeur_gauche = gpiozero.DigitalInputDevice(port_out_gauche)
-        self.encodeur_droite = gpiozero.DigitalInputDevice(port_out_droite)
+    def __init__(self):
+        self.encodeur_gauche = gpiozero.DigitalInputDevice(PORT_ENCODEUR_GAUCHE)
+        self.encodeur_droite = gpiozero.DigitalInputDevice(PORT_ENCODEUR_DROITE)
         self.stop = threading.Event()
         self.nombre_transition = 0
         self.distance_voulue = None
