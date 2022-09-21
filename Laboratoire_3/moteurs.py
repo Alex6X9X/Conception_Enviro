@@ -4,18 +4,24 @@
 
 import gpiozero
 
+PORT_IN1 = 6
+PORT_IN2 = 5
+PORT_ENA = 13
+PORT_IN3 = 15
+PORT_IN4 = 14
+PORT_ENB = 18
 TAUX_VITESSE = 0.1
 
 class Moteurs:
     
     def __init__(self):
-        self.IN1 = gpiozero.DigitalOutputDevice(6)
-        self.IN2 = gpiozero.DigitalOutputDevice(5)  # moteur G
-        self.ENA = gpiozero.PWMOutputDevice(13)
+        self.IN1 = gpiozero.DigitalOutputDevice(PORT_IN1)
+        self.IN2 = gpiozero.DigitalOutputDevice(PORT_IN2)  # moteur G
+        self.ENA = gpiozero.PWMOutputDevice(PORT_ENA)
 
-        self.IN3 = gpiozero.DigitalOutputDevice(15)
-        self.IN4 = gpiozero.DigitalOutputDevice(14) # moteur D
-        self.ENB = gpiozero.PWMOutputDevice(18)
+        self.IN3 = gpiozero.DigitalOutputDevice(PORT_IN3)
+        self.IN4 = gpiozero.DigitalOutputDevice(PORT_IN4) # moteur D
+        self.ENB = gpiozero.PWMOutputDevice(PORT_ENB)
         
     def avancer(self, dir):
         self.arreter()
