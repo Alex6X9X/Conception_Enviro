@@ -21,6 +21,9 @@ class Robot:
 
     def Arreter(self):
         self.moteurs.arreter()
+        
+    def Freiner(self):
+        self.moteurs.freiner()
     
     def Augmenter_Vitesse(self):
         self.moteurs.augmenter_Vitesse()

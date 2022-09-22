@@ -19,6 +19,6 @@ while (not arreter):
     odomètre.avancer_distance(100)
     robot.Avancer()
     odomètre.attendre()
-    robot.Arreter()
+    robot.Freiner()
     arreter = True
    

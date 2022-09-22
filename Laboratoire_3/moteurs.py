@@ -77,6 +77,13 @@ class Moteurs:
         self.IN3.off()
         self.IN4.off()
     
+    def freiner(self):
+        self.ENA.on()
+        self.ENB.on()
+        self.IN1.on()
+        self.IN2.on()
+        self.IN3.on()
+        self.IN4.on()
     
     #10% == 0.1
     
