@@ -9,7 +9,7 @@ import gpiozero
 PORT_ENCODEUR_GAUCHE = 27
 PORT_ENCODEUR_DROITE = 22
 
-DISTANCE_PAR_TRANSITION = 0.58
+DISTANCE_PAR_TRANSITION = 0.57
 class Odomètre:
     def __init__(self):
         self.encodeur_gauche = gpiozero.DigitalInputDevice(PORT_ENCODEUR_GAUCHE)
