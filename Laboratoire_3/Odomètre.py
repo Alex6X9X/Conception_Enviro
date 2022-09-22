@@ -37,7 +37,6 @@ class Odomètre:
         self.encodeur_gauche.when_deactivated = None
         self.encodeur_droite.when_activated = None
         self.encodeur_droite.when_deactivated = None
-        time.sleep(1)
         
     def calculer_distance(self):
         distance = (self.nombre_transition / 2) * DISTANCE_PAR_TRANSITION
