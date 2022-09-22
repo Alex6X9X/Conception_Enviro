@@ -8,17 +8,11 @@ from time import sleep
 from robot import Robot
 from Odomètre import Odomètre
 
-arreter = False
-
 robot = Robot()
 odomètre = Odomètre()
 
-
-while (not arreter):
-    sleep(0.1)
-    odomètre.avancer_distance(100)
-    robot.Avancer()
-    odomètre.attendre()
-    robot.Freiner()
-    arreter = True
+odomètre.avancer_distance(100)
+robot.Avancer()
+odomètre.attendre()
+robot.Freiner()
    

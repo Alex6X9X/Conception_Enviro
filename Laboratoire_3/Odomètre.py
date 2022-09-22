@@ -16,7 +16,6 @@ class Odomètre:
         self.stop = threading.Event()
         self.nombre_transition = 0
         self.distance_voulue = None
-        self.lock = threading.Lock()
 
     def avancer_distance(self,distance_voulue):
         self.distance_voulue = distance_voulue
@@ -27,8 +26,7 @@ class Odomètre:
 
 
     def when_activated_deactivated(self):
-        with self.lock:
-            self.nombre_transition += 1
+        self.nombre_transition += 1
         if(self.calculer_distance() >= self.distance_voulue):
             self.stop.set()
 
