@@ -2,14 +2,13 @@
 #15 septembre 2022
 #Dernier changement le 19 septembre 2022
 
-import time
 import threading
 import gpiozero
 
 PORT_ENCODEUR_GAUCHE = 27
 PORT_ENCODEUR_DROITE = 22
 
-DISTANCE_PAR_TRANSITION = 0.57
+DISTANCE_PAR_TRANSITION = 0.56
 class Odomètre:
     def __init__(self):
         self.encodeur_gauche = gpiozero.DigitalInputDevice(PORT_ENCODEUR_GAUCHE)
