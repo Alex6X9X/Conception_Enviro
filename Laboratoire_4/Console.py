@@ -36,4 +36,7 @@ class Console:
                                     font_color, 
                                     line_type)   
             
-        cv2.imshow('Labo 2', img)
+        self.afficher_image("Labo 2", img)
+        
+    def afficher_image(self, titre, image):
+        cv2.imshow(titre, image)
