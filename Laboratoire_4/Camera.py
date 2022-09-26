@@ -11,10 +11,15 @@ class Camera:
         if not self.vcap.isOpened():
             print("Erreur lors de l'ouverture de la caméra")
             exit()
-            
+        self.frame_hsv = None
         self.vcap.set(cv2.CAP_PROP_FRAME_WIDTH, WIDTH)
         self.vcap.set(cv2.CAP_PROP_FRAME_HEIGHT, HEIGHT)
         
     def _read_(self):
-        return self.vcap.read()
+        self.ok , self.image = self.vcap.read()
+        self.image =cv2.cvtColor(self.image, cv2.COLOR_BGR2HSV)
+
+        return self.ok,self.image
     
+    
+
