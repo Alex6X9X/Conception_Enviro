@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-import Camera 
+from Camera import Camera
 
 
 vcap = Camera()
