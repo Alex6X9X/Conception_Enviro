@@ -35,18 +35,20 @@ class Camera:
     def _contour_(self):
         self.contours, _ = cv2.findContours(self.image, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
         plus_grand_aire = 0
-        x2 , y2 , l2 , h2 = None
+        coordoné = []
         for c in self.contours:
             x, y, l, h = cv2.boundingRect(c)
             air_rect = l * h
             if(air_rect > plus_grand_aire):
                 plus_grand_aire = air_rect
-                x2 = x
-                y2 = y 
-                l2 = l
-                h2 = h  
+                coordoné.clear()
+                coordoné.append(x)
+                coordoné.append(y)
+                coordoné.append(l)
+                coordoné.append(h)
 
-        self._draw_rectangle(x2,y2,l2,h2)   
+
+        self._draw_rectangle(coordoné[0] , coordoné[1], coordoné[2], coordoné[3] )   
             
         self._draw_contour_()
         
