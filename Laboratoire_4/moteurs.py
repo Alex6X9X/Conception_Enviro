@@ -3,6 +3,7 @@
 #Dernier changement le 22 septembre 2022
 
 import gpiozero
+import time
 
 PORT_IN1 = 6
 PORT_IN2 = 5
@@ -47,6 +48,19 @@ class Moteurs:
         self.IN4.on()
         self.ENA.value = 0.4
         self.ENB.value = 0.2
+        
+    def correction(self, dir, wait=0.1):
+        if (dir == "gauche"):
+            self.IN2.on()
+            self.IN3.on()
+            self.ENA.value = 0.38
+            self.ENB.value = 0.38
+        elif (dir == "droite"):
+            self.IN1.on()
+            self.IN4.on()
+            self.ENA.value = 0.38
+            self.ENB.value = 0.38
+        time.sleep(wait)
         
     def reculer(self):
         self.arreter()

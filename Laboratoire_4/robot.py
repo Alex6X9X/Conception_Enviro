@@ -12,9 +12,9 @@ class Robot:
     def DeterminerMouvement(self):
         mouvement = self.camera._determiner_position_()
         if(mouvement == "right"):
-            self.moteurs.avancer_droite()
+            self.moteurs.correction("droite")
         elif(mouvement == "left"):
-            self.moteurs.avancer_gauche()
+            self.moteurs.correction("gauche")
         elif(mouvement == "avancer"):
             self.Avancer()
         else:
