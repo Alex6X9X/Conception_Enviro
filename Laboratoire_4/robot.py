@@ -17,7 +17,7 @@ class Robot:
             self.moteurs.avancer_gauche()
         elif(mouvement == "avancer"):
             self.Avancer()
-        else:
+        elif(mouvement == "stop"):
             self.Freiner()
     
 

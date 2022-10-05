@@ -38,16 +38,19 @@ class Moteurs:
             self.avancer_droite()
     
     def avancer_gauche(self):
+        self.arreter()
         self.IN2.on()
         self.IN3.on()
         self.ENA.value = 0.2
         self.ENB.value = 0.4
     
     def avancer_droite(self):
+        self.arreter()
         self.IN1.on()
         self.IN4.on()
         self.ENA.value = 0.4
         self.ENB.value = 0.2
+        
         
     def correction(self, dir, wait=0.1):
         if (dir == "gauche"):
