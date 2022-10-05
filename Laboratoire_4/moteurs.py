@@ -39,7 +39,7 @@ class Moteurs:
     def avancer_gauche(self):
         self.IN2.on()
         self.IN3.on()
-        self.ENA.value = 0.3
+        self.ENA.value = 0.25
         self.ENB.value = 0.4
     
     def avancer_droite(self):
