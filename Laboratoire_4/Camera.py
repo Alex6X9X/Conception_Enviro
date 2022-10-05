@@ -45,7 +45,7 @@ class Camera:
         self._contour_()
         return self.image
     def _determiner_position_(self):
-        print(self.aire_balle)
+        
         
         if(self.aire_balle != None and  self.aire_balle < MAX_AIRE_BALLE and self.aire_balle > MIN_AIRE_BALLE):
             
