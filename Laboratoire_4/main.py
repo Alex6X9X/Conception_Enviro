@@ -10,6 +10,7 @@ while True:
     vcap._read_()
     cv2.imshow("Image disc", vcap.image)
     robot.DeterminerMouvement()
+    
     choix = cv2.waitKey(125)
     if  choix == ord('q'):
         break    
