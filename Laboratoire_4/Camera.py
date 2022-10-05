@@ -64,6 +64,8 @@ class Camera:
         self.contours, _ = cv2.findContours(self.image, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
         plus_grand_aire = 0
         coordoné = []
+        if(len(self.contours) == 0):
+            self.aire_balle =0
         for c in self.contours:
             x, y, l, h = cv2.boundingRect(c)
             air_rect = l * h
