@@ -1,3 +1,4 @@
+from webbrowser import MacOSX
 import cv2
 import numpy as np
 
@@ -12,6 +13,13 @@ VAL_MAX = 255
 DELTA = 10
 EPAISSEUR = 2
 
+MIN_CENTRE = 140
+MAX_CENTRE = 180
+
+MIN_AIRE_BALLE = 10
+
+MAX_AIRE_BALLE = 60
+
 class Camera:
     
     def __init__(self):
@@ -23,6 +31,9 @@ class Camera:
         self.vcap.set(cv2.CAP_PROP_FRAME_WIDTH, WIDTH)
         self.vcap.set(cv2.CAP_PROP_FRAME_HEIGHT, HEIGHT)
         self.contours = None
+        self.aire_balle = None
+        self.x_balle = None
+        self.y_balle = None
         
     def _read_(self):
         self.ok , self.image = self.vcap.read()
@@ -30,8 +41,23 @@ class Camera:
         teinte_min = np.array([TEINTE - DELTA, SAT_MIN, VAL_MIN])
         teinte_max = np.array([TEINTE + DELTA, SAT_MAX, VAL_MAX])
         self.image = cv2.inRange(self.image, teinte_min, teinte_max)
+        
         self._contour_()
         return self.image
+    def _determiner_position_(self):
+        if(self.aire_balle < MAX_AIRE_BALLE and self.aire_balle > MIN_AIRE_BALLE):
+            
+            if(self.x_balle < MIN_CENTRE):
+                return "left"
+            elif(self.x_balle > MAX_CENTRE):
+                return "right"
+            else:
+                return "avancer"
+        else:
+            return "stop"
+       
+        
+
     def _contour_(self):
         self.contours, _ = cv2.findContours(self.image, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
         plus_grand_aire = 0
@@ -41,6 +67,9 @@ class Camera:
             air_rect = l * h
             if(air_rect > plus_grand_aire):
                 plus_grand_aire = air_rect
+                self.x_balle = x + l/2
+                self.y_balle = y + h/2
+                self.aire_balle = plus_grand_aire
                 coordoné.clear()
                 coordoné.append(x)
                 coordoné.append(y)

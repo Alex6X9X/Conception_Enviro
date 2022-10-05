@@ -2,13 +2,28 @@
 #15 septembre 2022
 #Dernier changement le 22 septembre 2022
 
+from email.policy import default
 from moteurs import Moteurs
 
 class Robot:
-    def __init__(self):
+    def __init__(self , camera):
         self.moteurs = Moteurs()
-        
-        
+        self.camera = camera
+    def DeterminerMouvement(self):
+        mouvement = self.camera._determiner_position_()
+        match mouvement:
+            case "right":
+                self.moteurs.avancer_droite()
+                
+            case "left":
+                self.moteurs.avancer_gauche()
+            case "avancer":
+                self.Avancer()
+            case _:
+                self.Freiner()
+            
+
+
     def Avancer(self, dir = None):
         self.moteurs.avancer(dir)
         
