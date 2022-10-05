@@ -41,15 +41,15 @@ class Moteurs:
         self.arreter()
         self.IN2.on()
         self.IN3.on()
-        self.ENA.value = 0.2
-        self.ENB.value = 0.4
+        self.ENA.value = 0.3
+        self.ENB.value = 0.5
     
     def avancer_droite(self):
         self.arreter()
         self.IN1.on()
         self.IN4.on()
-        self.ENA.value = 0.4
-        self.ENB.value = 0.2
+        self.ENA.value = 0.5
+        self.ENB.value = 0.3
         
         
     def correction(self, dir, wait=0.1):
