@@ -2,7 +2,6 @@
 #15 septembre 2022
 #Dernier changement le 22 septembre 2022
 
-from email.policy import default
 from moteurs import Moteurs
 
 class Robot:
