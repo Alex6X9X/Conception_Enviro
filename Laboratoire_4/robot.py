@@ -11,18 +11,15 @@ class Robot:
         self.camera = camera
     def DeterminerMouvement(self):
         mouvement = self.camera._determiner_position_()
-        match mouvement:
-            case "right":
-                self.moteurs.avancer_droite()
-                
-            case "left":
-                self.moteurs.avancer_gauche()
-            case "avancer":
-                self.Avancer()
-            case _:
-                self.Freiner()
-            
-
+        if(mouvement == "right"):
+            self.moteurs.avancer_droite()
+        elif(mouvement == "left"):
+            self.moteurs.avancer_gauche()
+        elif(mouvement == "avancer"):
+            self.Avancer()
+        else:
+            self.Freiner()
+    
 
     def Avancer(self, dir = None):
         self.moteurs.avancer(dir)
