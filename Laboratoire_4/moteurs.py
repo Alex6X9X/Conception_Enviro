@@ -39,14 +39,14 @@ class Moteurs:
     def avancer_gauche(self):
         self.IN2.on()
         self.IN3.on()
-        self.ENA.value = 0.25
-        self.ENB.value = 0.4
+        self.ENA.value = 0.23
+        self.ENB.value = 0.33
     
     def avancer_droite(self):
         self.IN1.on()
         self.IN4.on()
-        self.ENA.value = 0.4
-        self.ENB.value = 0.3
+        self.ENA.value = 0.33
+        self.ENB.value = 0.23
         
     def reculer(self):
         self.arreter()
