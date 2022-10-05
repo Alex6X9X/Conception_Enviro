@@ -30,8 +30,8 @@ class Moteurs:
         self.IN3.on()
     
         if(dir == None):
-            self.ENA.value = 0.35
-            self.ENB.value = 0.35
+            self.ENA.value = 0.3
+            self.ENB.value = 0.3
         elif(dir == "g"):
             self.avancer_gauche()
         elif(dir == "d"):
@@ -40,14 +40,14 @@ class Moteurs:
     def avancer_gauche(self):
         self.IN2.on()
         self.IN3.on()
-        self.ENA.value = 0.3
-        self.ENB.value = 0.45
+        self.ENA.value = 0.25
+        self.ENB.value = 0.35
     
     def avancer_droite(self):
         self.IN1.on()
         self.IN4.on()
-        self.ENA.value = 0.45
-        self.ENB.value = 0.3
+        self.ENA.value = 0.35
+        self.ENB.value = 0.25
         
         
         
