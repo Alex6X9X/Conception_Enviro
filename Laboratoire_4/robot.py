@@ -8,6 +8,7 @@ class Robot:
     def __init__(self , camera):
         self.moteurs = Moteurs()
         self.camera = camera
+        
     def DeterminerMouvement(self):
         mouvement = self.camera._determiner_position_()
         if(mouvement == "right"):

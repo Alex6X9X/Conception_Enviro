@@ -16,4 +16,4 @@ while True:
 
 
 vcap.release()
-cv2.destroyAllWindows()
+#cv2.destroyAllWindows()

@@ -31,7 +31,7 @@ class Camera:
         self.vcap.set(cv2.CAP_PROP_FRAME_WIDTH, WIDTH)
         self.vcap.set(cv2.CAP_PROP_FRAME_HEIGHT, HEIGHT)
         self.contours = None
-        self.aire_balle = None
+        self.aire_balle = 0
         self.x_balle = None
         self.y_balle = None
         
@@ -43,11 +43,10 @@ class Camera:
         self.image = cv2.inRange(self.image, teinte_min, teinte_max)
         
         self._contour_()
-        return self.image
+        #return self.image
     def _determiner_position_(self):
         
-        
-        if(self.aire_balle != None and  self.aire_balle < MAX_AIRE_BALLE and self.aire_balle > MIN_AIRE_BALLE):
+        if(self.aire_balle < MAX_AIRE_BALLE and self.aire_balle > MIN_AIRE_BALLE):
             
             if(self.x_balle < MIN_CENTRE):
                 return "left"
@@ -64,8 +63,8 @@ class Camera:
         self.contours, _ = cv2.findContours(self.image, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
         plus_grand_aire = 0
         coordoné = []
-        if(len(self.contours) == 0):
-            self.aire_balle =0
+        #if(len(self.contours) == 0):
+            #self.aire_balle = 0
         for c in self.contours:
             x, y, l, h = cv2.boundingRect(c)
             air_rect = l * h
@@ -73,7 +72,7 @@ class Camera:
                 plus_grand_aire = air_rect
                 self.x_balle = x + l/2
                 self.y_balle = y + h/2
-                self.aire_balle = plus_grand_aire
+                self.aire_balle = air_rect
                 coordoné.clear()
                 coordoné.append(x)
                 coordoné.append(y)
