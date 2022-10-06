@@ -12,9 +12,9 @@ class Robot:
     def DeterminerMouvement(self):
         mouvement = self.camera._determiner_position_()
         if(mouvement == 'd'):
-            self.Tourner_90('d')
+            self.moteurs.tourner_90('d')
         elif(mouvement == 'g'):
-            self.Tourner_90('g')
+            self.moteurs.tourner_90('g')
         elif(mouvement == 'a'):
             self.Avancer()
         elif(mouvement == 's'):
