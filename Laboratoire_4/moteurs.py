@@ -72,8 +72,7 @@ class Moteurs:
         self.ENB.value = 1.0
             
     def tourner_90(self, dir):
-        self.arreter()
-            
+        
         if (dir == "g"):
             self.IN2.on()
             self.IN3.on()
@@ -84,6 +83,8 @@ class Moteurs:
             self.IN4.on()
             self.ENA.value = 0.4
             self.ENB.value = 0.4
+        time.sleep(0.1)
+        self.arreter()
 
     def arreter(self):
         self.ENA.off()
