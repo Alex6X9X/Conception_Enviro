@@ -11,13 +11,13 @@ class Robot:
         
     def DeterminerMouvement(self):
         mouvement = self.camera._determiner_position_()
-        if(mouvement == "d"):
+        if(mouvement == "droite"):
             self.moteurs.tourner_90("d")
-        elif(mouvement == "g"):
+        elif(mouvement == "gauche"):
             self.moteurs.tourner_90("g")
-        elif(mouvement == "a"):
+        elif(mouvement == "avancer"):
             self.Avancer()
-        elif(mouvement == "s"):
+        elif(mouvement == "stop"):
             self.Freiner()
     
 
