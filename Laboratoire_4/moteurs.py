@@ -40,14 +40,14 @@ class Moteurs:
     def avancer_gauche(self):
         self.IN2.on()
         self.IN3.on()
-        self.ENA.value = 0.33
+        self.ENA.value = 0.3
         self.ENB.value = 0.35
     
     def avancer_droite(self):
         self.IN1.on()
         self.IN4.on()
         self.ENA.value = 0.35
-        self.ENB.value = 0.33
+        self.ENB.value = 0.3
         
         
         
@@ -72,18 +72,18 @@ class Moteurs:
         self.ENB.value = 1.0
             
     def tourner_90(self, dir):
-        self.arreter()
+        #self.arreter()
             
         if (dir == "g"):
             self.IN2.on()
             self.IN3.on()
-            self.ENA.value = 0.5
-            self.ENB.value = 0.5
+            self.ENA.value = 0.4
+            self.ENB.value = 0.4
         elif (dir == "d"):
             self.IN1.on()
             self.IN4.on()
-            self.ENA.value = 0.5
-            self.ENB.value = 0.5
+            self.ENA.value = 0.4
+            self.ENB.value = 0.4
 
     def arreter(self):
         self.ENA.off()

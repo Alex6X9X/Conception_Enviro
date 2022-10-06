@@ -49,13 +49,13 @@ class Camera:
         if(self.aire_balle < MAX_AIRE_BALLE and self.aire_balle > MIN_AIRE_BALLE):
             
             if(self.x_balle < MIN_CENTRE):
-                return "left"
+                return 'g'
             elif(self.x_balle > MAX_CENTRE):
-                return "right"
+                return 'r'
             else:
-                return "avancer"
+                return 'a'
         else:
-            return "stop"
+            return 's'
        
         
 
