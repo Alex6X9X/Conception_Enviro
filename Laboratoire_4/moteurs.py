@@ -83,7 +83,6 @@ class Moteurs:
             self.IN4.on()
             self.ENA.value = 0.4
             self.ENB.value = 0.4
-        time.sleep(0.2)
 
     def arreter(self):
         self.ENA.off()
