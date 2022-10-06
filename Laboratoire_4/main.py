@@ -11,8 +11,8 @@ while True:
     #cv2.imshow("Image disc", vcap.image)
     robot.DeterminerMouvement()
     choix = cv2.waitKey(125)
-    input('Appuyez sur une touche pour quitter le programme...')
-            
+    if  choix == ord('q'):
+        break    
 
 
 vcap.release()
