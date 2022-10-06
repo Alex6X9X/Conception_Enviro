@@ -43,7 +43,7 @@ class Camera:
         self.image = cv2.inRange(self.image, teinte_min, teinte_max)
         
         self._contour_()
-        #return self.image
+        return self.image
     def _determiner_position_(self):
         
         if(self.aire_balle < MAX_AIRE_BALLE and self.aire_balle > MIN_AIRE_BALLE):
