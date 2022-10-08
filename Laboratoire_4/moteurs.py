@@ -71,7 +71,7 @@ class Moteurs:
         self.ENA.value = 1.0
         self.ENB.value = 1.0
             
-    def tourner_90(self, dir):
+    def tourner(self, dir):
         
         if (dir == "g"):
             self.IN2.on()
