@@ -13,23 +13,17 @@ class Robot:
         mouvement = self.camera._determiner_position_()
         
         if(mouvement == "droite"):
-            self.Avancer_Droite
+            self.moteurs.avancer("d")
         elif(mouvement == "gauche"):
-            self.Avancer_Gauche
+            self.moteurs.avancer("g")
         elif(mouvement == "avancer"):
-            self.Avancer()
+            self.moteurs.avancer()
         else:
-            self.Freiner()
+            self.moteurs.freiner()
     
 
     def Avancer(self, dir = None):
         self.moteurs.avancer(dir)
-        
-    def Avancer_Droite(self):
-        self.moteurs.avancer_droite
-        
-    def Avancer_Gauche(self):
-        self.moteurs.avancer_gauche
         
     def Reculer(self):
         self.moteurs.reculer()

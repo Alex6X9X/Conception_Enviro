@@ -16,10 +16,10 @@ arreter = False
 while not arreter:    
     vcap._read_()
     robot.DeterminerMouvement()
-    choix = cv2.waitKey(100)
+    choix = cv2.waitKey(125)
     if  choix == ord('q'):
         arreter = True   
 
 
 vcap._release_()
-console.detruire_fenetres()
+#console.detruire_fenetres()
