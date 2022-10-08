@@ -59,6 +59,7 @@ class Camera:
                 return "droite"
             else:
                 return "avancer"
+            
         else:
             return "stop"
        
