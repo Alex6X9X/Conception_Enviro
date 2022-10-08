@@ -12,10 +12,10 @@ console = Console()
 arreter = False
 
 #np.zeros((150,150,3),np.uint8)
+console.afficher_image("Labo 4", np.zeros((150,150,3),np.uint8))
 
 while not arreter:    
     vcap._read_()
-    console.afficher_image("Labo 4", np.zeros((150,150,3),np.uint8))
     robot.DeterminerMouvement()
     choix = cv2.waitKey(125)
     if  choix == ord('q'):
