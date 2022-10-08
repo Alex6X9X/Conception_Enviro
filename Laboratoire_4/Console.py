@@ -40,3 +40,6 @@ class Console:
         
     def afficher_image(self, titre, image):
         cv2.imshow(titre, image)
+    
+    def detruire_fenetres(self):
+        cv2.destroyAllWindows()
