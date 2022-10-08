@@ -35,7 +35,7 @@ class Camera:
         self.contours = None
         self.aire_balle = 0
         self.x_balle = None
-        self.y_balle = None
+        #self.y_balle = None
         
     def _read_(self):
         self.ok , self.image = self.vcap.read()
@@ -45,7 +45,8 @@ class Camera:
         self.image = cv2.inRange(self.image, teinte_min, teinte_max)
         
         self._contour_()
-        return self.image
+        #return self.image
+        
     def _determiner_position_(self):
         
         if(self.aire_balle < MAX_AIRE_BALLE and self.aire_balle > MIN_AIRE_BALLE):
@@ -75,7 +76,7 @@ class Camera:
             if(air_rect > plus_grand_aire):
                 plus_grand_aire = self.calculer_aire_balle(l/2)
                 self.x_balle = x + l/2
-                self.y_balle = y + h/2
+                #self.y_balle = y + h/2
                 self.aire_balle = plus_grand_aire
                 #print(self.aire_balle)
                 coordoné.clear()
