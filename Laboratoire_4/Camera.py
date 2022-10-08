@@ -78,7 +78,7 @@ class Camera:
                 plus_grand_aire = aire_cercle
                 self.x_balle = x + l/2
                 #self.y_balle = y + h/2
-                self.aire_balle = plus_grand_aire
+                self.aire_balle = aire_cercle
                 #print(self.aire_balle)
                 coordoné.clear()
                 coordoné.append(x)
