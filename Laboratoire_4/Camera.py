@@ -43,7 +43,7 @@ class Camera:
         self.image = cv2.inRange(self.image, teinte_min, teinte_max)
         
         self._contour_()
-        return self.image
+        #return self.image
     
     def _release_(self):
         self.vcap.release()
@@ -73,13 +73,10 @@ class Camera:
 
         for c in self.contours:
             x, y, l, h = cv2.boundingRect(c)
-            aire_cercle = self.calculer_aire_balle(l/2)
-            if(aire_cercle > plus_grand_aire):
-                plus_grand_aire = aire_cercle
+            self.aire_balle = self.calculer_aire_balle(l/2)
+            if(self.aire_balle > plus_grand_aire):
+                plus_grand_aire = self.aire_balle
                 self.x_balle = x + l/2
-                #self.y_balle = y + h/2
-                self.aire_balle = aire_cercle
-                #print(self.aire_balle)
                 coordoné.clear()
                 coordoné.append(x)
                 coordoné.append(y)
