@@ -44,6 +44,10 @@ class Camera:
         
         self._contour_()
         #return self.image
+    
+    def _release_(self):
+        self.vcap.release()
+        
         
     def _determiner_position_(self):
         
