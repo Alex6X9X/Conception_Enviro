@@ -17,7 +17,7 @@ class Robot:
             self.moteurs.tourner("g")
         elif(mouvement == "avancer"):
             self.Avancer()
-        elif(mouvement == "stop"):
+        else:
             self.Freiner()
     
 
