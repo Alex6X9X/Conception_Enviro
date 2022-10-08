@@ -51,7 +51,7 @@ class Camera:
         
     def _determiner_position_(self):
         
-        if(self.aire_balle < MAX_AIRE_BALLE and self.aire_balle > MIN_AIRE_BALLE):
+        if(self.aire_balle > MIN_AIRE_BALLE and self.aire_balle < MAX_AIRE_BALLE):
             
             if(self.x_balle < MIN_CENTRE):
                 return "gauche"
