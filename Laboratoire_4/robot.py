@@ -19,8 +19,7 @@ class Robot:
         elif(mouvement == "avancer"):
             self.Avancer()
         else:
-            self.moteurs.freiner()
-    
+            self.Freiner()
 
     def Avancer(self, dir = None):
         self.moteurs.avancer(dir)

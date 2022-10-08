@@ -15,12 +15,11 @@ arreter = False
 
 while not arreter:    
     vcap._read_()
-    console.afficher_image("Labo 4", vcap.image)
+    console.afficher_image("Labo 4", np.zeros((150,150,3),np.uint8))
     robot.DeterminerMouvement()
     choix = cv2.waitKey(125)
     if  choix == ord('q'):
         arreter = True   
-
 
 vcap._release_()
 console.detruire_fenetres()
