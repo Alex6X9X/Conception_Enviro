@@ -43,7 +43,7 @@ class Camera:
         self.image = cv2.inRange(self.image, teinte_min, teinte_max)
         
         self._contour_()
-        return self.image
+        #return self.image
     
     def _release_(self):
         self.vcap.release()
