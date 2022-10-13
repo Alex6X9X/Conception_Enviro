@@ -15,8 +15,6 @@ VAL_MAX = 255
 DELTA = 10
 EPAISSEUR = 2
 
-PI = 3.141592653589793
-
 MIN_CENTRE = 100
 MAX_CENTRE = 200
 
@@ -45,7 +43,7 @@ class Camera:
         self.image = cv2.inRange(self.image, teinte_min, teinte_max)
         
         self._contour_()
-        #return self.image
+        return self.image
     
     def _release_(self):
         self.vcap.release()
@@ -64,10 +62,6 @@ class Camera:
             
         else:
             return "stop"
-       
-    def calculer_aire_balle(self, rayon):
-        #Formule pour calculer l'aire d'un cercle
-        return 2 * PI * rayon
 
     def _contour_(self):
         self.contours, _ = cv2.findContours(self.image, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
@@ -76,7 +70,8 @@ class Camera:
 
         for c in self.contours:
             x, y, l, h = cv2.boundingRect(c)
-            self.aire_balle = self.calculer_aire_balle(l/2)
+            self.aire_balle = l * h
+            print(self.aire_balle)
             if(self.aire_balle > plus_grand_aire):
                 plus_grand_aire = self.aire_balle
                 self.x_balle = x + l/2
