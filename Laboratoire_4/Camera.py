@@ -18,9 +18,9 @@ EPAISSEUR = 2
 MIN_CENTRE = 100
 MAX_CENTRE = 200
 
-MIN_AIRE_BALLE = 200
+MIN_AIRE_BALLE = 4000
 
-MAX_AIRE_BALLE = 680
+MAX_AIRE_BALLE = 40000
 
 class Camera:
     
@@ -71,7 +71,6 @@ class Camera:
         for c in self.contours:
             x, y, l, h = cv2.boundingRect(c)
             self.aire_balle = l * h
-            print(self.aire_balle)
             if(self.aire_balle > plus_grand_aire):
                 plus_grand_aire = self.aire_balle
                 self.x_balle = x + l/2
