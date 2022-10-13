@@ -75,6 +75,7 @@ class Camera:
         for c in self.contours:
             x, y, l, h = cv2.boundingRect(c)
             self.aire_balle = self.calculer_aire_balle(l/2)
+            print(self.aire_balle)
             if(self.aire_balle > plus_grand_aire):
                 plus_grand_aire = self.aire_balle
                 self.x_balle = x + l/2
