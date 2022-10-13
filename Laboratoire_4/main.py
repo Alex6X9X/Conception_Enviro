@@ -12,7 +12,7 @@ console = Console()
 arreter = False
 
 #np.zeros((150,150,3),np.uint8)
-console.afficher_image("Labo 4", np.zeros((175,175,3),np.uint8))
+#console.afficher_image("Labo 4", np.zeros((175,175,3),np.uint8))
 
 while not arreter:    
     vcap._read_()
