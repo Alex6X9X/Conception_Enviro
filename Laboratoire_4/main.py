@@ -1,3 +1,6 @@
+#Auteurs: Alexandre Carle et Louis-philippe Rousseau
+#Dernier changement 13 octobre 2022
+
 import cv2
 import numpy as np
 from Camera import Camera

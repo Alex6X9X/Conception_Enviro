@@ -1,6 +1,5 @@
 #Alexandre Carle et Louis-philippe Rousseau
-#15 septembre 2022
-#Dernier changement le 22 septembre 2022
+#Dernier changement le 13 octobre 2022
 
 from moteurs import Moteurs
 

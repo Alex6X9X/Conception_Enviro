@@ -1,9 +1,7 @@
-#Alexandre Carle et Louis-philippe Rousseau
-#15 septembre 2022
-#Dernier changement le 22 septembre 2022
+#Auteurs: Alexandre Carle et Louis-philippe Rousseau
+#Dernier changement 13 octobre 2022
 
 import gpiozero
-import time
 
 PORT_IN1 = 6
 PORT_IN2 = 5
