@@ -15,7 +15,7 @@ arreter = False
 
 while not arreter:    
     vcap._read_()
-    console.afficher_image("Labo 4", np.zeros((175,175,3),np.uint8))
+    console.afficher_image("Labo 4", vcap.image)
     robot.DeterminerMouvement()
     choix = cv2.waitKey(125)
     if  choix == ord('q'):
