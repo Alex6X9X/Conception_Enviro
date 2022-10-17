@@ -1,5 +1,4 @@
 
-from Laboratoire_5.Console import Console
 import cv2
 import numpy as np
 from Console import Console
