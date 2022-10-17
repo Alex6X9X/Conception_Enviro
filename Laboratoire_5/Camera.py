@@ -115,19 +115,21 @@ class Camera:
         cv2.imwrite("image_modele.bmp", modele)
     
     def _trouver_image_modele_(self):
-        modele_minimise = cv2.imread("image_modele_version2.bmp",0)
-        mask = cv2.imread("background.png",0)
-        w, h = modele_minimise.shape[::-1]
+        modele_minimise = cv2.imread("image_modele_version2.bmp")
+        ##mask = cv2.imread("background.png",0)
+        ##w, h = modele_minimise.shape[::-1]
         
         
         res = cv2.matchTemplate(self.image, modele_minimise, cv2.TM_CCOEFF_NORMED)
         self._read_()
         ##image = self._def_ROI_(image)
         self.min_val, self.max_val, self.min_loc, self.max_loc = cv2.minMaxLoc(res)
-        top_left = self.max_loc
-        bottom_right = (top_left[0] + w, top_left[1] + h)
+        
+        ##top_left = self.max_loc
+        
+        ##bottom_right = (top_left[0] + w, top_left[1] + h)
 
-        cv2.rectangle(self.image,top_left, bottom_right, 255, 2)
+        ##cv2.rectangle(self.image,top_left, bottom_right, 255, 2)
         self.console.afficher_image("res" , self.image)
 
     def _def_ROI_(img):
