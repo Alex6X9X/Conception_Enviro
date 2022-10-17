@@ -9,5 +9,5 @@ vcap = Camera()
 vcap._creation_modele_()
 
 
-vcap.release()
+vcap.vcap.release()
 cv2.destroyAllWindows()
