@@ -99,7 +99,7 @@ class Camera:
         while True:    
             img =  self._read_()
             
-            console.afficher_image("image" , img )
+            console.afficher_image("image" , img)
             choix = cv2.waitKey(125)
             time.sleep(0.01)
             if  choix == ord('q'):
