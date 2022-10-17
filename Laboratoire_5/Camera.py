@@ -103,7 +103,7 @@ class Camera:
             if  choix == ord('q'):
                 break   
 
-        ret_sts , image = self._read_()
+        image = self._read_()
         modele = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         cv2.imwrite("image_modele.bmp", modele)
     
