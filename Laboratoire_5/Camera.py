@@ -120,7 +120,7 @@ class Camera:
         w, h = modele_minimise.shape[::-1]
         
         
-        res = cv2.matchTemplate(self.image, modele_minimise, cv2.TM_CCOEFF_NORMED, None, mask)
+        res = cv2.matchTemplate(self.image, modele_minimise, cv2.TM_CCOEFF_NORMED)
         self._read_()
         ##image = self._def_ROI_(image)
         self.min_val, self.max_val, self.min_loc, self.max_loc = cv2.minMaxLoc(res)
