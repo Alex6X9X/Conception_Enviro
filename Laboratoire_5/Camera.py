@@ -3,7 +3,7 @@ import time
 import cv2
 import numpy as np
 from Console import Console
-from matplotlib import pyplot as plt
+
 WIDTH = 320
 HEIGHT = 240
 PORT = 0
@@ -41,6 +41,7 @@ class Camera:
         self.max_val = None
         self.min_loc = None
         self.max_loc = None
+        self.console = Console()
         
     def _read_(self):
         self.ok , self.image = self.vcap.read()
@@ -99,12 +100,11 @@ class Camera:
     def _draw_rectangle(self,x,y,l,h):
         cv2.rectangle(self.image, (x,y), (x+l,y+h), (255, 165, 0), EPAISSEUR) 
     def _creation_modele_(self):
-        console = Console()
-
+       
         while True:    
             self._read_()
             
-            console.afficher_image("image" , self.image)
+            self.console.afficher_image("image" , self.image)
             choix = cv2.waitKey(125)
             time.sleep(0.01)
             if  choix == ord('q'):
@@ -126,12 +126,7 @@ class Camera:
         bottom_right = (top_left[0] + w, top_left[1] + h)
 
         cv2.rectangle(self.image,top_left, bottom_right, 255, 2)
-
-        plt.subplot(121),plt.imshow(res,cmap = 'gray')
-        plt.title('Matching Result'), plt.xticks([]), plt.yticks([])
-        plt.subplot(122),plt.imshow(self.image,cmap = 'gray')
-        plt.title('Detected Point'), plt.xticks([]), plt.yticks([])
-        plt.show()
+        self.console.afficher_image("res" , res)
 
     def _def_ROI_(img):
         return img[50:100,50:100]
