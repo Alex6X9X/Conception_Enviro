@@ -1,6 +1,5 @@
 #Alexandre Carle et Louis-philippe Rousseau
-#15 septembre 2022
-#Dernier changement le 22 septembre 2022
+#Dernier changement le 13 octobre 2022
 
 from moteurs import Moteurs
 
@@ -8,27 +7,27 @@ class Robot:
     def __init__(self , camera):
         self.moteurs = Moteurs()
         self.camera = camera
+        
     def DeterminerMouvement(self):
         mouvement = self.camera._determiner_position_()
-        if(mouvement == "right"):
-            self.moteurs.avancer_droite()
-        elif(mouvement == "left"):
-            self.moteurs.avancer_gauche()
+        
+        if(mouvement == "droite"):
+            self.Avancer("d")
+        elif(mouvement == "gauche"):
+            self.Avancer("g")
         elif(mouvement == "avancer"):
             self.Avancer()
-        elif(mouvement == "stop"):
+        else:
             self.Freiner()
-    
 
     def Avancer(self, dir = None):
         self.moteurs.avancer(dir)
         
-        
     def Reculer(self):
         self.moteurs.reculer()
             
-    def Tourner_90(self, dir):
-        self.moteurs.tourner_90(dir)
+    def Tourner(self, dir):
+        self.moteurs.tourner(dir)
 
     def Arreter(self):
         self.moteurs.arreter()

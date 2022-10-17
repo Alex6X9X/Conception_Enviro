@@ -1,9 +1,7 @@
-#Alexandre Carle et Louis-philippe Rousseau
-#15 septembre 2022
-#Dernier changement le 22 septembre 2022
+#Auteurs: Alexandre Carle et Louis-philippe Rousseau
+#Dernier changement 13 octobre 2022
 
 import gpiozero
-import time
 
 PORT_IN1 = 6
 PORT_IN2 = 5
@@ -30,8 +28,8 @@ class Moteurs:
         self.IN3.on()
     
         if(dir == None):
-            self.ENA.value = 0.3
-            self.ENB.value = 0.3
+            self.ENA.value = 0.25
+            self.ENB.value = 0.25
         elif(dir == "g"):
             self.avancer_gauche()
         elif(dir == "d"):
@@ -40,29 +38,14 @@ class Moteurs:
     def avancer_gauche(self):
         self.IN2.on()
         self.IN3.on()
-        self.ENA.value = 0.25
-        self.ENB.value = 0.35
+        self.ENA.value = 0.4
+        self.ENB.value = 0.45
     
     def avancer_droite(self):
         self.IN1.on()
         self.IN4.on()
-        self.ENA.value = 0.35
-        self.ENB.value = 0.25
-        
-        
-        
-    def correction(self, dir, wait=0.1):
-        if (dir == "gauche"):
-            self.IN2.on()
-            self.IN3.on()
-            self.ENA.value = 0.38
-            self.ENB.value = 0.38
-        elif (dir == "droite"):
-            self.IN1.on()
-            self.IN4.on()
-            self.ENA.value = 0.38
-            self.ENB.value = 0.38
-        time.sleep(wait)
+        self.ENA.value = 0.45
+        self.ENB.value = 0.4
         
     def reculer(self):
         self.arreter()
@@ -71,19 +54,18 @@ class Moteurs:
         self.ENA.value = 1.0
         self.ENB.value = 1.0
             
-    def tourner_90(self, dir):
-        self.arreter()
-            
+    def tourner(self, dir):
+        
         if (dir == "g"):
             self.IN2.on()
             self.IN3.on()
-            self.ENA.value = 0.5
-            self.ENB.value = 0.5
+            self.ENA.value = 0.4
+            self.ENB.value = 0.4
         elif (dir == "d"):
             self.IN1.on()
             self.IN4.on()
-            self.ENA.value = 0.5
-            self.ENB.value = 0.5
+            self.ENA.value = 0.4
+            self.ENB.value = 0.4
 
     def arreter(self):
         self.ENA.off()
