@@ -35,7 +35,11 @@ class Camera:
         self.aire_balle = None
         self.x_balle = None
         self.y_balle = None
-        self.modele = None
+        self.image = None
+        self.min_val = None
+        self.max_val = None
+        self.min_loc = None
+        self.max_loc = None
         
     def _read_(self):
         self.ok , self.image = self.vcap.read()
@@ -45,7 +49,7 @@ class Camera:
         ##self.image = cv2.inRange(self.image, teinte_min, teinte_max)
         
         ##self._contour_()
-        return self.image
+        #return self.image
     def _determiner_position_(self):
         
         
@@ -97,20 +101,22 @@ class Camera:
         console = Console()
 
         while True:    
-            img =  self._read_()
+            self._read_()
             
-            console.afficher_image("image" , img)
+            console.afficher_image("image" , self.image)
             choix = cv2.waitKey(125)
             time.sleep(0.01)
             if  choix == ord('q'):
                 break   
 
-        image = self._read_()
-        modele = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        self._read_()
+        modele = cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
         cv2.imwrite("image_modele.bmp", modele)
     
-    def _trouver_image_modele_(self , modele):
-        pass
+    def _trouver_image_modele_(self):
+        modele_minimise = cv2.imread("image_modele_version2")
+        res = cv2.matchTemplate(self.image, modele_minimise, cv2.TM_CCOEFF_NORMED)
+        self.min_val, self.max_val, self.min_loc, self.max_loc = cv2.minMaxLoc(res)
 
 
 
