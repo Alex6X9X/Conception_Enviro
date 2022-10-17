@@ -115,9 +115,13 @@ class Camera:
         cv2.imwrite("image_modele.bmp", modele)
     
     def _trouver_image_modele_(self):
-        modele_minimise = cv2.imread("image_modele_version2.bmp" , 0)
+        modele_minimise = cv2.imread("image_modele_version2.bmp")
         mask = cv2.imread("background.png")
         w, h = modele_minimise.shape[::-1]
+        print(mask.shape)
+        print(modele_minimise.shape)
+        
+        
         res = cv2.matchTemplate(self.image, modele_minimise, cv2.TM_CCOEFF_NORMED, None, mask)
         self._read_()
         ##image = self._def_ROI_(image)
