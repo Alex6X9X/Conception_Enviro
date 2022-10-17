@@ -1,4 +1,5 @@
 
+import time
 import cv2
 import numpy as np
 from Console import Console
@@ -100,6 +101,7 @@ class Camera:
             
             console.afficher_image("image" , img )
             choix = cv2.waitKey(125)
+            time.sleep(0.01)
             if  choix == ord('q'):
                 break   
 
