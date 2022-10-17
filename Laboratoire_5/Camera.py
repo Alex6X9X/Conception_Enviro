@@ -45,7 +45,7 @@ class Camera:
         
     def _read_(self):
         self.ok , self.image = self.vcap.read()
-        ##self.image =cv2.cvtColor(self.image, cv2.COLOR_BGR2HSV)
+        self.image =cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
         ##teinte_min = np.array([TEINTE - DELTA, SAT_MIN, VAL_MIN])
         ##teinte_max = np.array([TEINTE + DELTA, SAT_MAX, VAL_MAX])
         ##self.image = cv2.inRange(self.image, teinte_min, teinte_max)
