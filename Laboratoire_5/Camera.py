@@ -1,7 +1,8 @@
 
+from Laboratoire_5.Console import Console
 import cv2
 import numpy as np
-
+from Console import Console
 WIDTH = 320
 HEIGHT = 240
 PORT = 0
@@ -38,12 +39,12 @@ class Camera:
         
     def _read_(self):
         self.ok , self.image = self.vcap.read()
-        self.image =cv2.cvtColor(self.image, cv2.COLOR_BGR2HSV)
-        teinte_min = np.array([TEINTE - DELTA, SAT_MIN, VAL_MIN])
-        teinte_max = np.array([TEINTE + DELTA, SAT_MAX, VAL_MAX])
-        self.image = cv2.inRange(self.image, teinte_min, teinte_max)
+        ##self.image =cv2.cvtColor(self.image, cv2.COLOR_BGR2HSV)
+        ##teinte_min = np.array([TEINTE - DELTA, SAT_MIN, VAL_MIN])
+        ##teinte_max = np.array([TEINTE + DELTA, SAT_MAX, VAL_MAX])
+        ##self.image = cv2.inRange(self.image, teinte_min, teinte_max)
         
-        self._contour_()
+        ##self._contour_()
         return self.image
     def _determiner_position_(self):
         
@@ -93,9 +94,12 @@ class Camera:
     def _draw_rectangle(self,x,y,l,h):
         cv2.rectangle(self.image, (x,y), (x+l,y+h), (255, 165, 0), EPAISSEUR) 
     def _creation_modele_(self):
-        while True:    
-            self._read_()
+        console = Console()
 
+        while True:    
+            img =  self._read_()
+            
+            console.afficher_image("image" , img )
             choix = cv2.waitKey(125)
             if  choix == ord('q'):
                 break   
