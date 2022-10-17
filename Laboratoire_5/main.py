@@ -5,9 +5,9 @@ from Camera import Camera
 
 vcap = Camera()
 
-while True:    
-   vcap._creation_modele_()
-   break
+ 
+vcap._creation_modele_()
+
 
 vcap.release()
 cv2.destroyAllWindows()
