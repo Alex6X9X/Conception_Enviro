@@ -115,7 +115,8 @@ class Camera:
     
     def _trouver_image_modele_(self):
         modele_minimise = cv2.imread("image_modele_version2")
-        res = cv2.matchTemplate(self.image, modele_minimise, cv2.TM_CCOEFF_NORMED)
+        mask = cv2.imread("background.png")
+        res = cv2.matchTemplate(self.image, modele_minimise, cv2.TM_CCOEFF_NORMED, None, mask)
         self.min_val, self.max_val, self.min_loc, self.max_loc = cv2.minMaxLoc(res)
 
 

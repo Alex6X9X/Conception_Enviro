@@ -6,7 +6,8 @@ from Camera import Camera
 vcap = Camera()
 
  
-vcap._creation_modele_()
+#vcap._creation_modele_()
+vcap._trouver_image_modele_()
 
 
 vcap.vcap.release()
