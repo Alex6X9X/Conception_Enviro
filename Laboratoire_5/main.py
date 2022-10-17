@@ -6,12 +6,8 @@ from Camera import Camera
 vcap = Camera()
 
 while True:    
-    vcap._read_()
-
-    choix = cv2.waitKey(125)
-    if  choix == ord('q'):
-        break    
-
+   vcap._creation_modele_()
+   break
 
 vcap.release()
 cv2.destroyAllWindows()
