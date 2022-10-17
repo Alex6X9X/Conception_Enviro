@@ -94,13 +94,13 @@ class Camera:
         cv2.rectangle(self.image, (x,y), (x+l,y+h), (255, 165, 0), EPAISSEUR) 
     def _creation_modele_(self):
         while True:    
-            self.vcap._read_()
+            self._read_()
 
             choix = cv2.waitKey(125)
             if  choix == ord('q'):
                 break   
 
-        ret_sts , image = self.vcap._read_()
+        ret_sts , image = self._read_()
         modele = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         cv2.imwrite("image_modele.bmp", modele)
     
