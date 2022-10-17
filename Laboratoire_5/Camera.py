@@ -3,6 +3,7 @@ import time
 import cv2
 import numpy as np
 from Console import Console
+from matplotlib import pyplot as plt
 WIDTH = 320
 HEIGHT = 240
 PORT = 0
@@ -116,10 +117,21 @@ class Camera:
     def _trouver_image_modele_(self):
         modele_minimise = cv2.imread("image_modele_version2")
         mask = cv2.imread("background.png")
+        w, h = mask.shape[::-1]
         res = cv2.matchTemplate(self.image, modele_minimise, cv2.TM_CCOEFF_NORMED, None, mask)
         self._read_()
         ##image = self._def_ROI_(image)
         self.min_val, self.max_val, self.min_loc, self.max_loc = cv2.minMaxLoc(res)
+        top_left = self.max_loc
+        bottom_right = (top_left[0] + w, top_left[1] + h)
+
+        cv2.rectangle(self.image,top_left, bottom_right, 255, 2)
+
+        plt.subplot(121),plt.imshow(res,cmap = 'gray')
+        plt.title('Matching Result'), plt.xticks([]), plt.yticks([])
+        plt.subplot(122),plt.imshow(self.image,cmap = 'gray')
+        plt.title('Detected Point'), plt.xticks([]), plt.yticks([])
+        plt.show()
 
     def _def_ROI_(img):
         return img[50:100,50:100]
