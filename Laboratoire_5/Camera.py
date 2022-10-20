@@ -138,7 +138,7 @@ class Camera:
         (startX, startY) = self.max_loc
         endX = startX + modele_minimise.shape[1]
         endY = startY + modele_minimise.shape[0]
-        print(startX + " " +  endX + " " + startY + " "  + endY)
+        print(str(startX) + " " +  str(endX) + " " + str(startY) + " "  + str(endY))
         cv2.rectangle(self.image,(startX, startY), (endX, endY), 255, 2)
         self.console.afficher_image("res" , self.image)
 
