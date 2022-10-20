@@ -116,7 +116,7 @@ class Camera:
         cv2.imwrite("image_modele.bmp", modele)
     
     def _trouver_image_modele_(self , frame_ROI):
-        self.image = self._read_()
+        self._read_()
         modele_minimise = cv2.imread("image_modele_version2.bmp" , 0)
         mask = cv2.imread("background.png" , 0)
         
