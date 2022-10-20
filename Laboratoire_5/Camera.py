@@ -43,11 +43,7 @@ class Camera:
         self.min_loc = None
         self.max_loc = None
         self.console = Console()
-<<<<<<< HEAD
-
-=======
         
->>>>>>> 54fe3bda4859186737aa8219152f6177e3900409
     def _read_(self):
         self.ok , self.image = self.vcap.read()
        
