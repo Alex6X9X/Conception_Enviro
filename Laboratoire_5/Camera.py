@@ -21,6 +21,7 @@ MAX_CENTRE = 200
 MIN_AIRE_BALLE = 150
 
 MAX_AIRE_BALLE = 8000
+SEUIL_ACCEPTATION = 0.6
 
 class Camera:
     
@@ -42,10 +43,11 @@ class Camera:
         self.min_loc = None
         self.max_loc = None
         self.console = Console()
+        self.frame
         
     def _read_(self):
         self.ok , self.image = self.vcap.read()
-        self.image =cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
+       
         ##teinte_min = np.array([TEINTE - DELTA, SAT_MIN, VAL_MIN])
         ##teinte_max = np.array([TEINTE + DELTA, SAT_MAX, VAL_MAX])
         ##self.image = cv2.inRange(self.image, teinte_min, teinte_max)
@@ -114,26 +116,33 @@ class Camera:
         modele = cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
         cv2.imwrite("image_modele.bmp", modele)
     
-    def _trouver_image_modele_(self):
-        modele_minimise = cv2.imread("image_modele_version2.bmp",0)
-        ##mask = cv2.imread("background.png",0)
-        ##w, h = modele_minimise.shape[::-1]
+    def _trouver_image_modele_(self , frame_ROI):
+        self.image = self._read_()
+        modele_minimise = cv2.imread("image_modele_version2.bmp" , 0)
+        mask = cv2.imread("background.png" , 0)
         
         
-        res = cv2.matchTemplate(self.image, modele_minimise, cv2.TM_CCOEFF_NORMED)
-        self._read_()
-        ##image = self._def_ROI_(image)
-        self.min_val, self.max_val, self.min_loc, self.max_loc = cv2.minMaxLoc(res)
+        if(frame_ROI == []):
+            res = cv2.matchTemplate(self.image, modele_minimise, cv2.TM_CCOEFF_NORMED)
+        else : 
+            image = self._def_ROI_(self.image , frame_ROI)
+            image =cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+            res = cv2.matchTemplate(image, modele_minimise, cv2.TM_CCOEFF_NORMED  , None , mask)
+            self.min_val, self.max_val, self.min_loc, self.max_loc = cv2.minMaxLoc(res)
+            print("Max_Val dans le frame :" + self.max_val)
+            if(self.max_val < SEUIL_ACCEPTATION):
+                res = cv2.matchTemplate(self.image, modele_minimise, cv2.TM_CCOEFF_NORMED , None , mask)
+                self.min_val, self.max_val, self.min_loc, self.max_loc = cv2.minMaxLoc(res)
         
-        ##top_left = self.max_loc
-        
-        ##bottom_right = (top_left[0] + w, top_left[1] + h)
-
-        ##cv2.rectangle(self.image,top_left, bottom_right, 255, 2)
+        (startX, startY) = self.max_loc
+        endX = startX + modele_minimise.shape[1]
+        endY = startY + modele_minimise.shape[0]
+        print(startX + " " +  endX + " " + startY + " "  + endY)
+        cv2.rectangle(self.image,(startX, startY), (endX, endY), 255, 2)
         self.console.afficher_image("res" , self.image)
 
-    def _def_ROI_(img):
-        return img[50:100,50:100]
+    def _def_ROI_(img , frame):
+        return img[frame[0]:frame[1] , frame[2]:frame[3]]
         
 
 

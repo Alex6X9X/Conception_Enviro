@@ -5,9 +5,10 @@ from Camera import Camera
 
 vcap = Camera()
 
- 
+frame = []
 #vcap._creation_modele_()
-vcap._trouver_image_modele_()
+vcap._trouver_image_modele_(frame)
+
 
 
 vcap.vcap.release()
