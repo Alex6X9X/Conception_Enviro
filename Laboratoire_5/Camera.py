@@ -122,6 +122,7 @@ class Camera:
         
         
         if(frame_ROI == []):
+            self.image =cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
             res = cv2.matchTemplate(self.image, modele_minimise, cv2.TM_CCOEFF_NORMED)
         else : 
             image = self._def_ROI_(self.image , frame_ROI)
