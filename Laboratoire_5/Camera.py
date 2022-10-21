@@ -98,7 +98,7 @@ class Camera:
         cv2.drawContours(self.image, self.contours, -1, (0,0,255), EPAISSEUR)
         
     def _draw_rectangle(self,x,y,l,h):
-        print(str(x) + " " +  str(y) + " " + str(l) + " "  + str(h))
+        print(str(x) + " " +  str(y) + " " + str(x+l) + " "  + str(y+h))
         cv2.rectangle(self.image, (x,y), (x+l,y+h), (255, 0, 0), EPAISSEUR) 
         
     def _init_modele(self):
@@ -130,8 +130,8 @@ class Camera:
         self._draw_rectangle(startX, startY, modele_minimise.shape[1], modele_minimise.shape[0])
 
 
-    def _def_ROI_(self, img):
-        #self.frame_roi = 
+    def _def_ROI_(self):
+        #self.frame_roi = self.image[130:, 155:]
         return img[frame[0]:frame[1] , frame[2]:frame[3]]
         
 
