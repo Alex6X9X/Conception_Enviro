@@ -23,6 +23,8 @@ MIN_AIRE_BALLE = 150
 MAX_AIRE_BALLE = 8000
 SEUIL_ACCEPTATION = 0.6
 
+DELTA_ROI = 10
+
 class Camera:
     
     def __init__(self):
@@ -39,6 +41,10 @@ class Camera:
         self.min_loc = None
         self.max_loc = None
         self.frame_roi = None
+        self.x = None
+        self.y = None
+        self.l = None
+        self.h = None
         
     def _read_(self):
         self.ok , self.image = self.vcap.read()
@@ -110,14 +116,13 @@ class Camera:
         self._read_()
         modele_minimise = cv2.imread("image_modele_version2.bmp" , 0)
         mask = cv2.imread("background.png" , 0)
+        self._def_ROI_()
         
-        
-        if(frame_ROI == []):
+        if(frame_ROI == None):
             self.image =cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
             res = cv2.matchTemplate(self.image, modele_minimise, cv2.TM_CCOEFF_NORMED)
             self.min_val, self.max_val, self.min_loc, self.max_loc = cv2.minMaxLoc(res)
         else : 
-            image = self._def_ROI_(self.image)
             image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
             res = cv2.matchTemplate(image, modele_minimise, cv2.TM_CCOEFF_NORMED  , None , mask)
             self.min_val, self.max_val, self.min_loc, self.max_loc = cv2.minMaxLoc(res)
@@ -127,12 +132,20 @@ class Camera:
                 self.min_val, self.max_val, self.min_loc, self.max_loc = cv2.minMaxLoc(res)
         print(self.max_loc)
         (startX, startY) = self.max_loc
-        self._draw_rectangle(startX, startY, modele_minimise.shape[1], modele_minimise.shape[0])
+        self.x = startX
+        self.y = startY
+        self.l = modele_minimise.shape[1]
+        self.h = modele_minimise.shape[0]
+        self._draw_rectangle(self.x, self.y, self.l, self.h)
 
 
     def _def_ROI_(self):
-        #self.frame_roi = self.image[130:, 155:]
-        return img[frame[0]:frame[1] , frame[2]:frame[3]]
+        ymin = self.y - DELTA_ROI
+        xmin = self.x - DELTA_ROI
+        ymax = self.h + self.y + DELTA_ROI
+        xmax = self.l + self.x + DELTA_ROI
+        self.frame_roi = self.image[ymin:ymax, xmin:xmax]
+
         
 
 
