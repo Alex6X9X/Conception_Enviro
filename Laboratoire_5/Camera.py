@@ -30,19 +30,15 @@ class Camera:
         if not self.vcap.isOpened():
             print("Erreur lors de l'ouverture de la caméra")
             exit()
-        self.frame_hsv = None
         self.vcap.set(cv2.CAP_PROP_FRAME_WIDTH, WIDTH)
         self.vcap.set(cv2.CAP_PROP_FRAME_HEIGHT, HEIGHT)
         self.contours = None
-        self.aire_balle = None
-        self.x_balle = None
-        self.y_balle = None
         self.image = None
         self.min_val = None
         self.max_val = None
         self.min_loc = None
         self.max_loc = None
-        self.console = Console()
+        self.frame_roi = None
         
     def _read_(self):
         self.ok , self.image = self.vcap.read()
@@ -53,9 +49,11 @@ class Camera:
         
         ##self._contour_()
         #return self.image
+        
+    def _release_(self):
+        self.vcap.release()
+        
     def _determiner_position_(self):
-        
-        
         if(self.aire_balle != None and  self.aire_balle < MAX_AIRE_BALLE and self.aire_balle > MIN_AIRE_BALLE):
             
             if(self.x_balle < MIN_CENTRE):
@@ -98,19 +96,12 @@ class Camera:
 
     def _draw_contour_(self ):
         cv2.drawContours(self.image, self.contours, -1, (0,0,255), EPAISSEUR)
+        
     def _draw_rectangle(self,x,y,l,h):
-        cv2.rectangle(self.image, (x,y), (x+l,y+h), (255, 165, 0), EPAISSEUR) 
-    def _creation_modele_(self):
-       
-        while True:    
-            self._read_()
-            
-            self.console.afficher_image("image" , self.image)
-            choix = cv2.waitKey(125)
-            time.sleep(0.01)
-            if  choix == ord('q'):
-                break   
-
+        print(str(x) + " " +  str(y) + " " + str(l) + " "  + str(h))
+        cv2.rectangle(self.image, (x,y), (x+l,y+h), (255, 0, 0), EPAISSEUR) 
+        
+    def _init_modele(self):
         self._read_()
         modele = cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
         cv2.imwrite("image_modele.bmp", modele)
@@ -126,8 +117,8 @@ class Camera:
             res = cv2.matchTemplate(self.image, modele_minimise, cv2.TM_CCOEFF_NORMED)
             self.min_val, self.max_val, self.min_loc, self.max_loc = cv2.minMaxLoc(res)
         else : 
-            image = self._def_ROI_(self.image , frame_ROI)
-            image =cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+            image = self._def_ROI_(self.image)
+            image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
             res = cv2.matchTemplate(image, modele_minimise, cv2.TM_CCOEFF_NORMED  , None , mask)
             self.min_val, self.max_val, self.min_loc, self.max_loc = cv2.minMaxLoc(res)
             print("Max_Val dans le frame :" + self.max_val)
@@ -136,14 +127,12 @@ class Camera:
                 self.min_val, self.max_val, self.min_loc, self.max_loc = cv2.minMaxLoc(res)
         print(self.max_loc)
         (startX, startY) = self.max_loc
-        endX = startX + modele_minimise.shape[1]
-        endY = startY + modele_minimise.shape[0]
-        print(str(startX) + " " +  str(endX) + " " + str(startY) + " "  + str(endY))
-        cv2.rectangle(self.image,(startX, startY), (endX, endY), 255, 2)
+        self._draw_rectangle(startX, startY, modele_minimise.shape[1], modele_minimise.shape[0])
         self.console.afficher_image("res" , self.image)
 
-    def _def_ROI_(img , frame):
-        return img[frame[0]:frame[1] , frame[2]:frame[3]]
+    def _def_ROI_(self, img):
+        #self.frame_roi = 
+        #return img[frame[0]:frame[1] , frame[2]:frame[3]]
         
 
 
