@@ -128,7 +128,7 @@ class Camera:
         print(self.max_loc)
         (startX, startY) = self.max_loc
         self._draw_rectangle(startX, startY, modele_minimise.shape[1], modele_minimise.shape[0])
-        self.console.afficher_image("res" , self.image)
+
 
     def _def_ROI_(self, img):
         #self.frame_roi = 

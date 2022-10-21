@@ -11,10 +11,11 @@ arreter = False
 frame = []
 
 vcap._trouver_image_modele_(frame)
-
+console.afficher_image("Res", vcap.image)
 while not arreter:
     #vcap._read_()
     #console.afficher_image("Image" , vcap.image)
+    console.afficher_image("Res", vcap.image)
     choix = cv2.waitKey(33)
     if  choix == ord('q'):
         arreter = True  
