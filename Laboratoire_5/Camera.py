@@ -117,6 +117,7 @@ class Camera:
         modele_minimise = cv2.imread("image_modele_version2.bmp" , 0)
         mask = cv2.imread("background.png" , 0)
         
+        #Check is any of the elemnts in the list is a number
         if(any(self.frame_roi)):
             self.image =cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
             res = cv2.matchTemplate(self.image, modele_minimise, cv2.TM_CCOEFF_NORMED)
