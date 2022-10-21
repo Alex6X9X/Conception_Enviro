@@ -132,7 +132,7 @@ class Camera:
 
     def _def_ROI_(self, img):
         #self.frame_roi = 
-        #return img[frame[0]:frame[1] , frame[2]:frame[3]]
+        return img[frame[0]:frame[1] , frame[2]:frame[3]]
         
 
 
