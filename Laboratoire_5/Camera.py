@@ -129,7 +129,7 @@ class Camera:
             if(self.max_val < SEUIL_ACCEPTATION):
                 res = cv2.matchTemplate(self.image, modele_minimise, cv2.TM_CCOEFF_NORMED , None , mask)
                 self.min_val, self.max_val, self.min_loc, self.max_loc = cv2.minMaxLoc(res)
-        #print(self.max_loc)
+        print(self.max_loc)
         self._def_ROI_()
         (startX, startY) = self.max_loc
         self.x = startX
