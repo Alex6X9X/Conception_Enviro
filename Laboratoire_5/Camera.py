@@ -40,7 +40,7 @@ class Camera:
         self.max_val = None
         self.min_loc = None
         self.max_loc = None
-        self.frame_roi = None
+        self.frame_roi = []
         self.x = 0
         self.y = 0
         self.l = 0
@@ -117,7 +117,7 @@ class Camera:
         modele_minimise = cv2.imread("image_modele_version2.bmp" , 0)
         mask = cv2.imread("background.png" , 0)
         
-        if(len(self.frame_roi) == 0):
+        if(self.frame_roi == []):
             self.image =cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
             res = cv2.matchTemplate(self.image, modele_minimise, cv2.TM_CCOEFF_NORMED)
             self.min_val, self.max_val, self.min_loc, self.max_loc = cv2.minMaxLoc(res)
