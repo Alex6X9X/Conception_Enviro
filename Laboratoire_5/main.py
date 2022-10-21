@@ -7,10 +7,9 @@ from Console import Console
 vcap = Camera()
 console = Console()
 arreter = False
-    
-frame = []
 
-vcap._trouver_image_modele_(frame)
+
+vcap._trouver_image_modele_()
 console.afficher_image("Res", vcap.image)
 while not arreter:
     #vcap._read_()
