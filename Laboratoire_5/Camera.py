@@ -117,13 +117,13 @@ class Camera:
         modele_minimise = cv2.imread("image_modele_version2.bmp" , 0)
         mask = cv2.imread("background.png" , 0)
         
-        if(frame_ROI == None):
+        if(frame_ROI == []):
             self.image =cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
             res = cv2.matchTemplate(self.image, modele_minimise, cv2.TM_CCOEFF_NORMED)
             self.min_val, self.max_val, self.min_loc, self.max_loc = cv2.minMaxLoc(res)
         else : 
-            image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-            res = cv2.matchTemplate(image, modele_minimise, cv2.TM_CCOEFF_NORMED  , None , mask)
+            self.image = cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
+            res = cv2.matchTemplate(self.image, modele_minimise, cv2.TM_CCOEFF_NORMED  , None , mask)
             self.min_val, self.max_val, self.min_loc, self.max_loc = cv2.minMaxLoc(res)
             print("Max_Val dans le frame :" + self.max_val)
             if(self.max_val < SEUIL_ACCEPTATION):
