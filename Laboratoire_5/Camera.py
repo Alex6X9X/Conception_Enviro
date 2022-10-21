@@ -112,12 +112,12 @@ class Camera:
         modele = cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
         cv2.imwrite("image_modele.bmp", modele)
     
-    def _trouver_image_modele_(self , frame_ROI):
+    def _trouver_image_modele_(self):
         self._read_()
         modele_minimise = cv2.imread("image_modele_version2.bmp" , 0)
         mask = cv2.imread("background.png" , 0)
         
-        if(frame_ROI == []):
+        if(self.frame_roi == []):
             self.image =cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
             res = cv2.matchTemplate(self.image, modele_minimise, cv2.TM_CCOEFF_NORMED)
             self.min_val, self.max_val, self.min_loc, self.max_loc = cv2.minMaxLoc(res)
