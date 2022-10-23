@@ -14,7 +14,7 @@ while not arreter:
     #console.afficher_image("Image" , vcap.image)
     vcap._trouver_image_modele_()
     console.afficher_image("Res", vcap.image)
-    choix = cv2.waitKey()
+    choix = cv2.waitKey(0)
     sleep(0.01)
     if  choix == ord('q'):
         arreter = True  
