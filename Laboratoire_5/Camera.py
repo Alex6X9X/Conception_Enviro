@@ -1,4 +1,5 @@
 
+from email.mime import image
 import cv2
 import numpy as np
 from Console import Console
@@ -8,7 +9,7 @@ HEIGHT = 240
 PORT = 0
 EPAISSEUR = 2
 
-SEUIL_ACCEPTATION = 0.7
+SEUIL_ACCEPTATION = 0.77
 
 DELTA_ROI = 10
 
@@ -58,12 +59,12 @@ class Camera:
         modele_minimise = cv2.imread("image_modele_version2.bmp" , 0)
         mask = cv2.imread("background.png" , 0)
         
-        self.image = cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
-        res = cv2.matchTemplate(self.image, modele_minimise, cv2.TM_CCOEFF_NORMED  , None , mask)
+        image_gris = cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
+        res = cv2.matchTemplate(image_gris, modele_minimise, cv2.TM_CCOEFF_NORMED  , None , mask)
         self.min_val, self.max_val, self.min_loc, self.max_loc = cv2.minMaxLoc(res)
         print("Max_Val dans le frame :" + str(self.max_val))
         if(self.max_val < SEUIL_ACCEPTATION):
-            res = cv2.matchTemplate(self.image, modele_minimise, cv2.TM_CCOEFF_NORMED , None , mask)
+            res = cv2.matchTemplate(image_gris, modele_minimise, cv2.TM_CCOEFF_NORMED , None , mask)
             self.min_val, self.max_val, self.min_loc, self.max_loc = cv2.minMaxLoc(res)
         #print(self.max_loc)
         self._def_ROI_()
@@ -74,7 +75,7 @@ class Camera:
         self.l = modele_minimise.shape[1]
         self.h = modele_minimise.shape[0]
         
-        self.image = cv2.cvtColor(self.image, cv2.COLOR_BGR2RGB)
+        self.image = cv2.cvtColor(image_gris, cv2.COLOR_BGR2RGB)
         
         if(self.x != 0 and self.y != 0):
             #La cible
@@ -82,7 +83,6 @@ class Camera:
             
             #Le frame ROI
             self._draw_rectangle(self.xmin, self.ymin, self.xmax, self.ymax, 255, 145, 0)
-        self._reset_values()
 
     def _def_ROI_(self):
         self.ymin = self.y - DELTA_ROI
