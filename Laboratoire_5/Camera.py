@@ -83,6 +83,9 @@ class Camera:
             
             #Le frame ROI
             self._draw_rectangle(self.xmin, self.ymin, self.xmax, self.ymax, 20, 170, 60)
+            
+        self._reset_ROI()
+        self._reset_values()
 
     def _def_ROI_(self):
         self.ymin = self.y - DELTA_ROI
