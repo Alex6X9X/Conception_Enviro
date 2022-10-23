@@ -3,6 +3,7 @@ import numpy as np
 from Camera import Camera
 from Console import Console
 
+CAMERA_FPS = 16.66666 #60 fps
 
 vcap = Camera()
 console = Console()
@@ -14,7 +15,7 @@ while not arreter:
     #console.afficher_image("Image" , vcap.image)
     vcap._trouver_image_modele_()
     console.afficher_image("Res", vcap.image)
-    choix = cv2.waitKey(33)
+    choix = cv2.waitKey(CAMERA_FPS)
     if  choix == ord('q'):
         arreter = True  
 
