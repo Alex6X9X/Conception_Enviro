@@ -9,7 +9,7 @@ HEIGHT = 240
 PORT = 0
 EPAISSEUR = 2
 
-SEUIL_ACCEPTATION = 0.79
+SEUIL_ACCEPTATION = 0.77
 
 DELTA_ROI = 5
 
@@ -86,8 +86,8 @@ class Camera:
     def _def_ROI_(self):
         self.ymin = self.y - DELTA_ROI
         self.xmin = self.x - DELTA_ROI
-        self.ymax = self.h + DELTA_ROI
-        self.xmax = self.l + DELTA_ROI
+        self.ymax = self.h + DELTA_ROI * 2
+        self.xmax = self.l + DELTA_ROI * 2
         self.frame_roi = self.image[self.ymin:self.ymax, self.xmin:self.xmax]
 
     def _reset_ROI(self):
