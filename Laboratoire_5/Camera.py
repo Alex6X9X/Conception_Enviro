@@ -81,6 +81,8 @@ class Camera:
             
             #Le frame ROI
             self._draw_rectangle(self.xmin, self.ymin, self.xmax, self.ymax, 255, 145, 0)
+        
+        self.image = cv2.cvtColor(self.image, cv2.COLOR_BGR2RGB)
 
 
     def _def_ROI_(self):
