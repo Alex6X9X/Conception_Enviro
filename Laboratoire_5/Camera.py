@@ -75,7 +75,6 @@ class Camera:
         self.l = modele_minimise.shape[1]
         self.h = modele_minimise.shape[0]
         
-        self.image = cv2.cvtColor(image_gris, cv2.COLOR_BGR2RGB)
         
         if(self.x != 0 and self.y != 0):
             #La cible
