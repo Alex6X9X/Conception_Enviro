@@ -1,4 +1,4 @@
-from time import sleep
+
 import cv2
 import numpy as np
 from Camera import Camera
@@ -13,8 +13,8 @@ while not arreter:
     #vcap._read_()
     #console.afficher_image("Image" , vcap.image)
     vcap._trouver_image_modele_()
-    console.afficher_image("Res", vcap.image)
-    choix = cv2.waitKey(1)
+    console.afficher_image("Labo 5", vcap.image)
+    choix = cv2.waitKey(16)
     if  choix == ord('q'):
         arreter = True  
 

@@ -22,7 +22,6 @@ class Camera:
             exit()
         self.vcap.set(cv2.CAP_PROP_FRAME_WIDTH, WIDTH)
         self.vcap.set(cv2.CAP_PROP_FRAME_HEIGHT, HEIGHT)
-        self.contours = None
         self.image = None
         self.min_val = None
         self.max_val = None
@@ -63,6 +62,8 @@ class Camera:
         res = cv2.matchTemplate(image_gris, modele_minimise, cv2.TM_CCOEFF_NORMED  , None , mask)
         self.min_val, self.max_val, self.min_loc, self.max_loc = cv2.minMaxLoc(res)
         print("Max_Val dans le frame :" + str(self.max_val))
+        print("Max_Val dans le frame :" + str(self.min_val))
+        
         if(self.max_val < SEUIL_ACCEPTATION):
             res = cv2.matchTemplate(image_gris, modele_minimise, cv2.TM_CCOEFF_NORMED , None , mask)
             self.min_val, self.max_val, self.min_loc, self.max_loc = cv2.minMaxLoc(res)
