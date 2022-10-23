@@ -45,7 +45,7 @@ class Camera:
         self.vcap.release()
         
     def _draw_rectangle(self,x,y,l,h, r, g, b):
-        print(str(x) + " " +  str(y) + " " + str(x+l) + " "  + str(y+h))
+        #print(str(x) + " " +  str(y) + " " + str(x+l) + " "  + str(y+h))
         cv2.rectangle(self.image, (x,y), (x+l,y+h), (r, g, b), EPAISSEUR) 
         
     def _init_modele(self):
@@ -54,6 +54,8 @@ class Camera:
         cv2.imwrite("image_modele.bmp", modele)
     
     def _trouver_image_modele_(self):
+        self._reset_ROI()
+        self._reset_values()
         self._read_()
         modele_minimise = cv2.imread("image_modele_version2.bmp" , 0)
         mask = cv2.imread("background.png" , 0)
@@ -65,7 +67,7 @@ class Camera:
         if(self.max_val < SEUIL_ACCEPTATION):
             res = cv2.matchTemplate(self.image, modele_minimise, cv2.TM_CCOEFF_NORMED , None , mask)
             self.min_val, self.max_val, self.min_loc, self.max_loc = cv2.minMaxLoc(res)
-        print(self.max_loc)
+        #print(self.max_loc)
         self._def_ROI_()
         (startX, startY) = self.max_loc
         self.x = startX
@@ -84,9 +86,22 @@ class Camera:
     def _def_ROI_(self):
         self.ymin = self.y - DELTA_ROI
         self.xmin = self.x - DELTA_ROI
-        self.ymax = self.h + self.y + DELTA_ROI
-        self.xmax = self.l + self.x + DELTA_ROI
+        self.ymax = self.h + self.y
+        self.xmax = self.l + self.x
         self.frame_roi = self.image[self.ymin:self.ymax, self.xmin:self.xmax]
+
+    def _reset_ROI(self):
+        self.ymin = None
+        self.xmin = None
+        self.ymax = None
+        self.xmax = None
+        self.frame_roi = self.image[self.ymin:self.ymax, self.xmin:self.xmax]
+
+    def _reset_values(self):
+        self.x = 0
+        self.y = 0
+        self.l = 0
+        self.h = 0
 
         
 
