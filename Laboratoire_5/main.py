@@ -3,7 +3,7 @@ import numpy as np
 from Camera import Camera
 from Console import Console
 
-CAMERA_FPS = 16.66666 #60 fps
+CAMERA_FPS = 17 #~60 fps
 
 vcap = Camera()
 console = Console()
