@@ -68,6 +68,7 @@ class Camera:
         #print(self.max_loc)
         self._def_ROI_()
         (startX, startY) = self.max_loc
+        print(startX, startY)
         self.x = startX
         self.y = startY
         self.l = modele_minimise.shape[1]
@@ -100,8 +101,7 @@ class Camera:
     def _reset_values(self):
         self.x = 0
         self.y = 0
-        self.l = 0
-        self.h = 0
+
 
         
 
