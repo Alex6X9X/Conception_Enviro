@@ -86,8 +86,8 @@ class Camera:
     def _def_ROI_(self):
         self.ymin = self.y - DELTA_ROI
         self.xmin = self.x - DELTA_ROI
-        self.ymax = self.h + self.y
-        self.xmax = self.l + self.x
+        self.ymax = self.h + DELTA_ROI
+        self.xmax = self.l + DELTA_ROI
         self.frame_roi = self.image[self.ymin:self.ymax, self.xmin:self.xmax]
 
     def _reset_ROI(self):
