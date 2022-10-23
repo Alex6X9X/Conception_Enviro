@@ -8,7 +8,7 @@ HEIGHT = 240
 PORT = 0
 EPAISSEUR = 2
 
-SEUIL_ACCEPTATION = 0.6
+SEUIL_ACCEPTATION = 0.7
 
 DELTA_ROI = 10
 
@@ -73,15 +73,14 @@ class Camera:
         self.l = modele_minimise.shape[1]
         self.h = modele_minimise.shape[0]
         
+        self.image = cv2.cvtColor(self.image, cv2.COLOR_BGR2RGB)
+        
         if(self.x != 0 and self.y != 0):
             #La cible
             self._draw_rectangle(self.x, self.y, self.l, self.h, 255, 0, 0)
             
             #Le frame ROI
             self._draw_rectangle(self.xmin, self.ymin, self.xmax, self.ymax, 255, 145, 0)
-        
-        self.image = cv2.cvtColor(self.image, cv2.COLOR_BGR2RGB)
-        self._reset_ROI()
         self._reset_values()
 
     def _def_ROI_(self):
