@@ -102,12 +102,7 @@ class Camera:
         self.xmin = self.x - DELTA_ROI
         self.ymax = self.ymin + self.h + DELTA_ROI * 2
         self.xmax = self.xmin + self.l + DELTA_ROI * 2
-        if(self.ymin < 0):
-            self.ymin = 0
-            #self.ymax = self.ymax - self.ymin
-        if(self.xmin < 0):
-            self.xmin = 0
-            #self.xmax = self.xmax - self.xmin
+        
         
         if(self.ymax > HEIGHT):
             self.ymax = HEIGHT - 10
