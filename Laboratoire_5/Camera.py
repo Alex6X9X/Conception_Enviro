@@ -68,13 +68,13 @@ class Camera:
             res = cv2.matchTemplate(image_gris, modele_minimise, cv2.TM_CCOEFF_NORMED , None , mask)
             self.min_val, self.max_val, self.min_loc, self.max_loc = cv2.minMaxLoc(res)
         #print(self.max_loc)
-        self._def_ROI_()
         (startX, startY) = self.max_loc
         print(startX, startY)
         self.x = startX
         self.y = startY
         self.l = modele_minimise.shape[1]
         self.h = modele_minimise.shape[0]
+        self._def_ROI_()
         
         
         if(self.x != 0 and self.y != 0):
