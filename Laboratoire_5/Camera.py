@@ -11,7 +11,7 @@ EPAISSEUR = 2
 
 SEUIL_ACCEPTATION = 0.75
 
-DELTA_ROI = 15
+DELTA_ROI = 10
 
 class Camera:
     
@@ -103,14 +103,14 @@ class Camera:
         self.xmin = self.x - DELTA_ROI
         self.ymax = self.ymin + self.h + DELTA_ROI * 2
         self.xmax = self.xmin + self.l + DELTA_ROI * 2
-        #if(self.ymin < 0):
-        #    self.ymin = 0
-        #    self.ymax = self.ymax - self.ymin
-        #if(self.xmin < 0):
-        #    self.xmin = 0
-        #    self.xmax = self.xmax - self.xmin
+        if(self.ymin < 0):
+            self.ymin = 0
+            #self.ymax = self.ymax - self.ymin
+        if(self.xmin < 0):
+            self.xmin = 0
+            #self.xmax = self.xmax - self.xmin
         self.frame_roi = self.image[self.ymin:self.ymax, self.xmin:self.xmax]
-        #self.frame_roi = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        self.frame_roi = cv2.cvtColor(self.frame_roi, cv2.COLOR_BGR2GRAY)
     
        
 
