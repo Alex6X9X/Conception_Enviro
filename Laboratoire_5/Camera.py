@@ -69,6 +69,8 @@ class Camera:
         else:
             self._set_attribute_(modele_minimise)
             self._def_ROI_()
+            print(self.frame_roi.shape)
+            print(modele_minimise.shape)
             image_gris =cv2.cvtColor(self.frame_roi, cv2.COLOR_BGR2GRAY)
             res = cv2.matchTemplate(image_gris, modele_minimise, cv2.TM_CCOEFF_NORMED, None , mask)
             self.min_val, self.max_val, self.min_loc, self.max_loc = cv2.minMaxLoc(res)
