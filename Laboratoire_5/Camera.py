@@ -69,6 +69,10 @@ class Camera:
         else:
             self._set_attribute_(modele_minimise)
             self._def_ROI_()
+            print(self.ymin)
+            print(self.ymax)
+            print(self.xmin)
+            print(self.xmax)
             print(self.frame_roi.shape)
             print(modele_minimise.shape)
             image_gris =cv2.cvtColor(self.frame_roi, cv2.COLOR_BGR2GRAY)
