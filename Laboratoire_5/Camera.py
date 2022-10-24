@@ -60,19 +60,15 @@ class Camera:
         
         image_gris = cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
         
-        if(self.frame_roi == []):
+        image_cible = self.frame_roi if self.frame_roi != [] else image_gris
+        res = cv2.matchTemplate(image_cible, modele_minimise, cv2.TM_CCOEFF_NORMED, None , mask)
+        self.min_val, self.max_val, self.min_loc, self.max_loc = cv2.minMaxLoc(res)
+        print("Max_Val dans le frame :" + str(self.max_val))
+        if(self.max_val < SEUIL_ACCEPTATION):
             res = cv2.matchTemplate(image_gris, modele_minimise, cv2.TM_CCOEFF_NORMED, None , mask)
             self.min_val, self.max_val, self.min_loc, self.max_loc = cv2.minMaxLoc(res)
-        else:
-            self._def_ROI_()
-            res = cv2.matchTemplate(self.frame_roi, modele_minimise, cv2.TM_CCOEFF_NORMED, None , mask)
-            self.min_val, self.max_val, self.min_loc, self.max_loc = cv2.minMaxLoc(res)
-            print("Max_Val dans le frame :" + str(self.max_val))
-            if(self.max_val < SEUIL_ACCEPTATION):
-                res = cv2.matchTemplate(image_gris, modele_minimise, cv2.TM_CCOEFF_NORMED, None , mask)
-                self.min_val, self.max_val, self.min_loc, self.max_loc = cv2.minMaxLoc(res)
             
-
+        self._def_ROI_()
         
         #print(self.max_loc)
         (startX, startY) = self.max_loc
@@ -85,7 +81,6 @@ class Camera:
         #La cible
         self._draw_rectangle(self.x, self.y, self.l, self.h, 255, 0, 0)
         
-        print(self.frame_roi)
         if(self.frame_roi != []):
             #Le frame ROI
             self._draw_rectangle(self.xmin, self.ymin, self.xmax, self.ymax, 20, 170, 60)
