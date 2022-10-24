@@ -9,7 +9,7 @@ HEIGHT = 240
 PORT = 0
 EPAISSEUR = 2
 
-SEUIL_ACCEPTATION = 0.77
+SEUIL_ACCEPTATION = 0.72
 
 DELTA_ROI = 5
 
@@ -44,7 +44,7 @@ class Camera:
     def _release_(self):
         self.vcap.release()
         
-    def _draw_rectangle(self,x,y,l,h, r, g, b):
+    def _draw_rectangle(self, x, y, l, h, r, g, b):
         #print(str(x) + " " +  str(y) + " " + str(x+l) + " "  + str(y+h))
         cv2.rectangle(self.image, (x,y), (x+l,y+h), (r, g, b), EPAISSEUR) 
         
