@@ -9,7 +9,7 @@ from Odomètre import Odomètre
 robot = Robot()
 odomètre = Odomètre()
 
-odomètre.avancer_distance(-100)
+odomètre.avancer_distance(100)
 robot.Avancer()
 odomètre.attendre()
 robot.Freiner()

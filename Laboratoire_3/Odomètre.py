@@ -27,8 +27,8 @@ class Odomètre:
 
     def when_activated_deactivated(self):
         self.nombre_transition += 1
-        #if(self.calculer_distance() >= self.distance_voulue):
-        self.stop.set()
+        if(self.calculer_distance() >= self.distance_voulue):
+            self.stop.set()
 
     def attendre(self):
         self.stop.wait()
