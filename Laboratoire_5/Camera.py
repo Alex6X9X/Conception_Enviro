@@ -110,10 +110,10 @@ class Camera:
             #self.xmax = self.xmax - self.xmin
         
         if(self.ymax > HEIGHT):
-            self.ymax = HEIGHT - EPAISSEUR
+            self.ymax = HEIGHT - 10
             
         if(self.xmax > WIDTH):
-            self.xmax = WIDTH - EPAISSEUR
+            self.xmax = WIDTH - 10
         
         self.frame_roi = self.image[self.ymin:self.ymax, self.xmin:self.xmax]
         self.frame_roi = cv2.cvtColor(self.frame_roi, cv2.COLOR_BGR2GRAY)
