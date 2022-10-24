@@ -65,17 +65,13 @@ class Camera:
         else:
             res = cv2.matchTemplate(self.frame_roi, modele_minimise, cv2.TM_CCOEFF_NORMED, None , mask)
             self.min_val, self.max_val, self.min_loc, self.max_loc = cv2.minMaxLoc(res)
-            
-        print("Max_Val dans le frame :" + str(self.max_val))
-        
-        if(self.max_val < SEUIL_ACCEPTATION):
-            if(self.frame_roi != []):
-                res = cv2.matchTemplate(self.frame_roi, modele_minimise, cv2.TM_CCOEFF_NORMED, None , mask)
-                self.min_val, self.max_val, self.min_loc, self.max_loc = cv2.minMaxLoc(res)
-            else:
+            print("Max_Val dans le frame :" + str(self.max_val))
+            if(self.max_val < SEUIL_ACCEPTATION):
                 res = cv2.matchTemplate(image_gris, modele_minimise, cv2.TM_CCOEFF_NORMED, None , mask)
                 self.min_val, self.max_val, self.min_loc, self.max_loc = cv2.minMaxLoc(res)
-                
+            
+
+        
         #print(self.max_loc)
         (startX, startY) = self.max_loc
         self.x = startX
