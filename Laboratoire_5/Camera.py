@@ -109,8 +109,8 @@ class Camera:
         #if(self.xmin < 0):
         #    self.xmin = 0
         #    self.xmax = self.xmax - self.xmin
-        frame = self.image[self.ymin:self.ymax, self.xmin:self.xmax]
-        self.frame_roi = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        self.frame_roi = self.image[self.ymin:self.ymax, self.xmin:self.xmax]
+        #self.frame_roi = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     
        
 
