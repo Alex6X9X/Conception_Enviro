@@ -80,7 +80,8 @@ class Camera:
         if(self.x != 0 and self.y != 0):
             #La cible
             self._draw_rectangle(self.x, self.y, self.l, self.h, 255, 0, 0)
-            
+        
+        if(self.frame_roi != None):
             #Le frame ROI
             self._draw_rectangle(self.xmin, self.ymin, self.xmax, self.ymax, 20, 170, 60)
             
@@ -99,7 +100,7 @@ class Camera:
         self.xmin = None
         self.ymax = None
         self.xmax = None
-        self.frame_roi = self.image[self.ymin:self.ymax, self.xmin:self.xmax]
+        self.frame_roi = None
 
     def _reset_values(self):
         self.x = 0
