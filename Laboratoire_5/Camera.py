@@ -66,6 +66,7 @@ class Camera:
             self._set_attribute_(modele_minimise)
             self._def_ROI_()
         else:
+            self._set_attribute_(modele_minimise)
             self._def_ROI_()
             res = cv2.matchTemplate(self.frame_roi, modele_minimise, cv2.TM_CCOEFF_NORMED, None , mask)
             self.min_val, self.max_val, self.min_loc, self.max_loc = cv2.minMaxLoc(res)
