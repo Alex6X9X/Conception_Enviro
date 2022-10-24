@@ -46,7 +46,7 @@ class Camera:
         
     def _draw_rectangle(self, x, y, l, h, r, g, b):
         #print(str(x) + " " +  str(y) + " " + str(x+l) + " "  + str(y+h))
-        cv2.rectangle(self.image, (x,y), (x+l,y+h), (r, g, b), EPAISSEUR) 
+        cv2.rectangle(self.image, (x,y), (l,h), (r, g, b), EPAISSEUR) 
         
     def _init_modele(self):
         self._read_()
