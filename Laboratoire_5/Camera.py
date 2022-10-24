@@ -63,8 +63,9 @@ class Camera:
             res = cv2.matchTemplate(image_gris, modele_minimise, cv2.TM_CCOEFF_NORMED)
             self.min_val, self.max_val, self.min_loc, self.max_loc = cv2.minMaxLoc(res)
         else:
-            res = cv2.matchTemplate(image_gris, modele_minimise, cv2.TM_CCOEFF_NORMED  , None , mask)
+            res = cv2.matchTemplate(self.frame_roi, modele_minimise, cv2.TM_CCOEFF_NORMED  , None , mask)
             self.min_val, self.max_val, self.min_loc, self.max_loc = cv2.minMaxLoc(res)
+            
         print("Max_Val dans le frame :" + str(self.max_val))
         print("Max_Val dans le frame :" + str(self.min_val))
         
