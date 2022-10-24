@@ -9,7 +9,7 @@ HEIGHT = 240
 PORT = 0
 EPAISSEUR = 2
 
-SEUIL_ACCEPTATION = 0.72
+SEUIL_ACCEPTATION = 0.75
 
 DELTA_ROI = 5
 
@@ -97,18 +97,6 @@ class Camera:
         self.xmax = self.l + DELTA_ROI * 2
         self.frame_roi = self.image[self.ymin:self.ymax, self.xmin:self.xmax]
         self.frame_roi = cv2.cvtColor(self.frame_roi, cv2.COLOR_BGR2GRAY)
-
-    def _reset_ROI(self):
-        self.ymin = None
-        self.xmin = None
-        self.ymax = None
-        self.xmax = None
-        self.frame_roi = None
-
-    def _reset_values(self):
-        self.x = 0
-        self.y = 0
-
 
         
 
