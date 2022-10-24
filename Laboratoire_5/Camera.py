@@ -11,7 +11,7 @@ EPAISSEUR = 2
 
 SEUIL_ACCEPTATION = 0.75
 
-DELTA_ROI = 5
+DELTA_ROI = 10
 
 class Camera:
     
