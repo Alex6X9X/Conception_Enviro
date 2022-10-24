@@ -95,8 +95,9 @@ class Camera:
         self.xmin = self.x - DELTA_ROI
         self.ymax = self.h + DELTA_ROI * 2
         self.xmax = self.l + DELTA_ROI * 2
-        self.image_frame = self.image[self.ymin:self.ymax, self.xmin:self.xmax]
-        self.frame_roi = cv2.cvtColor(self.image_frame, cv2.COLOR_BGR2GRAY)
+        image_frame = self.image[self.ymin:self.ymax, self.xmin:self.xmax]
+        print(image_frame)
+        self.frame_roi = cv2.cvtColor(image_frame, cv2.COLOR_BGR2GRAY)
 
         
 
