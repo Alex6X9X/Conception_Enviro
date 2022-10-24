@@ -38,7 +38,7 @@ class Camera:
         self.xmax = None
         
     def _read_(self):
-        self.ok , self.image = self.vcap.read()
+        ok , self.image = self.vcap.read()
         #return self.image
         
     def _release_(self):
