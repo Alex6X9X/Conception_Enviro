@@ -84,7 +84,7 @@ class Camera:
             self.min_val, self.max_val, self.min_loc, self.max_loc = cv2.minMaxLoc(res)
              
         #La cible
-        self._draw_rectangle(self.x, self.y, self.l, self.h, 255, 0, 0)
+        self._draw_rectangle(self.x, self.y, (self.x + self.l), (self.y+self.h), 255, 0, 0)
         
         if(self.frame_roi != []):
             #Le frame ROI
