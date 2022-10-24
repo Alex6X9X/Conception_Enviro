@@ -89,7 +89,7 @@ class Camera:
         self.y = startY
         self.l = modele_minimise.shape[1]
         self.h = modele_minimise.shape[0]
-    def _def_ROI_(self , image_gris):
+    def _def_ROI_(self):
         self.ymin = self.y - DELTA_ROI
         self.xmin = self.x - DELTA_ROI
         self.ymax = self.h + DELTA_ROI * 2
