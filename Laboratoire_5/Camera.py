@@ -59,10 +59,12 @@ class Camera:
         mask = cv2.imread("background.png" , 0)
         
         image_gris = cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
+        
         if(self.frame_roi == []):
             res = cv2.matchTemplate(image_gris, modele_minimise, cv2.TM_CCOEFF_NORMED, None , mask)
             self.min_val, self.max_val, self.min_loc, self.max_loc = cv2.minMaxLoc(res)
         else:
+            self._def_ROI_()
             res = cv2.matchTemplate(self.frame_roi, modele_minimise, cv2.TM_CCOEFF_NORMED, None , mask)
             self.min_val, self.max_val, self.min_loc, self.max_loc = cv2.minMaxLoc(res)
             print("Max_Val dans le frame :" + str(self.max_val))
@@ -78,7 +80,7 @@ class Camera:
         self.y = startY
         self.l = modele_minimise.shape[1]
         self.h = modele_minimise.shape[0]
-        self._def_ROI_()
+   
         
         #La cible
         self._draw_rectangle(self.x, self.y, self.l, self.h, 255, 0, 0)
