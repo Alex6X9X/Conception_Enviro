@@ -81,7 +81,7 @@ class Camera:
             #La cible
             self._draw_rectangle(self.x, self.y, self.l, self.h, 255, 0, 0)
         
-        if(self.frame_roi != None):
+        if(self.frame_roi != []):
             #Le frame ROI
             self._draw_rectangle(self.xmin, self.ymin, self.xmax, self.ymax, 20, 170, 60)
             
