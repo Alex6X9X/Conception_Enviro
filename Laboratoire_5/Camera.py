@@ -98,18 +98,6 @@ class Camera:
         self.frame_roi = self.image[self.ymin:self.ymax, self.xmin:self.xmax]
         self.frame_roi = cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
 
-    def _reset_ROI(self):
-        self.ymin = None
-        self.xmin = None
-        self.ymax = None
-        self.xmax = None
-        self.frame_roi = None
-
-    def _reset_values(self):
-        self.x = 0
-        self.y = 0
-
-
         
 
 
