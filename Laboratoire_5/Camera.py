@@ -75,7 +75,7 @@ class Camera:
             print(self.xmax)
             print(self.frame_roi.shape)
             print(modele_minimise.shape)
-            image_gris =cv2.cvtColor(self.frame_roi, cv2.COLOR_BGR2GRAY)
+            image_gris = cv2.cvtColor(self.frame_roi, cv2.COLOR_BGR2GRAY)
             res = cv2.matchTemplate(image_gris, modele_minimise, cv2.TM_CCOEFF_NORMED, None , mask)
             self.min_val, self.max_val, self.min_loc, self.max_loc = cv2.minMaxLoc(res)
             print("Max_Val dans le frame :" + str(self.max_val))
@@ -109,7 +109,8 @@ class Camera:
         if(self.xmin < 0):
             self.xmin = 0
             self.xmax = self.xmax - self.xmin
-        self.frame_roi = self.image[self.ymin:self.ymax, self.xmin:self.xmax]
+        frame = self.image[self.ymin:self.ymax, self.xmin:self.xmax]
+        self.frame_roi = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     
        
 
