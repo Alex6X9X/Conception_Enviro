@@ -12,7 +12,7 @@ arreter = False
 while not arreter:
     #vcap._read_()
     #console.afficher_image("Image" , vcap.image)
-    vcap._trouver_image_modele_()
+    vcap._trouver_cible_()
     console.afficher_image("Labo 5", vcap.image)
     choix = cv2.waitKey(16)
     if  choix == ord('q'):

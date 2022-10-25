@@ -52,13 +52,13 @@ class Camera:
         modele = cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
         cv2.imwrite("image_modele.bmp", modele)
     
-    def _trouver_image_modele_(self):
+    def _trouver_cible_(self):
         self._read_()
         template_img = cv2.imread("image_modele_version2.bmp" , 0)
         mask = cv2.imread("background.png" , 0)
         
         if(self.frame_roi == []):
-            self._trouver_cible(template_img, mask)
+            self._trouver_image_modele(template_img, mask)
             self._set_attributes_(template_img)
             self._def_ROI_()
         else:
@@ -69,7 +69,7 @@ class Camera:
             
         if(self.max_val < SEUIL_ACCEPTATION):
             print("refait verif dans image")
-            self._trouver_cible(template_img, mask)
+            self._trouver_image_modele(template_img, mask)
              
         #La cible
         self._draw_rectangle(self.x, self.y, (self.x + self.l), (self.y+self.h), 255, 0, 0)
@@ -78,7 +78,7 @@ class Camera:
             #Le frame ROI
             self._draw_rectangle(self.xmin, self.ymin, self.xmax, self.ymax, 20, 170, 60)
             
-    def _trouver_cible(self, template_img, mask):
+    def _trouver_image_modele(self, template_img, mask):
         image_gris = cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
         res = cv2.matchTemplate(image_gris, template_img, cv2.TM_CCOEFF_NORMED, None , mask)
         self.min_val, self.max_val, self.min_loc, self.max_loc = cv2.minMaxLoc(res)
