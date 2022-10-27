@@ -1,5 +1,5 @@
 #Auteurs: Alexandre Carle et Louis-philippe Rousseau
-#Dernier changement 13 octobre 2022
+#Dernier changement 27 octobre 2022
 
 import numpy as np
 import cv2
