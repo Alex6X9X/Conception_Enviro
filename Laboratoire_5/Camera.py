@@ -68,7 +68,7 @@ class Camera:
             
         if(self.max_val < SEUIL_ACCEPTATION):
             print("refait verif dans image complète")
-            ##self._trouver_image_modele(template_img, mask)
+            self._trouver_image_modele(template_img, mask)
              
         #La cible
         self._draw_rectangle(self.x, self.y, (self.x + self.l), (self.y+self.h), 255, 0, 0)
