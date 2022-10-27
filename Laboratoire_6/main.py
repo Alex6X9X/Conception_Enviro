@@ -16,7 +16,5 @@ navigation = Navigation(imu)
 
 
 while not arreter:
-    Attendre_Touche(robot , navigation)
-    choix = cv2.waitKey(16)
-    if  choix == ord('q'):
-        arreter = True  
+    arreter = Attendre_Touche(robot , navigation)
+    navigation.thread_calcul_position.start()

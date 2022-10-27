@@ -25,13 +25,13 @@ class Navigation :
             sleep(0.05)
             if(self.état == "immobile"):
                 ##À l’arrêt: le fil calcule les biais de gx et de ay en utilisant une moyenne fenêtrée. 
-                pass
+                print("immobile")
             elif(self.état == "rotation"):
                 ##En rotation: le fil calcule la nouvelle orientation du robot en tenant compte du temps écoulé entre deux mesures et le biais calculé pour gx. 
-                pass
+                print("rotation")
             elif(self.état == "translation"):
                 ##En translation: le fil calcule la nouvelle position en y du robot en tenant compte du temps écoulé entre deux mesures et le biais calculé pour ay. 
-                pass
+                print("translation")
 
     def _get_gyro_data(self):
         self.ax, self.ay, self.az, self.gx, self.gy, self.gz = self.imu.read_accelerometer_gyro_data()
