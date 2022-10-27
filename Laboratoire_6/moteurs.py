@@ -28,8 +28,8 @@ class Moteurs:
         self.IN3.on()
     
         if(dir == None):
-            self.ENA.value = 0.25
-            self.ENB.value = 0.25
+            self.ENA.value = 0.7
+            self.ENB.value = 0.7
         elif(dir == "g"):
             self.avancer_gauche()
         elif(dir == "d"):
@@ -51,21 +51,21 @@ class Moteurs:
         self.arreter()
         self.IN2.on()
         self.IN4.on()
-        self.ENA.value = 1.0
-        self.ENB.value = 1.0
+        self.ENA.value = 0.7
+        self.ENB.value = 0.7
             
     def tourner(self, dir):
         
         if (dir == "g"):
             self.IN2.on()
             self.IN3.on()
-            self.ENA.value = 0.4
-            self.ENB.value = 0.4
+            self.ENA.value = 0.7
+            self.ENB.value = 0.7
         elif (dir == "d"):
             self.IN1.on()
             self.IN4.on()
-            self.ENA.value = 0.4
-            self.ENB.value = 0.4
+            self.ENA.value = 0.7
+            self.ENB.value = 0.7
 
     def arreter(self):
         self.ENA.off()
