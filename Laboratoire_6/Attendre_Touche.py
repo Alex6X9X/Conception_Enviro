@@ -33,7 +33,7 @@ def Attendre_Touche(robot , navigation):
         
     elif key == ord(A):
         navigation.état = "rotation"
-        robot.Tourner_90('g')
+        robot.Tourner('g')
     
     elif key == ord(S):
         navigation.état = "translation"
@@ -41,7 +41,7 @@ def Attendre_Touche(robot , navigation):
     
     elif key == ord(D):
         navigation.état = "rotation"
-        robot.Tourner_90('d')
+        robot.Tourner('d')
     
     elif key == ord(SPACE):
         navigation.état = "immobile"
