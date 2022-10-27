@@ -20,40 +20,33 @@ X = 'x'
 
 # Paramètre: Un objet de type Robot() pour le déplacement du véhicule
 # Retourne un booléen
-def Attendre_Touche(robot):
+def Attendre_Touche(robot , navigation):
     
     img = np.zeros((512,512,3),np.uint8)
-    cv2.imshow('Labo 1',img)
+    cv2.imshow('Labo 6',img)
     
-    key = cv2.waitKey(100) # 100 milliseconds
+    key = cv2.waitKey(16) # 100 milliseconds
     
     if key == ord(W): 
+        navigation.état = "translation"
         robot.Avancer()
-
-    elif key == ord(Q):
-        robot.Avancer('g')
-        
-    elif key == ord(E):
-        robot.Avancer('d')
         
     elif key == ord(A):
+        navigation.état = "rotation"
         robot.Tourner_90('g')
     
     elif key == ord(S):
+        navigation.état = "translation"
         robot.Reculer()
     
     elif key == ord(D):
+        navigation.état = "rotation"
         robot.Tourner_90('d')
     
     elif key == ord(SPACE):
-        robot.Arreter()
-        
-    elif key == ord(PLUS):
-        robot.Augmenter_Vitesse()
-        
-    elif key == ord(MOINS):
-        robot.Diminuer_Vitesse()
-        
+        navigation.état = "immobile"
+        robot.freiner()
+   
     elif key == ord(X):
         robot.Arreter()
         return True

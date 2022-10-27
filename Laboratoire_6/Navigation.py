@@ -5,7 +5,7 @@ from calculer_moyenne_mobile import calculer_moyenne_mobile
 G = 9,80665 #m/s2
 class Navigation : 
     
-    def __init__(self , imu):
+    def __init__(self , imu , robot):
         self.état = "immobile"
         self.thread_calcul_position = threading.Thread(target = self._calculer_position , args=())
         self.en_marche = True
@@ -19,6 +19,7 @@ class Navigation :
         self.my= None
         self.mz= None
         self.imu = imu
+        self.robot = robot
     def _calculer_position(self):
         while(self.en_marche):
             sleep(0.05)
