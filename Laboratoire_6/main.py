@@ -17,6 +17,5 @@ navigation = Navigation(imu , robot)
 
 while not arreter:
     arreter = Attendre_Touche(robot , navigation)
-    ##navigation.thread_calcul_position.start()
 
-##navigation.thread_calcul_position.join()
+navigation.thread_calcul_position.join()

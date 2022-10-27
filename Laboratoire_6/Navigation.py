@@ -20,6 +20,7 @@ class Navigation :
         self.mz= None
         self.imu = imu
         self.robot = robot
+        self.thread_calcul_position.start()
     def _calculer_position(self):
         while(self.en_marche):
             sleep(0.05)

@@ -45,7 +45,7 @@ def Attendre_Touche(robot , navigation):
     
     elif key == ord(SPACE):
         navigation.état = "immobile"
-        robot.freiner()
+        robot.Freiner()
    
     elif key == ord(X):
         robot.Arreter()
