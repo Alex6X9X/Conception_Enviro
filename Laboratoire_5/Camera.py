@@ -82,7 +82,7 @@ class Camera:
             image = cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
         res = cv2.matchTemplate(image, template_img, cv2.TM_CCOEFF_NORMED, None , mask)
         self.min_val, self.max_val, self.min_loc, self.max_loc = cv2.minMaxLoc(res)
-        print("max_loc =" + str(self.max_loc))
+        print("max_loc =" + str(self.max_val))
     def _set_attributes_(self , template_img):
         print("Set attribute")
         (startX, startY) = self.max_loc
