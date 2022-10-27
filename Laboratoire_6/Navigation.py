@@ -1,6 +1,7 @@
 import threading
 from time import sleep
 from icm20948 import ICM20948
+from calculer_moyenne_mobile import calculer_moyenne_mobile
 G = 9,80665 #m/s2
 class Navigation : 
     
