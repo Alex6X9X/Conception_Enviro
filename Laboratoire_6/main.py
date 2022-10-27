@@ -4,8 +4,11 @@
 import cv2
 import numpy as np
 from moteurs import Moteurs
+from icm20948 import ICM20948
 arreter = False
 
+
+imu = ICM20948()
 
 while not arreter:
 
