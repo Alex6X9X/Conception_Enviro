@@ -5,8 +5,8 @@ class Robot :
         self.x = 0
         self.y = 0
         
-    def Avancer(self, dir = None):
-        self.moteurs.avancer(dir)
+    def Avancer(self):
+        self.moteurs.avancer()
         
     def Reculer(self):
         self.moteurs.reculer()
