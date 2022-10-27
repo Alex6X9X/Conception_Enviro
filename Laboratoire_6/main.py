@@ -12,7 +12,7 @@ from icm20948 import ICM20948
 arreter = False
 robot = Robot()
 imu = ICM20948()
-navigation = Navigation(imu)
+navigation = Navigation(imu , robot)
 
 
 while not arreter:
