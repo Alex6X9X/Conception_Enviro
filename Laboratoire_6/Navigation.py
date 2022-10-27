@@ -6,7 +6,7 @@ class Navigation :
     
     def __init__(self , imu):
         self.état = "immobile"
-        self.thread_calcul_position = threading.Thread(target = self.Clignoter , args=())
+        self.thread_calcul_position = threading.Thread(target = self._calculer_position , args=())
         self.en_marche = True
         self.ax= None 
         self.ay= None 
