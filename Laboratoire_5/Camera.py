@@ -78,7 +78,7 @@ class Camera:
             self._draw_rectangle(self.xmin, self.ymin, self.xmax, self.ymax, 20, 170, 60)
             
     def _trouver_image_modele(self, template_img, mask , image = None):
-        if(image == None):
+        if(image is None):
             image = cv2.cvtColor(self.image, cv2.COLOR_BGR2GRAY)
         res = cv2.matchTemplate(image, template_img, cv2.TM_CCOEFF_NORMED, None , mask)
         self.min_val, self.max_val, self.min_loc, self.max_loc = cv2.minMaxLoc(res)
