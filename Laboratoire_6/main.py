@@ -3,7 +3,6 @@
 
 import cv2
 import numpy as np
-from moteurs import Moteurs
 from Robot import Robot
 from Navigation import Navigation
 from Attendre_Touche import Attendre_Touche
@@ -11,7 +10,6 @@ from Console import Console
 from icm20948 import ICM20948
 
 arreter = False
-moteur = Moteurs()
 robot = Robot()
 imu = ICM20948()
 navigation = Navigation(imu)
