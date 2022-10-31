@@ -4,7 +4,10 @@ from time import sleep
 from icm20948 import ICM20948
 from calculer_moyenne_mobile import calculer_moyenne_mobile
 from State import State
+
 G = 9.80665 #m/s2
+TOUR_COMPLET = 360 #Degré
+
 class Navigation : 
     
     def __init__(self , imu , robot):
@@ -36,6 +39,7 @@ class Navigation :
         while(self.en_marche):
             sleep(0.05)
             self._get_gyro_data()
+            
             if(self.état == State.Immobile):
                 ##À l’arrêt: le fil calcule les biais de gx et de ay en utilisant une moyenne fenêtrée. 
                 self._biais_gx = calculer_moyenne_mobile(self.gx , self._tab_biais_gx)
@@ -49,8 +53,11 @@ class Navigation :
                 self.gx = self.gx - self._biais_gx
                 self.angleX += time.perf_counter() - self.deltaTime * (self.gx + self.gx_precedent) / 2
                 self.gx_precedent = self.gx
+                    
                 print(self.angleX)
-                print("rotation")
+                print(self.gx)
+                print(self.gx_precedent)
+                
             elif(self.état ==  State.Translation):
                 ##En translation: le fil calcule la nouvelle position en y du robot en tenant compte du temps écoulé entre deux mesures et le biais calculé pour ay. 
                 self.ay = self.ay - self._biais_ay
