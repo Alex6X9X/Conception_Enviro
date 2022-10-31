@@ -23,7 +23,7 @@ class Moteurs:
         self.ENB = gpiozero.PWMOutputDevice(PORT_ENB)
         
     def avancer(self):
-        #self.arreter()
+        self.arreter()
         self.IN1.on()
         self.IN3.on()
     
@@ -38,7 +38,7 @@ class Moteurs:
         self.ENB.value = 0.7
             
     def tourner(self, dir):
-        
+        self.arreter()
         if (dir == "g"):
             self.IN2.on()
             self.IN3.on()
