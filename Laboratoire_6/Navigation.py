@@ -67,7 +67,7 @@ class Navigation :
                 self.ay_precedent = self.ay
                 self.vy_precedent = self.vy
                 
-                print(self.ay)
+                print(self.ay, self._biais_ay)
                
                 
 
