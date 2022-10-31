@@ -27,7 +27,9 @@ class Navigation :
         self._tab_biais_ay = []
         self._biais_gx = 0
         self._biais_ay = 0
+        self.compteur = 0
         self.deltaTime = 0
+        self.ancien_compteur = 0
         self.angleX = 0
         self.gx_precedent = 0
         self.ay_precedent = 0
@@ -51,18 +53,17 @@ class Navigation :
             elif(self.état ==  State.Rotation):
                 ##En rotation: le fil calcule la nouvelle orientation du robot en tenant compte du temps écoulé entre deux mesures et le biais calculé pour gx. 
                 self.gx = self.gx - self._biais_gx
-                self.angleX += time.perf_counter() - self.deltaTime * (self.gx + self.gx_precedent) / 2
+                self.angleX += self.deltaTime * (self.gx + self.gx_precedent) / 2
                 self.gx_precedent = self.gx
                     
                 print(self.angleX)
                 print(self.gx)
-                print(self.gx_precedent)
                 
             elif(self.état ==  State.Translation):
                 ##En translation: le fil calcule la nouvelle position en y du robot en tenant compte du temps écoulé entre deux mesures et le biais calculé pour ay. 
                 self.ay = self.ay - self._biais_ay
-                self.vy += time.perf_counter() - self.deltaTime * (self.ay + self.ay_precedent) / 2 * G 
-                self.posY += time.perf_counter() - self.deltaTime * (self.vy + self.vy_precedent) / 2 
+                self.vy += self.deltaTime * (self.ay + self.ay_precedent) / 2 * G 
+                self.posY += self.deltaTime * (self.vy + self.vy_precedent) / 2 
                 self.ay_precedent = self.ay
                 self.vy_precedent = self.vy
                 print(self.posY)
@@ -70,4 +71,6 @@ class Navigation :
 
     def _get_gyro_data(self):
         self.ax, self.ay, self.az, self.gx, self.gy, self.gz = self.imu.read_accelerometer_gyro_data()
-        self.deltaTime = time.perf_counter()
+        self.ancien_compteur = self.compteur
+        self.compteur = time.perf_counter()
+        self.deltaTime = self.compteur - self.ancien_compteur
