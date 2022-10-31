@@ -4,6 +4,7 @@
 
 import numpy as np
 import cv2
+from State import State
 
 # Constantes
 # Touches de clavier
@@ -18,6 +19,7 @@ PLUS = '+'
 MOINS = '-'
 X = 'x'
 
+
 # Paramètre: Un objet de type Robot() pour le déplacement du véhicule
 # Retourne un booléen
 def Attendre_Touche(robot , navigation):
@@ -28,23 +30,23 @@ def Attendre_Touche(robot , navigation):
     key = cv2.waitKey(16) # 100 milliseconds
     
     if key == ord(W): 
-        navigation.état = "translation"
+        navigation.état = State.Translation
         robot.Avancer()
         
     elif key == ord(A):
-        navigation.état = "rotation"
+        navigation.état = State.Rotation
         robot.Tourner('g')
     
     elif key == ord(S):
-        navigation.état = "translation"
+        navigation.état = State.Translation
         robot.Reculer()
     
     elif key == ord(D):
-        navigation.état = "rotation"
+        navigation.état = State.Rotation
         robot.Tourner('d')
     
     elif key == ord(SPACE):
-        navigation.état = "immobile"
+        navigation.état = State.Immobile
         robot.Freiner()
    
     elif key == ord(X):
