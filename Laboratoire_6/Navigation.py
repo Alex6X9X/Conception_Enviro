@@ -11,6 +11,7 @@ TOUR_COMPLET = 360 #Degré
 class Navigation : 
     
     def __init__(self , imu , robot):
+        
         self.état = 0
         self.thread_calcul_position = threading.Thread(target = self._calculer_position , args=())
         self.en_marche = True
@@ -56,8 +57,13 @@ class Navigation :
                 self.gx = self.gx - self._biais_gx
                 self.angleX += self.deltaTime * (self.gx + self.gx_precedent) / 2
                 self.gx_precedent = self.gx
+                
+                angleXFile = open('angleX.txt' , 'wt')
+                angleXFile.write(self.angleX)
+                angleXFile.close()
                     
                 print(self.angleX)
+
                 
             elif(self.état ==  State.Translation):
                 ##En translation: le fil calcule la nouvelle position en y du robot en tenant compte du temps écoulé entre deux mesures et le biais calculé pour ay. 
@@ -66,6 +72,17 @@ class Navigation :
                 self.posY += self.deltaTime * (self.vy + self.vy_precedent) / 2 
                 self.ay_precedent = self.ay
                 self.vy_precedent = self.vy
+
+                ayFile = open('ay.txt', 'wt')
+                PosYFile = open('posY.txt' , 'wt')
+                vyFile = open('vy.txt' , 'wt')
+                ayFile.write(self.ay)
+                PosYFile.write(self.posY)
+                vyFile.write(self.vy)
+
+                ayFile.close()
+                PosYFile.close()
+                vyFile.close()
                 
                 print(self.ay, self._biais_ay)
                

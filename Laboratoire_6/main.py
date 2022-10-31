@@ -8,11 +8,14 @@ from Navigation import Navigation
 from Attendre_Touche import Attendre_Touche
 from Console import Console
 from icm20948 import ICM20948
-
+angleXFile = open('angleX.txt' , 'wt')
+vyFile = open('vy.txt' , 'wt')
 arreter = False
 robot = Robot()
 imu = ICM20948()
-navigation = Navigation(imu , robot)
+navigation = Navigation(imu , robot ,ayFile,PosYFile,angleXFile,vyFile )
+
+
 
 
 while not arreter:
