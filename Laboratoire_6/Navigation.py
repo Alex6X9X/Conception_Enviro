@@ -4,7 +4,7 @@ from time import sleep
 from icm20948 import ICM20948
 from calculer_moyenne_mobile import calculer_moyenne_mobile
 from State import State
-G = 9,80665 #m/s2
+G = 9.80665 #m/s2
 class Navigation : 
     
     def __init__(self , imu , robot):
