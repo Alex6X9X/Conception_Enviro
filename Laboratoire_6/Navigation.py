@@ -34,6 +34,8 @@ class Navigation :
                 ##À l’arrêt: le fil calcule les biais de gx et de ay en utilisant une moyenne fenêtrée. 
                 self._biais_gx = calculer_moyenne_mobile(self.gx , self._tab_biais_gx)
                 self._biais_ay = calculer_moyenne_mobile(self.ay , self._tab_biais_ay)
+                print(self._biais_ay)
+                print(self._biais_gx)
                 print("immobile")
             elif(self.état ==  State.Rotation):
                 ##En rotation: le fil calcule la nouvelle orientation du robot en tenant compte du temps écoulé entre deux mesures et le biais calculé pour gx. 
