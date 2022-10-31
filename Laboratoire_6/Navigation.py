@@ -22,11 +22,18 @@ class Navigation :
         self.imu = imu
         self.robot = robot
         self.thread_calcul_position.start()
+        self._tab_biais_gx = []
+        self._tab_biais_ay = []
+        self._biais_gx = 0
+        self._biais_ay = 0
     def _calculer_position(self):
         while(self.en_marche):
             sleep(0.05)
+            self._get_gyro_data()
             if(self.état == State.Immobile):
                 ##À l’arrêt: le fil calcule les biais de gx et de ay en utilisant une moyenne fenêtrée. 
+                self._biais_gx = calculer_moyenne_mobile(self.gx , self._tab_biais_gx)
+                self._biais_ay = calculer_moyenne_mobile(self.ay , self._tab_biais_ay)
                 print("immobile")
             elif(self.état ==  State.Rotation):
                 ##En rotation: le fil calcule la nouvelle orientation du robot en tenant compte du temps écoulé entre deux mesures et le biais calculé pour gx. 
