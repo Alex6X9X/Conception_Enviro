@@ -63,7 +63,7 @@ class Navigation :
                 self.ay_precedent = self.ay
                 self.vy_precedent = self.vy
                 
-                print(self.vy)
+                print(self.ay)
                 
 
     def _get_gyro_data(self):
