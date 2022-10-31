@@ -42,13 +42,13 @@ class Moteurs:
         if (dir == "g"):
             self.IN2.on()
             self.IN3.on()
-            self.ENA.value = 0.5
-            self.ENB.value = 0.5
+            self.ENA.value = 0.6
+            self.ENB.value = 0.6
         elif (dir == "d"):
             self.IN1.on()
             self.IN4.on()
-            self.ENA.value = 0.5
-            self.ENB.value = 0.5
+            self.ENA.value = 0.6
+            self.ENB.value = 0.6
 
     def arreter(self):
         self.ENA.off()
