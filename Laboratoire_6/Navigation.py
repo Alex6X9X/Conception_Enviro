@@ -59,7 +59,7 @@ class Navigation :
                 self.gx_precedent = self.gx
                 
                 angleXFile = open('angleX.txt' , 'wt')
-                angleXFile.write(self.angleX)
+                angleXFile.write(str(self.angleX))
                 angleXFile.close()
                     
                 print(self.angleX)
@@ -76,9 +76,9 @@ class Navigation :
                 ayFile = open('ay.txt', 'wt')
                 PosYFile = open('posY.txt' , 'wt')
                 vyFile = open('vy.txt' , 'wt')
-                ayFile.write(self.ay)
-                PosYFile.write(self.posY)
-                vyFile.write(self.vy)
+                ayFile.write(str(self.ay))
+                PosYFile.write(str(self.posY))
+                vyFile.write(str(self.vy))
 
                 ayFile.close()
                 PosYFile.close()
