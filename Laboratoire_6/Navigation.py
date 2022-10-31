@@ -62,10 +62,11 @@ class Navigation :
                 self.posY += self.deltaTime * (self.vy + self.vy_precedent) / 2 
                 self.ay_precedent = self.ay
                 self.vy_precedent = self.vy
-                print(self.ay)
+                
 
     def _get_gyro_data(self):
         self.ax, self.ay, self.az, self.gx, self.gy, self.gz = self.imu.read_accelerometer_gyro_data()
         self.ancien_compteur = self.compteur
+        print(self.ay)
         self.compteur = time.perf_counter()
         self.deltaTime = self.compteur - self.ancien_compteur
