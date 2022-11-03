@@ -82,10 +82,10 @@ class Navigation :
                 writerPosY = csv.writer(PosYFile)
                 writerVy = csv.writer(vyFile)
                 
-                writerAy.writerow(self.ay)
-                writerPosY.writerow(self.posY)
-                writerVy.writerow(self.vy)
-                
+                writerAy.writerow(str(self.ay))
+                writerPosY.writerow(str(self.posY))
+                writerVy.writerow(str(self.vy))
+
                 ayFile.close()
                 PosYFile.close()
                 vyFile.close()
