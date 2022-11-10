@@ -1,8 +1,6 @@
 #Auteurs: Alexandre Carle et Louis-philippe Rousseau
 #Dernier changement 10 novembre 2022
 
-from copier_tableau import copier_tableau
-
 FENETRE = 10
 
 def calculer_moyenne_mobile(nouvelle_distance , tableau_distance):
