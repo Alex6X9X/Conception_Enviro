@@ -72,7 +72,7 @@ class Navigation :
                 self.posY += self.deltaTime * (self.vy + self.vy_precedent) / 2 
                 self.ay_precedent = self.ay
                 self.vy_precedent = self.vy
-
+                print("Delta Temp:" +str(self.deltaTime))
                 #ayFile = open('ay.txt', 'wt')
                 #PosYFile = open('posY.txt' , 'wt')
                 #vyFile = open('vy.txt' , 'wt')
