@@ -86,7 +86,7 @@ class Navigation :
                 #vyFile.close()
                 
                 print("Accélération:" + str(self.ay))
-                print("Position Y: " + str(self.posY))
+                #print("Position Y: " + str(self.posY))
                
                 
 
