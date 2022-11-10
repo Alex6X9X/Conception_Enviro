@@ -45,7 +45,4 @@ class Console:
         cv2.destroyAllWindows()
         
     def afficher_donnees(self, angleX, posY, en_marche):
-        while(en_marche):
-            time.sleep(0.1)
-            print("Angle X: " + str(angleX))
-            print("Position Y: " + str(posY))
+        

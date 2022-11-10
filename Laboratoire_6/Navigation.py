@@ -14,7 +14,6 @@ class Navigation :
     
     def __init__(self , imu , robot):
         
-        self.console = Console()
         self.état = 0
         self.en_marche = True
         self.ax= None 
@@ -44,7 +43,10 @@ class Navigation :
         self.thread_calcul_position.start()
         self.thread_affichage.start()
     def afficher_donnees(self):
-        self.console.afficher_donnees(self.angleX, self.posY, self.en_marche)
+        while(self.en_marche):
+            sleep(0.1)
+            print("Angle X: " + str(self.angleX))
+            print("Position Y: " + str(self.posY))
     def _calculer_position(self):
         while(self.en_marche):
             sleep(0.05)
