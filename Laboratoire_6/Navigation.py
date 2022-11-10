@@ -1,3 +1,6 @@
+#Auteurs: Alexandre Carle et Louis-philippe Rousseau
+#Dernier changement 10 novembre 2022
+
 import threading
 import time
 from time import sleep
@@ -7,7 +10,6 @@ from State import State
 import csv
 
 G = 9.80665 #m/s2
-TOUR_COMPLET = 360 #Degrés
 
 class Navigation : 
     
@@ -41,11 +43,13 @@ class Navigation :
         self.thread_affichage = threading.Thread(target = self.afficher_donnees, args=())
         self.thread_calcul_position.start()
         self.thread_affichage.start()
+        
     def afficher_donnees(self):
         while(self.en_marche):
             sleep(0.1)
             print("Angle X: " + str(self.angleX))
             print("Position Y: " + str(self.posY))
+            
     def _calculer_position(self):
         while(self.en_marche):
             sleep(0.05)
@@ -59,9 +63,6 @@ class Navigation :
                 self.ay = 0
                 self.ay_precedent = 0
 
-                
-               
-                
             elif(self.état ==  State.Rotation):
                 self.gx = self.gx - self._biais_gx
                 self.angleX += self.deltaTime * (self.gx + self.gx_precedent) / 2

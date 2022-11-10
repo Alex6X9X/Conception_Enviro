@@ -1,5 +1,5 @@
 #Auteurs: Alexandre Carle et Louis-philippe Rousseau
-#Dernier changement 13 octobre 2022
+#Dernier changement 10 novembre 2022
 
 import gpiozero
 
@@ -65,18 +65,6 @@ class Moteurs:
         self.IN2.on()
         self.IN3.on()
         self.IN4.on()
-    
-    #10% == 0.1
-    
-    def augmenter_Vitesse(self):
-        if(self.ENA.value + TAUX_VITESSE < 1):
-            self.ENA.value = self.ENA.value + TAUX_VITESSE 
-            self.ENB.value = self.ENB.value + TAUX_VITESSE
-        
-    def diminuer_Vitesse(self):
-        if(self.moteurs.ENB.value - TAUX_VITESSE > 0):
-            self.ENA.value = self.ENA.value - TAUX_VITESSE
-            self.ENB.value = self.ENB.value - TAUX_VITESSE
         
 
             

@@ -1,23 +1,10 @@
-#Alexandre Carle et Louis-philippe Rousseau
-#25 août 2022
-#Dernier changement le 28 août 2022
+#Auteurs: Alexandre Carle et Louis-philippe Rousseau
+#Dernier changement 10 novembre 2022
 
 import numpy as np
 import cv2
 from State import State
 
-# Constantes
-# Touches de clavier
-W = 'w'
-Q = 'q'
-E = 'e'
-A = 'a'
-S = 's'
-D = 'd'
-SPACE = ' '
-PLUS = '+'
-MOINS = '-'
-X = 'x'
 
 
 # Paramètre: Un objet de type Robot() pour le déplacement du véhicule
@@ -29,27 +16,27 @@ def Attendre_Touche(robot , navigation):
     
     key = cv2.waitKey(16) # 100 milliseconds
     
-    if key == ord(W): 
+    if key == ord('w'): 
         navigation.état = State.Translation
         robot.Avancer()
         
-    elif key == ord(A):
+    elif key == ord('a'):
         navigation.état = State.Rotation
         robot.Tourner('g')
     
-    elif key == ord(S):
+    elif key == ord('s'):
         navigation.état = State.Translation
         robot.Reculer()
     
-    elif key == ord(D):
+    elif key == ord('d'):
         navigation.état = State.Rotation
         robot.Tourner('d')
     
-    elif key == ord(SPACE):
+    elif key == ord(' '):
         navigation.état = State.Immobile
         robot.Freiner()
    
-    elif key == ord(X):
+    elif key == ord('x'):
         robot.Arreter()
         return True
     

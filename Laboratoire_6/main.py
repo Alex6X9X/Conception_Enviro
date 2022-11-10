@@ -1,8 +1,6 @@
 #Auteurs: Alexandre Carle et Louis-philippe Rousseau
-#Dernier changement 27 octobre 2022
+#Dernier changement 10 novembre 2022
 
-import cv2
-import numpy as np
 from Robot import Robot
 from Navigation import Navigation
 from Attendre_Touche import Attendre_Touche

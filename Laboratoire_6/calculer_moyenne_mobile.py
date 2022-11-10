@@ -1,6 +1,5 @@
-#Alexandre Carle et Louis-philippe Rousseau
-#12 septembre 2022
-#Dernier changement le 12 septembre 2022
+#Auteurs: Alexandre Carle et Louis-philippe Rousseau
+#Dernier changement 10 novembre 2022
 
 from copier_tableau import copier_tableau
 

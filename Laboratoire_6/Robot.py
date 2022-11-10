@@ -1,3 +1,6 @@
+#Auteurs: Alexandre Carle et Louis-philippe Rousseau
+#Dernier changement 10 novembre 2022
+
 from moteurs import Moteurs
 class Robot :
     def __init__(self):
@@ -19,9 +22,3 @@ class Robot :
         
     def Freiner(self):
         self.moteurs.freiner()
-    
-    def Augmenter_Vitesse(self):
-        self.moteurs.augmenter_Vitesse()
-        
-    def Diminuer_Vitesse(self):
-        self.moteurs.diminuer_Vitesse()
