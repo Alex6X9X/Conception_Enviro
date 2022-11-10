@@ -64,7 +64,7 @@ class Navigation :
                 #angleXFile.write(str(self.angleX))
                 #angleXFile.close()
                     
-                #print(self.angleX)
+                print("Angle X:" + str(self.angleX))
 
                 
             elif(self.état ==  State.Translation):
@@ -95,6 +95,5 @@ class Navigation :
     def _get_gyro_data(self):
         self.ax, self.ay, self.az, self.gx, self.gy, self.gz = self.imu.read_accelerometer_gyro_data()
         self.ancien_compteur = self.compteur
-        #print(self.ay)
         self.compteur = time.perf_counter()
         self.deltaTime = self.compteur - self.ancien_compteur
