@@ -63,7 +63,7 @@ class Navigation :
                 #angleXFile.write(str(self.angleX))
                 #angleXFile.close()
                     
-                print(self.angleX)
+                #print(self.angleX)
 
                 
             elif(self.état ==  State.Translation):
