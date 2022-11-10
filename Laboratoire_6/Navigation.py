@@ -48,6 +48,7 @@ class Navigation :
                 ##À l’arrêt: le fil calcule les biais de gx et de ay en utilisant une moyenne fenêtrée. 
                 self._biais_gx = calculer_moyenne_mobile(self.gx , self._tab_biais_gx)
                 self._biais_ay = calculer_moyenne_mobile(self.ay , self._tab_biais_ay)
+                self.vy = 0
                 ##if(self._biais_ay != None):
                   ##  print(self.ay - self._biais_ay)
                 
