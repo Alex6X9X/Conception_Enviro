@@ -40,11 +40,11 @@ class Navigation :
         self.posY = 0
         
         self.thread_calcul_position = threading.Thread(target = self._calculer_position , args=())
-        self.thread_affichage = threading.Thread(target = self.console.afficher_donnees, 
-                                                 args=(self.angleX, self.posY, self.en_marche))
+        self.thread_affichage = threading.Thread(target = self.afficher_donnees, args=())
         self.thread_calcul_position.start()
         self.thread_affichage.start()
-        
+    def afficher_donnees(self):
+        self.console.afficher_donnees(self.angleX, self.posY, self.en_marche)
     def _calculer_position(self):
         while(self.en_marche):
             sleep(0.05)
