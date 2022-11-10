@@ -1,7 +1,6 @@
 import threading
 import time
 from time import sleep
-from Console import Console
 from icm20948 import ICM20948
 from calculer_moyenne_mobile import calculer_moyenne_mobile
 from State import State
