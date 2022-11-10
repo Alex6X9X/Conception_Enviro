@@ -54,7 +54,6 @@ class Navigation :
                
                 
             elif(self.état ==  State.Rotation):
-                ##En rotation: le fil calcule la nouvelle orientation du robot en tenant compte du temps écoulé entre deux mesures et le biais calculé pour gx. 
                 self.gx = self.gx - self._biais_gx
                 self.angleX += self.deltaTime * (self.gx + self.gx_precedent) / 2
                 self.gx_precedent = self.gx
@@ -67,7 +66,6 @@ class Navigation :
 
                 
             elif(self.état ==  State.Translation):
-                ##En translation: le fil calcule la nouvelle position en y du robot en tenant compte du temps écoulé entre deux mesures et le biais calculé pour ay. 
                 self.ay = self.ay - self._biais_ay
                 self.vy += self.deltaTime * (self.ay + self.ay_precedent) / 2 * G 
                 self.posY += self.deltaTime * (self.vy + self.vy_precedent) / 2 
@@ -85,9 +83,9 @@ class Navigation :
                 #PosYFile.close()
                 #vyFile.close()
                 
-                print("Accélération:" + str(self.ay))
+                #print("Accélération:" + str(self.ay))
                 print("Position Y: " + str(self.posY))
-                print("Vitesse:" + str(self.vy))
+                #print("Vitesse:" + str(self.vy))
                
                 
 
