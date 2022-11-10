@@ -41,7 +41,7 @@ class Navigation :
         
         self.thread_calcul_position = threading.Thread(target = self._calculer_position , args=())
         self.thread_affichage = threading.Thread(target = self.console.afficher_donnees, 
-                                                 args=(self.angleX, self.posY))
+                                                 args=(self.angleX, self.posY, en_marche))
         self.thread_calcul_position.start()
         self.thread_affichage.start()
         
