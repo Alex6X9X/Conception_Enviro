@@ -58,9 +58,9 @@ class Navigation :
                 self.angleX += self.deltaTime * (self.gx + self.gx_precedent) / 2
                 self.gx_precedent = self.gx
                 
-                angleXFile = open('angleX.txt' , 'wt')
-                angleXFile.write(str(self.angleX))
-                angleXFile.close()
+                #angleXFile = open('angleX.txt' , 'wt')
+                #angleXFile.write(str(self.angleX))
+                #angleXFile.close()
                     
                 print(self.angleX)
 
@@ -73,16 +73,16 @@ class Navigation :
                 self.ay_precedent = self.ay
                 self.vy_precedent = self.vy
 
-                ayFile = open('ay.txt', 'wt')
-                PosYFile = open('posY.txt' , 'wt')
-                vyFile = open('vy.txt' , 'wt')
-                ayFile.write(str(self.ay))
-                PosYFile.write(str(self.posY))
-                vyFile.write(str(self.vy))
+                #ayFile = open('ay.txt', 'wt')
+                #PosYFile = open('posY.txt' , 'wt')
+                #vyFile = open('vy.txt' , 'wt')
+                #ayFile.write(str(self.ay))
+                #PosYFile.write(str(self.posY))
+                #vyFile.write(str(self.vy))
 
-                ayFile.close()
-                PosYFile.close()
-                vyFile.close()
+                #ayFile.close()
+                #PosYFile.close()
+                #vyFile.close()
                 
                 print(self.ay, self._biais_ay)
                
