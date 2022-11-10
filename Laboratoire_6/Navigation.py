@@ -16,9 +16,6 @@ class Navigation :
         
         self.console = Console()
         self.état = 0
-        self.thread_calcul_position = threading.Thread(target = self._calculer_position , args=())
-        self.thread_affichage = threading.Thread(target = self.console.afficher_donnees, 
-                                                 args=(self.angleX, self.posY))
         self.en_marche = True
         self.ax= None 
         self.ay= None 
@@ -28,8 +25,6 @@ class Navigation :
         self.gz= None
         self.imu = imu
         self.robot = robot
-        self.thread_calcul_position.start()
-        self.thread_affichage.start()
         self._tab_biais_gx = []
         self._tab_biais_ay = []
         self._biais_gx = 0
@@ -43,6 +38,12 @@ class Navigation :
         self.vy = 0
         self.vy_precedent = 0
         self.posY = 0
+        
+        self.thread_calcul_position = threading.Thread(target = self._calculer_position , args=())
+        self.thread_affichage = threading.Thread(target = self.console.afficher_donnees, 
+                                                 args=(self.angleX, self.posY))
+        self.thread_calcul_position.start()
+        self.thread_affichage.start()
         
     def _calculer_position(self):
         while(self.en_marche):
