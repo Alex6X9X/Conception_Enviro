@@ -6,7 +6,6 @@ import numpy as np
 from Robot import Robot
 from Navigation import Navigation
 from Attendre_Touche import Attendre_Touche
-from Console import Console
 from icm20948 import ICM20948
 arreter = False
 robot = Robot()
