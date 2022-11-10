@@ -3,6 +3,7 @@
 
 import numpy as np
 import cv2
+import time
 
 LARGEUR = 512
 GRANDEUR = 700
@@ -42,3 +43,8 @@ class Console:
     
     def detruire_fenetres(self):
         cv2.destroyAllWindows()
+        
+    def afficher_donnees(self, angleX, posY):
+        time.sleep(0.1)
+        print("Angle X: " + str(angleX))
+        print("Position Y: " + str(posY))

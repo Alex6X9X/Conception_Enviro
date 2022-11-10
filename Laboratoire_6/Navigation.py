@@ -1,6 +1,7 @@
 import threading
 import time
 from time import sleep
+from Console import Console
 from icm20948 import ICM20948
 from calculer_moyenne_mobile import calculer_moyenne_mobile
 from State import State
@@ -15,6 +16,9 @@ class Navigation :
         
         self.état = 0
         self.thread_calcul_position = threading.Thread(target = self._calculer_position , args=())
+        self.thread_affichage = threading.Thread(target = self.console.afficher_donnees, 
+                                                 args=(self.angleX, self.posY))
+        self.console = Console()
         self.en_marche = True
         self.ax= None 
         self.ay= None 
@@ -25,6 +29,7 @@ class Navigation :
         self.imu = imu
         self.robot = robot
         self.thread_calcul_position.start()
+        self.thread_affichage.start()
         self._tab_biais_gx = []
         self._tab_biais_ay = []
         self._biais_gx = 0
@@ -51,8 +56,7 @@ class Navigation :
                 self.vy_precedent = 0
                 self.ay = 0
                 self.ay_precedent = 0
-                ##if(self._biais_ay != None):
-                  ##  print(self.ay - self._biais_ay)
+
                 
                
                 
@@ -61,35 +65,12 @@ class Navigation :
                 self.angleX += self.deltaTime * (self.gx + self.gx_precedent) / 2
                 self.gx_precedent = self.gx
                 
-                #angleXFile = open('angleX.txt' , 'wt')
-                #angleXFile.write(str(self.angleX))
-                #angleXFile.close()
-                    
-                print("Angle X:" + str(self.angleX))
-
-                
             elif(self.état ==  State.Translation):
                 self.ay = self.ay - self._biais_ay
                 self.vy += self.deltaTime * (self.ay + self.ay_precedent) / 2 * G 
                 self.posY += self.deltaTime * (self.vy + self.vy_precedent) / 2 
                 self.ay_precedent = self.ay
                 self.vy_precedent = self.vy
-                print("Delta Temp:" +str(self.deltaTime))
-                #ayFile = open('ay.txt', 'wt')
-                #PosYFile = open('posY.txt' , 'wt')
-                #vyFile = open('vy.txt' , 'wt')
-                #ayFile.write(str(self.ay))
-                #PosYFile.write(str(self.posY))
-                #vyFile.write(str(self.vy))
-
-                #ayFile.close()
-                #PosYFile.close()
-                #vyFile.close()
-                
-                #print("Accélération:" + str(self.ay))
-                print("Position Y: " + str(self.posY))
-                #print("Vitesse:" + str(self.vy))
-               
                 
 
     def _get_gyro_data(self):
