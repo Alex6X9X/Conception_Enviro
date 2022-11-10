@@ -48,6 +48,7 @@ class Navigation :
                 self._biais_gx = calculer_moyenne_mobile(self.gx , self._tab_biais_gx)
                 self._biais_ay = calculer_moyenne_mobile(self.ay , self._tab_biais_ay)
                 self.vy = 0
+                print("Biais ay:" + str(self._biais_ay))
                 ##if(self._biais_ay != None):
                   ##  print(self.ay - self._biais_ay)
                 
