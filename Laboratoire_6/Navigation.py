@@ -88,6 +88,7 @@ class Navigation :
                 
                 print("Accélération:" + str(self.ay))
                 print("Position Y: " + str(self.posY))
+                print("Vitesse:" + str(self.vy))
                
                 
 
