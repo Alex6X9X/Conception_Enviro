@@ -14,11 +14,11 @@ class Navigation :
     
     def __init__(self , imu , robot):
         
+        self.console = Console()
         self.état = 0
         self.thread_calcul_position = threading.Thread(target = self._calculer_position , args=())
         self.thread_affichage = threading.Thread(target = self.console.afficher_donnees, 
                                                  args=(self.angleX, self.posY))
-        self.console = Console()
         self.en_marche = True
         self.ax= None 
         self.ay= None 
