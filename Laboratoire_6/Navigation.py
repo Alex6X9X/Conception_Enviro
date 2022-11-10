@@ -7,7 +7,7 @@ from State import State
 import csv
 
 G = 9.80665 #m/s2
-TOUR_COMPLET = 360 #Degré
+TOUR_COMPLET = 360 #Degrés
 
 class Navigation : 
     
