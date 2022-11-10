@@ -14,7 +14,7 @@ def Attendre_Touche(robot , navigation):
     img = np.zeros((512,512,3),np.uint8)
     cv2.imshow('Labo 6',img)
     
-    key = cv2.waitKey(16) # 100 milliseconds
+    key = cv2.waitKey(16)
     
     if key == ord('w'): 
         navigation.état = State.Translation
