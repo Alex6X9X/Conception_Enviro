@@ -22,3 +22,4 @@ class Robot :
         
     def Freiner(self):
         self.moteurs.freiner()
+    
