@@ -6,10 +6,12 @@ class Lidar:
         self.Obj = PyLidar3.YdLidarX4(self.port) 
         self.gen = None
         self.StartLidar()
+        
     def StartLidar(self):
         if(self.Obj.Connect()):
             print(self.Obj.GetDeviceInfo())
             self.gen = self.Obj.StartScanning()
+            
     def ScanLidar(self):
         while (...):         
             data = next(self.gen) # Dictionnaire: data[0:359] 

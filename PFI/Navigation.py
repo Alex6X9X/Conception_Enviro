@@ -13,7 +13,7 @@ G = 9.80665 #m/s2
 
 class Navigation : 
     
-    def __init__(self , imu , robot):
+    def __init__(self , imu):
         
         self.état = 0
         self.en_marche = True
@@ -24,7 +24,6 @@ class Navigation :
         self.gy= None
         self.gz= None
         self.imu = imu
-        self.robot = robot
         self._tab_biais_gx = []
         self._tab_biais_ay = []
         self._biais_gx = 0
@@ -48,7 +47,7 @@ class Navigation :
         while(self.en_marche):
             sleep(0.1)
             print("Angle X: " + str(self.angleX))
-            print("Position Y: " + str(self.posY))
+            ##print("Position Y: " + str(self.posY))
             
     def _calculer_position(self):
         while(self.en_marche):
@@ -68,12 +67,12 @@ class Navigation :
                 self.angleX += self.deltaTime * (self.gx + self.gx_precedent) / 2
                 self.gx_precedent = self.gx
                 
-            elif(self.état ==  State.Translation):
-                self.ay = self.ay - self._biais_ay
-                self.vy += self.deltaTime * (self.ay + self.ay_precedent) / 2 * G 
-                self.posY += self.deltaTime * (self.vy + self.vy_precedent) / 2 
-                self.ay_precedent = self.ay
-                self.vy_precedent = self.vy
+           ## elif(self.état ==  State.Translation):
+                ##self.ay = self.ay - self._biais_ay
+                ##self.vy += self.deltaTime * (self.ay + self.ay_precedent) / 2 * G 
+                ##self.posY += self.deltaTime * (self.vy + self.vy_precedent) / 2 
+                ##self.ay_precedent = self.ay
+                ##self.vy_precedent = self.vy
                 
 
     def _get_gyro_data(self):
