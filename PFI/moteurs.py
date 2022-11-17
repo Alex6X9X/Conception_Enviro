@@ -1,4 +1,4 @@
-#Auteurs: Alexandre Carle et Louis-philippe Rousseau
+#Auteurs: Alexandre Carle et Louis-philippe Rousseau et Guillaume Légaré
 #Dernier changement 10 novembre 2022
 
 import gpiozero
@@ -22,7 +22,7 @@ class Moteurs:
         self.IN4 = gpiozero.DigitalOutputDevice(PORT_IN4) # moteur D
         self.ENB = gpiozero.PWMOutputDevice(PORT_ENB)
         
-    def avancer(self):
+    def reculer(self):
         self.arreter()
         self.IN1.on()
         self.IN3.on()
@@ -30,7 +30,7 @@ class Moteurs:
         self.ENA.value = 0.4
         self.ENB.value = 0.4
         
-    def reculer(self):
+    def avancer(self):
         self.arreter()
         self.IN2.on()
         self.IN4.on()
@@ -39,12 +39,14 @@ class Moteurs:
             
     def tourner(self, dir):
         self.arreter()
-        if (dir == "g"):
+        #g
+        if (dir == 0):
             self.IN2.on()
             self.IN3.on()
             self.ENA.value = 0.6
             self.ENB.value = 0.6
-        elif (dir == "d"):
+        #d            
+        elif (dir == 1):
             self.IN1.on()
             self.IN4.on()
             self.ENA.value = 0.6
