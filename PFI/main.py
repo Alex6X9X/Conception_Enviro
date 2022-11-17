@@ -1,4 +1,4 @@
-#Auteurs: Alexandre Carle et Louis-philippe Rousseau
+#Auteurs: Alexandre Carle et Louis-philippe Rousseau et Guillaume Légaré
 #Dernier changement 14 novembre 2022
 
 from Robot import Robot
