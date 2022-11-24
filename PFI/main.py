@@ -22,7 +22,7 @@ lidar = Lidar(en_marche)
     
 
 
-while not arreter:
+while not en_marche:
     #radioNavigation.getPosition()
     #lidar.ScanLidar()
     #lidar.GetDistance(0)
