@@ -6,14 +6,14 @@ from Navigation import Navigation
 from icm20948 import ICM20948
 from RadioNavigation import RadioNavigation
 from Lidar import Lidar
-en_marche = False
+en_marche = True
 
 imu = ICM20948()
 
 navigation = Navigation(imu, en_marche)
 radioNavigation = RadioNavigation()
 radioNavigation.demarrerCommunication()
-robot = Robot(navigation , radioNavigation)
+robot = Robot(navigation , radioNavigation , en_marche)
 lidar = Lidar(en_marche)
 
 #robot.Tourner(0)
@@ -22,7 +22,7 @@ lidar = Lidar(en_marche)
     
 
 
-while not en_marche:
+while en_marche:
     #radioNavigation.getPosition()
     #lidar.ScanLidar()
     #lidar.GetDistance(0)
