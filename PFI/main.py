@@ -23,7 +23,7 @@ robot = Robot(navigation , radioNavigation)
 
 
 while not en_marche:
-    #radioNavigation.getPosition()
+    radioNavigation.getPosition()
     #lidar.ScanLidar()
     #lidar.GetDistance(0)
     robot.Avancer()
