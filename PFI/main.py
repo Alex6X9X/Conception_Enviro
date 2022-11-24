@@ -24,6 +24,8 @@ robot = Robot(navigation , radioNavigation, en_marche)
 
 while en_marche:
     radioNavigation.getPosition()
+    print(radioNavigation.x)
+    print(radioNavigation.y)
     #lidar.ScanLidar()
     #lidar.GetDistance(0)
     robot.Avancer()
