@@ -10,7 +10,7 @@ en_marche = False
 
 imu = ICM20948()
 
-navigation = Navigation(imu)
+navigation = Navigation(imu, en_marche)
 radioNavigation = RadioNavigation()
 radioNavigation.demarrerCommunication()
 robot = Robot(navigation , radioNavigation)

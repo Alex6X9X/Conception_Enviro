@@ -13,10 +13,10 @@ G = 9.80665 #m/s2
 
 class Navigation : 
     
-    def __init__(self , imu):
+    def __init__(self , imu, en_marche):
         
         self.état = 0
-        self.en_marche = True
+        self.en_marche = en_marche
         self.ax= None 
         self.ay= None 
         self.az= None
