@@ -5,6 +5,7 @@ from Robot import Robot
 from Navigation import Navigation
 from icm20948 import ICM20948
 from RadioNavigation import RadioNavigation
+
 arreter = False
 
 imu = ICM20948()
@@ -16,7 +17,7 @@ robot = Robot(navigation , radioNavigation)
 
 
 
-
+## début loop , start les thread de Robot pour avancer 
 while not arreter:
     ##radioNavigation.getPosition()
 
