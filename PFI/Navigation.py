@@ -41,7 +41,7 @@ class Navigation :
         self.thread_calcul_position = threading.Thread(target = self._calculer_position , args=())
         self.thread_affichage = threading.Thread(target = self.afficher_donnees, args=())
         self.thread_calcul_position.start()
-        self.thread_affichage.start()
+        #self.thread_affichage.start()
         
     def afficher_donnees(self):
         while(self.en_marche):
