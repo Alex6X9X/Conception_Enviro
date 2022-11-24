@@ -15,6 +15,7 @@ class RadioNavigation:
         self.thread_get_position = threading.Thread(target = self.getPosition , args=())
         self.thread_get_position.start()
     def demarrerCommunication(self):
+        print("RadioNavigation")
         self.ser.write(b'\r\r') # séquence d’octets
         time.sleep(1)
         
