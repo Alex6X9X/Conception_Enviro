@@ -1,6 +1,7 @@
 #Auteurs: Alexandre Carle et Louis-philippe Rousseau
 import serial 
 import time
+import threading
 class RadioNavigation:
     def __init__(self):
         self.ser = serial.Serial() 

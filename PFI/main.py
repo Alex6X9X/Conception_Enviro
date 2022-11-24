@@ -4,16 +4,28 @@
 from Robot import Robot
 from Navigation import Navigation
 from icm20948 import ICM20948
+from RadioNavigation import RadioNavigation
 arreter = False
-robot = Robot()
+
 imu = ICM20948()
-navigation = Navigation(imu , robot)
+
+navigation = Navigation(imu)
+radioNavigation = RadioNavigation()
+radioNavigation.demarrerCommunication()
+robot = Robot(navigation , radioNavigation)
 
 
 
 
 while not arreter:
-    arreter = Attendre_Touche(robot , navigation)
+    ##radioNavigation.getPosition()
+
+    robot.Avancer()
+    robot.Freiner()
+    robot.Reculer()
+    robot.Arreter()
+    
 navigation.en_marche = False
+radioNavigation.en_marche = False
 navigation.thread_calcul_position.join()
 navigation.thread_affichage.join()
