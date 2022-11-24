@@ -4,11 +4,12 @@ import time
 #Distance en mm
 
 class Lidar:
-    def __init__(self):
+    def __init__(self, arreter):
         self.port = "/dev/ttyUSB0"
         self.Obj = PyLidar3.YdLidarX4(self.port) 
         self.gen = None
         self.data = None
+        self.arreter = arreter
         self.StartLidar()
         
     def StartLidar(self):
@@ -17,7 +18,7 @@ class Lidar:
             self.gen = self.Obj.StartScanning()
             
     def ScanLidar(self):
-        while (...):         
+        while (not self.arreter):         
             self.data = next(self.gen) # Dictionnaire: data[0:359] 
             print(self.data)               
             time.sleep(0.5)

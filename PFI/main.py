@@ -5,6 +5,7 @@ from Robot import Robot
 from Navigation import Navigation
 from icm20948 import ICM20948
 from RadioNavigation import RadioNavigation
+from Lidar import Lidar
 arreter = False
 
 imu = ICM20948()
@@ -13,8 +14,12 @@ navigation = Navigation(imu)
 radioNavigation = RadioNavigation()
 radioNavigation.demarrerCommunication()
 robot = Robot(navigation , radioNavigation)
+lidar = Lidar(arreter)
 
-
+robot.Tourner(0)
+if(navigation.angleX < -90):
+    robot.Freiner()
+    
 
 
 while not arreter:
