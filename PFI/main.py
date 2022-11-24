@@ -1,9 +1,8 @@
-#Auteurs: Alexandre Carle et Louis-philippe Rousseau et Guillaume Légaré
+#Auteurs: Alexandre Carle et Louis-philippe Rousseau
 #Dernier changement 14 novembre 2022
 
 from Robot import Robot
 from Navigation import Navigation
-from Attendre_Touche import Attendre_Touche
 from icm20948 import ICM20948
 arreter = False
 robot = Robot()

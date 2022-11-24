@@ -1,4 +1,4 @@
-#Auteurs: Alexandre Carle et Louis-philippe Rousseau et Guillaume Légaré
+#Auteurs: Alexandre Carle et Louis-philippe Rousseau
 import serial 
 import time
 class RadioNavigation:
@@ -8,14 +8,15 @@ class RadioNavigation:
         self.ser.baudrate = 115200
         self.ser.open()
         self.data = None
-        self.x =0
-        self.y =0
+        self.x = 0
+        self.y = 0
         
     def demarrerCommunication(self):
         self.ser.write(b'\r\r') # séquence d’octets
         time.sleep(1)
-        self.ser.write(b'lep\n') # Show pos. in CSV
+        
     def getPosition(self):
+        self.ser.write(b'lep\n') # Show pos. in CSV
         self.data = str(self.ser.readline())
         arrayString = self.data.split(',') 
         ##string.replace(oldvalue, newvalue)

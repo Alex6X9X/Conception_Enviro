@@ -1,4 +1,4 @@
-#Auteurs: Alexandre Carle et Louis-philippe Rousseau et Guillaume Légaré
+#Auteurs: Alexandre Carle et Louis-philippe Rousseau
 #Dernier changement 10 novembre 2022
 
 import gpiozero
