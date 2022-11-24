@@ -6,7 +6,7 @@ from Navigation import Navigation
 from icm20948 import ICM20948
 from RadioNavigation import RadioNavigation
 from Lidar import Lidar
-arreter = False
+en_marche = False
 
 imu = ICM20948()
 
@@ -14,23 +14,24 @@ navigation = Navigation(imu)
 radioNavigation = RadioNavigation()
 radioNavigation.demarrerCommunication()
 robot = Robot(navigation , radioNavigation)
-lidar = Lidar(arreter)
+lidar = Lidar(en_marche)
 
-robot.Tourner(0)
-if(navigation.angleX < -90):
-    robot.Freiner()
+#robot.Tourner(0)
+#if(navigation.angleX < -90):
+#    robot.Freiner()
     
 
 
 while not arreter:
-    ##radioNavigation.getPosition()
-
+    #radioNavigation.getPosition()
+    #lidar.ScanLidar()
+    #lidar.GetDistance(0)
     robot.Avancer()
     robot.Freiner()
     robot.Reculer()
     robot.Arreter()
     
 navigation.en_marche = False
-radioNavigation.en_marche = False
+#radioNavigation.en_marche = False
 navigation.thread_calcul_position.join()
 navigation.thread_affichage.join()
