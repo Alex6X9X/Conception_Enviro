@@ -14,7 +14,7 @@ navigation = Navigation(imu, en_marche)
 radioNavigation = RadioNavigation()
 radioNavigation.demarrerCommunication()
 robot = Robot(navigation , radioNavigation)
-lidar = Lidar(en_marche)
+#lidar = Lidar(en_marche)
 
 #robot.Tourner(0)
 #if(navigation.angleX < -90):
