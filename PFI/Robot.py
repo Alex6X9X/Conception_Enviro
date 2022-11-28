@@ -56,7 +56,7 @@ class Robot :
         self.navigation.état = State.Translation
         self.moteurs.avancer()
     def AvancerToPosition(self):
-        self.moteurs.avancer()
+        self.Avancer()
        
         while(self.distanceAParcourir < self.distanceParcourue ):
             sleep(0.1)
