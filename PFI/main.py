@@ -62,6 +62,7 @@ while en_marche:
         robot.Stop_Thread_Avancer()
         robot.Tourner(1)
         robot.arriver_position = False
+        
     if(navigation.état == State.Rotation):
         print("rotating")
         if(abs(navigation.angleX - current_angle) >= 90):
