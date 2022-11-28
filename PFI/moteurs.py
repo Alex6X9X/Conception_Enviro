@@ -39,13 +39,13 @@ class Moteurs:
             
     def tourner(self, dir):
         self.arreter()
-        #g
+        #d
         if (dir == 0):
             self.IN2.on()
             self.IN3.on()
             self.ENA.value = 0.6
             self.ENB.value = 0.6
-        #d            
+        #g            
         elif (dir == 1):
             self.IN1.on()
             self.IN4.on()
