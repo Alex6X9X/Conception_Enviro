@@ -54,14 +54,16 @@ class Robot :
     def AvancerToPosition(self):
         self.moteurs.avancer()
        
-        while(self.distanceAParcourir > self.distanceParcourue ):
+        while(self.distanceAParcourir < self.distanceParcourue ):
             sleep(0.1)
             self.navigation.état = State.Translation
-            
+
         self.Freiner()
         self.x = self.radioNavigation.x
         self.y = self.radioNavigation.y
         self.arriver_position = True
+            
+        
     def PauseObstacle(self):
         self.obstacle_in_the_way = True
         self.Freiner()
