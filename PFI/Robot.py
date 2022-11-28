@@ -46,6 +46,8 @@ class Robot :
                 self.distanceParcourue = abs(self.radioNavigation.y - self.y)
             elif(self.axe =='X'):
                 self.distanceParcourue =  abs(self.radioNavigation.x - self.x)
+            print("distance parcourue")
+            print(self.distanceParcourue)
 
 
     def Avancer(self):
