@@ -12,11 +12,16 @@ class Robot :
         self.y = 0
         self.en_marche = en_marche
         self.doit_avancer = False
+        self.has_started = False
         self.distanceAParcourir = 0
         self.distanceParcourue = 0
         self.axe = None
         self.arriver_position = False
-        
+        self.obstacle_in_the_way = False
+    def initialiserPosition(self):
+        if(self.navigation.état == State.Immobile):
+            self.x = self.radioNavigation.x
+            self.y = self.radioNavigation.y
     def CalculerDistance(self , positionToGoTo , xOuY):
         if(xOuY == 'Y'):
             self.distanceAParcourir = abs(positionToGoTo - self.y)
@@ -24,15 +29,15 @@ class Robot :
         elif(xOuY == 'X'):
             self.distanceAParcourir = abs(positionToGoTo - self.x)
             self.axe = 'X'
-    def Start_Thread_Avancer(self , PositionToGoTo):
+    def Start_Thread_Avancer(self):
         self.thread_avancer = threading.Thread(target = self.AvancerToPosition , args=())
-        self.thread_Calculer_Distance_Parcourue = threading.Thread(target = self.CalculerDistanceParcourue , args=(PositionToGoTo))
+        self.thread_Calculer_Distance_Parcourue = threading.Thread(target = self.CalculerDistanceParcourue , args=())
         self.thread_Calculer_Distance_Parcourue.start()
         self.thread_avancer.start()
     def Stop_Thread_Avancer(self):
         self.thread_avancer.join()
         self.thread_Calculer_Distance_Parcourue.join()
-    def CalculerDistanceParcourue(self , PositionToGoTo):
+    def CalculerDistanceParcourue(self):
         self.arriver_position = False
         while(self.en_marche):
             if(self.axe == 'Y'):
@@ -49,15 +54,14 @@ class Robot :
         while(self.distanceAParcourir > self.distanceParcourue ):
             self.navigation.état = State.Translation
             self.moteurs.avancer()
-        self.moteurs.freiner()
-        self.navigation.état = State.Immobile
+        self.Freiner()
         self.x = self.radioNavigation.x
         self.y = self.radioNavigation.y
         self.arriver_position = True
-
-    
-    
-
+    def PauseObstacle(self):
+        self.obstacle_in_the_way = True
+        self.Freiner()
+        self.initialiserPosition()
     def Reculer(self):
         self.navigation.état = State.Translation
         self.moteurs.reculer()

@@ -14,23 +14,40 @@ navigation = Navigation(imu, en_marche)
 radioNavigation = RadioNavigation()
 radioNavigation.demarrerCommunication()
 robot = Robot(navigation , radioNavigation, en_marche)
+robot.initialiserPosition()
 #lidar = Lidar(en_marche)
 
 #robot.Tourner(0)
 #if(navigation.angleX < -90):
 #    robot.Freiner()
     
-
-
+tabPosition = [2 , 6 , 8, 9]
+tabAxes = ['X' , 'Y' , 'X' , 'Y']
+index = 0 
 while en_marche:
+
     print(radioNavigation.x)
     print(radioNavigation.y)
     #lidar.ScanLidar()
     #lidar.GetDistance(0)
-    robot.Avancer()
-    robot.Freiner()
-    robot.Reculer()
-    robot.Arreter()
+    ##robot.Avancer()
+
+
+    ##if(not robot.has_started):
+      ##  robot.CalculerDistance(tabPosition[index] , tabAxes[index])
+      ##  robot.Start_Thread_Avancer()
+      ##  index += 1
+      ##  robot.has_started = True
+    ##if(robot.arriver_position):
+      ##  robot.Stop_Thread_Avancer()
+    ##ici ajouter vérification du Lidar pour vérifier les obstacles et arrêter le robot si c'est le cas
+    ##if(robot.obstacle_in_the_way):
+        
+      ##   robot.PauseObstacle()
+        ## robot.Stop_Thread_Avancer()
+       ##  robot.CalculerDistance(tabPosition[index] , tabAxes[index])
+
+    
     
 navigation.en_marche = False
 #radioNavigation.en_marche = False

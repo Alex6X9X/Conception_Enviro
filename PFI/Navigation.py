@@ -15,7 +15,7 @@ class Navigation :
     
     def __init__(self , imu, en_marche):
         
-        self.état = 0
+        self.état = State.Immobile
         self.en_marche = en_marche
         self.ax= None 
         self.ay= None 
@@ -39,7 +39,7 @@ class Navigation :
         self.posY = 0
         
         self.thread_calcul_position = threading.Thread(target = self._calculer_position , args=())
-        self.thread_affichage = threading.Thread(target = self.afficher_donnees, args=())
+        ##self.thread_affichage = threading.Thread(target = self.afficher_donnees, args=())
         self.thread_calcul_position.start()
         #self.thread_affichage.start()
         
