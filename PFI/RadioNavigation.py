@@ -27,6 +27,7 @@ class RadioNavigation:
             ##string.replace(oldvalue, newvalue)
             index = 0
             for pos in range(len(arrayString)):
+                print(pos)
                 if(index == 1):
                     self.x = float(pos)
                 elif(index == 2):
