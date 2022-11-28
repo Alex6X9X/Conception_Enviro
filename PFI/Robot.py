@@ -27,6 +27,7 @@ class Robot :
         if(xOuY == 'Y'):
             
             self.distanceAParcourir = abs(positionToGoTo - self.y)
+            print("distance a parcourir")
             print(self.distanceAParcourir)
             self.axe = 'Y'
         elif(xOuY == 'X'):
