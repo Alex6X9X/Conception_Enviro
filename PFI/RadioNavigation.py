@@ -3,12 +3,12 @@ import serial
 import time
 import threading
 class RadioNavigation:
-    def __init__(self):
+    def __init__(self , en_marche):
         self.ser = serial.Serial() 
         self.ser.port = '/dev/ttyACM0'
         self.ser.baudrate = 115200
         self.ser.open()
-        self.stop = True
+        self.en_marche = en_marche
         self.data = None
         self.x = 0
         self.y = 0
@@ -20,17 +20,14 @@ class RadioNavigation:
         time.sleep(1)
         
     def getPosition(self):
-        print("allo")
-        while(True):
+        while(self.en_marche):
             time.sleep(0.1)
             self.ser.write(b'lep\n') # Show pos. in CSV
             self.data = str(self.ser.readline())
             arrayString = self.data.split(',') 
             ##string.replace(oldvalue, newvalue)
             index = 0
-            print(arrayString)
             for pos in range(len(arrayString)):
-                print(pos)
                 if(index == 1):
                     self.x = float(pos)
                 elif(index == 2):

@@ -12,7 +12,7 @@ en_marche = True
 imu = ICM20948()
 
 navigation = Navigation(imu, en_marche)
-radioNavigation = RadioNavigation()
+radioNavigation = RadioNavigation(en_marche)
 radioNavigation.demarrerCommunication()
 radioNavigation.thread_get_position.start()
 robot = Robot(navigation , radioNavigation, en_marche)
@@ -28,9 +28,8 @@ tabAxes = ['X' , 'Y' , 'X' , 'Y']
 index = 0 
 while en_marche:
     sleep(0.1)
-   ## print(radioNavigation.x)
-    ##print(radioNavigation.y)
-    pass
+    print(radioNavigation.x)
+    print(radioNavigation.y)
     #lidar.ScanLidar()
     #lidar.GetDistance(0)
     ##robot.Avancer()
@@ -50,8 +49,8 @@ while en_marche:
        ##  robot.CalculerDistance(tabPosition[index] , tabAxes[index])
 
     
-    
-navigation.en_marche = False
+
+en_marche=False
 #radioNavigation.en_marche = False
 radioNavigation.fermerConnection()
 navigation.thread_calcul_position.join()
