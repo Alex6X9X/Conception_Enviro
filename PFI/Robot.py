@@ -19,10 +19,10 @@ class Robot :
         
     def CalculerDistance(self , positionToGoTo , xOuY):
         if(xOuY == 'Y'):
-            self.distanceAParcourir = positionToGoTo - self.y
+            self.distanceAParcourir = abs(positionToGoTo - self.y)
             self.axe = 'Y'
         elif(xOuY == 'X'):
-            self.distanceAParcourir = positionToGoTo - self.x
+            self.distanceAParcourir = abs(positionToGoTo - self.x)
             self.axe = 'X'
     def Start_Thread_Avancer(self , PositionToGoTo):
         self.thread_avancer = threading.Thread(target = self.AvancerToPosition , args=())
@@ -36,9 +36,9 @@ class Robot :
         self.arriver_position = False
         while(self.en_marche):
             if(self.axe == 'Y'):
-                self.distanceParcourue = PositionToGoTo - self.y
+                self.distanceParcourue = abs(self.radioNavigation.y - self.y)
             elif(self.axe =='X'):
-                self.distanceParcourue = PositionToGoTo - self.x
+                self.distanceParcourue =  abs(self.radioNavigation.x - self.x)
 
 
     def Avancer(self):
