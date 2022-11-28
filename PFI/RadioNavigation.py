@@ -28,10 +28,11 @@ class RadioNavigation:
             ##string.replace(oldvalue, newvalue)
             index = 0
             for pos in range(len(arrayString)):
+                
                 if(index == 1):
-                    self.x = float(pos)
+                    self.x = pos
                 elif(index == 2):
-                    self.y = float(pos)
+                    self.y = pos
     def fermerConnection(self):
         self.ser.close()
     
