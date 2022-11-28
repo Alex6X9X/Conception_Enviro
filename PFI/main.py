@@ -52,15 +52,18 @@ while en_marche:
 
 
     if(not robot.has_started):
+        print("starting robot thread")
         robot.CalculerDistance(tabPosition[index] , tabAxes[index])
         robot.Start_Thread_Avancer()
         index += 1
         robot.has_started = True
     if(robot.arriver_position):
+        print("arriver a la position")
         robot.Stop_Thread_Avancer()
         robot.Tourner(1)
         robot.arriver_position = False
     if(navigation.état == State.Rotation):
+        print("rotating")
         if(abs(navigation.angleX - current_angle) >= 90):
             robot.Freiner()
             current_angle = navigation.angleX
