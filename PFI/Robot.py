@@ -58,6 +58,7 @@ class Robot :
             sleep(0.1)
             self.navigation.état = State.Translation
 
+        print("alloooo")
         self.Freiner()
         self.x = self.radioNavigation.x
         self.y = self.radioNavigation.y
