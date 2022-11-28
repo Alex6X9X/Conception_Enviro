@@ -1,6 +1,7 @@
 #Auteurs: Alexandre Carle et Louis-philippe Rousseau
 #Dernier changement 10 novembre 2022
 import threading
+from time import sleep
 from State import State
 from moteurs import Moteurs
 class Robot :
@@ -40,6 +41,7 @@ class Robot :
     def CalculerDistanceParcourue(self):
         self.arriver_position = False
         while(self.en_marche):
+            sleep(0.1)
             if(self.axe == 'Y'):
                 self.distanceParcourue = abs(self.radioNavigation.y - self.y)
             elif(self.axe =='X'):
@@ -50,10 +52,12 @@ class Robot :
         self.navigation.état = State.Translation
         self.moteurs.avancer()
     def AvancerToPosition(self):
+        self.moteurs.avancer()
        
         while(self.distanceAParcourir > self.distanceParcourue ):
+            sleep(0.1)
             self.navigation.état = State.Translation
-            self.moteurs.avancer()
+            
         self.Freiner()
         self.x = self.radioNavigation.x
         self.y = self.radioNavigation.y
