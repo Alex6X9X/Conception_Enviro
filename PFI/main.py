@@ -52,4 +52,4 @@ while en_marche:
 navigation.en_marche = False
 #radioNavigation.en_marche = False
 navigation.thread_calcul_position.join()
-navigation.thread_affichage.join()
+#navigation.thread_affichage.join()
