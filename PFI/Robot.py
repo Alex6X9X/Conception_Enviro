@@ -25,10 +25,9 @@ class Robot :
             self.y = self.radioNavigation.y
     def CalculerDistance(self , positionToGoTo , xOuY):
         if(xOuY == 'Y'):
-            
+            print(positionToGoTo - self.y)
             self.distanceAParcourir = abs(positionToGoTo - self.y)
-            print("distance a parcourir")
-            print(self.distanceAParcourir)
+            
             self.axe = 'Y'
         elif(xOuY == 'X'):
             self.distanceAParcourir = abs(positionToGoTo - self.x)
@@ -49,8 +48,7 @@ class Robot :
                 self.distanceParcourue = abs(self.radioNavigation.y - self.y)
             elif(self.axe =='X'):
                 self.distanceParcourue =  abs(self.radioNavigation.x - self.x)
-            print("distance parcourue")
-            print(self.distanceParcourue)
+           
 
 
     def Avancer(self):
@@ -63,7 +61,6 @@ class Robot :
             sleep(0.1)
             self.navigation.état = State.Translation
 
-        print("alloooo")
         self.Freiner()
         self.x = self.radioNavigation.x
         self.y = self.radioNavigation.y

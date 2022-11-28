@@ -33,15 +33,15 @@ index = 0
 while en_marche:
     
     sleep(0.1)
-    print("x")
-    print(str(radioNavigation.x))
-    print("y")
-    print(str(radioNavigation.y))
-    print("---")
+   ## print("x")
+   ## print(str(radioNavigation.x))
+   ## print("y")
+   ## print(str(radioNavigation.y))
+   ## print("---")
 
     
-    print(navigation.angleX)
-    print(current_angle)
+   ## print(navigation.angleX)
+   ## print(current_angle)
 
 
     
@@ -62,7 +62,7 @@ while en_marche:
         robot.Stop_Thread_Avancer()
         robot.Tourner(1)
         robot.arriver_position = False
-        
+
     if(navigation.état == State.Rotation):
         print("rotating")
         if(abs(navigation.angleX - current_angle) >= 90):
