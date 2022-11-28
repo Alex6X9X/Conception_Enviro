@@ -42,7 +42,6 @@ while en_marche:
       ##  robot.Stop_Thread_Avancer()
     ##ici ajouter vérification du Lidar pour vérifier les obstacles et arrêter le robot si c'est le cas
     ##if(robot.obstacle_in_the_way):
-        
       ##   robot.PauseObstacle()
         ## robot.Stop_Thread_Avancer()
        ##  robot.CalculerDistance(tabPosition[index] , tabAxes[index])
