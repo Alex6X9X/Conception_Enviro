@@ -28,8 +28,11 @@ tabAxes = ['X' , 'Y' , 'X' , 'Y']
 index = 0 
 while en_marche:
     sleep(0.1)
-    print(radioNavigation.x + " x")
-    print(radioNavigation.y + " y")
+    print("x")
+    print(radioNavigation.x)
+    print("y")
+    print(radioNavigation.y)
+    print("---")
     #lidar.ScanLidar()
     #lidar.GetDistance(0)
     ##robot.Avancer()
