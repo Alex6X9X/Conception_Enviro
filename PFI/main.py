@@ -23,7 +23,6 @@ robot = Robot(navigation , radioNavigation, en_marche)
 
 
 while en_marche:
-    radioNavigation.demarrerCommunication()
     print(radioNavigation.x)
     print(radioNavigation.y)
     #lidar.ScanLidar()
