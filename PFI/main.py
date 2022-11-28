@@ -51,5 +51,6 @@ while en_marche:
     
 navigation.en_marche = False
 #radioNavigation.en_marche = False
+radioNavigation.fermerConnection()
 navigation.thread_calcul_position.join()
 #navigation.thread_affichage.join()
