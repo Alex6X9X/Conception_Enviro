@@ -28,6 +28,7 @@ class RadioNavigation:
             arrayString = self.data.split(',') 
             ##string.replace(oldvalue, newvalue)
             index = 0
+            print(arrayString)
             for pos in range(len(arrayString)):
                 print(pos)
                 if(index == 1):
