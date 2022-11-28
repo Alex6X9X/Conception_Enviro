@@ -1,6 +1,7 @@
 #Auteurs: Alexandre Carle et Louis-philippe Rousseau
 #Dernier changement 14 novembre 2022
 
+from time import sleep
 from Robot import Robot
 from Navigation import Navigation
 from icm20948 import ICM20948
@@ -25,7 +26,7 @@ tabPosition = [2 , 6 , 8, 9]
 tabAxes = ['X' , 'Y' , 'X' , 'Y']
 index = 0 
 while en_marche:
-
+    sleep(0.1)
    ## print(radioNavigation.x)
     ##print(radioNavigation.y)
     pass
