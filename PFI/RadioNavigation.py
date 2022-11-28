@@ -21,6 +21,7 @@ class RadioNavigation:
         
     def getPosition(self):
         while(not self.stop):
+            time.sleep(0.1)
             self.ser.write(b'lep\n') # Show pos. in CSV
             self.data = str(self.ser.readline())
             arrayString = self.data.split(',') 
