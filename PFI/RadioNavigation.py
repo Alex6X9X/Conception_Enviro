@@ -26,8 +26,8 @@ class RadioNavigation:
             self.data = str(self.ser.readline())
             arrayString = self.data.split(',') 
             ##string.replace(oldvalue, newvalue)
-            self.x = arrayString[1]
-            self.y = arrayString[2]
+            self.x = float(arrayString[1])
+            self.y = float(arrayString[2])
     def fermerConnection(self):
         self.ser.close()
     
