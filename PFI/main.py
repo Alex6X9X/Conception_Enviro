@@ -53,6 +53,7 @@ while en_marche:
 
     if(not robot.has_started):
         print("starting robot thread")
+        print(tabPosition[index])
         robot.CalculerDistance(tabPosition[index] , tabAxes[index])
         robot.Start_Thread_Avancer()
         index += 1
