@@ -27,6 +27,7 @@ current_angle = navigation.angleX
 tabPosition = [0,7.80, 1.60, 6]
 tabAxes = ['Y' , 'X' , 'Y' , 'X']
 index = 0 
+robot.Tourner(0)
 while en_marche:
     
     ##sleep(0.1)
@@ -37,7 +38,7 @@ while en_marche:
     ##print("---")
 
     
-    robot.Tourner(0)
+    
     print(abs(navigation.angleX - current_angle))
     if(abs(navigation.angleX - current_angle) >= 90):
         robot.Freiner()
