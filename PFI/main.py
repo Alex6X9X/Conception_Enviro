@@ -38,8 +38,9 @@ while en_marche:
     ##print("---")
 
     
-    
-    print(abs(navigation.angleX - current_angle))
+    print(navigation.angleX)
+    print(current_angle)
+    ##print(abs(navigation.angleX - current_angle))
     if(abs(navigation.angleX - current_angle) >= 90):
         robot.Freiner()
         current_angle = navigation.angleX
