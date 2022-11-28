@@ -8,7 +8,7 @@ class RadioNavigation:
         self.ser.port = '/dev/ttyACM0'
         self.ser.baudrate = 115200
         self.ser.open()
-        self.stop = False
+        self.stop = True
         self.data = None
         self.x = 0
         self.y = 0
@@ -20,7 +20,7 @@ class RadioNavigation:
         time.sleep(1)
         
     def getPosition(self):
-        while(not self.stop):
+        while(self.stop):
             time.sleep(0.1)
             print("allo")
             self.ser.write(b'lep\n') # Show pos. in CSV
