@@ -23,15 +23,15 @@ robot.initialiserPosition()
 #if(navigation.angleX < -90):
 #    robot.Freiner()
     
-tabPosition = [2 , 6 , 8, 9]
-tabAxes = ['X' , 'Y' , 'X' , 'Y']
+tabPosition = [0, 7.80, 1.60, 6]
+tabAxes = ['Y' , 'X' , 'Y' , 'X']
 index = 0 
 while en_marche:
     sleep(0.1)
     print("x")
-    print(radioNavigation.x)
+    print(str(radioNavigation.x))
     print("y")
-    print(radioNavigation.y)
+    print(str(radioNavigation.y))
     print("---")
     #lidar.ScanLidar()
     #lidar.GetDistance(0)
