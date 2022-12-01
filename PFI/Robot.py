@@ -26,6 +26,7 @@ class Robot :
     def CalculerDistance(self , positionToGoTo , xOuY):
         if(xOuY == 'Y'):
             print(positionToGoTo - self.y)
+            print(self.y)
             self.distanceAParcourir = abs(positionToGoTo - self.y)
             
             self.axe = 'Y'
