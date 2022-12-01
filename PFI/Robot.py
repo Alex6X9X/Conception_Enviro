@@ -51,12 +51,9 @@ class Robot :
             elif(self.axe == Axe.X):
                 self.distanceParcourue =  abs(self.radioNavigation.x - self.x)
     def Avancer_Position(self, positionToGo):
-        while(self.en_marche):
-            sleep(0.1)
-            self.Avancer()
-            if(self.radioNavigation.y == positionToGo):
-                self.Freiner()
-                self.en_marche = False
+        self.Avancer()
+        if(self.radioNavigation.y == positionToGo):
+            self.Freiner()
 
 
     def Avancer(self):
