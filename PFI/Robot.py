@@ -46,9 +46,9 @@ class Robot :
         self.arriver_position = False
         while(self.en_marche):
             sleep(0.1)
-            if(self.axe == 'Y'):
+            if(self.axe == Axe.Y):
                 self.distanceParcourue = abs(self.radioNavigation.y - self.y)
-            elif(self.axe =='X'):
+            elif(self.axe == Axe.X):
                 self.distanceParcourue =  abs(self.radioNavigation.x - self.x)
            
 
