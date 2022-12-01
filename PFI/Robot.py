@@ -24,11 +24,11 @@ class Robot :
             self.x = self.radioNavigation.x
             self.y = self.radioNavigation.y
     def CalculerDistance(self , positionToGoTo , xOuY):
+        self.y = self.radioNavigation.y
+        self.x = self.radioNavigation.x
         if(xOuY == 'Y'):
             print(positionToGoTo - self.y)
-            print(self.y)
             self.distanceAParcourir = abs(positionToGoTo - self.y)
-            
             self.axe = 'Y'
         elif(xOuY == 'X'):
             self.distanceAParcourir = abs(positionToGoTo - self.x)
