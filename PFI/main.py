@@ -8,6 +8,7 @@ from icm20948 import ICM20948
 from RadioNavigation import RadioNavigation
 from Lidar import Lidar
 from State import State
+from Axe import Axe
 from Direction import Direction
 
 TEMPS_CALIBRATION = 5
@@ -32,7 +33,7 @@ sleep(TEMPS_CALIBRATION)
 #    robot.Freiner()
     
 tabPosition = [0,7.80, 1.60, 6]
-tabAxes = ['Y' , 'X' , 'Y' , 'X']
+tabAxes = [Axe.Y , Axe.X , Axe.Y , Axe.X]
 
 index = 0 
 while en_marche:

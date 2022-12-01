@@ -3,6 +3,7 @@
 import threading
 from time import sleep
 from State import State
+from Axe import Axe
 from moteurs import Moteurs
 class Robot :
     def __init__(self, navigation , radioNavigation, en_marche):
@@ -26,13 +27,13 @@ class Robot :
     def CalculerDistance(self , positionToGoTo , xOuY):
         self.y = self.radioNavigation.y
         self.x = self.radioNavigation.x
-        if(xOuY == 'Y'):
+        if(xOuY == Axe.Y):
             print(abs(positionToGoTo - self.y))
             self.distanceAParcourir = abs(positionToGoTo - self.y)
-            self.axe = 'Y'
-        elif(xOuY == 'X'):
+            self.axe = Axe.Y
+        elif(xOuY == Axe.X):
             self.distanceAParcourir = abs(positionToGoTo - self.x)
-            self.axe = 'X'
+            self.axe = Axe.X
     def Start_Thread_Avancer(self):
         self.thread_avancer = threading.Thread(target = self.AvancerToPosition , args=())
         self.thread_Calculer_Distance_Parcourue = threading.Thread(target = self.CalculerDistanceParcourue , args=())
