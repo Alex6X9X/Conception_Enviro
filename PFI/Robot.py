@@ -52,7 +52,7 @@ class Robot :
                 self.distanceParcourue =  abs(self.radioNavigation.x - self.x)
     def Avancer_Position(self, positionToGo):
         self.Avancer()
-        if(self.radioNavigation.y >= positionToGo):
+        if(self.radioNavigation.x >= positionToGo):
             self.Freiner()
 
 
