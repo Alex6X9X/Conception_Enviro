@@ -11,7 +11,7 @@ from State import State
 from Axe import Axe
 from Direction import Direction
 
-TEMPS_CALIBRATION = 3
+TEMPS_CALIBRATION = 4
 
 en_marche = True
 
@@ -41,9 +41,9 @@ while en_marche:
     sleep(0.1)
     robot.Avancer_Position(tabPosition[index])
    ## print("x")
-    #print(str(radioNavigation.x))
+    print(str(radioNavigation.x))
    ## print("y")
-    #print(str(radioNavigation.y))
+    print(str(radioNavigation.y))
    ## print("---")
 
     
