@@ -32,14 +32,15 @@ sleep(TEMPS_CALIBRATION)
 #if(navigation.angleX < -90):
 #    robot.Freiner()
     
-tabPosition = [6,7.80, 1.60, 6]
+tabPosition = [0,7.80, 1.60, 6]
+tabPositionTest = [6,7.80, 1.60, 6]
 tabAxes = [Axe.Y , Axe.X , Axe.Y , Axe.X]
 
 index = 0 
 while en_marche:
     
     sleep(0.1)
-    robot.Avancer_Position(tabPosition[index])
+    robot.Avancer_Position(tabPositionTest[index])
    ## print("x")
     print(str(radioNavigation.x))
    ## print("y")
