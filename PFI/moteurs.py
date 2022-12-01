@@ -23,7 +23,7 @@ class Moteurs:
         self.IN4 = gpiozero.DigitalOutputDevice(PORT_IN4) # moteur D
         self.ENB = gpiozero.PWMOutputDevice(PORT_ENB)
     #En theorie Avancer    
-    def reculer(self):
+    def avancer(self):
         self.arreter()
         self.IN1.on()
         self.IN3.on()
@@ -31,7 +31,7 @@ class Moteurs:
         self.ENA.value = 0.4
         self.ENB.value = 0.4
     #En theorie Reculer
-    def avancer(self):
+    def reculer(self):
         self.arreter()
         self.IN2.on()
         self.IN4.on()
