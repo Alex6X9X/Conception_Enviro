@@ -10,7 +10,7 @@ from Lidar import Lidar
 from State import State
 from Direction import Direction
 
-TEMPS_CALIBRATION = 4
+TEMPS_CALIBRATION = 5
 
 en_marche = True
 
