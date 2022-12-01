@@ -11,7 +11,7 @@ from State import State
 from Axe import Axe
 from Direction import Direction
 
-TEMPS_CALIBRATION = 7
+TEMPS_CALIBRATION = 3
 
 en_marche = True
 
