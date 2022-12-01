@@ -24,32 +24,32 @@ class Robot :
         if(self.navigation.état == State.Immobile):
             self.x = self.radioNavigation.x
             self.y = self.radioNavigation.y
-    def CalculerDistance(self , positionToGoTo , xOuY):
-        self.y = self.radioNavigation.y
-        self.x = self.radioNavigation.x
-        if(xOuY == Axe.Y):
-            print(abs(positionToGoTo - self.y))
-            self.distanceAParcourir = abs(positionToGoTo - self.y)
-            self.axe = Axe.Y
-        elif(xOuY == Axe.X):
-            self.distanceAParcourir = abs(positionToGoTo - self.x)
-            self.axe = Axe.X
-    def Start_Thread_Avancer(self):
-        self.thread_avancer = threading.Thread(target = self.AvancerToPosition , args=())
-        self.thread_Calculer_Distance_Parcourue = threading.Thread(target = self.CalculerDistanceParcourue , args=())
-        self.thread_avancer.start()
-        self.thread_Calculer_Distance_Parcourue.start()
-    def Stop_Thread_Avancer(self):
-        self.thread_avancer.join()
-        self.thread_Calculer_Distance_Parcourue.join()
-    def CalculerDistanceParcourue(self):
-        self.arriver_position = False
-        while(self.en_marche):
-            sleep(0.1)
-            if(self.axe == Axe.Y):
-                self.distanceParcourue = abs(self.radioNavigation.y - self.y)
-            elif(self.axe == Axe.X):
-                self.distanceParcourue =  abs(self.radioNavigation.x - self.x)
+    #def CalculerDistance(self , positionToGoTo , xOuY):
+    #    self.y = self.radioNavigation.y
+    #    self.x = self.radioNavigation.x
+    #    if(xOuY == Axe.Y):
+    #        print(abs(positionToGoTo - self.y))
+    #        self.distanceAParcourir = abs(positionToGoTo - self.y)
+    #        self.axe = Axe.Y
+    #    elif(xOuY == Axe.X):
+    #        self.distanceAParcourir = abs(positionToGoTo - self.x)
+    #        self.axe = Axe.X
+    #def Start_Thread_Avancer(self):
+    #    self.thread_avancer = threading.Thread(target = self.AvancerToPosition , args=())
+    #    self.thread_Calculer_Distance_Parcourue = threading.Thread(target = self.CalculerDistanceParcourue , args=())
+    #    self.thread_avancer.start()
+    #    self.thread_Calculer_Distance_Parcourue.start()
+    #def Stop_Thread_Avancer(self):
+    #    self.thread_avancer.join()
+    #    self.thread_Calculer_Distance_Parcourue.join()
+    #def CalculerDistanceParcourue(self):
+    #    self.arriver_position = False
+    #    while(self.en_marche):
+    #        sleep(0.1)
+    #        if(self.axe == Axe.Y):
+    #            self.distanceParcourue = abs(self.radioNavigation.y - self.y)
+    #        elif(self.axe == Axe.X):
+    #            self.distanceParcourue =  abs(self.radioNavigation.x - self.x)
     def Avancer_Position(self, positionToGo):
         self.Avancer()
         if(self.radioNavigation.x >= positionToGo):
@@ -59,17 +59,17 @@ class Robot :
     def Avancer(self):
         self.navigation.état = State.Translation
         self.moteurs.avancer()
-    def AvancerToPosition(self):
-        self.Avancer()
-       
-        while(self.distanceAParcourir < self.distanceParcourue):
-            sleep(0.1)
-            self.navigation.état = State.Translation
+    #def AvancerToPosition(self):
+    #    self.Avancer()
+    #   
+    #    while(self.distanceAParcourir < self.distanceParcourue):
+    #        sleep(0.1)
+    #        self.navigation.état = State.Translation
 
-        self.Freiner()
-        self.x = self.radioNavigation.x
-        self.y = self.radioNavigation.y
-        self.arriver_position = True
+    #    self.Freiner()
+    #    self.x = self.radioNavigation.x
+    #    self.y = self.radioNavigation.y
+    #     self.arriver_position = True
             
         
     def PauseObstacle(self):
