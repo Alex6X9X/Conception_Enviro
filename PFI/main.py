@@ -8,6 +8,7 @@ from icm20948 import ICM20948
 from RadioNavigation import RadioNavigation
 from Lidar import Lidar
 from State import State
+from Direction import Direction
 en_marche = True
 
 imu = ICM20948()
@@ -21,7 +22,7 @@ robot.initialiserPosition()
 current_angle = navigation.angleX
 #lidar = Lidar(en_marche)
 
-#robot.Tourner(0)
+#robot.Tourner(Direction.Droite)
 #if(navigation.angleX < -90):
 #    robot.Freiner()
     
@@ -61,7 +62,7 @@ while en_marche:
     #if(robot.arriver_position):
     #    print("arriver a la position")
     #    robot.Stop_Thread_Avancer()
-    #    robot.Tourner(1)
+    #    robot.Tourner(Direction.Droite)
     #    robot.arriver_position = False
 
     #if(navigation.état == State.Rotation):

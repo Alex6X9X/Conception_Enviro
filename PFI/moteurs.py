@@ -2,6 +2,7 @@
 #Dernier changement 10 novembre 2022
 
 import gpiozero
+from Direction import Direction
 
 PORT_IN1 = 6
 PORT_IN2 = 5
@@ -40,13 +41,13 @@ class Moteurs:
     def tourner(self, dir):
         self.arreter()
         #d
-        if (dir == 0):
+        if (dir == Direction.Droite):
             self.IN2.on()
             self.IN3.on()
             self.ENA.value = 0.6
             self.ENB.value = 0.6
         #g            
-        elif (dir == 1):
+        elif (dir == Direction.Gauche):
             self.IN1.on()
             self.IN4.on()
             self.ENA.value = 0.6
