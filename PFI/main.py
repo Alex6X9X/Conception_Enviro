@@ -33,7 +33,7 @@ sleep(TEMPS_CALIBRATION)
 #    robot.Freiner()
     
 tabPosition = [0,7.80, 1.60, 6]
-tabPositionTest = [5,7.80, 1.60, 6]
+tabPositionTest = [5.35,7.80, 1.60, 6]
 tabAxes = [Axe.Y , Axe.X , Axe.Y , Axe.X]
 
 index = 0 
