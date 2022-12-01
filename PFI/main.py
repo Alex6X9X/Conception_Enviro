@@ -39,6 +39,7 @@ index = 0
 while en_marche:
     
     sleep(0.1)
+    robot.Avancer_Position(tabPosition[index])
    ## print("x")
     #print(str(radioNavigation.x))
    ## print("y")
@@ -57,25 +58,25 @@ while en_marche:
     #robot.Avancer()
 
 
-    if(not robot.has_started):
-        print("starting robot thread")
-        print(tabPosition[index])
-        robot.CalculerDistance(tabPosition[index] , tabAxes[index])
-        robot.Start_Thread_Avancer()
-        index += 1
-        robot.has_started = True
-    if(robot.arriver_position):
-        print("arriver a la position")
-        robot.Stop_Thread_Avancer()
-        robot.Tourner(Direction.Droite)
-        robot.arriver_position = False
+    #if(not robot.has_started):
+    #    print("starting robot thread")
+    #    print(tabPosition[index])
+    #    robot.CalculerDistance(tabPosition[index] , tabAxes[index])
+    #    robot.Start_Thread_Avancer()
+    #    index += 1
+    #    robot.has_started = True
+    #if(robot.arriver_position):
+    #    print("arriver a la position")
+    #    robot.Stop_Thread_Avancer()
+    #    robot.Tourner(Direction.Droite)
+    #    robot.arriver_position = False
 
-    if(navigation.état == State.Rotation):
-        print("rotating")
-        if(abs(navigation.angleX - current_angle) >= 90):
-            robot.Freiner()
-            current_angle = navigation.angleX
-            robot.has_started = False
+    #if(navigation.état == State.Rotation):
+    #    print("rotating")
+    #    if(abs(navigation.angleX - current_angle) >= 90):
+    #        robot.Freiner()
+    #        current_angle = navigation.angleX
+    #        robot.has_started = False
         
     
 
