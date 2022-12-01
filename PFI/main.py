@@ -48,7 +48,7 @@ while en_marche:
 
     #lidar.ScanLidar()
     #lidar.GetDistance(0)
-    ##robot.Avancer()
+    robot.Avancer()
 
 
     if(not robot.has_started):
