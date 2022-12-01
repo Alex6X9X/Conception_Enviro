@@ -36,8 +36,8 @@ class Robot :
     def Start_Thread_Avancer(self):
         self.thread_avancer = threading.Thread(target = self.AvancerToPosition , args=())
         self.thread_Calculer_Distance_Parcourue = threading.Thread(target = self.CalculerDistanceParcourue , args=())
-        self.thread_Calculer_Distance_Parcourue.start()
         self.thread_avancer.start()
+        self.thread_Calculer_Distance_Parcourue.start()
     def Stop_Thread_Avancer(self):
         self.thread_avancer.join()
         self.thread_Calculer_Distance_Parcourue.join()
@@ -58,7 +58,7 @@ class Robot :
     def AvancerToPosition(self):
         self.Avancer()
        
-        while(self.distanceAParcourir < self.distanceParcourue ):
+        while(self.distanceAParcourir < self.distanceParcourue):
             sleep(0.1)
             self.navigation.état = State.Translation
 
