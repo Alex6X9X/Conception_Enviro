@@ -9,6 +9,9 @@ from RadioNavigation import RadioNavigation
 from Lidar import Lidar
 from State import State
 from Direction import Direction
+
+TEMPS_CALIBRATION = 4
+
 en_marche = True
 
 imu = ICM20948()
@@ -22,6 +25,8 @@ robot.initialiserPosition()
 current_angle = navigation.angleX
 #lidar = Lidar(en_marche)
 
+sleep(TEMPS_CALIBRATION)
+
 #robot.Tourner(Direction.Droite)
 #if(navigation.angleX < -90):
 #    robot.Freiner()
@@ -30,7 +35,6 @@ tabPosition = [0,7.80, 1.60, 6]
 tabAxes = ['Y' , 'X' , 'Y' , 'X']
 
 index = 0 
-
 while en_marche:
     
     sleep(0.1)
