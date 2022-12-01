@@ -32,7 +32,7 @@ sleep(TEMPS_CALIBRATION)
 #if(navigation.angleX < -90):
 #    robot.Freiner()
     
-tabPosition = [0,7.80, 1.60, 6]
+tabPosition = [6,7.80, 1.60, 6]
 tabAxes = [Axe.Y , Axe.X , Axe.Y , Axe.X]
 
 index = 0 
