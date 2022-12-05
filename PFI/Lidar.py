@@ -1,5 +1,6 @@
 import PyLidar3
 import time
+import threading
 
 #Distance en mm
 FACTEUR_CONVERSION = 0.001
@@ -11,12 +12,14 @@ class Lidar:
         self.gen = None
         self.data = None
         self.en_marche = en_marche
+        self.thread_scan_lidar = threading.Thread(target = self.ScanLidar , args=())
         self.StartLidar()
         
     def StartLidar(self):
         if(self.Obj.Connect()):
             print(self.Obj.GetDeviceInfo())
             self.gen = self.Obj.StartScanning()
+            self.thread_scan_lidar.start()
             
     def ScanLidar(self):
         while (not self.en_marche):         
@@ -33,7 +36,6 @@ class Lidar:
     
     def ConversionMetre(self, distance):
         return distance * FACTEUR_CONVERSION
-        
 
         
 

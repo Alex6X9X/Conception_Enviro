@@ -9,10 +9,11 @@ import Direction
 import math
 
 class Robot :
-    def __init__(self, navigation , radioNavigation, en_marche):
+    def __init__(self, navigation , radioNavigation, lidar, en_marche):
         self.moteurs = Moteurs()
         self.navigation = navigation
         self.radioNavigation = radioNavigation
+        self.lidar = lidar
         self.x = 0
         self.y = 0
         self.en_marche = en_marche
@@ -21,13 +22,12 @@ class Robot :
         self.distanceParcourue = 0
         self.axe = None
         self.arriver_position = False
-        self.obstacle_in_the_way = False
     def initialiserPosition(self):
         if(self.navigation.état == State.Immobile):
             self.x = self.radioNavigation.x
             self.y = self.radioNavigation.y
-    def Start_Thread_Avancer(self):
-        self.thread_avancer = threading.Thread(target = self.AvancerToPosition , args=())
+    def Start_Thread_Avancer(self, prochainX, prochainY):
+        self.thread_avancer = threading.Thread(target = self.AvancerToPosition , args=(prochainX, prochainY))
         self.thread_Calculer_Distance_Parcourue = threading.Thread(target = self.CalculerDistanceParcourue , args=())
         self.thread_avancer.start()
         self.thread_Calculer_Distance_Parcourue.start()
@@ -67,8 +67,12 @@ class Robot :
         self.arriver_position = True
             
         
+    def VerifierDistanceLidar(self):
+        distance = self.lidar.GetDistance(150)
+        
+        return distance <= 0.2
+    
     def PauseObstacle(self):
-        self.obstacle_in_the_way = True
         self.Freiner()
         self.initialiserPosition()
         
