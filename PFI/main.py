@@ -16,7 +16,7 @@ TEMPS_CALIBRATION = 4
 en_marche = True
 
 imu = ICM20948()
-current_angle = 0
+angle = 0
 navigation = Navigation(imu, en_marche)
 radioNavigation = RadioNavigation(en_marche)
 radioNavigation.demarrerCommunication()
@@ -31,9 +31,9 @@ sleep(TEMPS_CALIBRATION)
 #robot.Tourner(Direction.Droite)
 #if(navigation.angleX < -90):
 #    robot.Freiner()
-    
+#tabVraiPosition = [(0, 0), (12.11, 0), (13.0, 7.54), (0.70, 8.66)]    
 tabPosition = [0,7.80, 1.60, 6]
-tabAxes = [Axe.Y , Axe.X , Axe.Y , Axe.X]
+has_started = False
 
 index = 0 
 while en_marche:
@@ -44,38 +44,27 @@ while en_marche:
    ## print("y")
     print(str(radioNavigation.y))
    ## print("---")
-
-    
-   ## print(navigation.angleX)
-   ## print(current_angle)
-
-
     
 
     #lidar.ScanLidar()
-    #lidar.GetDistance(0)
+    #lidar.GetDistance(150)
     #robot.Avancer()
 
 
-    #if(not robot.has_started):
-    #    print("starting robot thread")
-    #    print(tabPosition[index])
-    #    robot.CalculerDistance(tabPosition[index] , tabAxes[index])
-    #    robot.Start_Thread_Avancer()
-    #    index += 1
-    #    robot.has_started = True
-    #if(robot.arriver_position):
-    #    print("arriver a la position")
-    #    robot.Stop_Thread_Avancer()
-    #    robot.Tourner(Direction.Droite)
-    #    robot.arriver_position = False
+    if(not has_started):
+        robot.Start_Thread_Avancer()
+        index += 1
+        has_started = True
+    if(robot.arriver_position):
+        robot.Stop_Thread_Avancer()
+        angle = robot.CalculerAngle(0, robot.x, 0, robot.y)
+        robot.Tourner(angle)
+        robot.arriver_position = False
 
-    #if(navigation.état == State.Rotation):
-    #    print("rotating")
-    #    if(abs(navigation.angleX - current_angle) >= 90):
-    #        robot.Freiner()
-    #        current_angle = navigation.angleX
-    #        robot.has_started = False
+    if(navigation.état == State.Rotation):
+        if(navigation.angleX >= angle):
+            robot.Freiner()
+            has_started = False
         
     
 
