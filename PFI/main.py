@@ -8,7 +8,6 @@ from icm20948 import ICM20948
 from RadioNavigation import RadioNavigation
 from Lidar import Lidar
 from State import State
-from Axe import Axe
 from Direction import Direction
 
 TEMPS_CALIBRATION = 4
@@ -52,11 +51,11 @@ while en_marche:
         index += 1
         robot.Stop_Thread_Avancer()
         if(index == len(tabPosition)):
-            en_marche = False
-            #radioNavigation.en_marche = False
-            radioNavigation.fermerConnection()
-            navigation.thread_calcul_position.join()
-            lidar.thread_scan_lidar.join()
+          en_marche = False
+          #radioNavigation.en_marche = False
+          radioNavigation.fermerConnection()
+          navigation.thread_calcul_position.join()
+          lidar.thread_scan_lidar.join()
         else:
           angle = robot.CalculerAngle(0, robot.x, 0, robot.y)
           next_angle = navigation.angleX + angle

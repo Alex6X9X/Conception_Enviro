@@ -3,10 +3,10 @@
 import threading
 from time import sleep
 from State import State
-from Axe import Axe
 from moteurs import Moteurs
 import Direction
 import math
+import time
 
 class Robot :
     def __init__(self, navigation , radioNavigation, lidar, en_marche):
@@ -23,9 +23,10 @@ class Robot :
         self.distanceParcourue = 0
         self.axe = None
         self.arriver_position = False
-        self.destinationAngle = 0
         self.thread_avancer = None
         self.thread_Calculer_Distance_Parcourue = None
+        self.angle = 0
+        self.next_angle = 0
     def initialiserPosition(self):
         if(self.navigation.état == State.Immobile):
             self.x = self.radioNavigation.x
@@ -55,21 +56,33 @@ class Robot :
         deltaY = y2 - y1
         deltaX = x2 - x1
         return round(math.degrees(math.atan2(deltaY, deltaX)))
-    def CorrectionAngle(self):
-        next_angle = self.navigation.angleX + self.destinationAngle
-        self.Tourner(self.destinationAngle)
+    
+    def CorrectionAngle(self, prochainX, prochainY):
+        est_corriger = False
+        angle = self.CalculerAngle(prochainX, self.x, prochainY, self.y)
+        next_angle = self.navigation.angleX + angle
+        if(angle > 2):
+            self.Tourner(angle)
+        while(not est_corriger):
+            if(self.navigation.angleX == next_angle):
+                self.Freiner()
+                est_corriger = True
+        
     def Avancer(self):
         self.navigation.état = State.Translation
         self.moteurs.avancer()
-    def AvancerToPosition(self, x, y):
+    def AvancerToPosition(self, prochainX, prochainY):
         
         self.y = self.radioNavigation.y
         self.x = self.radioNavigation.x
-        self.distanceAParcourir = self.CalculerDistance(x, self.x, y, self.y)
+        self.distanceAParcourir = self.CalculerDistance(prochainX, self.x, prochainY, self.y)
         self.Avancer()
-       
+        self.compteurAngle = time.perf_counter()
         while(self.distanceAParcourir < self.distanceParcourue):
             sleep(0.1)
+            if(time.perf_counter() - self.compteurAngle > 1.5):
+                self.CorrectionAngle(prochainX, prochainY)
+                self.compteurAngle = 0
             self.navigation.état = State.Translation
 
         self.Freiner()
