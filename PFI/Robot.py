@@ -52,7 +52,9 @@ class Robot :
             elif(self.axe == Axe.X):
                 self.distanceParcourue =  abs(self.radioNavigation.x - self.x)
     def CalculerDistance(self, x2, x1, y2, y1):
-        return math.sqrt( pow(x2 - x1, 2) + pow(y2 - y1, 2))
+        x = x2 -x1
+        y = y2 - y1
+        return math.sqrt( pow(x, 2) + pow(y, 2))
     
     def Avancer(self):
         self.navigation.état = State.Translation
