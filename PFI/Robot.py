@@ -5,38 +5,29 @@ from time import sleep
 from State import State
 from Axe import Axe
 from moteurs import Moteurs
+import Direction
+import math
+
 class Robot :
-    def __init__(self, navigation , radioNavigation, en_marche):
+    def __init__(self, navigation , radioNavigation, lidar, en_marche):
         self.moteurs = Moteurs()
         self.navigation = navigation
         self.radioNavigation = radioNavigation
+        self.lidar = lidar
         self.x = 0
         self.y = 0
         self.en_marche = en_marche
         self.doit_avancer = False
-        self.has_started = False
         self.distanceAParcourir = 0
         self.distanceParcourue = 0
         self.axe = None
         self.arriver_position = False
-        self.obstacle_in_the_way = False
     def initialiserPosition(self):
         if(self.navigation.état == State.Immobile):
             self.x = self.radioNavigation.x
             self.y = self.radioNavigation.y
-    def CalculerDistance(self , positionToGoTo , xOuY):
-        self.y = self.radioNavigation.y
-        self.x = self.radioNavigation.x
-        if(xOuY == Axe.Y):
-            print(abs(positionToGoTo - self.y))
-            self.distanceAParcourir = abs(positionToGoTo - self.y)
-            self.axe = Axe.Y
-        elif(xOuY == Axe.X):
-            self.distanceAParcourir = abs(positionToGoTo - self.x)
-            self.axe = Axe.X
-           
-    def Start_Thread_Avancer(self):
-        self.thread_avancer = threading.Thread(target = self.AvancerToPosition , args=())
+    def Start_Thread_Avancer(self, prochainX, prochainY):
+        self.thread_avancer = threading.Thread(target = self.AvancerToPosition , args=(prochainX, prochainY))
         self.thread_Calculer_Distance_Parcourue = threading.Thread(target = self.CalculerDistanceParcourue , args=())
         self.thread_avancer.start()
         self.thread_Calculer_Distance_Parcourue.start()
@@ -47,15 +38,25 @@ class Robot :
         self.arriver_position = False
         while(self.en_marche):
             sleep(0.1)
-            if(self.axe == Axe.Y):
-                self.distanceParcourue = abs(self.radioNavigation.y - self.y)
-            elif(self.axe == Axe.X):
-                self.distanceParcourue =  abs(self.radioNavigation.x - self.x)
-
+            self.distanceParcourue = self.CalculerDistance(self.radioNavigation.x, self.x, self.radioNavigation.y, self.y)
+            
+    def CalculerDistance(self, x2, x1, y2, y1):
+        x = x2 - x1
+        y = y2 - y1
+        return math.sqrt( pow(x, 2) + pow(y, 2))
+    
+    def CalculerAngle(self, x2, x1, y2, y1):
+        deltaY = y2 - y1
+        deltaX = x2 - x1
+        return round(math.degrees(math.atan2(deltaY, deltaX)))
+    
     def Avancer(self):
         self.navigation.état = State.Translation
         self.moteurs.avancer()
-    def AvancerToPosition(self):
+    def AvancerToPosition(self, x, y):
+        self.y = self.radioNavigation.y
+        self.x = self.radioNavigation.x
+        self.distanceAParcourir = self.CalculerDistance(x, self.x, y, self.y)
         self.Avancer()
        
         while(self.distanceAParcourir < self.distanceParcourue):
@@ -63,22 +64,28 @@ class Robot :
             self.navigation.état = State.Translation
 
         self.Freiner()
-        self.x = self.radioNavigation.x
-        self.y = self.radioNavigation.y
         self.arriver_position = True
             
         
+    def VerifierDistanceLidar(self):
+        distance = self.lidar.GetDistance(150)
+        
+        return distance <= 0.2
+    
     def PauseObstacle(self):
-        self.obstacle_in_the_way = True
         self.Freiner()
         self.initialiserPosition()
+        
     def Reculer(self):
         self.navigation.état = State.Translation
         self.moteurs.reculer()
             
-    def Tourner(self, dir):
+    def Tourner(self, angle):
+        if(angle > 0):
+            self.moteurs.tourner(Direction.Gauche)
+        else:
+            self.moteurs.tourner(Direction.Droite)
         self.navigation.état = State.Rotation
-        self.moteurs.tourner(dir)
 
     def Arreter(self):
         self.moteurs.arreter()
