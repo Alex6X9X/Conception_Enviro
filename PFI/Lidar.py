@@ -2,6 +2,7 @@ import PyLidar3
 import time
 
 #Distance en mm
+FACTEUR_CONVERSION = 0.001
 
 class Lidar:
     def __init__(self, en_marche):
@@ -28,7 +29,10 @@ class Lidar:
             print("Erreur")
             self.Obj.Reset() 
     def GetDistance(self, angle):
-        return self.data[angle]
+        return self.ConversionMetre(self.data[angle])
+    
+    def ConversionMetre(self, distance):
+        return distance * FACTEUR_CONVERSION
         
 
         
