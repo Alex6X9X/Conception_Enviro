@@ -47,14 +47,21 @@ while en_marche:
 
     if(not has_started):
         robot.Start_Thread_Avancer(tabPosition[index][0], tabPosition[index][1])
-        index += 1
         has_started = True
     if(robot.arriver_position):
+        index += 1
         robot.Stop_Thread_Avancer()
-        angle = robot.CalculerAngle(0, robot.x, 0, robot.y)
-        next_angle = navigation.angleX + angle
-        robot.Tourner(angle)
-        robot.arriver_position = False
+        if(index == len(tabPosition)):
+            en_marche = False
+            #radioNavigation.en_marche = False
+            radioNavigation.fermerConnection()
+            navigation.thread_calcul_position.join()
+            lidar.thread_scan_lidar.join()
+        else:
+          angle = robot.CalculerAngle(0, robot.x, 0, robot.y)
+          next_angle = navigation.angleX + angle
+          robot.Tourner(angle)
+          robot.arriver_position = False
 
     if(navigation.état == State.Rotation):
         if(navigation.angleX == next_angle):
@@ -66,12 +73,7 @@ while en_marche:
         robot.PauseObstacle()
         robot.Stop_Thread_Avancer()
         has_started = False
-
+      
     
 
-en_marche=False
-#radioNavigation.en_marche = False
-radioNavigation.fermerConnection()
-navigation.thread_calcul_position.join()
-lidar.thread_scan_lidar.join()
 #navigation.thread_affichage.join()
