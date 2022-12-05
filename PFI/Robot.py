@@ -5,6 +5,7 @@ from time import sleep
 from State import State
 from Axe import Axe
 from moteurs import Moteurs
+import math
 class Robot :
     def __init__(self, navigation , radioNavigation, en_marche):
         self.moteurs = Moteurs()
@@ -50,7 +51,9 @@ class Robot :
                 self.distanceParcourue = abs(self.radioNavigation.y - self.y)
             elif(self.axe == Axe.X):
                 self.distanceParcourue =  abs(self.radioNavigation.x - self.x)
-
+    def CalculerDistance(self, x2, x1, y2, y1):
+        return math.sqrt( pow(x2 - x1, 2) + pow(y2 - y1, 2))
+    
     def Avancer(self):
         self.navigation.état = State.Translation
         self.moteurs.avancer()
