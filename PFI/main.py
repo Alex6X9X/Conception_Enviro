@@ -23,7 +23,6 @@ radioNavigation.demarrerCommunication()
 radioNavigation.thread_get_position.start()
 robot = Robot(navigation , radioNavigation, en_marche)
 robot.initialiserPosition()
-current_angle = navigation.angleX
 #lidar = Lidar(en_marche)
 
 sleep(TEMPS_CALIBRATION)
@@ -58,11 +57,12 @@ while en_marche:
     if(robot.arriver_position):
         robot.Stop_Thread_Avancer()
         angle = robot.CalculerAngle(0, robot.x, 0, robot.y)
+        next_angle = navigation.angleX + angle
         robot.Tourner(angle)
         robot.arriver_position = False
 
     if(navigation.état == State.Rotation):
-        if(navigation.angleX >= angle):
+        if(navigation.angleX == next_angle):
             robot.Freiner()
             has_started = False
         
