@@ -62,12 +62,10 @@ while en_marche:
             has_started = False
         
     
-
-        
-    ##ici ajouter vérification du Lidar pour vérifier les obstacles et arrêter le robot si c'est le cas
     if(robot.VerifierDistanceLidar()):
         robot.PauseObstacle()
         robot.Stop_Thread_Avancer()
+        has_started = False
 
     
 
