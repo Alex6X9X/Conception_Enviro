@@ -10,6 +10,7 @@ import math
 
 class Robot :
     def __init__(self, navigation , radioNavigation, lidar, en_marche):
+        self.compteurAngle = 0
         self.moteurs = Moteurs()
         self.navigation = navigation
         self.radioNavigation = radioNavigation
@@ -22,15 +23,20 @@ class Robot :
         self.distanceParcourue = 0
         self.axe = None
         self.arriver_position = False
+        self.destinationAngle = 0
+        self.thread_avancer = None
+        self.thread_Calculer_Distance_Parcourue = None
     def initialiserPosition(self):
         if(self.navigation.état == State.Immobile):
             self.x = self.radioNavigation.x
             self.y = self.radioNavigation.y
     def Start_Thread_Avancer(self, prochainX, prochainY):
         self.thread_avancer = threading.Thread(target = self.AvancerToPosition , args=(prochainX, prochainY))
-        self.thread_Calculer_Distance_Parcourue = threading.Thread(target = self.CalculerDistanceParcourue , args=())
+        self.thread_Calculer_Distance_Parcourue = threading.Thread(target = self.CalculerDistanceParcourue , args=())     
         self.thread_avancer.start()
         self.thread_Calculer_Distance_Parcourue.start()
+
+        
     def Stop_Thread_Avancer(self):
         self.thread_avancer.join()
         self.thread_Calculer_Distance_Parcourue.join()
@@ -49,11 +55,14 @@ class Robot :
         deltaY = y2 - y1
         deltaX = x2 - x1
         return round(math.degrees(math.atan2(deltaY, deltaX)))
-    
+    def CorrectionAngle(self):
+        next_angle = self.navigation.angleX + self.destinationAngle
+        self.Tourner(self.destinationAngle)
     def Avancer(self):
         self.navigation.état = State.Translation
         self.moteurs.avancer()
     def AvancerToPosition(self, x, y):
+        
         self.y = self.radioNavigation.y
         self.x = self.radioNavigation.x
         self.distanceAParcourir = self.CalculerDistance(x, self.x, y, self.y)
