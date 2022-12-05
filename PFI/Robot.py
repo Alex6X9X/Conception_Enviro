@@ -34,6 +34,7 @@ class Robot :
         elif(xOuY == Axe.X):
             self.distanceAParcourir = abs(positionToGoTo - self.x)
             self.axe = Axe.X
+           
     def Start_Thread_Avancer(self):
         self.thread_avancer = threading.Thread(target = self.AvancerToPosition , args=())
         self.thread_Calculer_Distance_Parcourue = threading.Thread(target = self.CalculerDistanceParcourue , args=())
