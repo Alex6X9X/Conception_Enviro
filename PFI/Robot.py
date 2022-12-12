@@ -92,8 +92,8 @@ class Robot :
         
     def VerifierDistanceLidar(self):
         distance = self.lidar.GetDistance(150)
-        
-        return distance <= 0.2
+        if(distance != None):
+            return distance <= 0.2
     
     def PauseObstacle(self):
         self.Freiner()
