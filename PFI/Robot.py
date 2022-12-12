@@ -4,7 +4,7 @@ import threading
 from time import sleep
 from State import State
 from moteurs import Moteurs
-import Direction
+from Direction import Direction
 import math
 import time
 
