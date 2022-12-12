@@ -74,6 +74,10 @@ while en_marche:
 
     if(navigation.état == State.Rotation):
         print("en rotation")
+        print("nav angle")
+        print(navigation.angleX)
+        print("next angle")
+        print(next_angle)
         if(navigation.angleX == next_angle):
             robot.Freiner()
             has_started = False
