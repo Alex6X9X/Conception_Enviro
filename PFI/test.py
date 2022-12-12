@@ -29,6 +29,7 @@ index = 0
 while en_marche:
     
     sleep(0.1)
+
    ## print("x")
     print(str(radioNavigation.x))
    ## print("y")

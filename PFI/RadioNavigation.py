@@ -26,7 +26,6 @@ class RadioNavigation:
         pass
         
     def getPosition(self):
-        self.ser.open()
         while(self.en_marche):
             time.sleep(0.1)
             self.data = str(self.ser.readline())
