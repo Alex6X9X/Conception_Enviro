@@ -37,9 +37,9 @@ while en_marche:
     
     sleep(0.1)
    ## print("x")
-    print(str(radioNavigation.x))
+    ##print(str(radioNavigation.x))
    ## print("y")
-    print(str(radioNavigation.y))
+    ##print(str(radioNavigation.y))
    ## print("---")
 
     robot.obstacleDetecter = robot.VerifierDistanceLidar()
@@ -49,6 +49,7 @@ while en_marche:
         robot.Stop_Thread_Avancer()
         has_started = False
     if(not has_started and not robot.obstacleDetecter):
+        print("start thread_avancer")
         robot.Start_Thread_Avancer(tabPosition[index][0], tabPosition[index][1])
         has_started = True
     if(robot.arriver_position):
