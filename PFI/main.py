@@ -19,7 +19,6 @@ angle = 0
 navigation = Navigation(imu, en_marche)
 radioNavigation = RadioNavigation(en_marche)
 lidar = Lidar(en_marche)
-lidar.thread_scan_lidar.start()
 radioNavigation.demarrerCommunication()
 radioNavigation.thread_get_position.start()
 robot = Robot(navigation , radioNavigation, lidar, en_marche)
@@ -62,7 +61,7 @@ while en_marche:
           radioNavigation.fermerConnection()
           navigation.thread_calcul_position.join()
           lidar.thread_scan_lidar.join()
-          
+
         else:
           angle = robot.CalculerAngle(0, robot.x, 0, robot.y)
           next_angle = navigation.angleX + angle
