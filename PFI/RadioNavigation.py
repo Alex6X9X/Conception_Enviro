@@ -16,7 +16,6 @@ class RadioNavigation:
         self.ser.write(b'\r\r') # séquence d’octets
         time.sleep(1)
         self.ser.write(b'lep\r')
-        self.ser.close()
         self.en_marche = en_marche
         self.data = None
         self.x = 0
