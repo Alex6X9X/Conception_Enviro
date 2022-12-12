@@ -45,11 +45,11 @@ while en_marche:
 
     robot.obstacleDetecter = robot.VerifierDistanceLidar()
     if(robot.obstacleDetecter):
+        print("--obstacle détecter--")
         robot.PauseObstacle()
         robot.Stop_Thread_Avancer()
-        robot.obstacleDetecter = True
         has_started = False
-    if(not has_started):
+    if(not has_started and not robot.obstacleDetecter):
         robot.Start_Thread_Avancer(tabPosition[index][0], tabPosition[index][1])
         has_started = True
     if(robot.arriver_position):
