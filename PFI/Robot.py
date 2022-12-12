@@ -54,6 +54,8 @@ class Robot :
         x = x2 - x1
         y = y2 - y1
         print("calcul distance")
+        print(x)
+        print(y)
         print(math.sqrt( pow(x, 2) + pow(y, 2)))
         return math.sqrt( pow(x, 2) + pow(y, 2))
     
