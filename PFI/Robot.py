@@ -59,6 +59,7 @@ class Robot :
         return round(math.degrees(math.atan2(deltaY, deltaX)))
     
     def CorrectionAngle(self, prochainX, prochainY):
+        print("correction")
         est_corriger = False
         angle = self.CalculerAngle(prochainX, self.x, prochainY, self.y)
         next_angle = self.navigation.angleX + angle
