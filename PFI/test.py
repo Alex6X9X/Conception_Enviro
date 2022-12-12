@@ -18,13 +18,11 @@ imu = ICM20948()
 angle = 0
 navigation = Navigation(imu, en_marche)
 radioNavigation = RadioNavigation(en_marche)
-lidar = Lidar(en_marche)
+
 radioNavigation.demarrerCommunication()
 radioNavigation.thread_get_position.start()
-robot = Robot(navigation , radioNavigation, lidar, en_marche)
-robot.initialiserPosition()
-beggining_of_circuit = True
-tabPosition = [(0,7.80), 1.60, 6]
+
+
 has_started = True
 sleep(TEMPS_CALIBRATION)
 
