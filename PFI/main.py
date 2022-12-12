@@ -53,6 +53,7 @@ while en_marche:
         robot.Start_Thread_Avancer(tabPosition[index][0], tabPosition[index][1])
         has_started = True
     if(robot.arriver_position):
+        print("arriver à la position")
         if(not beggining_of_circuit):
             index += 1
             robot.Stop_Thread_Avancer()
@@ -65,12 +66,14 @@ while en_marche:
           lidar.thread_scan_lidar.join()
 
         else:
+          print("calcul angle et tourner")
           angle = robot.CalculerAngle(0, robot.x, 0, robot.y)
           next_angle = navigation.angleX + angle
           robot.Tourner(angle)
           robot.arriver_position = False
 
     if(navigation.état == State.Rotation):
+        print("en rotation")
         if(navigation.angleX == next_angle):
             robot.Freiner()
             has_started = False
