@@ -76,6 +76,8 @@ while en_marche:
         print("en rotation")
         print("nav angle")
         print(navigation.angleX)
+        print("angle")
+        print(angle)
         if(navigation.angleX >= angle - 5 or navigation.angleX <= angle + 5):
             robot.Freiner()
             has_started = False
