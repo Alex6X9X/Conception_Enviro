@@ -73,7 +73,7 @@ class Robot :
         self.navigation.état = State.Translation
         self.moteurs.avancer()
     def AvancerToPosition(self, prochainX, prochainY):
-        
+        print(prochainX , prochainY)
         self.y = self.radioNavigation.y
         self.x = self.radioNavigation.x
         self.distanceAParcourir = self.CalculerDistance(prochainX, self.x, prochainY, self.y)
