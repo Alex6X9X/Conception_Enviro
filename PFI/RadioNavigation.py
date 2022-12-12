@@ -7,6 +7,10 @@ class RadioNavigation:
         self.ser = serial.Serial() 
         self.ser.port = '/dev/ttyACM0'
         self.ser.baudrate = 115200
+        self.ser.bytesize = serial.EIGHTBITS 
+        self.ser.parity =serial.PARITY_NONE 
+        self.ser.stopbits = serial.STOPBITS_ONE 
+        self.ser.timeout = 1
         self.ser.open()
         print("RadioNavigation")
         self.ser.write(b'\r\r') # séquence d’octets
@@ -27,6 +31,7 @@ class RadioNavigation:
         while(self.en_marche):
             time.sleep(0.1)
             self.data = str(self.ser.readline())
+            print(self.data)
             arrayString = self.data.split(',') 
             ##string.replace(oldvalue, newvalue)
             if(len(arrayString) > 1):
