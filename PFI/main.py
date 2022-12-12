@@ -41,8 +41,7 @@ while en_marche:
    ## print("y")
     ##print(str(radioNavigation.y))
    ## print("---")
-    if(robot.x >= tabPosition[index][0] - 0.1 and robot.x <= tabPosition[index][0] + 0.1 and robot.y >= tabPosition[index][1] - 0.1 and robot.y <= tabPosition[index][1] + 0.1):
-        pass
+
     robot.obstacleDetecter = robot.VerifierDistanceLidar()
     if(robot.obstacleDetecter):
         print("--obstacle détecter--")
