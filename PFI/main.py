@@ -27,11 +27,8 @@ beggining_of_circuit = True
 
 sleep(TEMPS_CALIBRATION)
 
-#robot.Tourner(Direction.Droite)
-#if(navigation.angleX < -90):
-#    robot.Freiner()
-#tabVraiPosition = [(0, 0), (12.11, 0), (13.0, 7.54), (0.70, 8.66)]    
-tabPosition = [(0,7.80), 1.60, 6]
+
+tabPosition = [(6.2 , 2.78), (6 , -0.34), (7.94 , 0.27) , (8.15 , 2.63) , (6.2 , 2.78)]
 has_started = True
 
 index = 0 
