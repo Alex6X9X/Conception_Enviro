@@ -23,6 +23,7 @@ radioNavigation.demarrerCommunication()
 radioNavigation.thread_get_position.start()
 robot = Robot(navigation , radioNavigation, lidar, en_marche)
 robot.initialiserPosition()
+beggining_of_circuit = True
 
 sleep(TEMPS_CALIBRATION)
 
@@ -31,7 +32,7 @@ sleep(TEMPS_CALIBRATION)
 #    robot.Freiner()
 #tabVraiPosition = [(0, 0), (12.11, 0), (13.0, 7.54), (0.70, 8.66)]    
 tabPosition = [(0,7.80), 1.60, 6]
-has_started = False
+has_started = True
 
 index = 0 
 while en_marche:
@@ -53,8 +54,10 @@ while en_marche:
         robot.Start_Thread_Avancer(tabPosition[index][0], tabPosition[index][1])
         has_started = True
     if(robot.arriver_position):
-        index += 1
-        robot.Stop_Thread_Avancer()
+        if(not beggining_of_circuit):
+            index += 1
+            robot.Stop_Thread_Avancer()
+            beggining_of_circuit = True
         if(index == len(tabPosition)):
           en_marche = False
           #radioNavigation.en_marche = False

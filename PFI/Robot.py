@@ -22,7 +22,7 @@ class Robot :
         self.distanceAParcourir = 0
         self.distanceParcourue = 0
         self.axe = None
-        self.arriver_position = False
+        self.arriver_position = True
         self.thread_avancer = None
         self.thread_Calculer_Distance_Parcourue = None
         self.angle = 0
