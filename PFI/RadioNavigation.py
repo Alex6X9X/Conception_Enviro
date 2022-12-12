@@ -8,6 +8,11 @@ class RadioNavigation:
         self.ser.port = '/dev/ttyACM0'
         self.ser.baudrate = 115200
         self.ser.open()
+        print("RadioNavigation")
+        self.ser.write(b'\r\r') # séquence d’octets
+        time.sleep(1)
+        self.ser.write(b'lep\r')
+        self.ser.close()
         self.en_marche = en_marche
         self.data = None
         self.x = 0
@@ -15,12 +20,10 @@ class RadioNavigation:
         self.thread_get_position = threading.Thread(target = self.getPosition , args=())
         
     def demarrerCommunication(self):
-        print("RadioNavigation")
-        self.ser.write(b'\r\r') # séquence d’octets
-        time.sleep(1)
+        pass
         
     def getPosition(self):
-        self.ser.write(b'lep\n') # Show pos. in CSV
+        self.ser.open()
         while(self.en_marche):
             time.sleep(0.1)
             self.data = str(self.ser.readline())
@@ -29,6 +32,7 @@ class RadioNavigation:
             if(len(arrayString) > 1):
                 self.x = float(arrayString[1])
                 self.y = float(arrayString[2])
+        self.ser.close()
     def fermerConnection(self):
         self.ser.close()
     
