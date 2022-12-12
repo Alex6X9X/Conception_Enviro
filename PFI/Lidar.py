@@ -13,7 +13,7 @@ class Lidar:
         self.data = None
         self.en_marche = en_marche
         self.thread_scan_lidar = threading.Thread(target = self.ScanLidar , args=())
-        self.StartLidar()
+
         
 
     def ScanLidar(self):
