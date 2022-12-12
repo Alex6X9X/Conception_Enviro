@@ -23,12 +23,12 @@ lidar.thread_scan_lidar.start()
 radioNavigation.demarrerCommunication()
 radioNavigation.thread_get_position.start()
 robot = Robot(navigation , radioNavigation, lidar, en_marche)
-robot.initialiserPosition()
+
 beggining_of_circuit = True
 
 sleep(TEMPS_CALIBRATION)
 
-
+robot.initialiserPosition()
 tabPosition = [(6 , -0.34), (7.94 , 0.27) , (8.15 , 2.63) , (6.2 , 2.78)]
 has_started = True
 

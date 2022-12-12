@@ -43,6 +43,7 @@ class Robot :
         self.thread_avancer.join()
         self.thread_Calculer_Distance_Parcourue.join()
     def CalculerDistanceParcourue(self):
+        
         self.arriver_position = False
         while(self.en_marche):
             sleep(0.1)
