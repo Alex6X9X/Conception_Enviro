@@ -63,6 +63,7 @@ class Robot :
         est_corriger = False
         angle = self.CalculerAngle(prochainX, self.x, prochainY, self.y)
         next_angle = self.navigation.angleX + angle
+        print(angle)
         if(angle > 2):
             self.Tourner(angle)
         while(not est_corriger):
