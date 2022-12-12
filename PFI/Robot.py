@@ -73,14 +73,20 @@ class Robot :
         self.navigation.état = State.Translation
         self.moteurs.avancer()
     def AvancerToPosition(self, prochainX, prochainY):
-        print(prochainX , prochainY)
+        
         self.y = self.radioNavigation.y
         self.x = self.radioNavigation.x
         self.distanceAParcourir = self.CalculerDistance(prochainX, self.x, prochainY, self.y)
         self.Avancer()
         self.compteurAngle = time.perf_counter()
+        print("distance a parcourir ")
+        print(self.distanceAParcourir)
+        print("compteur")
+        print(self.compteurAngle)
         while(self.distanceAParcourir < self.distanceParcourue):
             sleep(0.1)
+            print("distance Parcourue")
+            print(self.distanceParcourue)
             if(time.perf_counter() - self.compteurAngle > 1.5):
                 self.CorrectionAngle(prochainX, prochainY)
                 self.compteurAngle = 0
