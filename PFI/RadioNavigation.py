@@ -29,7 +29,6 @@ class RadioNavigation:
         while(self.en_marche):
             time.sleep(0.1)
             self.data = str(self.ser.readline())
-            print(self.data)
             arrayString = self.data.split(',') 
             ##string.replace(oldvalue, newvalue)
             if(len(arrayString) > 1):
