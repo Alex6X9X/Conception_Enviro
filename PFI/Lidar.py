@@ -15,24 +15,25 @@ class Lidar:
         self.thread_scan_lidar = threading.Thread(target = self.ScanLidar , args=())
         self.StartLidar()
         
-    def StartLidar(self):
+
+    def ScanLidar(self):
         if(self.Obj.Connect()):
             print(self.Obj.GetDeviceInfo())
             self.gen = self.Obj.StartScanning()
             self.thread_scan_lidar.start()
-            
-    def ScanLidar(self):
-        while (not self.en_marche):         
-            self.data = next(self.gen) # Dictionnaire: data[0:359] 
-            print(self.data)               
-            time.sleep(0.5)
+            while (not self.en_marche):         
+                self.data = next(self.gen) # Dictionnaire: data[0:359] 
+                print(self.data)               
+                time.sleep(0.5)
+
             self.Obj.StopScanning()
-            self.Obj.Disconnect()
+            self.Obj.Disconnect()    
         else:
             print("Erreur")
             self.Obj.Reset() 
     def GetDistance(self, angle):
-        return self.ConversionMetre(self.data[angle])
+        if(angle != None):
+            return self.ConversionMetre(self.data[angle])
     
     def ConversionMetre(self, distance):
         return distance * FACTEUR_CONVERSION
