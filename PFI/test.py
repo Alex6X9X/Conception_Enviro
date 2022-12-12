@@ -16,7 +16,6 @@ en_marche = True
 
 imu = ICM20948()
 angle = 0
-navigation = Navigation(imu, en_marche)
 radioNavigation = RadioNavigation(en_marche)
 
 radioNavigation.demarrerCommunication()
