@@ -27,6 +27,7 @@ class Robot :
         self.thread_Calculer_Distance_Parcourue = None
         self.angle = 0
         self.next_angle = 0
+        self.obstacleDetecter = False
     def initialiserPosition(self):
         if(self.navigation.état == State.Immobile):
             self.x = self.radioNavigation.x
