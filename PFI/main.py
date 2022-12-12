@@ -68,7 +68,7 @@ while en_marche:
         else:
           print("calcul angle et tourner")
           angle = robot.CalculerAngle(tabPosition[index][0], robot.x, tabPosition[index][1], robot.y)
-          next_angle = navigation.angleX + angle
+          
           robot.Tourner(angle)
           robot.arriver_position = False
 
@@ -77,8 +77,7 @@ while en_marche:
         print("nav angle")
         print(navigation.angleX)
         print("next angle")
-        print(next_angle)
-        if(navigation.angleX == next_angle):
+        if(navigation.angleX >= angle - 5 or navigation.angleX <= angle + 5):
             robot.Freiner()
             has_started = False
         
