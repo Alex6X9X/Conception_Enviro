@@ -26,6 +26,7 @@ robot.initialiserPosition()
 beggining_of_circuit = True
 tabPosition = [(0,7.80), 1.60, 6]
 has_started = True
+sleep(TEMPS_CALIBRATION)
 
 index = 0 
 while en_marche:
