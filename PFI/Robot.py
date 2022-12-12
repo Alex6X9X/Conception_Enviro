@@ -46,12 +46,15 @@ class Robot :
 
         self.arriver_position = False
         while(self.en_marche):
+            print("calcul distance parcourue")
             sleep(0.1)
             self.distanceParcourue = self.CalculerDistance(self.radioNavigation.x, self.x, self.radioNavigation.y, self.y)
             
     def CalculerDistance(self, x2, x1, y2, y1):
         x = x2 - x1
         y = y2 - y1
+        print("calcul distance")
+        print(math.sqrt( pow(x, 2) + pow(y, 2)))
         return math.sqrt( pow(x, 2) + pow(y, 2))
     
     def CalculerAngle(self, x2, x1, y2, y1):
