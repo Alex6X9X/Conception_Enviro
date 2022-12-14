@@ -52,6 +52,7 @@ class Robot :
         while(self.en_marche):
             sleep(0.1)
             self.distanceParcourue = self.CalculerDistance(self.radioNavigation.x, self.x, self.radioNavigation.y, self.y)
+            print("distance parcourue" ,self.distanceParcourue)
     def CalculerDistance(self, x2, x1, y2, y1):
         x = x2 - x1
         y = y2 - y1
@@ -81,9 +82,6 @@ class Robot :
         self.moteurs.avancer()
     def AvancerToPosition(self, prochainX, prochainY, angle_depart):
   
-            
-            
-
         self.distanceAParcourir = self.CalculerDistance(prochainX, self.x, prochainY, self.y)
         
         #self.compteurAngle = time.perf_counter()
@@ -92,11 +90,8 @@ class Robot :
         #print("compteur")
         #print(self.compteurAngle)
         while(self.distanceParcourue < self.distanceAParcourir):
-            if(self.x == 0 or self.y == 0):
-                print("sont a 0")
-                self.initialiserPosition()
-            else:
-                self.Avancer()
+   
+            self.Avancer()
             sleep(0.1)
 
             #angle = self.CalculerAngle(prochainX, self.x, prochainY, self.y)
