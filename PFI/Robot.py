@@ -32,8 +32,8 @@ class Robot :
         self.obstacleDetecter = False
         
     def initialiserPosition(self):
-        while(self.radioNavigation.x == 0 and self.radioNavigation.y == 0):
-            print("Initializing...")
+        #while(self.radioNavigation.x == 0 and self.radioNavigation.y == 0):
+        #    print("Initializing...")
         self.x = self.radioNavigation.x
         self.y = self.radioNavigation.y
                 
