@@ -27,19 +27,14 @@ beggining_of_circuit = True
 
 sleep(TEMPS_CALIBRATION)
 
-tabPosition = [(6 , -0.34), (7.94 , 0.27) , (8.15 , 2.63) , (6.2 , 2.78)]
+##tabPosition = [(6 , -0.34), (7.94 , 0.27) , (8.15 , 2.63) , (6.2 , 2.78)]
+tabPosition = [(12.5 , 5.73)]
 has_started = True
 angle = 0
 index = 0 
 robot.initialiserPosition()
 while en_marche:
-    
     sleep(0.1)
-   ## print("x")
-    ##print(str(radioNavigation.x))
-   ## print("y")
-    ##print(str(radioNavigation.y))
-   ## print("---")
 
     robot.obstacleDetecter = robot.VerifierDistanceLidar()
     if(robot.obstacleDetecter):
