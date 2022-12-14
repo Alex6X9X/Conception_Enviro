@@ -4,6 +4,7 @@
 from time import sleep
 from Robot import Robot
 from Navigation import Navigation
+from icm20948 import ICM20948
 from RadioNavigation import RadioNavigation
 from Lidar import Lidar
 from State import State
@@ -36,7 +37,7 @@ while(en_marche):
         print("start thread_avancer")
         robot.Avancer()
         has_started = True
-        
+
 
       
     #print("x" , radioNavigation.x)
