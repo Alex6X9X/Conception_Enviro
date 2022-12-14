@@ -21,7 +21,7 @@ class Robot :
         self.x = 0
         self.y = 0
         self.en_marche = en_marche
-        self.doit_avancer = False
+        self.doit_avancer = True
         self.distanceAParcourir = 0
         self.distanceParcourue = 0
         self.arriver_position = False
