@@ -33,7 +33,8 @@ while en_marche:
 
         
     
-    
+radioNavigation.thread_get_position.join()
+radioNavigation.fermerConnection()
       
     
 
