@@ -92,6 +92,7 @@ class Robot :
         #print(self.compteurAngle)
         while(avance):
             sleep(0.1)
+            print("Allo")
             self.Avancer()
             if(self.distanceParcourue < 0.2):
                 avance = False
