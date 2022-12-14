@@ -11,6 +11,7 @@ class RadioNavigation:
         self.ser.parity =serial.PARITY_NONE 
         self.ser.stopbits = serial.STOPBITS_ONE 
         self.ser.timeout = 1
+        self.ser.close()
         self.ser.open()
         print("RadioNavigation")
         self.ser.write(b'\r\r') # séquence d’octets
