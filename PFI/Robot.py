@@ -8,9 +8,12 @@ from Direction import Direction
 import math
 import time
 
+DELTA_ANGLE = 2
+DISTANCE_MIN_LIDAR = 0.2
+
 class Robot :
     def __init__(self, navigation , radioNavigation, lidar, en_marche):
-        self.compteurAngle = 0
+        #self.compteurAngle = 0
         self.moteurs = Moteurs()
         self.navigation = navigation
         self.radioNavigation = radioNavigation
@@ -21,19 +24,20 @@ class Robot :
         self.doit_avancer = False
         self.distanceAParcourir = 0
         self.distanceParcourue = 0
-        self.axe = None
         self.arriver_position = True
         self.thread_avancer = None
         self.thread_Calculer_Distance_Parcourue = None
         self.angle = 0
         self.next_angle = 0
         self.obstacleDetecter = False
+        
     def initialiserPosition(self):
         if(self.navigation.état == State.Immobile):
             self.x = self.radioNavigation.x
             self.y = self.radioNavigation.y
-    def Start_Thread_Avancer(self, prochainX, prochainY):
-        self.thread_avancer = threading.Thread(target = self.AvancerToPosition , args=(prochainX, prochainY))
+            
+    def Start_Thread_Avancer(self, prochainX, prochainY, angle_depart):
+        self.thread_avancer = threading.Thread(target = self.AvancerToPosition , args=(prochainX, prochainY, angle_depart))
         self.thread_Calculer_Distance_Parcourue = threading.Thread(target = self.CalculerDistanceParcourue , args=())     
         self.thread_avancer.start()
         self.thread_Calculer_Distance_Parcourue.start()
@@ -42,8 +46,8 @@ class Robot :
     def Stop_Thread_Avancer(self):
         self.thread_avancer.join()
         self.thread_Calculer_Distance_Parcourue.join()
+        
     def CalculerDistanceParcourue(self):
-
         self.arriver_position = False
         while(self.en_marche):
             sleep(0.1)
@@ -60,43 +64,45 @@ class Robot :
         deltaX = x2 - x1
         return round(math.degrees(math.atan2(deltaY, deltaX)))
     
-    def CorrectionAngle(self, prochainX, prochainY):
+    def CorrectionAngle(self, angle):
         print("correction")
         est_corriger = False
-        angle = self.CalculerAngle(prochainX, self.x, prochainY, self.y)
-        next_angle = self.navigation.angleX + angle
-        print(angle)
-        if(angle > 2):
+        #angle = self.CalculerAngle(prochainX, self.x, prochainY, self.y)
+        #next_angle = self.navigation.angleX + angle
+        #print(angle)
+        if(angle > DELTA_ANGLE):
             self.Tourner(angle)
         while(not est_corriger):
-            if(self.navigation.angleX == next_angle):
+            if(self.navigation.angleX == angle):
                 self.Freiner()
                 est_corriger = True
         
     def Avancer(self):
         self.navigation.état = State.Translation
         self.moteurs.avancer()
-    def AvancerToPosition(self, prochainX, prochainY):
-        while(self.radioNavigation.x == None or self.radioNavigation.y == None ):
-            print("initializing...")
+    def AvancerToPosition(self, prochainX, prochainY, angle_depart):
+        #while(self.radioNavigation.x == None or self.radioNavigation.y == None ):
+        #    print("initializing...")
             
             
         self.y = self.radioNavigation.y
         self.x = self.radioNavigation.x
         self.distanceAParcourir = self.CalculerDistance(prochainX, self.x, prochainY, self.y)
         self.Avancer()
-        self.compteurAngle = time.perf_counter()
+        #self.compteurAngle = time.perf_counter()
         print("distance a parcourir ")
         print(self.distanceAParcourir)
-        print("compteur")
-        print(self.compteurAngle)
-        while(self.distanceAParcourir > self.distanceParcourue):
+        #print("compteur")
+        #print(self.compteurAngle)
+        while(self.distanceParcourue < self.distanceAParcourir):
             sleep(0.1)
             print("distance Parcourue")
             print(self.distanceParcourue)
-            if(time.perf_counter() - self.compteurAngle > 1.5):
-                self.CorrectionAngle(prochainX, prochainY)
-                self.compteurAngle = 0
+            angle = self.CalculerAngle(prochainX, self.x, prochainY, self.y)
+            #if(time.perf_counter() - self.compteurAngle > 1.5):
+            if(angle != angle_depart):
+                self.CorrectionAngle(angle)
+                #self.compteurAngle = 0
             self.navigation.état = State.Translation
 
         self.Freiner()
@@ -106,7 +112,7 @@ class Robot :
     def VerifierDistanceLidar(self):
         distance = self.lidar.GetDistance(150)
         if(distance != None):
-            return distance <= 0.2
+            return distance <= DISTANCE_MIN_LIDAR
     
     def PauseObstacle(self):
         self.Freiner()
@@ -117,7 +123,7 @@ class Robot :
         self.moteurs.reculer()
             
     def Tourner(self, angle):
-        if(angle > 0):
+        if(angle > DELTA_ANGLE):
             self.moteurs.tourner(Direction.Gauche)
         else:
             self.moteurs.tourner(Direction.Droite)

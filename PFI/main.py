@@ -20,7 +20,6 @@ navigation = Navigation(imu, en_marche)
 radioNavigation = RadioNavigation(en_marche)
 lidar = Lidar(en_marche)
 lidar.thread_scan_lidar.start()
-radioNavigation.demarrerCommunication()
 radioNavigation.thread_get_position.start()
 robot = Robot(navigation , radioNavigation, lidar, en_marche)
 
@@ -30,7 +29,7 @@ sleep(TEMPS_CALIBRATION)
 
 tabPosition = [(6 , -0.34), (7.94 , 0.27) , (8.15 , 2.63) , (6.2 , 2.78)]
 has_started = True
-
+angle = 0
 index = 0 
 robot.initialiserPosition();
 while en_marche:
@@ -50,7 +49,7 @@ while en_marche:
         has_started = False
     if(not has_started and not robot.obstacleDetecter):
         print("start thread_avancer")
-        robot.Start_Thread_Avancer(tabPosition[index][0], tabPosition[index][1])
+        robot.Start_Thread_Avancer(tabPosition[index][0], tabPosition[index][1], angle)
         has_started = True
     if(robot.arriver_position):
         print("arriver à la position")
@@ -67,9 +66,10 @@ while en_marche:
 
         else:
           print("calcul angle et tourner")
+          previous_angle = angle
           angle = robot.CalculerAngle(tabPosition[index][0], robot.x, tabPosition[index][1], robot.y)
-          
-          robot.Tourner(angle)
+          if(angle != previous_angle):
+                robot.CorrectionAngle(angle)
           robot.arriver_position = False
 
     if(navigation.état == State.Rotation):

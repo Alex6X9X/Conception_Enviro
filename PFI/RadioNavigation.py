@@ -22,9 +22,6 @@ class RadioNavigation:
         self.y = 0
         self.thread_get_position = threading.Thread(target = self.getPosition , args=())
         
-    def demarrerCommunication(self):
-        pass
-        
     def getPosition(self):
         while(self.en_marche):
             time.sleep(0.1)
