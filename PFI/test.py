@@ -14,8 +14,13 @@ en_marche = True
 
 
 
+imu = ICM20948()
+angle = 0
+navigation = Navigation(imu, en_marche)
 radioNavigation = RadioNavigation(en_marche)
-
+lidar = Lidar(en_marche)
+radioNavigation = RadioNavigation(en_marche)
+robot = Robot(navigation , radioNavigation, lidar, en_marche)
 
 
 beggining_of_circuit = True
@@ -26,15 +31,20 @@ sleep(TEMPS_CALIBRATION)
 tabPosition = [(12.76 , 5.73)]
 has_started = False
 
-sleep(10)
-radioNavigation.thread_get_position.join()
-radioNavigation.fermerConnection()
+while(en_marche):
+     if(not has_started and not robot.obstacleDetecter):
+        print("start thread_avancer")
+        robot.Avancer()
+        has_started = True
+        
+
       
     #print("x" , radioNavigation.x)
     #print("y", radioNavigation.y)
 
         
-    
+radioNavigation.thread_get_position.join()
+radioNavigation.fermerConnection()
 
     
 
