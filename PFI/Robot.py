@@ -32,11 +32,11 @@ class Robot :
         self.obstacleDetecter = False
         
     def initialiserPosition(self):
-        if(self.navigation.état == State.Immobile):
-            print(self.radioNavigation.x)
-            print(self.radioNavigation.y)
-            self.x = self.radioNavigation.x
-            self.y = self.radioNavigation.y
+        
+        print(self.radioNavigation.x)
+        print(self.radioNavigation.y)
+        self.x = self.radioNavigation.x
+        self.y = self.radioNavigation.y
             
     def Start_Thread_Avancer(self, prochainX, prochainY, angle_depart):
         self.thread_avancer = threading.Thread(target = self.AvancerToPosition , args=(prochainX, prochainY, angle_depart))
