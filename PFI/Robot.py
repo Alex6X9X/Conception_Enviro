@@ -94,6 +94,7 @@ class Robot :
             sleep(0.01)
             print("Allo")
             self.Avancer()
+            print("Stoprange" , stop_range)
             if(self.distanceParcourue < stop_range):
                 avance = False
             #angle = self.CalculerAngle(prochainX, self.x, prochainY, self.y)
