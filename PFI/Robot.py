@@ -52,7 +52,7 @@ class Robot :
         self.arriver_position = False
         while(self.en_marche):
             sleep(0.1)
-            self.distanceParcourue = self.CalculerDistance(self.radioNavigation.x, prochainX, self.radioNavigation.y, prochainY)
+            self.distanceParcourue = self.CalculerDistance(prochainX, self.radioNavigation.x, prochainY, self.radioNavigation.y)
             print("distance parcourue" ,self.distanceParcourue)
     def CalculerDistance(self, x2, x1, y2, y1):
         x = x2 - x1
