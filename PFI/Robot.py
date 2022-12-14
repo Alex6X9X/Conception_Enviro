@@ -33,6 +33,8 @@ class Robot :
         
     def initialiserPosition(self):
         if(self.navigation.état == State.Immobile):
+            print(self.radioNavigation.x)
+            print(self.radioNavigation.y)
             self.x = self.radioNavigation.x
             self.y = self.radioNavigation.y
             

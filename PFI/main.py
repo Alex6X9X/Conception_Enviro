@@ -61,7 +61,7 @@ while en_marche:
 
         else:
           print("calcul angle et tourner")
-          previous_angle = angle
+          previous_angle = navigation.angleX
           angle = robot.CalculerAngle(tabPosition[index][0], robot.x, tabPosition[index][1], robot.y)
           print("Angle",angle)
           print("Previous angle",previous_angle)
