@@ -14,11 +14,10 @@ TEMPS_CALIBRATION = 5
 en_marche = True
 
 imu = ICM20948()
-angle = 0
-navigation = Navigation(imu, en_marche)
+
 radioNavigation = RadioNavigation(en_marche)
-lidar = Lidar(en_marche)
-robot = Robot(navigation , radioNavigation, lidar, en_marche)
+
+
 
 beggining_of_circuit = True
 
@@ -27,7 +26,6 @@ sleep(TEMPS_CALIBRATION)
 ##tabPosition = [(6 , -0.34), (7.94 , 0.27) , (8.15 , 2.63) , (6.2 , 2.78)]
 tabPosition = [(12.76 , 5.73)]
 has_started = False
-robot.initialiserPosition()
 while en_marche:
     sleep(0.1)
 
