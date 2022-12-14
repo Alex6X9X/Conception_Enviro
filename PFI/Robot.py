@@ -33,8 +33,9 @@ class Robot :
         
     def initialiserPosition(self):
         while(self.radioNavigation.x == 0 and self.radioNavigation.y == 0):
-            self.x = self.radioNavigation.x
-            self.y = self.radioNavigation.y
+            print("Initializing...")
+        self.x = self.radioNavigation.x
+        self.y = self.radioNavigation.y
                 
     def Start_Thread_Avancer(self, prochainX, prochainY, angle_depart):
         self.thread_avancer = threading.Thread(target = self.AvancerToPosition , args=(prochainX, prochainY, angle_depart))
