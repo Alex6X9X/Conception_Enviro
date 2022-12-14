@@ -27,7 +27,7 @@ beggining_of_circuit = True
 sleep(TEMPS_CALIBRATION)
 
 ##tabPosition = [(6 , -0.34), (7.94 , 0.27) , (8.15 , 2.63) , (6.2 , 2.78)]
-tabPosition = [(12.5 , 5.73)]
+tabPosition = [(12.76 , 5.73)]
 has_started = False
 angle = 0
 index = 0 
