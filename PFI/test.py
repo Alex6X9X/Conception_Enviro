@@ -37,7 +37,7 @@ while en_marche:
 
     
     
-    if(not has_started and not robot.obstacleDetecter):
+    if(not has_started ):
         print("start thread_avancer")
         robot.Start_Thread_Avancer(tabPosition[index][0], tabPosition[index][1], angle)
         has_started = True

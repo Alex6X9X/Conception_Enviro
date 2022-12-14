@@ -24,7 +24,7 @@ class Robot :
         self.doit_avancer = False
         self.distanceAParcourir = 0
         self.distanceParcourue = 0
-        self.arriver_position = True
+        self.arriver_position = False
         self.thread_avancer = None
         self.thread_Calculer_Distance_Parcourue = None
         self.angle = 0
