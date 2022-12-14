@@ -33,8 +33,8 @@ robot.initialiserPosition()
 while en_marche:
     sleep(0.1)
 
-    print("x" , radioNavigation.x)
-    print("y", radioNavigation.y)
+    #print("x" , radioNavigation.x)
+    #print("y", radioNavigation.y)
 
         
     
