@@ -93,6 +93,7 @@ class Robot :
         #print(self.compteurAngle)
         while(self.distanceParcourue < self.distanceAParcourir):
             if(self.x == 0 or self.y == 0):
+                print("sont a 0")
                 self.initialiserPosition()
             else:
                 self.Avancer()
