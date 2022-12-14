@@ -19,7 +19,6 @@ navigation = Navigation(imu, en_marche)
 radioNavigation = RadioNavigation(en_marche)
 lidar = Lidar(en_marche)
 lidar.thread_scan_lidar.start()
-radioNavigation.thread_get_position.start()
 robot = Robot(navigation , radioNavigation, lidar, en_marche)
 
 beggining_of_circuit = True
