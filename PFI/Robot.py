@@ -32,11 +32,11 @@ class Robot :
         self.obstacleDetecter = False
         
     def initialiserPosition(self):
-        if(self.navigation.état == State.Immobile):
-            print(self.radioNavigation.x)
-            print(self.radioNavigation.y)
-            self.x = self.radioNavigation.x
-            self.y = self.radioNavigation.y
+        
+        print(self.radioNavigation.x)
+        print(self.radioNavigation.y)
+        self.x = self.radioNavigation.x
+        self.y = self.radioNavigation.y
             
     def Start_Thread_Avancer(self, prochainX, prochainY, angle_depart):
         self.thread_avancer = threading.Thread(target = self.AvancerToPosition , args=(prochainX, prochainY, angle_depart))
@@ -85,19 +85,21 @@ class Robot :
   
             
             
-        self.y = self.radioNavigation.y
-        self.x = self.radioNavigation.x
+
         self.distanceAParcourir = self.CalculerDistance(prochainX, self.x, prochainY, self.y)
-        self.Avancer()
+        
         #self.compteurAngle = time.perf_counter()
         print("distance a parcourir ")
         print(self.distanceAParcourir)
         #print("compteur")
         #print(self.compteurAngle)
         while(self.distanceParcourue < self.distanceAParcourir):
+            if(self.x == 0 or self.y == 0):
+                self.initialiserPosition()
+            else:
+                self.Avancer()
             sleep(0.1)
-            print("distance Parcourue")
-            print(self.distanceParcourue)
+
             #angle = self.CalculerAngle(prochainX, self.x, prochainY, self.y)
             #if(time.perf_counter() - self.compteurAngle > 1.5):
             #if(angle != angle_depart):
