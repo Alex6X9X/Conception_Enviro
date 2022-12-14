@@ -15,7 +15,7 @@ class RadioNavigation:
         print("RadioNavigation")
         self.ser.write(b'\r\r') # séquence d’octets
         time.sleep(1)
-        self.ser.write(b'lep\r')
+        
         self.en_marche = en_marche
         self.data = None
         self.x = 0
@@ -25,6 +25,7 @@ class RadioNavigation:
     def getPosition(self):
         while(self.en_marche):
             time.sleep(0.1)
+            self.ser.write(b'lep\r')
             self.data = str(self.ser.readline())
             arrayString = self.data.split(',') 
             ##string.replace(oldvalue, newvalue)
