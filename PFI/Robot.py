@@ -39,7 +39,7 @@ class Robot :
                 
     def Start_Thread_Avancer(self, prochainX, prochainY, angle_depart):
         self.thread_avancer = threading.Thread(target = self.AvancerToPosition , args=(prochainX, prochainY, angle_depart))
-        self.thread_Calculer_Distance_Parcourue = threading.Thread(target = self.CalculerDistanceParcourue , args=())     
+        self.thread_Calculer_Distance_Parcourue = threading.Thread(target = self.CalculerDistanceParcourue , args=(prochainX, prochainY))     
         self.thread_avancer.start()
         self.thread_Calculer_Distance_Parcourue.start()
 
@@ -48,11 +48,11 @@ class Robot :
         self.thread_avancer.join()
         self.thread_Calculer_Distance_Parcourue.join()
         
-    def CalculerDistanceParcourue(self):
+    def CalculerDistanceParcourue(self, prochainX, prochainY):
         self.arriver_position = False
         while(self.en_marche):
             sleep(0.1)
-            self.distanceParcourue = self.CalculerDistance(self.radioNavigation.x, self.x, self.radioNavigation.y, self.y)
+            self.distanceParcourue = self.CalculerDistance(self.radioNavigation.x, prochainX, self.radioNavigation.y, prochainY)
             print("distance parcourue" ,self.distanceParcourue)
     def CalculerDistance(self, x2, x1, y2, y1):
         x = x2 - x1
@@ -82,7 +82,7 @@ class Robot :
         self.navigation.état = State.Translation
         self.moteurs.avancer()
     def AvancerToPosition(self, prochainX, prochainY, angle_depart):
-  
+        avance = True
         self.distanceAParcourir = self.CalculerDistance(prochainX, self.x, prochainY, self.y)
         
         #self.compteurAngle = time.perf_counter()
@@ -90,17 +90,16 @@ class Robot :
         print(self.distanceAParcourir)
         #print("compteur")
         #print(self.compteurAngle)
-        while(self.distanceParcourue < self.distanceAParcourir - 0.4 or self.distanceParcourue > self.distanceAParcourir + 0.4):
-   
-            self.Avancer()
+        while(avance):
             sleep(0.1)
-
+            self.Avancer()
+            if(self.distanceParcourue < 0.2):
+                avance = False
             #angle = self.CalculerAngle(prochainX, self.x, prochainY, self.y)
             #if(time.perf_counter() - self.compteurAngle > 1.5):
             #if(angle != angle_depart):
                 #self.CorrectionAngle(angle)
                 #self.compteurAngle = 0
-            self.navigation.état = State.Translation
 
         self.Freiner()
         self.arriver_position = True
