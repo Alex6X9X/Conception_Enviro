@@ -24,9 +24,10 @@ class RadioNavigation:
         print("start thread")
         self.thread_get_position.start()
     def getPosition(self):
+        self.ser.write(b'lep\r')
         while(self.en_marche):
             time.sleep(0.1)
-            self.ser.write(b'lep\r')
+            
             self.data = str(self.ser.readline())
             print(self.data)
             arrayString = self.data.split(',') 
