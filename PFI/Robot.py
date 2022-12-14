@@ -90,7 +90,7 @@ class Robot :
         print(self.distanceAParcourir)
         #print("compteur")
         #print(self.compteurAngle)
-        while( not self.x >= prochainX - 0.2 and not self.x<= prochainX + 0.2 or not self.y >= prochainY -0.2 and not self.y <= prochainY + 0.2):
+        while(self.distanceParcourue < self.distanceAParcourir - 0.4 or self.distanceParcourue > self.distanceAParcourir + 0.4):
    
             self.Avancer()
             sleep(0.1)
