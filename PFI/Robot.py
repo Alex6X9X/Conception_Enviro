@@ -55,7 +55,8 @@ class Robot :
     def CalculerDistance(self, x2, x1, y2, y1):
         x = x2 - x1
         y = y2 - y1
-        return math.sqrt( pow(x, 2) + pow(y, 2))
+        res = pow(y, 2) + pow(x, 2)
+        return math.sqrt(res)
     
     def CalculerAngle(self, x2, x1, y2, y1):
         deltaY = y2 - y1
