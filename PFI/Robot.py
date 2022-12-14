@@ -33,8 +33,6 @@ class Robot :
         
     def initialiserPosition(self):
         
-        print(self.radioNavigation.x)
-        print(self.radioNavigation.y)
         self.x = self.radioNavigation.x
         self.y = self.radioNavigation.y
             

@@ -32,6 +32,8 @@ while(en_marche):
         print("start thread_avancer")
         robot.Start_Thread_Avancer(tabPosition[0][0], tabPosition[0][1], angle)
         has_started = True
+        print(radioNavigation.x)
+        print(radioNavigation.y)
     if(robot.arriver_position):
         robot.Freiner()
 
