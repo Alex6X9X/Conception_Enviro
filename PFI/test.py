@@ -32,7 +32,7 @@ tabPosition = [(12.76 , 5.73)]
 has_started = False
 
 sleep(10)
-robot.Avancer
+robot.Avancer()
         
 radioNavigation.thread_get_position.join()
 radioNavigation.fermerConnection()
