@@ -21,9 +21,8 @@ class RadioNavigation:
         self.x = 0
         self.y = 0
         self.thread_get_position = threading.Thread(target = self.getPosition , args=())
-        
+        self.thread_get_position.start()
     def getPosition(self):
-        print("getPosition")
         while(self.en_marche):
             time.sleep(0.1)
             self.ser.write(b'lep\r')
