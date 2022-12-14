@@ -5,9 +5,12 @@ import threading
 class RadioNavigation:
     def __init__(self , en_marche):
         self.ser = serial.Serial() 
-        self.ser.port = '/dev/ttyACM0'
+        self.ser.port = '/dev/ttyACM1'
         self.ser.baudrate = 115200
-
+        self.ser.bytesize = serial.EIGHTBITS 
+        self.ser.parity =serial.PARITY_NONE 
+        self.ser.stopbits = serial.STOPBITS_ONE 
+        self.ser.timeout = 1
         self.ser.open()
         print("RadioNavigation")
         self.ser.write(b'\r\r') # séquence d’octets

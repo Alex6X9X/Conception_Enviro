@@ -4,7 +4,6 @@
 from time import sleep
 from Robot import Robot
 from Navigation import Navigation
-from icm20948 import ICM20948
 from RadioNavigation import RadioNavigation
 from Lidar import Lidar
 from State import State
@@ -13,7 +12,7 @@ from Direction import Direction
 TEMPS_CALIBRATION = 5
 en_marche = True
 
-imu = ICM20948()
+
 
 radioNavigation = RadioNavigation(en_marche)
 
