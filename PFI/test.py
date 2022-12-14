@@ -25,17 +25,17 @@ sleep(TEMPS_CALIBRATION)
 ##tabPosition = [(6 , -0.34), (7.94 , 0.27) , (8.15 , 2.63) , (6.2 , 2.78)]
 tabPosition = [(12.76 , 5.73)]
 has_started = False
-while en_marche:
-    sleep(0.1)
 
+sleep(10)
+radioNavigation.thread_get_position.join()
+radioNavigation.fermerConnection()
+      
     #print("x" , radioNavigation.x)
     #print("y", radioNavigation.y)
 
         
     
-radioNavigation.thread_get_position.join()
-radioNavigation.fermerConnection()
-      
+
     
 
 #navigation.thread_affichage.join()
