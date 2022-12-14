@@ -10,7 +10,6 @@ from Lidar import Lidar
 from State import State
 from Direction import Direction
 
-TEMPS_CALIBRATION = 7
 
 en_marche = True
 
@@ -25,7 +24,6 @@ robot = Robot(navigation , radioNavigation, lidar, en_marche)
 
 beggining_of_circuit = True
 
-sleep(TEMPS_CALIBRATION)
 
 ##tabPosition = [(6 , -0.34), (7.94 , 0.27) , (8.15 , 2.63) , (6.2 , 2.78)]
 tabPosition = [(12.5 , 5.73)]
