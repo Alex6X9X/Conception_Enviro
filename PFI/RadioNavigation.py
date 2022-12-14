@@ -25,11 +25,12 @@ class RadioNavigation:
         self.thread_get_position.start()
     def getPosition(self):
         self.ser.write(b'lep\r')
+
         while(self.en_marche):
-            time.sleep(0.1)
-            
+            time.sleep(0.05)
+            #compteur = time.perf_counter()
             self.data = str(self.ser.readline())
-            
+            #print(time.perf_counter() - compteur)
             arrayString = self.data.split(',') 
             ##string.replace(oldvalue, newvalue)
             if(len(arrayString) > 1):
