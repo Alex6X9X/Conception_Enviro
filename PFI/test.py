@@ -25,10 +25,16 @@ robot = Robot(navigation , radioNavigation, lidar, en_marche)
 beggining_of_circuit = True
 
 ##tabPosition = [(6 , -0.34), (7.94 , 0.27) , (8.15 , 2.63) , (6.2 , 2.78)]
-tabPosition = [(12.76 , 5.73)]
+tabPosition = [(12.60 , 5.55) , (12.57 , 7.04)]
 has_started = False
+while(en_marche):
+    if(not has_started):
+        print("start thread_avancer")
+        robot.Start_Thread_Avancer(tabPosition[0][0], tabPosition[0][1], angle)
+        has_started = True
+    if(robot.arriver_position):
+        robot.Freiner()
 
-robot.Avancer()
 sleep(10)
      
         

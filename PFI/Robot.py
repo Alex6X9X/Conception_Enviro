@@ -81,8 +81,7 @@ class Robot :
         self.navigation.état = State.Translation
         self.moteurs.avancer()
     def AvancerToPosition(self, prochainX, prochainY, angle_depart):
-        #while(self.radioNavigation.x == None or self.radioNavigation.y == None ):
-        #    print("initializing...")
+  
             
             
         self.y = self.radioNavigation.y
