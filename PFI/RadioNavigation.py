@@ -5,7 +5,7 @@ import threading
 class RadioNavigation:
     def __init__(self , en_marche):
         self.ser = serial.Serial() 
-        self.ser.port = '/dev/ttyACM1'
+        self.ser.port = '/dev/ttyACM0'
         self.ser.baudrate = 115200
         self.ser.bytesize = serial.EIGHTBITS 
         self.ser.parity =serial.PARITY_NONE 
