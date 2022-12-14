@@ -84,16 +84,19 @@ class Robot :
   
             
             
-        self.y = self.radioNavigation.y
-        self.x = self.radioNavigation.x
+
         self.distanceAParcourir = self.CalculerDistance(prochainX, self.x, prochainY, self.y)
-        self.Avancer()
+        
         #self.compteurAngle = time.perf_counter()
         print("distance a parcourir ")
         print(self.distanceAParcourir)
         #print("compteur")
         #print(self.compteurAngle)
         while(self.distanceParcourue < self.distanceAParcourir):
+            if(self.x == 0 or self.y == 0):
+                self.initialiserPosition()
+            else:
+                self.Avancer()
             sleep(0.1)
             print("distance Parcourue")
             print(self.distanceParcourue)

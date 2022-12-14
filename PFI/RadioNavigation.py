@@ -37,6 +37,7 @@ class RadioNavigation:
                     self.x = float(arrayString[1])
                     self.y = float(arrayString[2])
                     
+                    
         self.ser.close()
     def fermerConnection(self):
         self.ser.close()
