@@ -35,18 +35,12 @@ robot.initialiserPosition()
 while en_marche:
     sleep(0.1)
 
-    
-    
     if(not has_started ):
         print("start thread_avancer")
         robot.Start_Thread_Avancer(tabPosition[index][0], tabPosition[index][1], angle)
         has_started = True
     if(robot.arriver_position):
         print("arriver à la position")
-        if(not beggining_of_circuit):
-            index += 1
-            robot.Stop_Thread_Avancer()
-            beggining_of_circuit = True
         if(index == len(tabPosition)):
           en_marche = False
           #radioNavigation.en_marche = False
@@ -54,17 +48,7 @@ while en_marche:
           navigation.thread_calcul_position.join()
           lidar.thread_scan_lidar.join()
 
-        
 
-    if(navigation.état == State.Rotation):
-        print("en rotation")
-        print("nav angle")
-        print(navigation.angleX)
-        print("angle")
-        print(angle)
-        if(navigation.angleX >= angle - 5 or navigation.angleX <= angle + 5):
-            robot.Freiner()
-            has_started = False
         
     
     

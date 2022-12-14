@@ -98,10 +98,10 @@ class Robot :
             sleep(0.1)
             print("distance Parcourue")
             print(self.distanceParcourue)
-            angle = self.CalculerAngle(prochainX, self.x, prochainY, self.y)
+            #angle = self.CalculerAngle(prochainX, self.x, prochainY, self.y)
             #if(time.perf_counter() - self.compteurAngle > 1.5):
-            if(angle != angle_depart):
-                self.CorrectionAngle(angle)
+            #if(angle != angle_depart):
+                #self.CorrectionAngle(angle)
                 #self.compteurAngle = 0
             self.navigation.état = State.Translation
 
