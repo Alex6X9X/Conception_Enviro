@@ -40,8 +40,8 @@ while(en_marche):
     if(robot.arriver_position):
         if(not has_started_turning):
             robot.Stop_Thread_Avancer()
+            print("yo")
             index += 1
-            robot.Freiner()
             angle = robot.CalculerAngle(tabPosition[index][0], robot.x, tabPosition[index][1], robot.y)
             print(angle)
             
