@@ -25,7 +25,7 @@ robot = Robot(navigation , radioNavigation, lidar, en_marche)
 beggining_of_circuit = True
 
 ##tabPosition = [(6 , -0.34), (7.94 , 0.27) , (8.15 , 2.63) , (6.2 , 2.78)]
-tabPosition = [(12.20 , 5.80) , (12.57 , 7.04)]
+tabPosition = [(12.20 , 5.80) , (12.20 , 3.70)]
 has_started = False
 sleep(7)
 robot.initialiserPosition()
@@ -39,6 +39,7 @@ while(en_marche):
     if(robot.arriver_position):
         robot.Freiner()
         angle = robot.CalculerAngle(tabPosition[0][0], robot.x, tabPosition[0][1], robot.y)
+        print(angle)
         robot.Tourner(angle)
 
 sleep(10)
