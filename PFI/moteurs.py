@@ -28,8 +28,8 @@ class Moteurs:
         self.IN1.on()
         self.IN3.on()
     
-        self.ENA.value = 0.22
-        self.ENB.value = 0.22
+        self.ENA.value = 0.23
+        self.ENB.value = 0.23
     #En theorie Reculer
     def reculer(self):
         self.arreter()
