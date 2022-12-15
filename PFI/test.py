@@ -41,8 +41,10 @@ while(en_marche):
             robot.Freiner()
             angle = robot.CalculerAngle(tabPosition[1][0], robot.x, tabPosition[1][1], robot.y)
             print(angle)
-            robot.angle = navigation.angleX
+            
+           
             robot.Tourner(angle)
+            robot.angleX = navigation.angleX
             has_started_turning = True
         
         ##verif angle 90

@@ -28,6 +28,7 @@ class Robot :
         self.thread_avancer = None
         self.thread_Calculer_Distance_Parcourue = None
         self.angle = 0
+        self.angleX = 0
         self.next_angle = 0
         self.obstacleDetecter = False
         
