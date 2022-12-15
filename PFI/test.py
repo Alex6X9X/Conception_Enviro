@@ -37,7 +37,7 @@ while(en_marche):
         has_started = True
         print(radioNavigation.x)
         print(radioNavigation.y)
-    if(robot.arriver_position):
+    if(robot.arriver_position and has_started):
         if(not has_started_turning):
             robot.Stop_Thread_Avancer()
             print("yo")
