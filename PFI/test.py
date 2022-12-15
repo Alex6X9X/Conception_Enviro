@@ -49,7 +49,7 @@ while(en_marche):
         
         ##verif angle 90
         print("nav",navigation.angleX)
-        print("robot",robot.angle)
+        print("robot",robot.angleX)
         if(navigation.angleX >= robot.angle + 90):
             robot.Freiner()
 
