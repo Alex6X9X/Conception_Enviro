@@ -14,8 +14,19 @@ VAL_MIN = 107
 VAL_MAX = 255
 DELTA = 10
 EPAISSEUR = 2
-image = []
+vcap = cv2.VideoCapture(0) # caméra 0
+if not vcap.isOpened():
+    print("Impossible d'ouvrir la caméra vidéo")
+    exit()
+# Modification de la résolution de 2592x1944 à 320x240
+# Notez le rapport de 16:9 entre la largeur et la hauteur.
+vcap.set(cv2.CAP_PROP_FRAME_WIDTH, 320) 
+vcap.set(cv2.CAP_PROP_FRAME_HEIGHT, 240)
+ok, image = vcap.read() 
 cv2.imshow("Image", image)
-cv2.waitKey(0) 
+cv2.waitKey(0)  	# Attend indéfiniment qu’une touche soit pressée
+vcap.release()
+cv2.destroyAllWindows()
+
 
 
