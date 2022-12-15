@@ -38,6 +38,8 @@ while(en_marche):
         print(radioNavigation.y)
     if(robot.arriver_position):
         robot.Freiner()
+        angle = robot.CalculerAngle(tabPosition[0][0], robot.x, tabPosition[0][1], robot.y)
+        robot.Tourner(angle)
 
 sleep(10)
      

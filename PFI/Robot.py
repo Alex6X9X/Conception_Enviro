@@ -121,7 +121,7 @@ class Robot :
         self.moteurs.reculer()
             
     def Tourner(self, angle):
-        if(angle > DELTA_ANGLE):
+        if(angle > 0):
             self.moteurs.tourner(Direction.Gauche)
         else:
             self.moteurs.tourner(Direction.Droite)
