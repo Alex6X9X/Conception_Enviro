@@ -50,13 +50,13 @@ while(en_marche):
             
             has_started_turning = True
         ##verif angle 90
-            print("nav",navigation.angleX)
-            print("robot",robot.angleX)
-            print("calcul", navigation.angleX <= robot.angleX - 90)
-            if(navigation.angleX >= robot.angleX + 90 or navigation.angleX <= robot.angleX - 90):
-                robot.Freiner()
-                robot.angleX == navigation.angleX
-                has_started = False
+        print("nav",navigation.angleX)
+        print("robot",robot.angleX)
+        print("calcul", navigation.angleX <= robot.angleX - 90)
+        if(navigation.angleX >= robot.angleX + 90 or navigation.angleX <= robot.angleX - 90):
+            robot.Freiner()
+            robot.angleX == navigation.angleX
+            has_started = False
 
 
 sleep(10)
