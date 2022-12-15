@@ -54,7 +54,7 @@ while(en_marche):
             robot.Freiner()
             robot.angleX = navigation.angleX
             has_started = False
-            has_started_turning = False
+            #has_started_turning = False
 
 
 sleep(10)
