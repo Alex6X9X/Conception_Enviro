@@ -43,8 +43,8 @@ while(en_marche):
             print("yo")
             index += 1
             #angle = robot.CalculerAngle(tabPosition[index][0], robot.x, tabPosition[index][1], robot.y)
-            print(angle)
-            robot.Tourner(angle)
+
+            robot.Tourner(-1)
       
             
             
@@ -57,6 +57,7 @@ while(en_marche):
             robot.Freiner()
             robot.angleX = navigation.angleX
             has_started = False
+            robot.arriver_position = False
             has_started_turning = False
 
 
