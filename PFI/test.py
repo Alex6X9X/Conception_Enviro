@@ -32,8 +32,6 @@ sleep(7)
 robot.initialiserPosition()
 while(en_marche):
     if(not has_started):
-        if(navigation.angleX!=0):
-            robot.angleX == navigation.angleX
         print("start thread_avancer")
         robot.Start_Thread_Avancer(tabPosition[index][0], tabPosition[index][1], angle)
         has_started = True
@@ -51,15 +49,13 @@ while(en_marche):
             
             
             has_started_turning = True
-        if(robot.angleX == 0 and navigation.angleX!=0):
-            robot.angleX == navigation.angleX
-        else:
         ##verif angle 90
             print("nav",navigation.angleX)
             print("robot",robot.angleX)
             print("calcul", navigation.angleX <= robot.angleX - 90)
             if(navigation.angleX >= robot.angleX + 90 or navigation.angleX <= robot.angleX - 90):
                 robot.Freiner()
+                robot.angleX == navigation.angleX
                 has_started = False
 
 
