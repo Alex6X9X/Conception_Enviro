@@ -46,8 +46,8 @@ while(en_marche):
             has_started_turning = True
         
         ##verif angle 90
-        print(navigation.angleX)
-        print(robot.angle)
+        print("nav" + navigation.angleX)
+        print("robot" + robot.angle)
         if(navigation.angleX >= robot.angle + 90):
             robot.Freiner()
 
