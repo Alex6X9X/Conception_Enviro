@@ -25,7 +25,7 @@ robot = Robot(navigation , radioNavigation, lidar, en_marche)
 beggining_of_circuit = True
 
 ##tabPosition = [(6 , -0.34), (7.94 , 0.27) , (8.15 , 2.63) , (6.2 , 2.78)]
-tabPosition = [(12.20 , 5.80) , (12.20 , 3.70)]
+tabPosition = [(12.20 , 5.80) , (12.20 , 3.70), (10.5, 3.70), (10.5, 5.7)]
 has_started = False
 sleep(7)
 robot.initialiserPosition()
