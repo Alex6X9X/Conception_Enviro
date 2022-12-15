@@ -31,6 +31,7 @@ class Robot :
         self.angleX = 0
         self.next_angle = 0
         self.obstacleDetecter = False
+        self.avance = True
         
     def initialiserPosition(self):
         #while(self.radioNavigation.x == 0 and self.radioNavigation.y == 0):
@@ -51,7 +52,7 @@ class Robot :
         
     def CalculerDistanceParcourue(self, prochainX, prochainY):
         self.arriver_position = False
-        while(self.en_marche):
+        while(self.avance):
             sleep(0.1)
             self.distanceParcourue = self.CalculerDistance(prochainX, self.radioNavigation.x, prochainY, self.radioNavigation.y)
             print("distance parcourue" ,self.distanceParcourue)
@@ -83,7 +84,7 @@ class Robot :
         self.navigation.état = State.Translation
         self.moteurs.avancer()
     def AvancerToPosition(self, prochainX, prochainY, angle_depart):
-        avance = True
+        
         self.distanceAParcourir = self.CalculerDistance(prochainX, self.radioNavigation.x, prochainY, self.radioNavigation.y)
         stop_range = self.distanceAParcourir * 0.55
         #self.compteurAngle = time.perf_counter()
@@ -91,13 +92,13 @@ class Robot :
         print(self.distanceAParcourir)
         #print("compteur")
         #print(self.compteurAngle)
-        while(avance):
+        while(self.avance):
             sleep(0.01)
             self.Avancer()
 
             if(stop_range > self.distanceParcourue and self.distanceParcourue != 0):
 
-                avance = False
+                self.avance = False
             #angle = self.CalculerAngle(prochainX, self.x, prochainY, self.y)
             #if(time.perf_counter() - self.compteurAngle > 1.5):
             #if(angle != angle_depart):
