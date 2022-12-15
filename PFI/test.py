@@ -26,18 +26,21 @@ beggining_of_circuit = True
 
 ##tabPosition = [(6 , -0.34), (7.94 , 0.27) , (8.15 , 2.63) , (6.2 , 2.78)]
 tabPosition = [(12.20 , 5.80) , (12.20 , 3.70), (10.5, 3.70), (10.5, 5.7)]
+index = 0
 has_started = False
 sleep(7)
 robot.initialiserPosition()
 while(en_marche):
     if(not has_started):
         print("start thread_avancer")
-        robot.Start_Thread_Avancer(tabPosition[0][0], tabPosition[0][1], angle)
+        robot.Start_Thread_Avancer(tabPosition[index][0], tabPosition[index][1], angle)
         has_started = True
         print(radioNavigation.x)
         print(radioNavigation.y)
     if(robot.arriver_position):
         if(not has_started_turning):
+            robot.Stop_Thread_Avancer()
+            index += 1
             robot.Freiner()
             angle = robot.CalculerAngle(tabPosition[1][0], robot.x, tabPosition[1][1], robot.y)
             print(angle)
@@ -53,7 +56,9 @@ while(en_marche):
         print("calcul", navigation.angleX <= robot.angleX - 90)
         if(navigation.angleX >= robot.angleX + 90 or navigation.angleX <= robot.angleX - 90):
             robot.Freiner()
-        
+            has_started = False
+
+
 sleep(10)
      
         
