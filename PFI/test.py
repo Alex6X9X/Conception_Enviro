@@ -42,7 +42,7 @@ while(en_marche):
             robot.Stop_Thread_Avancer()
             index += 1
             robot.Freiner()
-            angle = robot.CalculerAngle(tabPosition[1][0], robot.x, tabPosition[1][1], robot.y)
+            angle = robot.CalculerAngle(tabPosition[index][0], robot.x, tabPosition[index][1], robot.y)
             print(angle)
             
            
