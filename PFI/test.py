@@ -19,7 +19,7 @@ navigation = Navigation(imu, en_marche)
 radioNavigation = RadioNavigation(en_marche)
 lidar = Lidar(en_marche)
 robot = Robot(navigation , radioNavigation, lidar, en_marche)
-
+has_started_turning = False
 
 
 beggining_of_circuit = True
@@ -37,10 +37,15 @@ while(en_marche):
         print(radioNavigation.x)
         print(radioNavigation.y)
     if(robot.arriver_position):
-        robot.Freiner()
-        angle = robot.CalculerAngle(tabPosition[1][0], robot.x, tabPosition[1][1], robot.y)
-        print(angle)
-        robot.Tourner(angle)
+        if(not has_started_turning):
+            robot.Freiner()
+            angle = robot.CalculerAngle(tabPosition[1][0], robot.x, tabPosition[1][1], robot.y)
+            print(angle)
+            robot.Tourner(angle)
+            has_started_turning = True
+        
+        ##verif angle 90
+            
 
 sleep(10)
      
