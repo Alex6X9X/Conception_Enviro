@@ -61,10 +61,6 @@ while(en_marche):
         print("J'ai fini")
         en_marche = False
         robot.Freiner()
-
-
-sleep(10)
-     
         
 radioNavigation.thread_get_position.join()
 radioNavigation.fermerConnection()
