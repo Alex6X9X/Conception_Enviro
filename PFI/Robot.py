@@ -87,7 +87,7 @@ class Robot :
         self.moteurs.avancer()
     def AvancerToPosition(self, prochainX, prochainY, angle_depart):
         self.distanceAParcourir = self.CalculerDistance(prochainX, self.radioNavigation.x, prochainY, self.radioNavigation.y)
-        stop_range = self.distanceAParcourir * 0.55
+        stop_range = self.distanceAParcourir * 0.60
         #self.compteurAngle = time.perf_counter()
         print("distance a parcourir ")
         print(self.distanceAParcourir)
