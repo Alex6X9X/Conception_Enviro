@@ -102,11 +102,14 @@ class Robot :
             while(self.VerifierDistanceLidar()):
                 print('Jarrete')
                 self.Freiner()
+                self.IsStopped = True
                 #if(not self.IsStopped):
                     #print('Jarrete')
                     #self.PauseObstacle()
                     #self.IsStopped = True
-            self.Avancer()
+            if(not self.IsStopped):
+                self.IsStopped = False
+                self.Avancer()
 
             if(stop_range > self.distanceParcourue and self.distanceParcourue != 0):
                 print("distance plus petite -----------------------")
