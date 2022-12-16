@@ -58,6 +58,7 @@ while(en_marche):
             has_started_turning = False
             
     if(index == len(tabPosition)):
+        print("J'ai fini")
         en_marche = False
         robot.Freiner()
 
