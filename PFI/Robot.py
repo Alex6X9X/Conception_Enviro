@@ -41,6 +41,7 @@ class Robot :
                 
     def Start_Thread_Avancer(self, prochainX, prochainY, angle_depart):
         self.avance = True
+        self.arriver_position = False
         self.thread_avancer = threading.Thread(target = self.AvancerToPosition , args=(prochainX, prochainY, angle_depart))
         self.thread_Calculer_Distance_Parcourue = threading.Thread(target = self.CalculerDistanceParcourue , args=(prochainX, prochainY))     
         self.thread_avancer.start()
@@ -52,7 +53,6 @@ class Robot :
         self.thread_Calculer_Distance_Parcourue.join()
         
     def CalculerDistanceParcourue(self, prochainX, prochainY):
-        self.arriver_position = False
         while(self.avance):
             sleep(0.1)
             self.distanceParcourue = self.CalculerDistance(prochainX, self.radioNavigation.x, prochainY, self.radioNavigation.y)
@@ -85,7 +85,6 @@ class Robot :
         self.navigation.état = State.Translation
         self.moteurs.avancer()
     def AvancerToPosition(self, prochainX, prochainY, angle_depart):
-        
         self.distanceAParcourir = self.CalculerDistance(prochainX, self.radioNavigation.x, prochainY, self.radioNavigation.y)
         stop_range = self.distanceAParcourir * 0.55
         #self.compteurAngle = time.perf_counter()

@@ -43,21 +43,20 @@ while(en_marche):
             robot.Stop_Thread_Avancer()
             print("yo")
             index += 1
-            angle = robot.CalculerAngle(tabPosition[index][0], robot.x, tabPosition[index][1], robot.y)
-            print(angle)
-            robot.Tourner(angle)
-      
-            
-            
+            #angle = robot.CalculerAngle(tabPosition[index][0], robot.x, tabPosition[index][1], robot.y)
+            robot.Tourner(-1)
             has_started_turning = True
+            
         ##verif angle 90
         print("nav",navigation.angleX)
         print("robot",robot.angleX)
         print("calcul", navigation.angleX <= robot.angleX - 90)
         if(navigation.angleX >= robot.angleX + 90 or navigation.angleX <= robot.angleX - 90):
             robot.Freiner()
+            print('-----------------------------------------------------------------------------------------')
             robot.angleX = navigation.angleX
             has_started = False
+            has_started_turning = False
 
 
 sleep(10)
