@@ -123,7 +123,7 @@ class Robot :
             if(isinstance(distance , int)):
                  return distance <= 200
             else:
-                return min(distance)
+                return min(distance) <= 200
 
         
     
