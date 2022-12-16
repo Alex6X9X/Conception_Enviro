@@ -99,7 +99,7 @@ class Robot :
                 if(not self.IsStopped):
                     self.Freiner()
                     self.IsStopped = True
-            
+            self.IsStopped = False
             self.Avancer()
 
             if(stop_range > self.distanceParcourue and self.distanceParcourue != 0):
