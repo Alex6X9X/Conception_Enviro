@@ -107,6 +107,7 @@ class Robot :
             self.Avancer()
 
             if(stop_range > self.distanceParcourue and self.distanceParcourue != 0):
+                print("distance plus petite -----------------------")
                 self.avance = False
 
                 
