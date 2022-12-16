@@ -32,11 +32,12 @@ has_started = False
 sleep(7)
 robot.initialiserPosition()
 while(en_marche):
-    print(robot.arriver_position)
+    
     if(not has_started):
         print("start thread_avancer")
         robot.Start_Thread_Avancer(tabPosition[index][0], tabPosition[index][1], angle)
         has_started = True
+        print(robot.arriver_position)
 
    
     if(robot.arriver_position):
