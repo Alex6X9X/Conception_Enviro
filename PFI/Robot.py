@@ -96,18 +96,14 @@ class Robot :
         while(self.avance):
             sleep(0.01)
             
-            if(self.VerifierDistanceLidar()):
+            while(self.VerifierDistanceLidar()):
                 print('Jarrete')
                 self.PauseObstacle()
-                self.IsStopped = True
                 #if(not self.IsStopped):
                     #print('Jarrete')
                     #self.PauseObstacle()
                     #self.IsStopped = True
-            else:
-                self.IsStopped = False
-            if(not self.IsStopped):
-                self.Avancer()
+            self.Avancer()
 
             if(stop_range > self.distanceParcourue and self.distanceParcourue != 0):
                 self.avance = False
