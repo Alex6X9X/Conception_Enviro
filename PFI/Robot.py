@@ -117,11 +117,11 @@ class Robot :
         distance = self.lidar.GetDistance()
         print("distance" , distance)
         if(distance != None):
-            if(len(distance) > 0):
-                minDistance = 0
-                return min(distance)
+            if(isinstance(distance , int)):
+                 return distance <= 1000
             else:
-                return distance <= DISTANCE_MIN_LIDAR
+                return min(distance)
+
         
     
     def PauseObstacle(self):
