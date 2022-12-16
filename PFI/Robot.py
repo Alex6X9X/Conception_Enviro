@@ -116,7 +116,7 @@ class Robot :
     def VerifierDistanceLidar(self):
         distance = self.lidar.GetDistance()
         print("distance" , distance)
-        if(distance != None or distance != []):
+        if(distance != None and distance != []):
             if(isinstance(distance , int)):
                  return distance <= 1000
             else:
