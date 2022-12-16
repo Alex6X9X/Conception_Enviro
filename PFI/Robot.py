@@ -96,9 +96,9 @@ class Robot :
         while(self.avance):
             sleep(0.01)
             
-            while(self.VerifierDistanceLidar()):
-                print('Jarrete')
-                self.PauseObstacle()
+           # while(self.VerifierDistanceLidar()):
+            #    print('Jarrete')
+             #   self.PauseObstacle()
                 #if(not self.IsStopped):
                     #print('Jarrete')
                     #self.PauseObstacle()
