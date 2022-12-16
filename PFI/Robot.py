@@ -32,6 +32,7 @@ class Robot :
         self.next_angle = 0
         self.obstacleDetecter = False
         self.avance = True
+        self.IsStopped = False
         
     def initialiserPosition(self):
         #while(self.radioNavigation.x == 0 and self.radioNavigation.y == 0):
@@ -95,7 +96,9 @@ class Robot :
         while(self.avance):
             sleep(0.01)
             while(self.VerifierDistanceLidar()):
-                self.Arreter()
+                if(not self.IsStopped):
+                    self.Freiner()
+                    self.IsStopped = True
             
             self.Avancer()
 
@@ -118,7 +121,7 @@ class Robot :
         print("distance" , distance)
         if(distance != None and distance != []):
             if(isinstance(distance , int)):
-                 return distance <= 700
+                 return distance <= 200
             else:
                 return min(distance)
 
