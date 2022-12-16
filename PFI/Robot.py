@@ -99,23 +99,12 @@ class Robot :
             self.arriver_position = False
             sleep(0.01)
             
-            self.IsStopped = self.VerifierDistanceLidar()
-                
-            if(self.IsStopped):
+            while(self.VerifierDistanceLidar()):
+                print('Jarrete')
                 self.Freiner()
-            else:
-                self.Avancer()
-            #while(self.VerifierDistanceLidar()):
-             #   print('Jarrete')
-              #  self.Freiner()
-               # self.IsStopped = True
-                #if(not self.IsStopped):
-                    #print('Jarrete')
-                    #self.PauseObstacle()
-                    #self.IsStopped = True
-
-            if(not self.IsStopped):
-                self.Avancer()
+                self.IsStopped = True
+                
+            self.Avancer()
 
             if(stop_range > self.distanceParcourue and self.distanceParcourue != 0):
                 print("distance plus petite -----------------------")
