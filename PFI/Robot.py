@@ -54,6 +54,7 @@ class Robot :
         self.thread_Calculer_Distance_Parcourue.join()
         
     def CalculerDistanceParcourue(self, prochainX, prochainY):
+
         while(self.avance):
             sleep(0.1)
             self.distanceParcourue = self.CalculerDistance(prochainX, self.radioNavigation.x, prochainY, self.radioNavigation.y)
@@ -93,6 +94,7 @@ class Robot :
         print(self.distanceAParcourir)
         #print("compteur")
         #print(self.compteurAngle)
+        sleep(1)
         while(self.avance):
             self.arriver_position = False
             sleep(0.01)
