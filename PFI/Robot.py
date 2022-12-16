@@ -122,9 +122,9 @@ class Robot :
         print("distance" , distance)
         if(distance != None and distance != []):
             if(isinstance(distance , int)):
-                 return distance <= 300
+                 return distance <= 1000
             else:
-                return min(distance) <= 300
+                return min(distance) <= 1000
 
         
     
