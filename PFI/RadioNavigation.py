@@ -24,8 +24,9 @@ class RadioNavigation:
         print("start thread")
         self.thread_get_position.start()
     def getPosition(self):
+        self.ser.open()
         self.ser.write(b'lep\r')
-
+        self.ser.close()
         while(self.en_marche):
             time.sleep(0.05)
             #compteur = time.perf_counter()
