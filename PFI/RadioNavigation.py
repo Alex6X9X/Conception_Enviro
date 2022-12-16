@@ -15,7 +15,7 @@ class RadioNavigation:
         print("RadioNavigation")
         self.ser.write(b'\r\r') # séquence d’octets
         time.sleep(1)
-        
+        self.ser.close()
         self.en_marche = en_marche
         self.data = None
         self.x = 0
@@ -29,7 +29,9 @@ class RadioNavigation:
         while(self.en_marche):
             time.sleep(0.05)
             #compteur = time.perf_counter()
+            self.ser.open()
             self.data = str(self.ser.readline())
+            self.ser.close()
             #print(time.perf_counter() - compteur)
             arrayString = self.data.split(',') 
             ##string.replace(oldvalue, newvalue)
@@ -39,7 +41,7 @@ class RadioNavigation:
                     self.y = float(arrayString[2])
                     
                     
-        self.ser.close()
+       
     def fermerConnection(self):
         self.ser.close()
     
