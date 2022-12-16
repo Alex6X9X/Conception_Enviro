@@ -50,16 +50,17 @@ while(en_marche):
             has_started_turning = True
             
         ##verif angle 90
-        if(navigation.angleX >= robot.angleX + 90 or navigation.angleX <= robot.angleX - 90 and has_started_turning):
+        if(navigation.angleX >= robot.angleX + 89 or navigation.angleX <= robot.angleX - 89 and has_started_turning):
             robot.Freiner()
             print('-----------------------------------------------------------------------------------------')
             robot.angleX = navigation.angleX
             has_started = False
             has_started_turning = False
             
-        if(index == len(tabPosition)):
-            en_marche = False
-            robot.Freiner()
+    if(index == len(tabPosition)):
+        print("J'ai fini")
+        en_marche = False
+        robot.Freiner()
 
 
 sleep(10)
