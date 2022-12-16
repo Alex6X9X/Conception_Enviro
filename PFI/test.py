@@ -18,7 +18,7 @@ angle = 0
 navigation = Navigation(imu, en_marche)
 radioNavigation = RadioNavigation(en_marche)
 lidar = Lidar(en_marche)
-lidar.thread_scan_lidar.start()
+##lidar.thread_scan_lidar.start()
 robot = Robot(navigation , radioNavigation, lidar, en_marche)
 has_started_turning = False
 init_angle_robot = True
