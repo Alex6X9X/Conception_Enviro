@@ -61,10 +61,7 @@ while(en_marche):
         print("J'ai fini")
         en_marche = False
         robot.Freiner()
-print("Sorti de la boucle")
+        
 radioNavigation.thread_get_position.join()
-
-
-    
-
-#navigation.thread_affichage.join()
+lidar.thread_scan_lidar.join()
+navigation.thread_calcul_position.join()
