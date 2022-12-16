@@ -35,6 +35,7 @@ class RadioNavigation:
             self.ser.close()
             #print(time.perf_counter() - compteur)
             arrayString = self.data.split(',') 
+            print(len(arrayString))
             ##string.replace(oldvalue, newvalue)
             if(len(arrayString) > 1):
                 if(arrayString[1] != '' or arrayString[2] != ''):
