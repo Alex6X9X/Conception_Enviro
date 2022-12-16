@@ -95,11 +95,15 @@ class Robot :
         #print(self.compteurAngle)
         while(self.avance):
             sleep(0.01)
-            self.Avancer()
+            if(self.VerifierDistanceLidar()):
+                self.Freiner()
+            else:
+                self.Avancer()
 
             if(stop_range > self.distanceParcourue and self.distanceParcourue != 0):
-
                 self.avance = False
+
+                
             #angle = self.CalculerAngle(prochainX, self.x, prochainY, self.y)
             #if(time.perf_counter() - self.compteurAngle > 1.5):
             #if(angle != angle_depart):
@@ -114,6 +118,7 @@ class Robot :
         distance = self.lidar.GetDistance(150)
         if(distance != None):
             return distance <= DISTANCE_MIN_LIDAR
+        
     
     def PauseObstacle(self):
         self.Freiner()
