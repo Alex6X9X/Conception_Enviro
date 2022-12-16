@@ -37,7 +37,7 @@ class RadioNavigation:
             arrayString = self.data.split(',') 
             print(len(arrayString))
             ##string.replace(oldvalue, newvalue)
-            if(len(arrayString) > 1):
+            if(len(arrayString) > 4):
                 if(arrayString[1] != '' or arrayString[2] != ''):
                     self.x = float(arrayString[1])
                     self.y = float(arrayString[2])
