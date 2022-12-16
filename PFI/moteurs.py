@@ -35,8 +35,8 @@ class Moteurs:
         self.arreter()
         self.IN2.on()
         self.IN4.on()
-        self.ENA.value = 0.32
-        self.ENB.value = 0.32
+        self.ENA.value = 0.34
+        self.ENB.value = 0.34
             
     def tourner(self, dir):
         self.arreter()
