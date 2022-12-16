@@ -31,7 +31,7 @@ class Lidar:
             self.Obj.Reset() 
     def GetDistance(self):
         if(self.data != None):
-            return self.data[150]
+            return self.data[179]
     
     def ConversionMetre(self, distance):
         return distance * FACTEUR_CONVERSION
