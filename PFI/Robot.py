@@ -94,6 +94,7 @@ class Robot :
         #print("compteur")
         #print(self.compteurAngle)
         while(self.avance):
+            self.arriver_position = False
             sleep(0.01)
             
            # while(self.VerifierDistanceLidar()):
