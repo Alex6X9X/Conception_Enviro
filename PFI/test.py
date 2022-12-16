@@ -26,10 +26,10 @@ init_angle_robot = True
 beggining_of_circuit = True
 
 ##tabPosition = [(6 , -0.34), (7.94 , 0.27) , (8.15 , 2.63) , (6.2 , 2.78)]
-tabPosition = [(12.20 , 5.80) , (12.20 , 3.70), (10.5, 3.70), (10.5, 5.7)]
+tabPosition = [(6 , 0.60) , (8.20 , 0.9), (8.20, 2.45), (6.40, 2.25)]
 index = 0
 has_started = False
-sleep(7)
+sleep(5)
 robot.initialiserPosition()
 while(en_marche):
     
@@ -46,7 +46,7 @@ while(en_marche):
             print("commence à tourner" , robot.arriver_position)
             index += 1
             #angle = robot.CalculerAngle(tabPosition[index][0], robot.x, tabPosition[index][1], robot.y)
-            robot.Tourner(-1)
+            robot.Tourner(1)
             has_started_turning = True
             
         ##verif angle 90
@@ -56,6 +56,9 @@ while(en_marche):
             robot.angleX = navigation.angleX
             has_started = False
             has_started_turning = False
+            
+        if(index == len(tabPosition)):
+            en_marche = False
 
 
 sleep(10)
