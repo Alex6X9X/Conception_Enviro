@@ -44,14 +44,14 @@ class Moteurs:
         if (dir == Direction.Droite):
             self.IN2.on()
             self.IN3.on()
-            self.ENA.value = 0.45
-            self.ENB.value = 0.45
+            self.ENA.value = 0.5
+            self.ENB.value = 0.5
         #g            
         elif (dir == Direction.Gauche):
             self.IN1.on()
             self.IN4.on()
-            self.ENA.value = 0.45
-            self.ENB.value = 0.45
+            self.ENA.value = 0.5
+            self.ENB.value = 0.5
 
     def arreter(self):
         self.ENA.off()
