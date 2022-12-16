@@ -57,9 +57,9 @@ while(en_marche):
             has_started = False
             has_started_turning = False
             
-        if(index == len(tabPosition)):
-            en_marche = False
-            robot.Freiner()
+    if(index == len(tabPosition)):
+        en_marche = False
+        robot.Freiner()
 
 
 sleep(10)
