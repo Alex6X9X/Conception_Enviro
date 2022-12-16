@@ -99,12 +99,14 @@ class Robot :
             if(self.VerifierDistanceLidar()):
                 print('Jarrete')
                 self.PauseObstacle()
+                self.IsStopped = True
                 #if(not self.IsStopped):
                     #print('Jarrete')
                     #self.PauseObstacle()
                     #self.IsStopped = True
-            #self.IsStopped = False
             else:
+                self.IsStopped = False
+            if(not self.IsStopped):
                 self.Avancer()
 
             if(stop_range > self.distanceParcourue and self.distanceParcourue != 0):
@@ -126,9 +128,9 @@ class Robot :
         print("distance" , distance)
         if(distance != None and distance != []):
             if(isinstance(distance , int)):
-                 return distance <= 1000
+                 return distance < 800
             else:
-                return min(distance) <= 1000
+                return min(distance) < 800
 
         
     
