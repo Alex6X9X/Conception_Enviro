@@ -94,10 +94,10 @@ class Robot :
         #print(self.compteurAngle)
         while(self.avance):
             sleep(0.01)
-            if(self.VerifierDistanceLidar()):
-                self.Freiner()
-            else:
-                self.Avancer()
+            while(self.VerifierDistanceLidar()):
+                self.Arreter()
+            
+            self.Avancer()
 
             if(stop_range > self.distanceParcourue and self.distanceParcourue != 0):
                 self.avance = False
@@ -118,7 +118,7 @@ class Robot :
         print("distance" , distance)
         if(distance != None and distance != []):
             if(isinstance(distance , int)):
-                 return distance <= 1000
+                 return distance <= 700
             else:
                 return min(distance)
 
