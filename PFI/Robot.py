@@ -108,6 +108,7 @@ class Robot :
                     #self.PauseObstacle()
                     #self.IsStopped = True
             if(not self.IsStopped):
+                print("I'm stop")
                 self.IsStopped = False
                 self.Avancer()
 
