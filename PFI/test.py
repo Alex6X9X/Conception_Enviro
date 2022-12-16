@@ -59,6 +59,7 @@ while(en_marche):
             
         if(index == len(tabPosition)):
             en_marche = False
+            robot.Freiner()
 
 
 sleep(10)
