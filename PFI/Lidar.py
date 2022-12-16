@@ -20,8 +20,7 @@ class Lidar:
         if(self.Obj.Connect()):
             self.gen = self.Obj.StartScanning()
             while (self.en_marche):         
-                self.data = next(self.gen) # Dictionnaire: data[0:359]   
-                print(self.data[179])            
+                self.data = next(self.gen) # Dictionnaire: data[0:359]             
                 time.sleep(0.5)
 
             self.Obj.StopScanning()
