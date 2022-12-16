@@ -115,6 +115,7 @@ class Robot :
         
     def VerifierDistanceLidar(self):
         distance = self.lidar.GetDistance(150)
+        print("distance" , distance)
         if(distance != None):
             return distance <= DISTANCE_MIN_LIDAR
         
