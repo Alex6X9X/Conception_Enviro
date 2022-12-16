@@ -97,6 +97,7 @@ class Robot :
             sleep(0.01)
             while(self.VerifierDistanceLidar()):
                 if(not self.IsStopped):
+                    print('Jarrete')
                     self.Freiner()
                     self.IsStopped = True
             self.IsStopped = False
@@ -121,9 +122,9 @@ class Robot :
         print("distance" , distance)
         if(distance != None and distance != []):
             if(isinstance(distance , int)):
-                 return distance <= 200
+                 return distance <= 300
             else:
-                return min(distance) <= 200
+                return min(distance) <= 300
 
         
     
