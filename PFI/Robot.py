@@ -99,9 +99,9 @@ class Robot :
             self.arriver_position = False
             sleep(0.01)
             
-           # while(self.VerifierDistanceLidar()):
-            #    print('Jarrete')
-             #   self.PauseObstacle()
+            while(self.VerifierDistanceLidar()):
+                print('Jarrete')
+                self.Freiner()
                 #if(not self.IsStopped):
                     #print('Jarrete')
                     #self.PauseObstacle()
@@ -133,11 +133,6 @@ class Robot :
             else:
                 return min(distance) < 800
 
-        
-    
-    def PauseObstacle(self):
-        self.Freiner()
-        self.initialiserPosition()
         
     def Reculer(self):
         self.navigation.état = State.Translation
