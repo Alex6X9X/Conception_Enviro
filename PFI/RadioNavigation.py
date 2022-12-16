@@ -28,7 +28,7 @@ class RadioNavigation:
         self.ser.write(b'lep\r')
         self.ser.close()
         while(self.en_marche):
-            time.sleep(0.05)
+            time.sleep(0.01)
             #compteur = time.perf_counter()
             self.ser.open()
             self.data = str(self.ser.readline())
@@ -41,10 +41,6 @@ class RadioNavigation:
                     self.x = float(arrayString[1])
                     self.y = float(arrayString[2])
                     
-                    
-       
-    def fermerConnection(self):
-        self.ser.close()
     
 
         

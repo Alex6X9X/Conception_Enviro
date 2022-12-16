@@ -18,7 +18,7 @@ angle = 0
 navigation = Navigation(imu, en_marche)
 radioNavigation = RadioNavigation(en_marche)
 lidar = Lidar(en_marche)
-##lidar.thread_scan_lidar.start()
+#lidar.thread_scan_lidar.start()
 robot = Robot(navigation , radioNavigation, lidar, en_marche)
 has_started_turning = False
 init_angle_robot = True
@@ -26,7 +26,7 @@ init_angle_robot = True
 beggining_of_circuit = True
 
 ##tabPosition = [(6 , -0.34), (7.94 , 0.27) , (8.15 , 2.63) , (6.2 , 2.78)]
-tabPosition = [(6 , 0.60) , (8.20 , 0.9), (8.20, 2.45), (6.40, 2.25)]
+tabPosition = [(6 , 0.60) , (8.20 , 0.9), (8.20, 2.20), (6.40, 2.25)]
 index = 0
 has_started = False
 sleep(5)
@@ -63,7 +63,6 @@ while(en_marche):
         robot.Freiner()
         
 radioNavigation.thread_get_position.join()
-radioNavigation.fermerConnection()
 
     
 
