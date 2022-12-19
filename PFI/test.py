@@ -63,3 +63,4 @@ while(en_marche):
 radioNavigation.thread_get_position.join()
 lidar.thread_scan_lidar.join()
 navigation.thread_calcul_position.join()
+print('Jai fini completement')
