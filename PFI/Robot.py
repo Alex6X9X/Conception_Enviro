@@ -131,7 +131,7 @@ class Robot :
             print("distance" , distance)
             if(distance != None and distance != []):
                 if(isinstance(distance , int)):
-                    tabDistance.push(distance)
+                    tabDistance.append(distance)
                 else:
                     min = 100000
                     for dist in distance:
