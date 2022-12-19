@@ -54,7 +54,7 @@ class Robot :
         while(self.avance):
             sleep(0.1)
             self.distanceParcourue = self.CalculerDistance(prochainX, self.radioNavigation.x, prochainY, self.radioNavigation.y)
-            #print("distance parcourue" ,self.distanceParcourue)
+            print("distance parcourue" ,self.distanceParcourue)
     def CalculerDistance(self, x2, x1, y2, y1):
         x = x2 - x1
         y = y2 - y1
