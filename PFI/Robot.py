@@ -99,10 +99,10 @@ class Robot :
             self.Avancer()
 
             if(stop_range > self.distanceParcourue and self.distanceParcourue != 0):
-                self.Freiner()
-                self.arriver_position = True
+                
                 self.avance = False
-            
+        self.Freiner()
+        self.arriver_position = True
         
     def VerifierDistanceLidar(self):
         
