@@ -141,7 +141,7 @@ class Robot :
             
 
         if(tabDistance != []):
-            return sum(tabDistance) / len(tabDistance)
+            return sum(tabDistance) / len(tabDistance) < 800
         return False
         if(distance == 0):
             return False
