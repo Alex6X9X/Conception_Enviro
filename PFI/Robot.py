@@ -114,7 +114,7 @@ class Robot :
                 if(isinstance(distance , int)):
                     tabDistance.append(distance)
                 else:
-                    min = 100000
+                    min = 10000
                     for dist in distance:
                         if(dist != 0 and dist < min):
                             min = dist
