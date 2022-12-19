@@ -93,7 +93,6 @@ class Robot :
             obstacleInTheWay = self.VerifierDistanceLidar()
             print("obstacle" , obstacleInTheWay)
             while(obstacleInTheWay):
-                print('Jarrete')
                 self.Freiner()
                 self.IsStopped = True
                 
