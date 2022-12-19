@@ -54,7 +54,7 @@ class Robot :
         while(self.avance):
             sleep(0.1)
             self.distanceParcourue = self.CalculerDistance(prochainX, self.radioNavigation.x, prochainY, self.radioNavigation.y)
-            print("distance parcourue" ,self.distanceParcourue)
+            #print("distance parcourue" ,self.distanceParcourue)
     def CalculerDistance(self, x2, x1, y2, y1):
         x = x2 - x1
         y = y2 - y1
@@ -90,8 +90,9 @@ class Robot :
         while(self.avance):
             self.arriver_position = False
             sleep(0.01)
-            
-            while(self.VerifierDistanceLidar()):
+            obstacleInTheWay = self.VerifierDistanceLidar()
+            print("obstacle" , obstacleInTheWay)
+            while(obstacleInTheWay):
                 print('Jarrete')
                 self.Freiner()
                 self.IsStopped = True
@@ -110,7 +111,6 @@ class Robot :
         tabDistance = []
         for angle in rangeAngle:
             distance = self.lidar.GetDistance(angle)
-            print("distance" , distance)
             if(distance != None and distance != []):
                 if(isinstance(distance , int)):
                     tabDistance.append(distance)
