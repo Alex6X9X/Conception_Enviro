@@ -23,8 +23,6 @@ robot = Robot(navigation , radioNavigation, lidar, en_marche)
 has_started_turning = False
 init_angle_robot = True
 
-beggining_of_circuit = True
-
 ##tabPosition = [(6 , -0.34), (7.94 , 0.27) , (8.15 , 2.63) , (6.2 , 2.78)]
 tabPosition = [(6 , 0.60) , (8.20 , 0.9), (8.20, 2.20), (6.40, 2.25)]
 index = 0
@@ -56,7 +54,6 @@ while(en_marche):
             has_started_turning = False
             
     if(index == len(tabPosition)):
-        print("J'ai fini")
         en_marche = False
         robot.Freiner()
         
@@ -66,4 +63,3 @@ navigation.en_marche = False
 radioNavigation.thread_get_position.join()
 lidar.thread_scan_lidar.join()
 navigation.thread_calcul_position.join()
-print('Jai fini completement')
