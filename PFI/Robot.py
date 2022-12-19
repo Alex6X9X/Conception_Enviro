@@ -125,11 +125,13 @@ class Robot :
     def VerifierDistanceLidar(self):
         distance = self.lidar.GetDistance()
         print("distance" , distance)
+        if(distance == 0):
+            return False
         if(distance != None and distance != []):
             if(isinstance(distance , int)):
-                 return distance < 800
+                 return distance < 500
             else:
-                return min(distance) < 800
+                return min(distance) < 500
 
         
     def Reculer(self):
