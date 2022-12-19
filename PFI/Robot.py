@@ -143,17 +143,8 @@ class Robot :
         if(tabDistance != []):
             return sum(tabDistance) / len(tabDistance) < 800
         return False
-        if(distance == 0):
-            return False
-        if(distance != None and distance != []):
-            if(isinstance(distance , int)):
-                 return distance < 800
-            else:
-                min = 100000
-                for dist in distance:
-                    if(dist != 0 and dist < min):
-                        min = dist
-                return min < 800
+
+        
                
         
     def Reculer(self):
