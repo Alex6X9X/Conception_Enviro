@@ -18,67 +18,43 @@ angle = 0
 navigation = Navigation(imu, en_marche)
 radioNavigation = RadioNavigation(en_marche)
 lidar = Lidar(en_marche)
-#lidar.thread_scan_lidar.start()
+lidar.thread_scan_lidar.start()
 robot = Robot(navigation , radioNavigation, lidar, en_marche)
+has_started_turning = False
 
-beggining_of_circuit = True
-
-
-##tabPosition = [(6 , -0.34), (7.94 , 0.27) , (8.15 , 2.63) , (6.2 , 2.78)]
-tabPosition = [(12.20 , 5.80) , (12.57 , 7.04)]
+tabPosition = [(6 , 0.60) , (8.20 , 0.9), (8.20, 2.20), (6.40, 2.25)]
+index = 0
 has_started = False
-angle = 0
-index = 0 
+sleep(5)
 robot.initialiserPosition()
-while en_marche:
-    sleep(0.1)
-
-    robot.obstacleDetecter = robot.VerifierDistanceLidar()
-    if(robot.obstacleDetecter):
-        print("--obstacle détecter--")
-        robot.PauseObstacle()
-        robot.Stop_Thread_Avancer()
-        has_started = False
-    if(not has_started and not robot.obstacleDetecter):
-        print("start thread_avancer")
-        robot.Start_Thread_Avancer(tabPosition[index][0], tabPosition[index][1], angle)
+while(en_marche):
+    
+    if(not has_started):
+        robot.Start_Thread_Avancer(tabPosition[index][0], tabPosition[index][1])
         has_started = True
+
     if(robot.arriver_position):
-        print("arriver à la position")
-        if(not beggining_of_circuit):
-            index += 1
+        if(not has_started_turning):
             robot.Stop_Thread_Avancer()
-            beggining_of_circuit = True
-        if(index == len(tabPosition)):
-          en_marche = False
-          #radioNavigation.en_marche = False
-          radioNavigation.fermerConnection()
-          navigation.thread_calcul_position.join()
-          lidar.thread_scan_lidar.join()
-
-        else:
-          print("calcul angle et tourner")
-          previous_angle = navigation.angleX
-          angle = robot.CalculerAngle(tabPosition[index][0], robot.x, tabPosition[index][1], robot.y)
-          print("Angle",angle)
-          print("Previous angle",previous_angle)
-          if(angle != previous_angle):
-                robot.CorrectionAngle(angle)
-          robot.arriver_position = False
-
-    if(navigation.état == State.Rotation):
-        print("en rotation")
-        print("nav angle")
-        print(navigation.angleX)
-        print("angle")
-        print(angle)
-        if(navigation.angleX >= angle - 5 or navigation.angleX <= angle + 5):
+            robot.Tourner(Direction.Gauche)
+            index += 1
+            has_started_turning = True
+            
+        ##Entrer dans cette condition quand l'angle du robot à atteint 90 degrées
+        #Nous avons mis 85 degrées pour compenser les délais matériels (Si == 90, il tournait trop)
+        if(navigation.angleX >= robot.angleX + 85 or navigation.angleX <= robot.angleX - 85 and has_started_turning):
             robot.Freiner()
+            robot.angleX = navigation.angleX
             has_started = False
+            has_started_turning = False
+            
+    if(index == len(tabPosition)):
+        en_marche = False
+        robot.Freiner()
         
-    
-    
-      
-    
-
-#navigation.thread_affichage.join()
+radioNavigation.en_marche = False
+lidar.en_marche = False
+navigation.en_marche = False
+radioNavigation.thread_get_position.join()
+lidar.thread_scan_lidar.join()
+navigation.thread_calcul_position.join()

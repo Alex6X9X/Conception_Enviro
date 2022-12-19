@@ -6,10 +6,8 @@ from State import State
 from moteurs import Moteurs
 from Direction import Direction
 import math
-import time
 
-DELTA_ANGLE = 2
-DISTANCE_MIN_LIDAR = 0.2
+MAX_DISTANCE_LIDAR = 10000
 
 class Robot :
     def __init__(self, navigation , radioNavigation, lidar, en_marche):
@@ -67,9 +65,8 @@ class Robot :
         return round(math.degrees(math.atan2(deltaY, deltaX)))
     
     def CorrectionAngle(self, angle):
-        print("correction")
         est_corriger = False
-        if(angle > DELTA_ANGLE):
+        if(angle > 2):
             self.Tourner(angle)
         while(not est_corriger):
             if(self.navigation.angleX == angle):
@@ -90,8 +87,7 @@ class Robot :
         while(self.avance):
             self.arriver_position = False
             sleep(0.01)
-            obstacleInTheWay = self.VerifierDistanceLidar()
-            print("obstacle" , obstacleInTheWay)
+
             while(self.VerifierDistanceLidar()):
                 self.Freiner()
                 self.IsStopped = True
@@ -114,7 +110,7 @@ class Robot :
                 if(isinstance(distance , int)):
                     tabDistance.append(distance)
                 else:
-                    min = 10000
+                    min = MAX_DISTANCE_LIDAR
                     for dist in distance:
                         if(dist != 0 and dist < min):
                             min = dist
@@ -122,7 +118,6 @@ class Robot :
             
     
         if(tabDistance != []):
-            print(sum(tabDistance) / len(tabDistance))
             return sum(tabDistance) / len(tabDistance) < 1000
         return False
 
@@ -133,8 +128,8 @@ class Robot :
         self.navigation.état = State.Translation
         self.moteurs.reculer()
             
-    def Tourner(self, angle):
-        if(angle > 0):
+    def Tourner(self, dir):
+        if(dir == Direction.Gauche):
             self.moteurs.tourner(Direction.Gauche)
         else:
             self.moteurs.tourner(Direction.Droite)
