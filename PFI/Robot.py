@@ -1,5 +1,5 @@
 #Auteurs: Alexandre Carle et Louis-philippe Rousseau
-#Dernier changement 10 novembre 2022
+#Dernier changement 19 décembre 2022
 import threading
 from time import sleep
 from State import State

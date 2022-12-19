@@ -1,13 +1,11 @@
 #Auteurs: Alexandre Carle et Louis-philippe Rousseau
-#Dernier changement 10 novembre 2022
+#Dernier changement 19 décembre 2022
 
 import threading
 import time
 from time import sleep
 from icm20948 import ICM20948
-from calculer_moyenne_mobile import calculer_moyenne_mobile
 from State import State
-import csv
 
 G = 9.80665 #m/s2
 

@@ -1,4 +1,5 @@
 #Auteurs: Alexandre Carle et Louis-philippe Rousseau
+#Dernier changement 19 décembre 2022
 import serial 
 import time
 import threading

@@ -1,3 +1,5 @@
+#Auteurs: Alexandre Carle et Louis-philippe Rousseau
+#Dernier changement 19 décembre 2022
 import PyLidar3
 import time
 import threading
