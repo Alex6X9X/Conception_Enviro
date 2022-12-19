@@ -131,8 +131,12 @@ class Robot :
             if(isinstance(distance , int)):
                  return distance < 800
             else:
-                return min(distance) < 800
-
+                min = 100000
+                for dist in distance:
+                    if(dist != 0 and dist < min):
+                        min = dist
+                return min < 800
+               
         
     def Reculer(self):
         self.navigation.état = State.Translation
