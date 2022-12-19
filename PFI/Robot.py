@@ -92,8 +92,7 @@ class Robot :
             sleep(0.01)
             obstacleInTheWay = self.VerifierDistanceLidar()
             print("obstacle" , obstacleInTheWay)
-            while(obstacleInTheWay):
-                print('Jarrete')
+            while(self.VerifierDistanceLidar()):
                 self.Freiner()
                 self.IsStopped = True
                 
