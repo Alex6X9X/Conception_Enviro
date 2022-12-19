@@ -124,7 +124,10 @@ class Robot :
         
     def VerifierDistanceLidar(self):
         distance = self.lidar.GetDistance()
-        print("distance" , distance)
+        print("tab distance" , distance)
+
+        moyenneDistance = sum(distance) / len(distance)
+        return moyenneDistance < 800
         if(distance == 0):
             return False
         if(distance != None and distance != []):
