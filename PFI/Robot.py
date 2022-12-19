@@ -54,7 +54,6 @@ class Robot :
         self.thread_Calculer_Distance_Parcourue.join()
         
     def CalculerDistanceParcourue(self, prochainX, prochainY):
-
         while(self.avance):
             sleep(0.1)
             self.distanceParcourue = self.CalculerDistance(prochainX, self.radioNavigation.x, prochainY, self.radioNavigation.y)
@@ -109,6 +108,8 @@ class Robot :
             if(stop_range > self.distanceParcourue and self.distanceParcourue != 0):
                 #print("distance plus petite -----------------------")
                 #print(stop_range , self.distanceParcourue)
+                self.Freiner()
+                self.arriver_position = True
                 self.avance = False
 
                 
@@ -117,9 +118,6 @@ class Robot :
             #if(angle != angle_depart):
                 #self.CorrectionAngle(angle)
                 #self.compteurAngle = 0
-
-        self.Freiner()
-        self.arriver_position = True
             
         
     def VerifierDistanceLidar(self):
