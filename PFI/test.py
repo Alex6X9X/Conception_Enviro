@@ -48,7 +48,7 @@ while(en_marche):
             has_started_turning = True
             
         ##entrer dans cette condition quand l'angle du robot à atteint 90 degrées
-        if(navigation.angleX >= robot.angleX + 90 or navigation.angleX <= robot.angleX - 90 and has_started_turning):
+        if(navigation.angleX >= robot.angleX + 85 or navigation.angleX <= robot.angleX - 85 and has_started_turning):
             robot.Freiner()
             print('-----------------------------------------------------------------------------------------')
             robot.angleX = navigation.angleX
