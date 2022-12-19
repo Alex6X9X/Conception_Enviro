@@ -39,17 +39,15 @@ while(en_marche):
         has_started = True
         print(robot.arriver_position)
 
-   
     if(robot.arriver_position):
         if(not has_started_turning):
             robot.Stop_Thread_Avancer()
             print("commence à tourner" , robot.arriver_position)
-            #angle = robot.CalculerAngle(tabPosition[index][0], robot.x, tabPosition[index][1], robot.y)
             robot.Tourner(1)
             index += 1
             has_started_turning = True
             
-        ##verif angle 90
+        ##entrer dans cette condition quand l'angle du robot à atteint 90 degrées
         if(navigation.angleX >= robot.angleX + 90 or navigation.angleX <= robot.angleX - 90 and has_started_turning):
             robot.Freiner()
             print('-----------------------------------------------------------------------------------------')
