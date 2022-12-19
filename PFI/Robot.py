@@ -126,8 +126,9 @@ class Robot :
         distance = self.lidar.GetDistance()
         print("tab distance" , distance)
 
-        moyenneDistance = sum(distance) / len(distance)
-        return moyenneDistance < 800
+        if(distance != None):
+            moyenneDistance = sum(distance) / len(distance)
+            return moyenneDistance < 800
         if(distance == 0):
             return False
         if(distance != None and distance != []):
