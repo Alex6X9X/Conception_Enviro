@@ -7,7 +7,7 @@ FACTEUR_CONVERSION = 0.001
 
 class Lidar:
     def __init__(self, en_marche):
-        self.port = "/dev/ttyUSB1"
+        self.port = "/dev/ttyUSB0"
         self.Obj = PyLidar3.YdLidarX4(self.port) 
         self.gen = None
         self.data = None
