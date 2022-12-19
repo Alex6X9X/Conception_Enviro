@@ -58,7 +58,7 @@ class Robot :
         while(self.avance):
             sleep(0.1)
             self.distanceParcourue = self.CalculerDistance(prochainX, self.radioNavigation.x, prochainY, self.radioNavigation.y)
-            print("distance parcourue" ,self.distanceParcourue)
+            #print("distance parcourue" ,self.distanceParcourue)
     def CalculerDistance(self, x2, x1, y2, y1):
         x = x2 - x1
         y = y2 - y1
@@ -107,8 +107,8 @@ class Robot :
             self.Avancer()
 
             if(stop_range > self.distanceParcourue and self.distanceParcourue != 0):
-                print("distance plus petite -----------------------")
-                print(stop_range , self.distanceParcourue)
+                #print("distance plus petite -----------------------")
+                #print(stop_range , self.distanceParcourue)
                 self.avance = False
 
                 
