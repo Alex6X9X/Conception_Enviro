@@ -15,21 +15,23 @@ class Robot :
         self.navigation = navigation
         self.radioNavigation = radioNavigation
         self.lidar = lidar
+
         self.x = 0
         self.y = 0
+
         self.en_marche = en_marche
-        self.doit_avancer = False
+        self.arriver_position = False
+        self.avance = True
+
         self.distanceAParcourir = 0
         self.distanceParcourue = 0
-        self.arriver_position = False
-        self.thread_avancer = None
-        self.thread_Calculer_Distance_Parcourue = None
+
         self.angle = 0
         self.angleX = 0
-        self.next_angle = 0
-        self.obstacleDetecter = False
-        self.avance = True
-        self.IsStopped = False
+
+        self.thread_avancer = None
+        self.thread_Calculer_Distance_Parcourue = None
+
         
     def initialiserPosition(self):
         self.x = self.radioNavigation.x
@@ -90,7 +92,6 @@ class Robot :
 
             while(self.VerifierDistanceLidar()):
                 self.Freiner()
-                self.IsStopped = True
                 
             self.Avancer()
 

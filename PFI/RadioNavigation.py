@@ -12,7 +12,6 @@ class RadioNavigation:
         self.ser.stopbits = serial.STOPBITS_ONE 
         self.ser.timeout = 1
         self.ser.open()
-        print("RadioNavigation")
         self.ser.write(b'\r\r') # séquence d’octets
         time.sleep(1)
         self.ser.close()
@@ -21,7 +20,6 @@ class RadioNavigation:
         self.x = 0
         self.y = 0
         self.thread_get_position = threading.Thread(target = self.getPosition , args=())
-        print("start thread")
         self.thread_get_position.start()
     def getPosition(self):
         self.ser.open()
@@ -29,13 +27,10 @@ class RadioNavigation:
         self.ser.close()
         while(self.en_marche):
             time.sleep(0.01)
-            #compteur = time.perf_counter()
             self.ser.open()
             self.data = str(self.ser.readline())
             self.ser.close()
-            #print(time.perf_counter() - compteur)
             arrayString = self.data.split(',') 
-            ##string.replace(oldvalue, newvalue)
             if(len(arrayString) > 4):
                 if(arrayString[1] != '' or arrayString[2] != ''):
                     self.x = float(arrayString[1])

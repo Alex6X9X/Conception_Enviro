@@ -24,10 +24,13 @@ lidar.thread_scan_lidar.start()
 robot = Robot(navigation , radioNavigation, lidar, en_marche)
 
 beggining_of_circuit = True
-
-
-tabPosition = [(6 , -0.34), (7.94 , 0.27) , (8.15 , 2.63) , (6.2 , 2.78)]
-tabPosition = [(12.20 , 5.80) , (12.57 , 7.04)]
+tabPosition = []
+i = 1
+for i in range(4):
+    input = input("Veuillez position " ,i, " du trajet. ex : x,y")
+    tuplePos = input.split(',')
+    tuplePosFloat = (float(tuplePos[0]) , float(tuplePos[1]))
+    tabPosition.append(tuplePosFloat)
 has_started = False
 angle = 0
 index = 0 
