@@ -128,6 +128,7 @@ class Robot :
         tabDistance = []
         for angle in rangeAngle:
             distance = self.lidar.GetDistance(angle)
+            print("distance" , distance)
             if(distance != None and distance != []):
                 if(isinstance(distance , int)):
                     tabDistance.push(distance)
@@ -139,9 +140,9 @@ class Robot :
                     tabDistance.push(distance)
             
 
-
-        moyenneDistance = sum(tabDistance) / len(tabDistance)
-        return moyenneDistance < 800
+        if(tabDistance != []):
+            return sum(tabDistance) / len(tabDistance)
+        return False
         if(distance == 0):
             return False
         if(distance != None and distance != []):
