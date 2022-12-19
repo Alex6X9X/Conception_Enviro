@@ -30,6 +30,7 @@ class Lidar:
             self.Obj.Reset() 
     def GetDistance(self):
         if(self.data != None):
+            print (self.data)
             return self.data[170:190]
            
     
