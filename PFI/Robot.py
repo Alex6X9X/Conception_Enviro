@@ -13,7 +13,6 @@ DISTANCE_MIN_LIDAR = 0.2
 
 class Robot :
     def __init__(self, navigation , radioNavigation, lidar, en_marche):
-        #self.compteurAngle = 0
         self.moteurs = Moteurs()
         self.navigation = navigation
         self.radioNavigation = radioNavigation
@@ -35,8 +34,6 @@ class Robot :
         self.IsStopped = False
         
     def initialiserPosition(self):
-        #while(self.radioNavigation.x == 0 and self.radioNavigation.y == 0):
-        #    print("Initializing...")
         self.x = self.radioNavigation.x
         self.y = self.radioNavigation.y
                 
@@ -72,9 +69,6 @@ class Robot :
     def CorrectionAngle(self, angle):
         print("correction")
         est_corriger = False
-        #angle = self.CalculerAngle(prochainX, self.x, prochainY, self.y)
-        #next_angle = self.navigation.angleX + angle
-        #print(angle)
         if(angle > DELTA_ANGLE):
             self.Tourner(angle)
         while(not est_corriger):
@@ -88,11 +82,10 @@ class Robot :
     def AvancerToPosition(self, prochainX, prochainY, angle_depart):
         self.distanceAParcourir = self.CalculerDistance(prochainX, self.radioNavigation.x, prochainY, self.radioNavigation.y)
         stop_range = self.distanceAParcourir * 0.1
-        #self.compteurAngle = time.perf_counter()
+
         print("distance a parcourir ")
         print(self.distanceAParcourir)
-        #print("compteur")
-        #print(self.compteurAngle)
+
         sleep(1)
         while(self.avance):
             self.arriver_position = False
@@ -106,18 +99,9 @@ class Robot :
             self.Avancer()
 
             if(stop_range > self.distanceParcourue and self.distanceParcourue != 0):
-                #print("distance plus petite -----------------------")
-                #print(stop_range , self.distanceParcourue)
                 self.Freiner()
                 self.arriver_position = True
                 self.avance = False
-
-                
-            #angle = self.CalculerAngle(prochainX, self.x, prochainY, self.y)
-            #if(time.perf_counter() - self.compteurAngle > 1.5):
-            #if(angle != angle_depart):
-                #self.CorrectionAngle(angle)
-                #self.compteurAngle = 0
             
         
     def VerifierDistanceLidar(self):
