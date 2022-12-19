@@ -28,10 +28,10 @@ class Lidar:
         else:
             print("Erreur")
             self.Obj.Reset() 
-    def GetDistance(self):
+    def GetDistance(self , distance):
         if(self.data != None):
-            print (self.data)
-            return self.data[170:190]
+            
+            return self.data[distance]
            
     
     def ConversionMetre(self, distance):

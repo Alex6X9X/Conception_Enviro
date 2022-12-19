@@ -123,10 +123,24 @@ class Robot :
             
         
     def VerifierDistanceLidar(self):
-        distance = self.lidar.GetDistance()
-        print("tab distance" , distance)
+        
+        rangeAngle = [175 , 176 , 177 , 178 , 179 , 180 , 181 , 182 , 183 , 184 , 185]
+        tabDistance = []
+        for angle in rangeAngle:
+            distance = self.lidar.GetDistance(angle)
+            if(distance != None and distance != []):
+                if(isinstance(distance , int)):
+                    tabDistance.push(distance)
+                else:
+                    min = 100000
+                    for dist in distance:
+                        if(dist != 0 and dist < min):
+                            min = dist
+                    tabDistance.push(distance)
+            
 
-        moyenneDistance = sum(distance) / len(distance)
+
+        moyenneDistance = sum(tabDistance) / len(tabDistance)
         return moyenneDistance < 800
         if(distance == 0):
             return False
