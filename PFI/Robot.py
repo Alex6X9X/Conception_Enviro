@@ -129,9 +129,9 @@ class Robot :
             return False
         if(distance != None and distance != []):
             if(isinstance(distance , int)):
-                 return distance < 500
+                 return distance < 800
             else:
-                return min(distance) < 500
+                return min(distance) < 800
 
         
     def Reculer(self):
