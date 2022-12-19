@@ -60,6 +60,9 @@ while(en_marche):
         en_marche = False
         robot.Freiner()
         
+radioNavigation.en_marche = False
+lidar.en_marche = False
+navigation.en_marche = False
 radioNavigation.thread_get_position.join()
 lidar.thread_scan_lidar.join()
 navigation.thread_calcul_position.join()
