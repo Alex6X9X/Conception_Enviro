@@ -137,7 +137,7 @@ class Robot :
                     for dist in distance:
                         if(dist != 0 and dist < min):
                             min = dist
-                    tabDistance.append(distance)
+                    tabDistance.append(min)
             
 
         if(tabDistance != []):
